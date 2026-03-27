@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Contact</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: #000000; color: #e5e5e5; line-height: 1.5; }
+        :root { --black: #000000; --gold: #D4AF37; --gray-mid: #1c1c1c; }
+        .navbar { background: var(--black); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+        .logo span { color: white; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .nav-links a { color: #ddd; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
+        .menu-toggle span { display: block; width: 25px; height: 2px; background-color: var(--gold); margin: 5px 0; transition: 0.3s; }
+        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--black); border-bottom: 1px solid var(--gold); padding: 1rem; z-index: 999; flex-direction: column; gap: 1rem; }
+        .mobile-nav.show { display: flex; }
+        .mobile-nav a { color: #ddd; text-decoration: none; padding: 0.8rem 1rem; border-radius: 0.5rem; transition: all 0.2s; font-weight: 500; }
+        .mobile-nav a:hover { background: var(--gold); color: var(--black); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--white); }
+        .contact-grid { display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0; }
+        .contact-info { flex: 1; background: var(--gray-mid); border-radius: 1.5rem; padding: 2rem; }
+        .contact-info p { margin: 1rem 0; }
+        .gold-text { color: var(--gold); }
+        .btn-wa { display: inline-block; background-color: #25D366; color: black; font-weight: 700; padding: 0.75rem 1.8rem; border-radius: 999px; text-decoration: none; margin-top: 1rem; cursor: pointer; border: none; }
+        .btn-wa:hover { background-color: #20b859; }
+        .footer { background: var(--black); border-top: 1px solid rgba(212, 175, 55, 0.3); padding: 2rem 1.5rem 1rem; margin-top: 3rem; }
+        .footer-content { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+        .footer-section { flex: 1; min-width: 200px; }
+        .footer-section h4 { color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem; position: relative; display: inline-block; }
+        .footer-section h4::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 40px; height: 2px; background: var(--gold); }
+        .footer-section p { color: #aaa; line-height: 1.6; font-size: 0.85rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; }
+        .footer-section ul li a { color: #aaa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; display: inline-block; }
+        .footer-section ul li a:hover { color: var(--gold); transform: translateX(3px); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--gray-mid); border-radius: 50%; transition: all 0.3s ease; }
+        .social-links a:hover { background: var(--gold); transform: translateY(-3px); }
+        .social-links a:hover svg { stroke: var(--black); }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.75rem; color: #666; }
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 1.2rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .contact-info { padding: 1.2rem; }
+            .footer { padding: 1.5rem 1rem 1rem; }
+            .footer-content { flex-direction: column; gap: 1.5rem; }
+            .footer-section { text-align: center; min-width: auto; }
+            .footer-section h4::after { left: 50%; transform: translateX(-50%); width: 50px; }
+            .social-links { justify-content: center; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .footer-content { flex-wrap: wrap; }
+            .footer-section { flex: 1 1 calc(50% - 1rem); }
+        }
+
+        .nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+.mobile-nav a.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Add this to your existing .nav-links a styles for smooth transition */
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding-bottom: 4px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="services.html">Services</a><a href="apply.html">Apply</a><a href="stories.html">Success</a><a href="about.html">About</a><a href="blog.html">Resources</a><a href="contact.html">Contact</a></div>
+        <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"> Home</a><a href="programs.html"> Programs</a><a href="services.html"> Services</a><a href="apply.html"> Apply</a><a href="stories.html"> Success Stories</a><a href="about.html"> About</a><a href="blog.html"> Resources</a><a href="contact.html"> Contact</a>
+    </div>
+    <div class="container">
+        <h1>Get in Touch</h1>
+        <p>Have questions? Our team in Monrovia is ready to guide you. Reach out through any of the channels below.</p>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2 style="color: var(--gold); margin-bottom: 1rem;">Contact Information</h2>
+                <p> Email: <span class="gold-text">info@scholarshiphub.com</span></p>
+                <p> Phone: <span class="gold-text">+231 77 123 4567</span></p>
+                <p> WhatsApp: <span class="gold-text">+231 77 123 4567</span></p>
+                <p> Office Location: Tubman Boulevard, Sinkor, Monrovia, Liberia</p>
+                <p> Office Hours: Monday – Friday, 9:00 AM – 5:00 PM GMT</p>
+                <button onclick="sendWhatsAppMessage()" class="btn-wa"> Chat with Us on WhatsApp</button>
+            </div>
+        </div>
+        <div style="background: var(--gray-mid); border-radius: 1.5rem; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+            <p><strong>Prefer a virtual consultation?</strong> Book a free 15-minute session with our Monrovia-based advisors.</p>
+            <button onclick="sendWhatsAppMessage('I would like to book a free consultation. Please let me know available times.')" class="btn-wa" style="margin-top: 0.5rem;"> Book Free Consultation</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section"><h4>Scholarship Hub Inc.</h4><p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p><div class="social-links">
+                <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://youtube.com/@scholarshiphub" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a></div></div>
+            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html"> Programs</a></li><li><a href="services.html"> Services</a></li><li><a href="apply.html"> Apply Now</a></li><li><a href="stories.html"> Success Stories</a></li></ul></div>
+            <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog.html"> Blog & Tips</a></li><li><a href="about.html"> About Us</a></li><li><a href="contact.html"> Contact</a></li></ul></div>
+            <div class="footer-section"><h4>Contact Info</h4><p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p> info@scholarshiphub.com</p><p> +231 77 123 4567</p></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future is not local. Take the first step today.</p></div>
+    </footer>
+    <script>
+        const WHATSAPP_PHONE = "231771234567";
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+            const spans = menuToggle.querySelectorAll('span');
+            if (mobileNav.classList.contains('show')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+            mobileNav.classList.remove('show');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }));
+        function sendWhatsAppMessage(customMessage) {
+            let message = customMessage || "Hello Scholarship Hub Inc.! I have questions about your programs and services.";
+            window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Active page navigation highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page filename (e.g., "programs.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Select all navigation links in both desktop and mobile menus
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink(links) {
+        links.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Remove any existing active class
+            link.classList.remove('active');
+            
+            // Check if this link matches the current page
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Special case for index.html when URL is just the domain or folder
+            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Apply highlighting to both navigation menus
+    setActiveLink(desktopLinks);
+    setActiveLink(mobileLinks);
+});
+    </script>
+</body>
+</html>

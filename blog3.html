@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Common Visa Mistakes to Avoid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --gray-dark: #111111;
+            --gray-mid: #1c1c1c;
+            --white: #ffffff;
+            --red-warning: #ff6b6b;
+        }
+
+        .navbar {
+            background: var(--black);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            border-bottom: 1px solid var(--gold);
+            padding: 1rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--red-warning);
+            border-radius: 0.75rem;
+        }
+
+        .intro-text strong {
+            color: var(--red-warning);
+        }
+
+        .blog-content {
+            font-size: 1.05rem;
+        }
+
+        .blog-content h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 1.8rem 0 1rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .blog-content h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mistake-card {
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--red-warning);
+            transition: transform 0.2s;
+        }
+
+        .mistake-card:hover {
+            transform: translateX(5px);
+        }
+
+        .mistake-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .mistake-number {
+            background: var(--red-warning);
+            color: var(--black);
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .mistake-title h3 {
+            margin: 0;
+            color: var(--red-warning);
+        }
+
+        .solution-box {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .solution-box strong {
+            color: var(--gold);
+        }
+
+        .checklist {
+            background: var(--gray-mid);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .checklist-item .check {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid var(--red-warning);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .author-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+        }
+
+        .author-info h4 {
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .related-posts {
+            margin: 2rem 0;
+        }
+
+        .related-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .related-card {
+            background: var(--gray-mid);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            flex: 1 1 200px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .related-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .related-card p {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .related-card a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .newsletter input {
+            padding: 0.8rem 1rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 0.5rem;
+            color: white;
+            width: 280px;
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2rem 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .featured-image {
+                height: 200px;
+            }
+            .blog-content h2 {
+                font-size: 1.4rem;
+            }
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+.mobile-nav a.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Add this to your existing .nav-links a styles for smooth transition */
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding-bottom: 4px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="services.html">Services</a>
+            <a href="apply.html">Apply</a>
+            <a href="stories.html">Success</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"> Home</a>
+        <a href="programs.html"> Programs</a>
+        <a href="services.html"> Services</a>
+        <a href="apply.html"> Apply</a>
+        <a href="stories.html"> Success Stories</a>
+        <a href="about.html"> About</a>
+        <a href="blog.html"> Resources</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="blog-header">
+            <div class="blog-category"> Visa Guide</div>
+            <h1>Common Visa Mistakes to Avoid</h1>
+            <div class="blog-meta">
+                <span> March 25, 2026</span>
+                <span> 9 min read</span>
+                <span> By Immigration Team</span>
+                <span> #VisaTips #StudyAbroad #Immigration</span>
+            </div>
+        </div>
+
+        <img class="featured-image" src="https://images.pexels.com/photos/7019108/pexels-photo-7019108.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Visa application documents" onerror="this.src='https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200'">
+
+        <div class="intro-text">
+            <p><strong> Did you know?</strong> According to recent immigration data, <strong>over 30% of student visa applications are rejected</strong> due to preventable mistakes. Many of these rejections could have been avoided with proper preparation and attention to detail.</p>
+            <p style="margin-top: 0.8rem;">In this guide, we'll walk you through the most common visa mistakes that lead to refusals, and more importantly, show you exactly how to avoid them. Whether you're applying for a student visa, work permit, or visitor visa, these tips will dramatically increase your chances of success.</p>
+        </div>
+
+        <div class="blog-content">
+            <h2>Top 10 Visa Mistakes & How to Avoid Them</h2>
+
+            <!-- Mistake 1 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">1</div>
+                    <h3>Incomplete or Incorrect Documentation</h3>
+                </div>
+                <p>This is the #1 reason for visa rejections globally. Missing a single required document, submitting outdated forms, or failing to provide certified translations can result in an immediate refusal.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong> Create a detailed checklist based on the specific visa requirements for your destination country. Double-check that you have:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Valid passport (with at least 6 months validity beyond intended stay)</li>
+                        <li>Letter of acceptance from a recognized institution</li>
+                        <li>Proof of sufficient funds (bank statements, scholarship letters)</li>
+                        <li>Valid language test scores (IELTS, TOEFL, etc.)</li>
+                        <li>All documents translated into the official language by certified translators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 2 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">2</div>
+                    <h3>Insufficient Proof of Funds</h3>
+                </div>
+                <p>Visa officers need to be convinced that you can support yourself financially throughout your stay. Many applications fail because bank statements don't show consistent funds, or the source of funds isn't clear.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong> 
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Show at least 3-6 months of bank statements with consistent balances</li>
+                        <li>Include scholarship award letters if applicable</li>
+                        <li>Provide proof of sponsorship (with sponsor's bank statements and ID)</li>
+                        <li>Ensure funds meet or exceed the country's minimum requirement (e.g., Canada requires ~$10,000 CAD + tuition)</li>
+                        <li>Explain any large, recent deposits with a letter of explanation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 3 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">3</div>
+                    <h3>Weak Ties to Home Country</h3>
+                </div>
+                <p>Visa officers need assurance that you will return home after your studies. If they suspect you might overstay or seek permanent residency without proper authorization, your application will be rejected.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong> Demonstrate strong ties through:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Family ties (parents, spouse, children staying in home country)</li>
+                        <li>Property ownership or long-term leases</li>
+                        <li>Job prospects or career plans upon return</li>
+                        <li>Previous travel history showing compliance with visa rules</li>
+                        <li>A clear explanation of how your studies will benefit your home country</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 4 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">4</div>
+                    <h3>Poorly Written Statement of Purpose (SOP)</h3>
+                </div>
+                <p>A vague, generic, or poorly written SOP is a red flag for visa officers. They need to understand your genuine intentions, academic background, and future plans.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Write a unique, personalized SOP that explains your academic journey and career goals</li>
+                        <li>Clearly explain why you chose this specific country, university, and program</li>
+                        <li>Connect your chosen program to your future career plans in your home country</li>
+                        <li>Be honest about any academic gaps or inconsistencies</li>
+                        <li>Have someone experienced review your SOP before submission</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 5 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">5</div>
+                    <h3>Discrepancies in Application Information</h3>
+                </div>
+                <p>Inconsistencies between your application forms, supporting documents, or interview answers can raise suspicion and lead to rejection or even a ban for misrepresentation.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Double-check all names, dates, and personal information across all documents</li>
+                        <li>Ensure the information on your visa application matches your acceptance letter, passport, and previous applications</li>
+                        <li>Be honest about previous visa refusals or travel history</li>
+                        <li>If there are discrepancies, explain them clearly in a cover letter</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 6 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">6</div>
+                    <h3>Applying Too Close to Program Start Date</h3>
+                </div>
+                <p>Submitting your visa application too late leaves insufficient processing time. Many countries recommend applying 3-6 months in advance. Last-minute applications often get rushed and contain errors.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Check official processing times for your destination country (can range from 2 weeks to 3 months)</li>
+                        <li>Apply as soon as you receive your acceptance letter</li>
+                        <li>Aim to submit your application at least 3 months before your program start date</li>
+                        <li>Build in buffer time for additional document requests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 7 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">7</div>
+                    <h3>Poor Interview Preparation</h3>
+                </div>
+                <p>For countries that require in-person interviews (e.g., USA, Canada), poor performance can tank an otherwise strong application. Nervousness, inconsistent answers, or lack of knowledge about your program are common pitfalls.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Research common visa interview questions and practice your answers</li>
+                        <li>Be prepared to explain your study plans, funding sources, and post-graduation intentions</li>
+                        <li>Answer questions directly and honestly — don't volunteer unnecessary information</li>
+                        <li>Dress professionally and arrive early</li>
+                        <li>Bring all original documents in an organized folder</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 8 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">8</div>
+                    <h3>Choosing the Wrong Program or Institution</h3>
+                </div>
+                <p>Visa officers are suspicious when students apply for programs that don't align with their academic background or career goals. This is often seen as an attempt to gain entry rather than genuine study intent.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Choose a program that logically follows your previous education</li>
+                        <li>Apply to Designated Learning Institutions (DLIs) recognized by immigration authorities</li>
+                        <li>Be able to explain how the program fits your career trajectory</li>
+                        <li>Avoid "diploma mills" or unaccredited institutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 9 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">9</div>
+                    <h3>Medical Inadmissibility Issues</h3>
+                </div>
+                <p>Failure to disclose medical conditions or not completing required medical exams can lead to rejection. Some countries require specific medical tests for students from certain regions.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Check if your destination requires a medical examination</li>
+                        <li>Use panel physicians approved by the embassy</li>
+                        <li>Be truthful about any medical conditions on your application</li>
+                        <li>Complete all required vaccinations as per country requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mistake 10 -->
+            <div class="mistake-card">
+                <div class="mistake-title">
+                    <div class="mistake-number">10</div>
+                    <h3>Ignoring Country-Specific Requirements</h3>
+                </div>
+                <p>Each country has unique visa requirements, forms, and procedures. Using generic advice or applying the same approach to different countries often leads to mistakes.</p>
+                <div class="solution-box">
+                    <strong> How to Avoid:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Research the specific requirements for your destination country</li>
+                        <li>Check official embassy or consulate websites for accurate information</li>
+                        <li>Be aware of biometrics requirements, appointment bookings, and interview waivers</li>
+                        <li>Join country-specific applicant forums for up-to-date advice</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong> CRITICAL WARNING:</strong> Never submit fraudulent documents or provide false information. Immigration authorities share data across agencies, and misrepresentation can lead to a 5-year ban or permanent inadmissibility. Honesty is always the best policy.
+            </div>
+
+            <h2> Your Visa Application Checklist</h2>
+            <div class="checklist">
+                <div class="checklist-item"><span class="check">✓</span> <span>Valid passport (6 months validity beyond intended stay)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Visa application form (completed accurately, no blank fields)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Acceptance letter from recognized institution</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Proof of tuition payment or scholarship award</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Bank statements (3-6 months, meeting minimum requirements)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Language proficiency scores (IELTS, TOEFL, etc.)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Academic transcripts and certificates (certified translations if needed)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Statement of Purpose / Study Plan</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Medical examination results (if required)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Police clearance certificate (if required)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Visa fee payment receipt</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Passport-sized photographs (meeting specifications)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Biometrics appointment confirmation (if applicable)</span></div>
+            </div>
+
+            <h2> Final Tips for Visa Success</h2>
+            <ul>
+                <li><strong>Start early:</strong> Begin your visa process 4-6 months before your program starts</li>
+                <li><strong>Be consistent:</strong> Ensure all documents tell the same story about your background and intentions</li>
+                <li><strong>Seek professional help:</strong> If your situation is complex, consider working with a registered immigration consultant</li>
+                <li><strong>Stay organized:</strong> Keep digital and physical copies of all submitted documents</li>
+                <li><strong>Don't give up:</strong> If rejected, understand the reason before reapplying. Many successful applicants were rejected once before approval</li>
+            </ul>
+
+            <div class="highlight-box" style="background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--gold); padding: 1.2rem; margin: 1.5rem 0;">
+                <strong> Success Story:</strong> "After my first visa application was rejected due to insufficient funds, I worked with Scholarship Hub to reorganize my documents and add a detailed explanation of my sponsor's income. My second application was approved in just 3 weeks! Don't let one rejection discourage you." — <em>Michael O., Master's student in Canada</em>
+            </div>
+        </div>
+
+        <div class="author-section">
+            <div class="author-avatar">VI</div>
+            <div class="author-info">
+                <h4>Scholarship Hub Immigration Team</h4>
+                <p>Our team has helped over 800 students successfully navigate the visa process for Canada, USA, UK, Germany, and Australia. We provide personalized guidance and document review services.</p>
+                <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Book a visa consultation →</a>
+            </div>
+        </div>
+
+        <div class="related-posts">
+            <h3 style="color: var(--gold); margin-bottom: 1rem;"> You Might Also Like</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <h4>How to Secure a Scholarship in 2026</h4>
+                    <p>Step-by-step guide to stand out and win funding.</p>
+                    <a href="blog1.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Top Countries for African Students</h4>
+                    <p>Affordable tuition, scholarships, and work options.</p>
+                    <a href="blog2.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Canada Study Permit: Complete Guide</h4>
+                    <p>Everything you need to know for a successful application.</p>
+                    <a href="blog10.html">Read more →</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;"> Need Visa Help? Start Your Application</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Scholarship Hub Inc.</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html"> Programs</a></li>
+                    <li><a href="services.html"> Services</a></li>
+                    <li><a href="apply.html"> Apply Now</a></li>
+                    <li><a href="blog.html"> Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p> info@scholarshiphub.com</p>
+                <p> +231 77 123 4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your visa journey starts with preparation.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+
+        const newsletterForm = document.getElementById('newsletter-form');
+        const successDiv = document.getElementById('newsletter-success');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successDiv.style.display = 'block';
+                newsletterForm.reset();
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        // Active page navigation highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page filename (e.g., "programs.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Select all navigation links in both desktop and mobile menus
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink(links) {
+        links.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Remove any existing active class
+            link.classList.remove('active');
+            
+            // Check if this link matches the current page
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Special case for index.html when URL is just the domain or folder
+            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Apply highlighting to both navigation menus
+    setActiveLink(desktopLinks);
+    setActiveLink(mobileLinks);
+});
+    </script>
+</body>
+</html>

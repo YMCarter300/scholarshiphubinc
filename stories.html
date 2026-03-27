@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Success Stories</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: #000000; color: #e5e5e5; line-height: 1.5; }
+        :root { --black: #000000; --gold: #D4AF37; --gray-mid: #1c1c1c; }
+        
+        .navbar { background: var(--black); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+        .logo span { color: white; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .nav-links a { color: #ddd; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
+        .menu-toggle span { display: block; width: 25px; height: 2px; background-color: var(--gold); margin: 5px 0; transition: 0.3s; }
+        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--black); border-bottom: 1px solid var(--gold); padding: 1rem; z-index: 999; flex-direction: column; gap: 1rem; }
+        .mobile-nav.show { display: flex; }
+        .mobile-nav a { color: #ddd; text-decoration: none; padding: 0.8rem 1rem; border-radius: 0.5rem; transition: all 0.2s; font-weight: 500; }
+        .mobile-nav a:hover { background: var(--gold); color: var(--black); }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--white); text-align: center; }
+        .subtitle { text-align: center; color: #aaa; margin-bottom: 2.5rem; font-size: 1.1rem; }
+        
+        /* Grid Layout - 3 columns on desktop */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+        
+        .story-card {
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            padding: 1.8rem;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .story-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .country-flag {
+            width: 24px;
+            height: 18px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+        
+        .story-before { 
+            color: #ff8888; 
+            margin: 0.75rem 0 0.5rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        
+        .story-after { 
+            color: #88ff88; 
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .story-quote { 
+            font-style: italic; 
+            margin-top: 0.8rem; 
+            padding-top: 0.8rem; 
+            border-top: 1px solid #333; 
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .program-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-top: 0.8rem;
+            align-self: flex-start;
+            color: var(--gold);
+        }
+        
+        .footer { background: var(--black); border-top: 1px solid rgba(212, 175, 55, 0.3); padding: 2rem 1.5rem 1rem; margin-top: 3rem; }
+        .footer-content { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+        .footer-section { flex: 1; min-width: 200px; }
+        .footer-section h4 { color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem; position: relative; display: inline-block; }
+        .footer-section h4::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 40px; height: 2px; background: var(--gold); }
+        .footer-section p { color: #aaa; line-height: 1.6; font-size: 0.85rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.6rem; }
+        .footer-section ul li a { color: #aaa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; display: inline-block; }
+        .footer-section ul li a:hover { color: var(--gold); transform: translateX(3px); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--gray-mid); border-radius: 50%; transition: all 0.3s ease; }
+        .social-links a:hover { background: var(--gold); transform: translateY(-3px); }
+        .social-links a:hover svg { stroke: var(--black); }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.75rem; color: #666; }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 0.8rem 1.2rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; }
+            .stories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .story-card { padding: 1.2rem; }
+            .footer { padding: 1.5rem 1rem 1rem; }
+            .footer-content { flex-direction: column; gap: 1.5rem; }
+            .footer-section { text-align: center; min-width: auto; }
+            .footer-section h4::after { left: 50%; transform: translateX(-50%); width: 50px; }
+            .social-links { justify-content: center; }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content { flex-wrap: wrap; }
+            .footer-section { flex: 1 1 calc(50% - 1rem); }
+        }
+
+        .nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+.mobile-nav a.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Add this to your existing .nav-links a styles for smooth transition */
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding-bottom: 4px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="services.html">Services</a>
+            <a href="apply.html">Apply</a>
+            <a href="stories.html">Success</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Resources</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"> Home</a>
+        <a href="programs.html"> Programs</a>
+        <a href="services.html"> Services</a>
+        <a href="apply.html"> Apply</a>
+        <a href="stories.html"> Success Stories</a>
+        <a href="about.html"> About</a>
+        <a href="blog.html"> Resources</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+    
+    <div class="container">
+        <h1>Real People. Real Results.</h1>
+        <p class="subtitle">Hear from students and professionals who transformed their lives with Scholarship Hub Inc.</p>
+        
+        <div class="stories-grid" id="storiesGrid">
+            <!-- Stories will be loaded dynamically via JavaScript -->
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Scholarship Hub Inc.</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@scholarshiphub" target="_blank" aria-label="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html"> Programs</a></li>
+                    <li><a href="services.html"> Services</a></li>
+                    <li><a href="apply.html"> Apply Now</a></li>
+                    <li><a href="stories.html"> Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="blog.html"> Blog & Tips</a></li>
+                    <li><a href="about.html"> About Us</a></li>
+                    <li><a href="contact.html"> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p> info@scholarshiphub.com</p>
+                <p> +231 77 123 4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future is not local. Take the first step today.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Success Stories Data - 9 unique stories in 3x3 grid
+        const stories = [
+            {
+                name: "Fatima K.",
+                location: "Monrovia, Liberia",
+                country: "Liberia",
+                flagCode: "lr",
+                before: "Struggling to find scholarship information and application guidance. Faced multiple rejections due to incomplete applications.",
+                after: "Studying Computer Science in Canada on fully funded scholarship with living stipend.",
+                quote: "Scholarship Hub Inc. made my dream a reality. They guided me through every step — from finding the right program to submitting a winning application!",
+                program: "🇨🇦 Fully Funded Scholarship - Canada"
+            },
+            {
+                name: "Samuel T.",
+                location: "Ganta, Liberia",
+                country: "Liberia",
+                flagCode: "lr",
+                before: "Limited job network, unable to find legitimate work abroad opportunities. Scammed twice by fake recruitment agencies.",
+                after: "Tech job in Dubai with work visa and full relocation support. Now earning 4x his previous salary.",
+                quote: "The team guided me every step — from CV preparation to visa approval. Highly recommend! They saved me from another scam.",
+                program: "💼 Work Abroad - Dubai, UAE"
+            },
+            {
+                name: "Grace W.",
+                location: "Paynesville, Liberia",
+                country: "Liberia",
+                flagCode: "lr",
+                before: "No international exposure, unsure how to apply for exchange programs. Limited French language skills.",
+                after: "Exchange program in France with language certificate and cultural immersion. Now fluent in French.",
+                quote: "Scholarship Hub Inc. opened doors I never imagined. Now I'm fluent in French and have global connections.",
+                program: "🗣️ Language Exchange - France"
+            },
+            {
+                name: "Michael O.",
+                location: "Lagos, Nigeria",
+                country: "Nigeria",
+                flagCode: "ng",
+                before: "Multiple scholarship rejections due to poor application strategy and weak personal statements.",
+                after: "Full scholarship for Master's in Germany with monthly stipend and research funding.",
+                quote: "Their application support transformed my profile. Worth every bit of investment. The visa guidance was exceptional.",
+                program: "🎓 DAAD Scholarship - Germany"
+            },
+            {
+                name: "Aminata D.",
+                location: "Freetown, Sierra Leone",
+                country: "Sierra Leone",
+                flagCode: "sl",
+                before: "Couldn't afford expensive study abroad consultants. Lost in the application process.",
+                after: "Studying Public Health at University of Copenhagen on full scholarship.",
+                quote: "Scholarship Hub Inc. believed in me when no one else did. Now I'm living my dream in Denmark!",
+                program: "🏥 Public Health Scholarship - Denmark"
+            },
+            {
+                name: "John K.",
+                location: "Accra, Ghana",
+                country: "Ghana",
+                flagCode: "gh",
+                before: "Stuck in a dead-end job with no career growth. Wanted to study abroad but didn't know where to start.",
+                after: "MBA scholarship at University of Warsaw, Poland with 80% tuition coverage.",
+                quote: "The team helped me craft a compelling application that stood out. Now I'm pursuing my MBA in Europe!",
+                program: "📚 MBA Scholarship - Poland"
+            },
+            {
+                name: "Elizabeth M.",
+                location: "Nairobi, Kenya",
+                country: "Kenya",
+                flagCode: "ke",
+                before: "Limited access to international job opportunities. Visa application confusion.",
+                after: "Software Engineering job in Berlin, Germany with Blue Card sponsorship.",
+                quote: "From application to relocation, they were with me. Now I'm living my dream in Berlin!",
+                program: "💻 Tech Job - Germany"
+            },
+            {
+                name: "David O.",
+                location: "Kigali, Rwanda",
+                country: "Rwanda",
+                flagCode: "rw",
+                before: "Couldn't afford Master's programs. Thought studying abroad was impossible.",
+                after: "Fully funded Master's in Computer Science at Technical University of Munich.",
+                quote: "Zero tuition, world-class education. Scholarship Hub Inc. made the impossible possible!",
+                program: "🎓 Free Education - Germany"
+            },
+            {
+                name: "Sarah J.",
+                location: "Cape Town, South Africa",
+                country: "South Africa",
+                flagCode: "za",
+                before: "Struggled with visa applications and university admissions paperwork.",
+                after: "Studying Architecture at University of Porto, Portugal with partial scholarship.",
+                quote: "Their document review service saved my application. Now I'm living my architectural dream!",
+                program: "🏛️ Architecture Program - Portugal"
+            }
+        ];
+        
+        // Get flag image URL
+        function getFlagUrl(countryCode) {
+            return `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+        }
+        
+        // Render stories in grid
+        function renderStories() {
+            const grid = document.getElementById('storiesGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = stories.map(story => `
+                <div class="story-card">
+                    <div class="story-name">
+                        <img class="country-flag" src="${getFlagUrl(story.flagCode)}" alt="${story.country}" onerror="this.style.display='none'">
+                        ${story.name} - ${story.location}
+                    </div>
+                    <div class="story-before">
+                        📌 Before: ${story.before}
+                    </div>
+                    <div class="story-after">
+                        ✅ After: ${story.after}
+                    </div>
+                    <div class="story-quote">
+                        💬 "${story.quote}"
+                    </div>
+                    <div class="program-badge">
+                        ${story.program}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+        
+        // Initialize page
+        renderStories();
+
+        // Active page navigation highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page filename (e.g., "programs.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Select all navigation links in both desktop and mobile menus
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink(links) {
+        links.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Remove any existing active class
+            link.classList.remove('active');
+            
+            // Check if this link matches the current page
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Special case for index.html when URL is just the domain or folder
+            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Apply highlighting to both navigation menus
+    setActiveLink(desktopLinks);
+    setActiveLink(mobileLinks);
+});
+    </script>
+</body>
+</html>

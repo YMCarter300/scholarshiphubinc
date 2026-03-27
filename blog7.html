@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Study in Germany: €0 Tuition Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --gray-dark: #111111;
+            --gray-mid: #1c1c1c;
+            --white: #ffffff;
+        }
+
+        .navbar {
+            background: var(--black);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            border-bottom: 1px solid var(--gold);
+            padding: 1rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .mobile-nav a.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .blog-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .blog-content h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .blog-content h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .blog-content .tip-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .blog-content .tip-box strong {
+            color: var(--gold);
+        }
+
+        .checklist {
+            background: var(--gray-mid);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .checklist-item .check {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .author-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+        }
+
+        .author-info h4 {
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .related-posts {
+            margin: 2rem 0;
+        }
+
+        .related-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .related-card {
+            background: var(--gray-mid);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            flex: 1 1 200px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .related-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .related-card p {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .related-card a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2rem 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .featured-image {
+                height: 200px;
+            }
+            .blog-content h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="services.html">Services</a>
+            <a href="apply.html">Apply</a>
+            <a href="stories.html">Success</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="services.html">Services</a>
+        <a href="apply.html">Apply</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Resources</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="blog-header">
+            <div class="blog-category">Country Guide</div>
+            <h1>Study in Germany: €0 Tuition Complete Guide</h1>
+            <div class="blog-meta">
+                <span>📅 March 20, 2026</span>
+                <span>⏱️ 12 min read</span>
+                <span>👤 By Scholarship Hub Team</span>
+                <span>#Germany #StudyAbroad #ZeroTuition</span>
+            </div>
+        </div>
+
+        <img class="featured-image" src="https://images.pexels.com/photos/2190283/pexels-photo-2190283.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Berlin Cathedral and skyline at sunset" onerror="this.src='https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200'">
+
+        <div class="blog-content">
+            <p>Germany is one of the few countries in the world offering €0 tuition at public universities—even for international students. With world-class education, a strong economy, and generous post-study work opportunities, it's no wonder Germany has become the top destination for students seeking affordable education abroad. In this comprehensive guide, we'll walk you through everything you need to know about studying in Germany, from admission requirements to visa applications.</p>
+
+            <div class="highlight-box">
+                <strong>💰 Key Fact:</strong> 16 out of 16 German states have abolished tuition fees for undergraduate programs at public universities. International students pay only a semester contribution of €150–€350 per semester, which includes a public transport pass.
+            </div>
+
+            <h2>Why Study in Germany?</h2>
+            <p>Germany offers a unique combination of high-quality education and affordability that's hard to find anywhere else in the world. Here's why thousands of international students choose Germany every year:</p>
+            <ul>
+                <li><strong>€0 Tuition:</strong> Public universities charge no tuition fees for undergraduate and many graduate programs.</li>
+                <li><strong>World-Class Education:</strong> German universities consistently rank among the best globally, with strong programs in engineering, sciences, business, and humanities.</li>
+                <li><strong>Strong Economy:</strong> Germany is Europe's largest economy, offering excellent job opportunities during and after your studies.</li>
+                <li><strong>Post-Study Work Visa:</strong> Graduates can stay for 18 months to find work, with a clear path to permanent residency.</li>
+                <li><strong>English-Taught Programs:</strong> Over 1,000 programs are taught entirely in English, especially at the master's level.</li>
+                <li><strong>Central Location:</strong> Travel easily across Europe while studying.</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>🎓 Pro Tip:</strong> While tuition is free, you'll need to show proof of €11,904 in a blocked account (Sperrkonto) for your student visa application. This covers living expenses for one year.
+            </div>
+
+            <h2>Top Public Universities in Germany</h2>
+            <p>Germany is home to some of the world's most prestigious universities. Here are top institutions with €0 tuition:</p>
+            <ul>
+                <li><strong>Technical University of Munich (TUM)</strong> - Top-ranked for engineering, AI, and robotics</li>
+                <li><strong>Ludwig Maximilian University Munich (LMU)</strong> - Excellence in humanities, medicine, and sciences</li>
+                <li><strong>Heidelberg University</strong> - Germany's oldest university, strong in life sciences and medicine</li>
+                <li><strong>Humboldt University of Berlin</strong> - Premier institution for social sciences and humanities</li>
+                <li><strong>RWTH Aachen University</strong> - Leading engineering and technical programs</li>
+                <li><strong>Freie Universität Berlin</strong> - Strong in political science and international relations</li>
+                <li><strong>University of Freiburg</strong> - Excellent environmental science and engineering programs</li>
+                <li><strong>University of Tübingen</strong> - Renowned for neuroscience and humanities</li>
+            </ul>
+
+            <h2>Admission Requirements</h2>
+            <p>Requirements vary by program and university, but here are the general requirements for international students:</p>
+
+            <h3>For Undergraduate Programs</h3>
+            <ul>
+                <li><strong>High School Diploma:</strong> Your secondary school certificate must be recognized as equivalent to the German Abitur. Use the DAAD database or Anabin to check equivalency.</li>
+                <li><strong>Studienkolleg:</strong> If your diploma isn't directly recognized, you may need to complete a one-year preparatory course.</li>
+                <li><strong>Language Proficiency:</strong> German-taught programs require TestDaF (TDN 4) or Goethe C1. English-taught programs require IELTS 6.5 or TOEFL iBT 90.</li>
+                <li><strong>Uni-Assist:</strong> Most applications go through uni-assist, a centralized application service for international students.</li>
+            </ul>
+
+            <h3>For Master's Programs</h3>
+            <ul>
+                <li><strong>Bachelor's Degree:</strong> A recognized undergraduate degree in a related field (minimum 3 years).</li>
+                <li><strong>Academic Transcripts:</strong> Official transcripts showing grades and courses completed.</li>
+                <li><strong>Motivation Letter:</strong> A compelling statement explaining why you want to study in Germany and your career goals.</li>
+                <li><strong>Letters of Recommendation:</strong> Usually 2-3 letters from professors or employers.</li>
+                <li><strong>CV/Resume:</strong> Tailored to German format with photo (optional but common).</li>
+            </ul>
+
+            <div class="checklist">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">📋 German University Application Checklist</h3>
+                <div class="checklist-item"><span class="check">✓</span> <span>High school diploma or bachelor's degree (certified copies)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Academic transcripts with certified translations (if not in German/English)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Language proficiency: IELTS 6.5 / TOEFL 90 OR TestDaF TDN 4 / Goethe C1</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Motivation letter (500-800 words, tailored to each program)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>CV in tabular German format (Europass recommended)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Letters of recommendation (2-3 academic references)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Passport copy (valid for entire study period)</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>VPD (Preliminary Review Documentation) from uni-assist if required</span></div>
+                <div class="checklist-item"><span class="check">✓</span> <span>Portfolio (for architecture, design, or art programs)</span></div>
+            </div>
+
+            <h2>The Student Visa Process</h2>
+            <p>Once you receive your admission letter, the next step is applying for a German student visa. Here's what you need to know:</p>
+
+            <h3>Required Documents for Student Visa</h3>
+            <ul>
+                <li>Valid passport</li>
+                <li>University admission letter (Zulassungsbescheid)</li>
+                <li>Proof of financial resources (Blocked account with €11,904)</li>
+                <li>Health insurance proof (valid in Germany)</li>
+                <li>Visa application form (filled and signed)</li>
+                <li>Biometric passport photos</li>
+                <li>Previous degree certificates</li>
+                <li>Language proficiency certificates</li>
+                <li>CV and motivation letter</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>⏰ Timeline Tip:</strong> Apply for your visa at least 8-12 weeks before your intended departure. The German embassy can take 6-8 weeks to process student visas. Schedule your appointment as soon as you receive your admission letter.
+            </div>
+
+            <h2>Cost of Living in Germany</h2>
+            <p>While tuition is free, you'll need to budget for living expenses. Here's a breakdown of monthly costs:</p>
+            <ul>
+                <li><strong>Accommodation:</strong> €300–€600 (student dormitories are cheapest)</li>
+                <li><strong>Health Insurance:</strong> €110–€120 (mandatory for all students)</li>
+                <li><strong>Food & Groceries:</strong> €150–€250</li>
+                <li><strong>Transportation:</strong> €0–€100 (covered by semester ticket at most universities)</li>
+                <li><strong>Study Materials:</strong> €20–€50</li>
+                <li><strong>Miscellaneous:</strong> €100–€200</li>
+                <li><strong>Total Monthly:</strong> €800–€1,200</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Money-Saving Tip:</strong> Student dormitories (Studentenwerk) offer the most affordable housing. Apply as early as possible—waiting lists can be 1-2 semesters long in popular cities like Munich and Berlin.
+            </div>
+
+            <h2>Scholarships for Germany</h2>
+            <p>Even with €0 tuition, scholarships can help cover living expenses. Here are top scholarships for studying in Germany:</p>
+            <ul>
+                <li><strong>DAAD Scholarships:</strong> German government scholarships covering living expenses, travel, and health insurance.</li>
+                <li><strong>Deutschlandstipendium:</strong> €300/month merit-based scholarship funded by government and private sponsors.</li>
+                <li><strong>Erasmus+:</strong> Exchange program funding for European study periods.</li>
+                <li><strong>Friedrich Ebert Stiftung:</strong> For academically gifted students with social engagement.</li>
+                <li><strong>Konrad Adenauer Stiftung:</strong> For international students with strong academic records and leadership potential.</li>
+            </ul>
+
+            <h2>Part-Time Work While Studying</h2>
+            <p>International students can work 120 full days or 240 half days per year. Here's what you need to know:</p>
+            <ul>
+                <li>Average student wage: €12–€15 per hour</li>
+                <li>Popular jobs: Research assistant, retail, hospitality, tutoring</li>
+                <li>After graduation: 18-month job-seeking visa</li>
+                <li>Path to permanent residency: 24 months of employment after graduation</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>🌟 Success Story:</strong> "I arrived in Germany with just my admission letter and a blocked account. Within 3 months, I found a student job at a research institute. Today, I'm a full-time engineer at a German automotive company. The system is designed to help you succeed if you're willing to work for it." - <em>Amara O., TUM Graduate '23</em>
+            </div>
+
+            <h2>Common Mistakes to Avoid</h2>
+            <ul>
+                <li><strong>Missing uni-assist deadlines:</strong> Many programs have application deadlines through uni-assist that are months earlier than university deadlines.</li>
+                <li><strong>Not checking language requirements:</strong> Some English-taught programs still require basic German for daily life.</li>
+                <li><strong>Waiting too long for housing:</strong> Start your accommodation search immediately after acceptance.</li>
+                <li><strong>Ignoring the blocked account requirement:</strong> You can't get a visa without it. Start the process early.</li>
+                <li><strong>Forgetting health insurance:</strong> Health insurance is mandatory and must be arranged before enrollment.</li>
+            </ul>
+
+            <h2>Your Next Steps</h2>
+            <p>Ready to start your German education journey? Here's your roadmap:</p>
+            <ol>
+                <li>Research programs on the DAAD database (daad.de)</li>
+                <li>Check admission requirements and language prerequisites</li>
+                <li>Prepare your documents (transcripts, language certificates)</li>
+                <li>Apply through uni-assist or directly to universities</li>
+                <li>Secure your admission letter</li>
+                <li>Set up a blocked account (Fintiba or Expatrio)</li>
+                <li>Apply for your student visa</li>
+                <li>Find accommodation</li>
+                <li>Book flights and start your German adventure!</li>
+            </ol>
+
+            <p>Germany offers an unparalleled opportunity to receive a world-class education without the burden of tuition debt. With proper planning and preparation, you can join the thousands of international students who have built successful careers after studying in Germany.</p>
+        </div>
+
+        <div class="author-section">
+            <div class="author-avatar">SH</div>
+            <div class="author-info">
+                <h4>Scholarship Hub Team</h4>
+                <p>Specializing in German university admissions. Our team has helped over 200 students successfully navigate the German application process and secure admission to top universities like TUM, LMU, and Heidelberg.</p>
+                <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Need help with your German application? Contact us →</a>
+            </div>
+        </div>
+
+        <div class="related-posts">
+            <h3 style="color: var(--gold); margin-bottom: 1rem;">📚 You Might Also Like</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <h4>How to Secure a Scholarship in 2026</h4>
+                    <p>Step-by-step guide to winning scholarships, from essays to interviews.</p>
+                    <a href="blog1.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Top 10 Scholarships for African Students</h4>
+                    <p>Fully funded opportunities across Europe, Asia, and North America.</p>
+                    <a href="blog2.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Student Visa Guide: Europe vs Asia</h4>
+                    <p>Compare requirements, costs, and processing times for student visas.</p>
+                    <a href="blog8.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Cost of Living: 10 Most Affordable Cities</h4>
+                    <p>Where your money goes further as an international student.</p>
+                    <a href="blog9.html">Read more →</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black;">🇩🇪 Start Your German Application</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Scholarship Hub Inc.</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p>info@scholarshiphub.com</p>
+                <p>+231 77 123 4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future starts today.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+
+        // Active page navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const desktopLinks = document.querySelectorAll('.nav-links a');
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            
+            function setActiveLink(links) {
+                links.forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    link.classList.remove('active');
+                    if (linkHref === currentPage) {
+                        link.classList.add('active');
+                    }
+                    if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            setActiveLink(desktopLinks);
+            setActiveLink(mobileLinks);
+        });
+    </script>
+</body>
+</html>

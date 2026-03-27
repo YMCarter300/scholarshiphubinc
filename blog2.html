@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Top Countries for African Students</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --gray-dark: #111111;
+            --gray-mid: #1c1c1c;
+            --white: #ffffff;
+        }
+
+        .navbar {
+            background: var(--black);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            border-bottom: 1px solid var(--gold);
+            padding: 1rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold);
+            border-radius: 0.75rem;
+        }
+
+        .country-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .country-card {
+            background: var(--gray-mid);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            border-color: var(--gold);
+        }
+
+        .country-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .country-flag {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .country-title {
+            flex: 1;
+        }
+
+        .country-title h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-title p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .country-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .stat strong {
+            color: var(--gold);
+        }
+
+        .country-content {
+            padding: 1.5rem;
+        }
+
+        .country-content h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .country-content h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .country-content ul, .country-content p {
+            margin-bottom: 0.8rem;
+        }
+
+        .country-content ul {
+            margin-left: 1.5rem;
+        }
+
+        .country-content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .scholarship-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.7rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .comparison-table {
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .comparison-table th {
+            color: var(--gold);
+            font-weight: 600;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2rem 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .newsletter input {
+            padding: 0.8rem 1rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 0.5rem;
+            color: white;
+            width: 280px;
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .featured-image {
+                height: 200px;
+            }
+            .country-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .country-stats {
+                justify-content: center;
+            }
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 0.5rem;
+            }
+        }
+
+        .nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+.mobile-nav a.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Add this to your existing .nav-links a styles for smooth transition */
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding-bottom: 4px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="services.html">Services</a>
+            <a href="apply.html">Apply</a>
+            <a href="stories.html">Success</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"> Home</a>
+        <a href="programs.html"> Programs</a>
+        <a href="services.html"> Services</a>
+        <a href="apply.html"> Apply</a>
+        <a href="stories.html"> Success Stories</a>
+        <a href="about.html"> About</a>
+        <a href="blog.html"> Resources</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="blog-header">
+            <div class="blog-category"> Study Abroad Guide</div>
+            <h1>Top Countries for African Students</h1>
+            <div class="blog-meta">
+                <span> March 20, 2026</span>
+                <span> 10 min read</span>
+                <span> By Scholarship Hub Team</span>
+                <span> #StudyAbroad #AfricanStudents #Scholarships</span>
+            </div>
+        </div>
+
+        <img class="featured-image" src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="African students studying abroad" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200'">
+
+        <div class="intro-text">
+            <p> <strong>Where should you study abroad?</strong> As an African student, you have more options than ever before. From tuition-free universities in Germany to generous scholarships in China and post-study work opportunities in Canada, we've analyzed the best destinations based on affordability, scholarship availability, visa success rates, and career outcomes.</p>
+            <p style="margin-top: 0.8rem;">Here are the top 7 countries that offer the best combination of quality education, financial accessibility, and pathways to global careers for students from Africa.</p>
+        </div>
+
+        <div class="country-grid">
+            <!-- Germany -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/de.png" alt="Germany Flag">
+                    <div class="country-title">
+                        <h2>🇩🇪 Germany</h2>
+                        <p>The Tuition-Free Powerhouse</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> €0 (public universities)</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> €850–1,200/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 18 months</div>
+                </div>
+                <div class="country-content">
+                    <p>Germany is the #1 destination for African students seeking world-class education at zero tuition cost. With over 400+ English-taught master's programs and a thriving job market, Germany offers exceptional value.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">DAAD Scholarships</span><span class="scholarship-badge">Heinrich Böll Foundation</span><span class="scholarship-badge">Konrad Adenauer Stiftung</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>Ludwig Maximilian University of Munich (LMU)</li>
+                        <li>Technical University of Munich (TUM)</li>
+                        <li>Humboldt University of Berlin</li>
+                        <li>RWTH Aachen University</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Tuition-free education at public universities</li>
+                        <li>Strong engineering, tech, and business programs</li>
+                        <li>18-month post-study work visa to find employment</li>
+                        <li>Pathway to permanent residency after 2 years of work</li>
+                        <li>Vibrant African diaspora communities in major cities</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore German Programs →</a>
+                </div>
+            </div>
+
+            <!-- Canada -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/ca.png" alt="Canada Flag">
+                    <div class="country-title">
+                        <h2>🇨🇦 Canada</h2>
+                        <p>The Immigration-Friendly Leader</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> CAD $15,000–30,000/year</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> CAD $1,200–1,800/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> Up to 3 years</div>
+                </div>
+                <div class="country-content">
+                    <p>Canada is renowned for its welcoming immigration policies and high-quality education. With over 600,000 international students, it offers clear pathways to permanent residency after graduation.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Vanier Canada Graduate Scholarships</span><span class="scholarship-badge">Ontario Trillium Scholarship</span><span class="scholarship-badge">Lester B. Pearson Scholarship</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>University of Toronto</li>
+                        <li>University of British Columbia (UBC)</li>
+                        <li>McGill University</li>
+                        <li>University of Alberta</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Post-Graduation Work Permit (PGWP) up to 3 years</li>
+                        <li>Clear pathway to Permanent Residency (Express Entry)</li>
+                        <li>High visa approval rates for African students</li>
+                        <li>Co-op programs integrate work experience with study</li>
+                        <li>Safe, multicultural environment</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Canadian Programs →</a>
+                </div>
+            </div>
+
+            <!-- China -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/cn.png" alt="China Flag">
+                    <div class="country-title">
+                        <h2>🇨🇳 China</h2>
+                        <p>The Scholarship Giant</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> ¥20,000–40,000/year (with scholarships)</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> ¥2,000–4,000/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 1–2 years</div>
+                </div>
+                <div class="country-content">
+                    <p>China offers the largest number of government scholarships for African students through the Belt and Road Initiative. Many students study for free with generous monthly stipends.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Chinese Government Scholarship (CSC)</span><span class="scholarship-badge">Confucius Institute Scholarship</span><span class="scholarship-badge">Provincial Government Scholarships</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>Tsinghua University</li>
+                        <li>Peking University</li>
+                        <li>Fudan University</li>
+                        <li>Zhejiang University</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Thousands of fully-funded scholarships available annually</li>
+                        <li>Low cost of living compared to Western countries</li>
+                        <li>Rapidly growing economy with job opportunities</li>
+                        <li>Strong government-to-government partnerships with African nations</li>
+                        <li>English-taught programs in many universities</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Chinese Programs →</a>
+                </div>
+            </div>
+
+            <!-- Ireland -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/ie.png" alt="Ireland Flag">
+                    <div class="country-title">
+                        <h2> Ireland</h2>
+                        <p>The Tech Hub of Europe</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> €10,000–25,000/year</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> €1,000–1,500/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 2 years (Stay Back Visa)</div>
+                </div>
+                <div class="country-content">
+                    <p>Ireland is home to the European headquarters of Google, Facebook, Apple, and Microsoft. With a 2-year stay-back visa and a booming economy, it's perfect for tech and business students.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Government of Ireland Scholarships</span><span class="scholarship-badge">Trinity College Dublin Scholarships</span><span class="scholarship-badge">UCD Global Scholarships</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>Trinity College Dublin</li>
+                        <li>University College Dublin (UCD)</li>
+                        <li>University of Galway</li>
+                        <li>University College Cork (UCC)</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>2-year stay-back visa for graduates (Third Level Graduate Scheme)</li>
+                        <li>English-speaking country with welcoming culture</li>
+                        <li>Strong tech and pharmaceutical job market</li>
+                        <li>Pathway to citizenship after 5 years of work</li>
+                        <li>Growing African student community</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Irish Programs →</a>
+                </div>
+            </div>
+
+            <!-- Malaysia -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/my.png" alt="Malaysia Flag">
+                    <div class="country-title">
+                        <h2>🇲🇾 Malaysia</h2>
+                        <p>The Affordable Asian Gateway</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> €500–€1,500/year (public)</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> €300–€500/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 12 months</div>
+                </div>
+                <div class="country-content">
+                    <p>Malaysia offers Western education at Asian prices. Many international branch campuses (UK, Australia, etc.) provide affordable pathways to degrees from prestigious universities.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Malaysia International Scholarship (MIS)</span><span class="scholarship-badge">Public University Scholarships</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>University of Malaya (UM)</li>
+                        <li>Monash University Malaysia</li>
+                        <li>University of Nottingham Malaysia</li>
+                        <li>Taylor's University</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Extremely low tuition and living costs</li>
+                        <li>English is the medium of instruction</li>
+                        <li>British education system with affordable fees</li>
+                        <li>High visa approval rates</li>
+                        <li>Muslim-friendly environment with halal food options</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Malaysian Programs →</a>
+                </div>
+            </div>
+
+            <!-- Turkey -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/tr.png" alt="Turkey Flag">
+                    <div class="country-title">
+                        <h2> Turkey</h2>
+                        <p>The Bridge Between Continents</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> €200–€1,000/year (public)</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> €400–€600/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 12 months</div>
+                </div>
+                <div class="country-content">
+                    <p>Turkey offers high-quality education with incredibly low tuition fees. The Türkiye Scholarships program is one of the most generous government scholarship schemes in the world.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Türkiye Scholarships (Full + Monthly Stipend)</span><span class="scholarship-badge">YÖK Scholarships</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>Boğaziçi University</li>
+                        <li>Middle East Technical University (METU)</li>
+                        <li>Istanbul University</li>
+                        <li>Koç University</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Türkiye Scholarships cover tuition, accommodation, and monthly living stipend</li>
+                        <li>Strong cultural and historical ties with Africa</li>
+                        <li>Visa-free travel to many African countries</li>
+                        <li>Growing number of English-taught programs</li>
+                        <li>Strategic location bridging Europe and Asia</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Turkish Programs →</a>
+                </div>
+            </div>
+
+            <!-- Poland -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img class="country-flag" src="https://flagcdn.com/w320/pl.png" alt="Poland Flag">
+                    <div class="country-title">
+                        <h2>🇵🇱 Poland</h2>
+                        <p>Europe's Best Value Destination</p>
+                    </div>
+                </div>
+                <div class="country-stats">
+                    <div class="stat">💰 <strong>Tuition:</strong> €700–€2,000/year</div>
+                    <div class="stat">💵 <strong>Living Cost:</strong> €400–€700/month</div>
+                    <div class="stat">🎓 <strong>Post-Study Work:</strong> 12 months</div>
+                </div>
+                <div class="country-content">
+                    <p>Poland offers the lowest total cost of living in Europe combined with high-quality education. It's increasingly popular among African students seeking affordable European degrees.</p>
+                    <h3> Top Scholarships</h3>
+                    <div><span class="scholarship-badge">Polish Government Scholarships</span><span class="scholarship-badge">Visegrad Fund Scholarships</span><span class="scholarship-badge">University Merit Scholarships</span></div>
+                    <h3> Popular Universities</h3>
+                    <ul>
+                        <li>University of Warsaw</li>
+                        <li>Jagiellonian University</li>
+                        <li>Warsaw University of Technology</li>
+                        <li>Adam Mickiewicz University</li>
+                    </ul>
+                    <h3> Why It's Great for African Students</h3>
+                    <ul>
+                        <li>Most affordable EU country for international students</li>
+                        <li>Growing number of English-taught programs</li>
+                        <li>Schengen visa allows travel across Europe</li>
+                        <li>Safe and welcoming environment</li>
+                        <li>12-month post-study work visa</li>
+                    </ul>
+                    <a href="programs.html" class="btn">Explore Polish Programs →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <h2 style="color: var(--gold); margin: 2rem 0 1rem;"> Quick Comparison: Top Destinations</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Avg. Tuition (USD/year)</th>
+                        <th>Avg. Living Cost (USD/month)</th>
+                        <th>Post-Study Work Visa</th>
+                        <th>Scholarship Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Germany</td><td>$0 (public)</td><td>$900-1,300</td><td>18 months</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>Canada</td><td>$12,000-22,000</td><td>$900-1,400</td><td>Up to 3 years</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>China</td><td>$1,500-5,500 (with scholarships)</td><td>$300-600</td><td>1-2 years</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>Ireland</td><td>$11,000-27,000</td><td>$1,100-1,600</td><td>2 years</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>Malaysia</td><td>$600-3,000</td><td>$350-600</td><td>12 months</td><td>⭐⭐⭐</td></tr>
+                    <tr><td>Turkey</td><td>$200-1,200</td><td>$450-700</td><td>12 months</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>Poland</td><td>$800-2,500</td><td>$450-800</td><td>12 months</td><td>⭐⭐⭐⭐</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;"> Start Your Study Abroad Journey</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Scholarship Hub Inc.</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html"> Programs</a></li>
+                    <li><a href="services.html"> Services</a></li>
+                    <li><a href="apply.html"> Apply Now</a></li>
+                    <li><a href="blog.html"> Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p> info@scholarshiphub.com</p>
+                <p> +231 77 123 4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your global future starts here.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+
+        const newsletterForm = document.getElementById('newsletter-form');
+        const successDiv = document.getElementById('newsletter-success');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successDiv.style.display = 'block';
+                newsletterForm.reset();
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        // Active page navigation highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page filename (e.g., "programs.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Select all navigation links in both desktop and mobile menus
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink(links) {
+        links.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Remove any existing active class
+            link.classList.remove('active');
+            
+            // Check if this link matches the current page
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Special case for index.html when URL is just the domain or folder
+            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Apply highlighting to both navigation menus
+    setActiveLink(desktopLinks);
+    setActiveLink(mobileLinks);
+});
+    </script>
+</body>
+</html>

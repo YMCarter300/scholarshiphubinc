@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarship Hub Inc. | Fully Funded Scholarships for Liberians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --gray-dark: #111111;
+            --gray-mid: #1c1c1c;
+            --white: #ffffff;
+            --green-accent: #4caf50;
+            --red-accent: #ff6b6b;
+            --blue-accent: #3b82f6;
+        }
+
+        .navbar {
+            background: var(--black);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            border-bottom: 1px solid var(--gold);
+            padding: 1rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--gold);
+            border-radius: 0.75rem;
+        }
+
+        .liberia-flag-banner {
+            background: linear-gradient(135deg, #b31b1b 0%, #138808 100%);
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .scholarship-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .scholarship-card {
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scholarship-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+            border-color: var(--gold);
+        }
+
+        .scholarship-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            align-items: center;
+        }
+
+        .scholarship-icon {
+            font-size: 2rem;
+        }
+
+        .scholarship-title {
+            flex: 1;
+        }
+
+        .scholarship-title h2 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .scholarship-title p {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .deadline-badge {
+            display: inline-block;
+            background: var(--red-accent);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .deadline-urgent {
+            background: #ff9800;
+        }
+
+        .deadline-upcoming {
+            background: var(--green-accent);
+        }
+
+        .scholarship-content {
+            padding: 1.5rem;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .benefit-tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--green-accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+        }
+
+        .info-row {
+            margin: 0.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .info-label {
+            color: var(--gold);
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .blog-content h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 1.8rem 0 1rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .tips-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--blue-accent);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .author-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--black);
+        }
+
+        .author-info h4 {
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .related-posts {
+            margin: 2rem 0;
+        }
+
+        .related-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .related-card {
+            background: var(--gray-mid);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            flex: 1 1 200px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .related-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .related-card p {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .related-card a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .newsletter input {
+            padding: 0.8rem 1rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 0.5rem;
+            color: white;
+            width: 280px;
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 2rem 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .featured-image {
+                height: 200px;
+            }
+            .scholarship-title h2 {
+                font-size: 1.1rem;
+            }
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .nav-links a.active {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+.mobile-nav a.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Add this to your existing .nav-links a styles for smooth transition */
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding-bottom: 4px;
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="services.html">Services</a>
+            <a href="apply.html">Apply</a>
+            <a href="stories.html">Success</a>
+            <a href="about.html">About</a>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html"> Home</a>
+        <a href="programs.html"> Programs</a>
+        <a href="services.html"> Services</a>
+        <a href="apply.html"> Apply</a>
+        <a href="stories.html"> Success Stories</a>
+        <a href="about.html"> About</a>
+        <a href="blog.html"> Resources</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="blog-header">
+            <div class="blog-category">🇱🇷 Exclusive for Liberians</div>
+            <h1>Fully Funded Scholarships for Liberians</h1>
+            <div class="blog-meta">
+                <span> March 27, 2026</span>
+                <span> 12 min read</span>
+                <span> By Scholarship Hub Team</span>
+                <span> #Scholarships #Liberia #StudyAbroad #FullyFunded</span>
+            </div>
+        </div>
+
+        <img class="featured-image" src="https://images.pexels.com/photos/5904933/pexels-photo-5904933.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Liberian student with scholarship" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200'">
+
+        <div class="liberia-flag-banner">
+            🇱🇷 SPECIAL EDITION: SCHOLARSHIPS FOR LIBERIAN STUDENTS 🇱🇷
+        </div>
+
+        <div class="intro-text">
+            <p><strong>🎓 Your dream of studying abroad is within reach.</strong> Liberian students have access to dozens of fully funded scholarships that cover tuition, living expenses, travel, and health insurance. From government-sponsored programs to university-specific awards, there are opportunities for undergraduate, graduate, and doctoral studies across the globe.</p>
+            <p style="margin-top: 0.8rem;">In this exclusive guide, we've curated the most comprehensive list of scholarships that accept Liberian applicants. Each listing includes eligibility requirements, benefits, deadlines, and direct application links. Bookmark this page — we update it regularly as new opportunities emerge.</p>
+        </div>
+
+        <div class="scholarship-grid">
+            <!-- Mastercard Foundation Scholars Program -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Mastercard Foundation Scholars Program</h2>
+                        <p>University of Edinburgh | University of Cape Town | Arizona State University | Many more</p>
+                    </div>
+                    <div class="deadline-badge deadline-upcoming"> Rolling Deadline</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Accommodation</span>
+                        <span class="benefit-tag">Living Stipend</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Books & Supplies</span>
+                        <span class="benefit-tag">Leadership Training</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> African students (including Liberia) with demonstrated financial need and academic merit. Undergraduate and graduate programs.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Bachelor's, Master's</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> USA, Canada, UK, South Africa, Uganda, Rwanda, Kenya, Ghana</div>
+                    <a href="https://mastercardfdn.org/all-programs/scholars-program/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- DAAD Scholarships -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>DAAD Scholarships for Sub-Saharan Africa</h2>
+                        <p>German Academic Exchange Service</p>
+                    </div>
+                    <div class="deadline-badge"> Deadlines: August - October 2026</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition (€0)</span>
+                        <span class="benefit-tag">€934/month Stipend</span>
+                        <span class="benefit-tag">Health Insurance</span>
+                        <span class="benefit-tag">Travel Allowance</span>
+                        <span class="benefit-tag">German Language Course</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian graduates with bachelor's degree (minimum 2-3 years work experience for some programs). Strong academic record.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Master's, PhD, Postdoctoral</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> Germany</div>
+                    <a href="https://www.daad.org/en/find-funding/development-related-postgraduate-courses-epos/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Fulbright Foreign Student Program -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Fulbright Foreign Student Program</h2>
+                        <p>U.S. Department of State</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: May - September 2026</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Living Stipend</span>
+                        <span class="benefit-tag">Health Insurance</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Visa Support</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian citizens with bachelor's degree, strong academic record, and leadership potential. Must return to Liberia after program.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Master's, PhD</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> United States</div>
+                    <a href="https://us.fulbrightonline.org/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Chevening Scholarships -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Chevening Scholarships</h2>
+                        <p>UK Government</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: November 2026</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Monthly Stipend</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Visa Fees</span>
+                        <span class="benefit-tag">Networking Events</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian citizens with 2+ years work experience, bachelor's degree, and leadership potential. Must return to Liberia for 2 years.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Master's (1 year)</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> United Kingdom</div>
+                    <a href="https://www.chevening.org/scholarships/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Commonwealth Scholarships -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Commonwealth Scholarships</h2>
+                        <p>UK Government for Commonwealth Countries</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: September - November 2026</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Living Allowance</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Thesis Grant</span>
+                        <span class="benefit-tag">Family Allowance</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian citizens (Liberia is a Commonwealth member) with bachelor's degree and strong academic record.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Master's, PhD</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> United Kingdom</div>
+                    <a href="https://cscuk.fcdo.gov.uk/scholarships/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- African Leadership Academy Scholarship -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>African Leadership Academy (ALA) Scholarships</h2>
+                        <p>Pre-University Leadership Program</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: September 2026</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Room & Board</span>
+                        <span class="benefit-tag">Leadership Training</span>
+                        <span class="benefit-tag">Travel</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian students aged 16-19 with demonstrated leadership potential and academic excellence.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Pre-University (2 years)</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> South Africa</div>
+                    <a href="https://www.africanleadershipacademy.org/admissions/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Erasmus Mundus Joint Masters -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Erasmus Mundus Joint Master's Scholarships</h2>
+                        <p>European Union</p>
+                    </div>
+                    <div class="deadline-badge"> Deadlines: October - January (varies by program)</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">€1,400/month Stipend</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Installation Costs</span>
+                        <span class="benefit-tag">Multi-country Experience</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian students with bachelor's degree. Open to all nationalities.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Master's (2 years, study in 2-3 European countries)</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> Various European countries</div>
+                    <a href="https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Islamic Development Bank Scholarship -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Islamic Development Bank (IsDB) Scholarship</h2>
+                        <p>For Muslim Communities</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: February 2027</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Monthly Stipend</span>
+                        <span class="benefit-tag">Health Insurance</span>
+                        <span class="benefit-tag">Travel</span>
+                        <span class="benefit-tag">Research Support</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian Muslim students (and non-Muslim students from member countries) with strong academic record. Preference for STEM fields.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Bachelor's, Master's, PhD</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> Partner universities worldwide</div>
+                    <a href="https://www.isdb.org/scholarships" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- Türkiye Scholarships -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>Türkiye Scholarships</h2>
+                        <p>Government of Türkiye</p>
+                    </div>
+                    <div class="deadline-badge"> Deadline: February 2027</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Monthly Stipend</span>
+                        <span class="benefit-tag">Accommodation</span>
+                        <span class="benefit-tag">Health Insurance</span>
+                        <span class="benefit-tag">Turkish Language Course</span>
+                        <span class="benefit-tag">Travel (once)</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian citizens with strong academic record. Open to undergraduate, graduate, and doctoral applicants.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Bachelor's, Master's, PhD</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> Türkiye</div>
+                    <a href="https://www.turkiyeburslari.gov.tr/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+
+            <!-- African Women in STEM Scholarship -->
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <div class="scholarship-icon"></div>
+                    <div class="scholarship-title">
+                        <h2>African Women in STEM Scholarship</h2>
+                        <p>Various Universities (USA, UK, Canada)</p>
+                    </div>
+                    <div class="deadline-badge"> Rolling Deadlines</div>
+                </div>
+                <div class="scholarship-content">
+                    <div class="benefits-list">
+                        <span class="benefit-tag">Full Tuition</span>
+                        <span class="benefit-tag">Living Stipend</span>
+                        <span class="benefit-tag">Mentorship</span>
+                        <span class="benefit-tag">Internship Support</span>
+                    </div>
+                    <div class="info-row"><span class="info-label"> Eligibility:</span> Liberian women pursuing STEM degrees (Science, Technology, Engineering, Mathematics). Strong academic record and leadership potential.</div>
+                    <div class="info-row"><span class="info-label"> Level:</span> Bachelor's, Master's</div>
+                    <div class="info-row"><span class="info-label"> Destination:</span> USA, UK, Canada, Australia</div>
+                    <a href="https://www.awis.org/scholarships/" target="_blank" class="btn">Apply Now →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-content">
+            <h2> How to Maximize Your Chances</h2>
+            <div class="tips-box">
+                <ul>
+                    <li><strong>Start early:</strong> Most scholarships require applications 6-12 months in advance. Begin preparing now.</li>
+                    <li><strong>Get strong recommendation letters:</strong> Ask professors or employers who know you well. Provide them with your CV and personal statement.</li>
+                    <li><strong>Write a compelling personal statement:</strong> Tell your unique story. Connect your experiences to your goals and how you'll contribute to Liberia's development.</li>
+                    <li><strong>Meet language requirements:</strong> Take IELTS, TOEFL, or other required tests early. Aim for scores above minimum requirements.</li>
+                    <li><strong>Apply to multiple scholarships:</strong> Don't put all your eggs in one basket. Apply to 5-10 scholarships to increase your chances.</li>
+                    <li><strong>Seek professional guidance:</strong> Our team at Scholarship Hub can review your applications and provide personalized advice.</li>
+                </ul>
+            </div>
+
+            <h2> Application Checklist</h2>
+            <div class="tips-box" style="background: rgba(76, 175, 80, 0.1); border-left-color: var(--green-accent);">
+                <ul>
+                    <li>✓ Valid passport (ensure it has at least 2 years validity)</li>
+                    <li>✓ Academic transcripts and certificates (certified copies)</li>
+                    <li>✓ Language proficiency scores (IELTS, TOEFL, etc.)</li>
+                    <li>✓ Statement of Purpose / Personal Essay</li>
+                    <li>✓ Letters of recommendation (2-3)</li>
+                    <li>✓ CV/Resume tailored to the scholarship</li>
+                    <li>✓ Research proposal (for PhD applications)</li>
+                    <li>✓ Proof of citizenship (Liberian passport or national ID)</li>
+                    <li>✓ Completed application forms</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--gold); padding: 1.2rem; margin: 1.5rem 0;">
+                <strong> Success Story from Liberia:</strong> "When I applied for the Mastercard Foundation Scholars Program, I thought my chances were slim. But with the help of Scholarship Hub's team, I refined my personal statement and gathered strong recommendations. Today, I'm studying Public Health at the University of Edinburgh on a full scholarship. Never underestimate what you can achieve!" — <em>Fatima K., Monrovia</em>
+            </div>
+        </div>
+
+        <div class="author-section">
+            <div class="author-avatar">SH</div>
+            <div class="author-info">
+                <h4>Scholarship Hub Liberia Team</h4>
+                <p>Our team is dedicated to helping Liberian students access fully funded international education opportunities. We offer personalized scholarship matching, application review, and interview preparation services.</p>
+                <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Book a free consultation →</a>
+            </div>
+        </div>
+
+        <div class="related-posts">
+            <h3 style="color: var(--gold); margin-bottom: 1rem;"> You Might Also Like</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <h4>How to Secure a Scholarship in 2026</h4>
+                    <p>Step-by-step guide to stand out and win funding.</p>
+                    <a href="blog1.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>How to Write a Winning Personal Statement</h4>
+                    <p>The formula that scholarship committees love.</p>
+                    <a href="blog4.html">Read more →</a>
+                </div>
+                <div class="related-card">
+                    <h4>Top Countries for African Students</h4>
+                    <p>Affordable tuition and work opportunities.</p>
+                    <a href="blog2.html">Read more →</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;"> Start Your Scholarship Application</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Scholarship Hub Inc.</h4>
+                <p>Bridging Liberian talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html"> Programs</a></li>
+                    <li><a href="services.html"> Services</a></li>
+                    <li><a href="apply.html"> Apply Now</a></li>
+                    <li><a href="blog.html"> Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p> info@scholarshiphub.com</p>
+                <p> +231 77 123 4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your scholarship journey starts here, Liberia.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+
+        const newsletterForm = document.getElementById('newsletter-form');
+        const successDiv = document.getElementById('newsletter-success');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successDiv.style.display = 'block';
+                newsletterForm.reset();
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        // Active page navigation highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page filename (e.g., "programs.html" or "index.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Select all navigation links in both desktop and mobile menus
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink(links) {
+        links.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            // Remove any existing active class
+            link.classList.remove('active');
+            
+            // Check if this link matches the current page
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Special case for index.html when URL is just the domain or folder
+            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Apply highlighting to both navigation menus
+    setActiveLink(desktopLinks);
+    setActiveLink(mobileLinks);
+});
+    </script>
+</body>
+</html>
