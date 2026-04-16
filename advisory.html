@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | Advisory: A Letter to Our Liberian Students Abroad</title>
+    <title>LinkAfric | Advisory: A Letter to Our Liberian Students Abroad</title>
     <style>
         * {
             margin: 0;
@@ -30,13 +30,16 @@
             --liberia-white: #FFFFFF;
         }
 
+        /* ===== NAVBAR WITH DROPDOWNS (GLOSSY MODERN) ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -45,50 +48,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
-            padding-bottom: 4px;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-item > a:hover {
+            color: var(--gold);
+        }
+
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
         }
 
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -97,37 +170,58 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .mobile-nav a.active {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
         }
 
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content Styles */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -350,7 +444,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -374,38 +468,79 @@
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Resources</a>
-            <a href="advisory.html" class="active">Advisory</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="services.html">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="blog.html">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html" class="active">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="services.html">Services</a>
-        <a href="apply.html">Apply</a>
-        <a href="stories.html">Success Stories</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Resources</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link active-mobile"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
         <div class="page-header">
             <div class="liberia-flag-stripes">
@@ -417,181 +552,79 @@
             <p class="subtitle">Carry Mama Liberia in your heart, protect each other, and return stronger.</p>
         </div>
 
-        <!-- Heartfelt Opening -->
         <div class="heart-section">
             <h2>🇱🇷 Before You Go, Remember This 🇱🇷</h2>
             <p style="font-size: 1.1rem;">You are not just a student. You are an ambassador. You carry the hopes of your family, your community, and a nation that believes in you. Liberia, the land of the free, the first republic in Africa, the country founded by freed slaves who dreamed of a homeland, is counting on you.</p>
             <p style="margin-top: 1rem;">Wherever you go, you are Liberian. That is your strength, your identity, and your legacy.</p>
         </div>
 
-        <!-- The Beauty of Liberia -->
         <h2 style="color: var(--gold); margin-top: 2rem;">The Liberia We Carry With Us</h2>
         <p>Before we talk about challenges abroad, let us remember what makes our homeland so special. Let us never forget the beauty that shaped us.</p>
 
         <div class="beauty-grid">
-            <div class="beauty-card">
-                <div class="beauty-icon">🌊</div>
-                <h3>Our Coastline</h3>
-                <p>From Robertsport to Buchanan, our beaches are among the most beautiful in West Africa. The Atlantic Ocean has witnessed our history and will welcome us home.</p>
-            </div>
-            <div class="beauty-card">
-                <div class="beauty-icon">🌳</div>
-                <h3>Sapo National Forest</h3>
-                <p>One of West Africa's largest remaining rainforests. Home to pygmy hippos, chimpanzees, and the resilience of nature that mirrors our own.</p>
-            </div>
-            <div class="beauty-card">
-                <div class="beauty-icon">🏝️</div>
-                <h3>Providence Island</h3>
-                <p>Where freed American slaves first settled in 1822. The birthplace of our nation. A reminder that we are a people who started from a dream of freedom.</p>
-            </div>
-            <div class="beauty-card">
-                <div class="beauty-icon">🎵</div>
-                <h3>Our Music & Culture</h3>
-                <p>From the rhythms of the coast to the harmonies of our churches. Liberian music carries our stories, our joy, and our pain. It is the soundtrack of our identity.</p>
-            </div>
-            <div class="beauty-card">
-                <div class="beauty-icon">🤝</div>
-                <h3>Our Hospitality</h3>
-                <p>No one welcomes like Liberians. "You're welcome" isn't just words; it's an invitation, a blessing, a reflection of who we are as a people.</p>
-            </div>
-            <div class="beauty-card">
-                <div class="beauty-icon">💪</div>
-                <h3>Our Resilience</h3>
-                <p>We survived civil war. We survived Ebola. We survived every challenge thrown our way. That strength runs in your blood. Never forget it.</p>
-            </div>
+            <div class="beauty-card"><div class="beauty-icon">🌊</div><h3>Our Coastline</h3><p>From Robertsport to Buchanan, our beaches are among the most beautiful in West Africa.</p></div>
+            <div class="beauty-card"><div class="beauty-icon">🌳</div><h3>Sapo National Forest</h3><p>Home to pygmy hippos, chimpanzees, and the resilience of nature that mirrors our own.</p></div>
+            <div class="beauty-card"><div class="beauty-icon">🏝️</div><h3>Providence Island</h3><p>Where freed American slaves first settled in 1822. The birthplace of our nation.</p></div>
+            <div class="beauty-card"><div class="beauty-icon">🎵</div><h3>Our Music & Culture</h3><p>Liberian music carries our stories, our joy, and our pain.</p></div>
+            <div class="beauty-card"><div class="beauty-icon">🤝</div><h3>Our Hospitality</h3><p>"You're welcome" isn't just words; it's an invitation, a reflection of who we are.</p></div>
+            <div class="beauty-card"><div class="beauty-icon">💪</div><h3>Our Resilience</h3><p>We survived civil war, Ebola, and every challenge. That strength runs in your blood.</p></div>
         </div>
 
-        <!-- The Challenges Ahead -->
         <h2 style="color: var(--gold); margin-top: 2rem;">What Awaits You Abroad</h2>
         <p>Studying abroad is an incredible opportunity, but it comes with challenges. Being honest about them prepares you to face them with strength and grace.</p>
 
-        <!-- Racism Section -->
         <div class="racism-section">
             <h3 style="color: var(--liberia-blue); margin-bottom: 0.5rem;">✊🏿 Racism: A Reality We Must Face</h3>
-            <p style="margin-bottom: 1rem;">I wish I didn't have to write this section. But as Liberians, as Africans, we must prepare our young people for the truth. In many countries abroad, you will experience racism. It may be subtle, a second glance, a tightened grip on a purse, or being followed in a store. It may be overt, hurtful words, discrimination, exclusion. It may come from strangers, from classmates, from people who should know better.</p>
-            <p><strong>Here's what you need to know:</strong></p>
-            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                <li><strong>It is not your fault.</strong> Racism is the problem of the racist, not the victim. Never internalize their ignorance.</li>
-                <li><strong>You are not alone.</strong> There are other African students, other Black students, other people of color who understand. Find them. Build community.</li>
-                <li><strong>Your worth is not diminished.</strong> You earned your place at that university. You belong there. Your skin, your accent, your background are not weaknesses, they are your strength.</li>
-                <li><strong>Know your rights.</strong> Every country has laws against discrimination. Learn them. Report incidents when safe to do so.</li>
-                <li><strong>Protect your mental health.</strong> Racism takes a toll. Seek counseling if needed. Talk to trusted friends. Do not suffer in silence.</li>
-            </ul>
-            <p style="margin-top: 1rem; font-weight: bold;">Remember: You are not representing Liberia alone when you face racism. You are representing our ancestors who survived the Middle Passage, who built a nation, who endured and overcame. Their strength is yours.</p>
+            <p style="margin-bottom: 1rem;">In many countries abroad, you will experience racism. It may be subtle or overt. As Liberians, as Africans, we must prepare our young people for the truth.</p>
+            <p><strong>What you need to know:</strong> It is not your fault. You are not alone. Your worth is not diminished. Know your rights. Protect your mental health.</p>
+            <p style="margin-top: 1rem; font-weight: bold;">Remember: You carry the strength of ancestors who survived the Middle Passage and built the first Black republic.</p>
         </div>
 
-        <!-- Other Challenges -->
-        <div class="challenge-card">
-            <h3 style="color: var(--liberia-red); margin-bottom: 0.5rem;">🏠 Homesickness & Loneliness</h3>
-            <p>There will be nights when you miss Palm Butter and Torborgee, when you long for the sound of Liberian English (Koloqua), when you wish you could hear your mother's voice. This is normal. It will pass. Stay connected with family, find African communities, and remember why you went abroad in the first place.</p>
-        </div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Homesickness & Loneliness</h3><p>There will be nights you miss Liberian food and your mother's voice. Stay connected with family and find African communities abroad.</p></div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Financial Pressure</h3><p>Create a budget. Find legal part-time work. Remember that investing in your education is investing in your family's future.</p></div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Academic & Cultural Adjustment</h3><p>Use university resources: tutoring centers, writing labs, and academic advisors. You are adapting, not falling behind.</p></div>
 
-        <div class="challenge-card">
-            <h3 style="color: var(--liberia-red); margin-bottom: 0.5rem;">💰 Financial Pressure</h3>
-            <p>Even with scholarships, money can be tight. You may feel pressure to send money home or feel guilty about spending on yourself. Create a budget. Find part-time work legally. Remember that investing in your education is investing in your family's future.</p>
-        </div>
-
-        <div class="challenge-card">
-            <h3 style="color: var(--liberia-red); margin-bottom: 0.5rem;">🎓 Academic & Cultural Adjustment</h3>
-            <p>Teaching styles may differ. Expectations may be different. You may feel like you're behind. You're not. You are adapting. Use university resources, tutoring centers, writing labs, and academic advisors. They are there to help you succeed.</p>
-        </div>
-
-        <div class="challenge-card">
-            <h3 style="color: var(--liberia-red); margin-bottom: 0.5rem;">❄️ Climate Shock</h3>
-            <p>From the tropical warmth of Liberia to freezing winters. Invest in good coats, learn to layer, and know that the cold will not last forever. It will make you appreciate Liberia's sun even more.</p>
-        </div>
-
-        <!-- We Must Look Out For Each Other -->
         <h2 style="color: var(--gold); margin-top: 2rem;">We Must Look Out For Each Other</h2>
+        <div class="solidarity-quote">"No Liberian should feel alone in a foreign land. What unites us is stronger than any ocean."</div>
         
-        <div class="solidarity-quote">
-            "No Liberian should feel alone in a foreign land. What unites us, our history, our struggle, our hope, is stronger than any ocean that separates us."
-        </div>
-
-        <p>When you go abroad, you are not just an individual. You are part of a Liberian family spread across the world. Here's how we take care of each other:</p>
-
-        <ul class="tips-list" style="margin: 1.5rem 0;">
-            <li><strong>Connect before you go.</strong> Join Liberian student associations at your university. Find fellow Liberians in your city. Social media makes this easier than ever.</li>
-            <li><strong>Be the welcoming face.</strong> When new Liberian students arrive, reach out. Offer advice. Share your experiences. Remember how it felt to be new.</li>
-            <li><strong>Share resources.</strong> Know a good landlord? A part-time job opening? A supportive professor? Share the information. We rise together.</li>
-            <li><strong>Check on each other.</strong> A simple text: "How are you really doing?" can save a life. Mental health struggles are real. Be present for each other.</li>
-            <li><strong>Celebrate together.</strong> Independence Day. Liberian Thanksgiving. Ordinary Sundays. Gather. Cook Liberian food. Play Liberian music. Remind each other of home.</li>
-            <li><strong>Stand up for each other.</strong> If you see a fellow Liberian facing discrimination or struggling, don't look away. Sometimes just standing beside someone changes everything.</li>
-            <li><strong>Mentor the next ones.</strong> When you've settled, reach back. Help the students coming behind you. This is how we build a legacy.</li>
+        <ul class="tips-list">
+            <li><strong>Connect before you go.</strong> Join Liberian student associations at your university.</li>
+            <li><strong>Be the welcoming face.</strong> When new Liberian students arrive, reach out.</li>
+            <li><strong>Share resources.</strong> Good landlords, job openings, supportive professors — share the information.</li>
+            <li><strong>Check on each other.</strong> A simple text: "How are you really doing?" can save a life.</li>
+            <li><strong>Celebrate together.</strong> Independence Day, Liberian Thanksgiving. Cook Liberian food. Play Liberian music.</li>
+            <li><strong>Stand up for each other.</strong> If you see a fellow Liberian struggling, don't look away.</li>
         </ul>
 
         <div class="callout-box">
-            <h3 style="color: var(--gold); margin-bottom: 0.5rem;">🇱🇷 A Special Word on Racism 🇱🇷</h3>
-            <p>If you experience racism abroad, remember these truths:</p>
-            <p style="margin: 1rem 0;"><strong>You are not the first Liberian to face this.</strong> Our ancestors faced unimaginable cruelty and still built a nation. You carry their resilience.</p>
-            <p style="margin: 1rem 0;"><strong>Find your people.</strong> Connect with other African students. Join the African Students Association. Build a circle of support.</p>
-            <p style="margin: 1rem 0;"><strong>Document and report.</strong> If safe, report incidents to university officials. Use the systems designed to protect you.</p>
-            <p style="margin: 1rem 0;"><strong>Protect your peace.</strong> You are not obligated to educate every ignorant person. Choose your battles. Guard your mental health.</p>
-            <p style="margin: 1rem 0;"><strong>Remember who you are.</strong> You are Liberian. From the land of the free. Your ancestors survived the Middle Passage and built the first Black republic. No racist comment can diminish that legacy.</p>
+            <h3 style="color: var(--gold); margin-bottom: 0.5rem;">🇱🇷 A Special Word on Solidarity 🇱🇷</h3>
+            <p>If you experience racism or hardship, find your people. Connect with other African students. Build a circle of support. Document and report incidents when safe. Protect your peace. You are Liberian — from the land of the free. No comment can diminish that legacy.</p>
         </div>
 
-        <!-- Returning Home -->
         <h2 style="color: var(--gold); margin-top: 2rem;">Coming Home to Mama Liberia</h2>
-        <p>Some of you will return immediately after graduation. Some will stay abroad for years, gaining experience, building networks, and saving resources. Both paths are valid. But let this be your guiding principle:</p>
-
         <div class="heart-section">
-            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">" Whatever you gain abroad, bring it back to Liberia."</p>
-            <p>Bring your knowledge. Bring your skills. Bring your connections. Bring your resources. Bring your passion. Liberia needs you. Not someday, now.</p>
-            <p style="margin-top: 1rem;">Our country is rebuilding. There is space for every doctor, every engineer, every teacher, every entrepreneur, every dreamer who is willing to work. The Liberia of tomorrow will be built by Liberians who left and came back, and by Liberians who never left but never stopped working.</p>
+            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">"Whatever you gain abroad, bring it back to Liberia."</p>
+            <p>Bring your knowledge, skills, connections, and passion. Liberia needs you. Not someday — now.</p>
             <p style="margin-top: 1rem;">You are not leaving Liberia behind. You are going to fetch water for the tree. Come back and water the roots.</p>
         </div>
 
-        <!-- Practical Tips -->
-        <h2 style="color: var(--gold); margin-top: 2rem;">Practical Tips Before You Go</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>📞 Stay Connected</strong>
-                <p style="font-size: 0.9rem;">Set up WhatsApp groups with family. Schedule regular calls. A 10-minute check-in can change everything.</p>
-            </div>
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>📱 Join Liberian Networks</strong>
-                <p style="font-size: 0.9rem;">Find Liberian student associations on Facebook and WhatsApp before you arrive. Introduce yourself.</p>
-            </div>
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>📖 Know Your Rights</strong>
-                <p style="font-size: 0.9rem;">Research anti-discrimination laws in your host country. Know who to contact if you need help.</p>
-            </div>
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>🍚 Bring a Taste of Home</strong>
-                <p style="font-size: 0.9rem;">Pack some Liberian spices, seasonings, or snacks. Food connects us to home.</p>
-            </div>
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>💪 Build Your Support System</strong>
-                <p style="font-size: 0.9rem;">Identify at least three people you can call in a crisis: a family member, a Liberian friend abroad, and a university resource.</p>
-            </div>
-            <div style="background: var(--gray-mid); padding: 1rem; border-radius: 0.5rem;">
-                <strong>📸 Document Your Journey</strong>
-                <p style="font-size: 0.9rem;">Take photos. Write journals. Your story will inspire the next generation of Liberian scholars.</p>
-            </div>
-        </div>
-
-        <!-- Final Encouragement -->
         <div class="solidarity-quote" style="border-color: var(--gold);">
             <p style="font-size: 1.3rem; margin-bottom: 1rem;">To every Liberian student preparing to go abroad:</p>
             <p>You are enough. You are capable. You are worthy of every opportunity you pursue.</p>
-            <p style="margin-top: 1rem;">The road will not always be easy. You will face challenges you never imagined. You will miss home. You will sometimes doubt yourself.</p>
-            <p style="margin-top: 1rem;">But you are Liberian. You come from a people who built a nation from nothing. Who survived war and rebuilt. Who faced Ebola and fought back. Who endure, persist, and rise.</p>
-            <p style="margin-top: 1rem;">Go. Learn. Grow. Make us proud.</p>
-            <p style="margin-top: 1rem;">And when you are ready, come home. Mama Liberia is waiting.</p>
-            <p style="margin-top: 1.5rem; font-weight: bold; color: var(--gold);">- Scholarship Hub Inc., Monrovia, Liberia</p>
+            <p style="margin-top: 1rem;">Go. Learn. Grow. Make us proud. And when you are ready, come home. Mama Liberia is waiting.</p>
+            <p style="margin-top: 1.5rem; font-weight: bold; color: var(--gold);">- LinkAfric, Monrovia, Liberia</p>
         </div>
 
         <div style="text-align: center; margin: 2rem 0;">
             <a href="contact.html" class="btn" style="background: var(--gold); color: black;">📞 Need Support? Contact Us</a>
-            <a href="blog.html" class="btn btn-outline" style="margin-left: 1rem;">📚 Read More Resources</a>
+            <a href="blog.html" class="btn btn-outline" style="margin-left: 1rem;"> Read More Resources</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Scholarship Hub Inc.</h4>
+                <h4>LinkAfric</h4>
                 <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
             </div>
             <div class="footer-section">
@@ -606,12 +639,12 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p>scholarshiphub231@gmail.com</p>
-                <p>+231 76 076 6122</p>
+                <p>linkafric@gmail.com</p>
+                <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future is not local. Take the first step today.</p>
+            <p>&copy; 2025 LinkAfric. All rights reserved. | Your future is not local. Take the first step today.</p>
         </div>
     </footer>
 
@@ -639,34 +672,26 @@
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
 
-        // Active page navigation highlighting
+        // Active page highlighting for desktop dropdown parents (optional)
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const desktopLinks = document.querySelectorAll('.nav-links a');
-            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            const currentPage = window.location.pathname.split('/').pop() || 'advisory.html';
             
-            function setActiveLink(links) {
-                links.forEach(link => {
-                    const linkHref = link.getAttribute('href');
-                    link.classList.remove('active');
-                    if (linkHref === currentPage) {
-                        link.classList.add('active');
-                    }
-                    if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                        link.classList.add('active');
-                    }
-                });
-            }
+            // Highlight Advisory in desktop nav
+            const advisoryLink = document.querySelector('.nav-item a[href="advisory.html"]');
+            if (advisoryLink) advisoryLink.classList.add('active');
             
-            setActiveLink(desktopLinks);
-            setActiveLink(mobileLinks);
+            // For mobile
+            const mobileAdvisory = document.querySelector('.mobile-nav a[href="advisory.html"]');
+            if (mobileAdvisory) mobileAdvisory.classList.add('active-mobile');
         });
     </script>
 </body>
