@@ -28,16 +28,17 @@
             --glass-border: rgba(212, 175, 55, 0.3);
         }
 
-        /* ===== NAVBAR WITH DROPDOWNS (GLOSSY MODERN) ===== */
+        /* ===== GLOSSY / GLASS MODERN NAVBAR ===== */
         .navbar {
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 0.8rem 2rem;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            padding: 0.7rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -53,6 +54,7 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
+            text-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
         }
 
         .logo span {
@@ -62,7 +64,7 @@
             color: transparent;
         }
 
-        /* Desktop Navigation with Dropdowns */
+        /* DESKTOP MENU WITH DROPDOWNS */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -91,15 +93,15 @@
             color: var(--gold);
         }
 
-        /* Dropdown Menu - Glossy */
+        /* dropdown content glossy */
         .dropdown-content {
             position: absolute;
             top: 2.6rem;
             left: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(20px);
             border-radius: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.45);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
             min-width: 190px;
             opacity: 0;
@@ -134,14 +136,14 @@
             padding-left: 1.6rem;
         }
 
-        /* Active page indicator */
+        /* active page indicator for main top-level items */
         .nav-item > a.active {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
             padding-bottom: 0.3rem;
         }
 
-        /* Mobile Menu */
+        /* mobile toggle & menu */
         .menu-toggle {
             display: none;
             background: rgba(212, 175, 55, 0.12);
@@ -150,6 +152,7 @@
             cursor: pointer;
             padding: 0.55rem;
             backdrop-filter: blur(4px);
+            z-index: 1001;
         }
 
         .menu-toggle span {
@@ -174,7 +177,7 @@
             padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -183,7 +186,7 @@
             display: flex;
         }
 
-        .mobile-main-link {
+        .mobile-nav .mobile-main-link {
             color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
@@ -218,7 +221,6 @@
             background: rgba(212, 175, 55, 0.2);
             color: var(--gold);
         }
-
 
         /* main container glossy */
         .container {
@@ -441,30 +443,30 @@
 </div>
 
 <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-main-link">🏠 Home</a>
-    <a href="programs.html" class="mobile-main-link">📘 Programs</a>
+    <a href="index.html" class="mobile-main-link"> Home</a>
+    <a href="programs.html" class="mobile-main-link"> Programs</a>
     
-    <div class="mobile-main-link" style="cursor:default;">💼 Work</div>
+    <div class="mobile-main-link" style="cursor:default;"> Work</div>
     <div class="mobile-dropdown-group">
-        <a href="jobs.html">📌 Jobs</a>
-        <a href="routes.html">🌍 Immigration</a>
+        <a href="jobs.html"> Jobs</a>
+        <a href="routes.html"> Immigration</a>
     </div>
     
-    <div class="mobile-main-link" style="cursor:default;">⚙️ Services</div>
+    <div class="mobile-main-link" style="cursor:default;"> Services</div>
     <div class="mobile-dropdown-group">
-        <a href="apply.html">📝 Apply</a>
+        <a href="apply.html"> Apply</a>
     </div>
     
-    <div class="mobile-main-link" style="cursor:default;">📚 Resources</div>
+    <div class="mobile-main-link" style="cursor:default;"> Resources</div>
     <div class="mobile-dropdown-group">
-        <a href="stories.html">⭐ Success</a>
+        <a href="stories.html"> Success</a>
     </div>
     
-    <a href="advisory.html" class="mobile-main-link">🎓 Advisory</a>
+    <a href="advisory.html" class="mobile-main-link"> Advisory</a>
     
-    <div class="mobile-main-link" style="cursor:default;">📞 Contact</div>
+    <div class="mobile-main-link" style="cursor:default;"> Contact</div>
     <div class="mobile-dropdown-group">
-        <a href="about.html">ℹ️ About</a>
+        <a href="about.html"> About</a>
     </div>
 </div>
 
@@ -559,7 +561,10 @@
 </footer>
 
 <script>
-    (function() {
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // === ACTIVE PAGE HIGHLIGHTING ===
         const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
         
         const navItems = document.querySelectorAll('.nav-item');
@@ -626,72 +631,85 @@
             });
             if(resParent) resParent.querySelector('> a')?.classList.add('active');
         }
-    })();
 
-      // Mobile menu toggle
+        // === MOBILE MENU TOGGLE - FIXED ===
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
-
+        
         if (menuToggle && mobileNav) {
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.toggle('show');
-                const spans = menuToggle.querySelectorAll('span');
+            // Remove any existing event listeners by cloning
+            const newToggle = menuToggle.cloneNode(true);
+            menuToggle.parentNode.replaceChild(newToggle, menuToggle);
+            
+            // Get fresh reference after replacement
+            const finalToggle = document.getElementById('menuToggle');
+            
+            // Add click event listener
+            finalToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Menu toggle clicked'); // Debug log
+                
+                // Toggle mobile nav visibility
                 if (mobileNav.classList.contains('show')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    mobileNav.classList.remove('show');
+                    // Reset hamburger icon
+                    const spans = finalToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
                 } else {
+                    mobileNav.classList.add('show');
+                    // Animate hamburger to X
+                    const spans = finalToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+                }
+            });
+            
+            // Close menu when any link in mobile nav is clicked
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('show');
+                    const spans = finalToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = mobileNav.contains(event.target);
+                const isClickOnToggle = finalToggle.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnToggle && mobileNav.classList.contains('show')) {
+                    mobileNav.classList.remove('show');
+                    const spans = finalToggle.querySelectorAll('span');
                     spans[0].style.transform = 'none';
                     spans[1].style.opacity = '1';
                     spans[2].style.transform = 'none';
                 }
             });
-
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('show');
+        }
+        
+        // Close mobile nav on window resize if open
+        window.addEventListener('resize', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuToggle = document.getElementById('menuToggle');
+            if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('show')) {
+                mobileNav.classList.remove('show');
+                if (menuToggle) {
                     const spans = menuToggle.querySelectorAll('span');
-                    if (spans.length) {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
-        }
-
-            
-            // Close menu when clicking on any link inside mobile nav
-            const allMobileLinks = mobileNav.querySelectorAll('a');
-            allMobileLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.remove('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    if (spans.length === 3) {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
-        }
-    })();
-    
-    // Close mobile nav on window resize if open
-    window.addEventListener('resize', function() {
-        const mobileNav = document.getElementById('mobileNav');
-        const menuToggle = document.getElementById('menuToggle');
-        if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('show')) {
-            mobileNav.classList.remove('show');
-            if (menuToggle) {
-                const spans = menuToggle.querySelectorAll('span');
-                if (spans.length === 3) {
                     spans[0].style.transform = 'none';
                     spans[1].style.opacity = '1';
                     spans[2].style.transform = 'none';
                 }
             }
-        }
+        });
     });
 </script>
 </body>
