@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>LinkAfric | Jobs - Direct to Employers</title>
+    <title>LinkAfric | Immigration Partners – Verified Global Resources</title>
     <style>
         * {
             margin: 0;
@@ -241,312 +241,139 @@
             color: transparent;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-            margin-top: 2rem;
-            border-left: 4px solid var(--gold);
-            padding-left: 1rem;
-        }
-
         .subtitle {
             color: #aaa;
             margin-bottom: 2rem;
         }
 
-        .trust-message {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-            backdrop-filter: blur(10px);
-            border-left: 4px solid var(--gold);
-            padding: 14px 20px;
+        .warning-header {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
             border-radius: 12px;
-            margin: 20px 0 35px;
+            margin: 20px 0 40px;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            flex-wrap: wrap;
-            margin: 25px 0;
-            padding: 16px;
-            background: rgba(212, 175, 55, 0.05);
-            backdrop-filter: blur(5px);
-            border-radius: 60px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+        .warning-header strong {
+            color: var(--red);
         }
 
-        .stat {
-            text-align: center;
+        .region-section {
+            margin: 50px 0;
         }
 
-        .stat-number {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--gold);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-        }
-
-        /* Immigration Partners Section */
-        .immigration-partners {
-            margin: 40px 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(212, 175, 55, 0.05));
-            border-radius: 24px;
-            padding: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .partners-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            text-align: center;
-            color: var(--gold);
-        }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .partner-card {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 16px;
-            padding: 18px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .partner-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .partner-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .partner-details {
-            font-size: 0.8rem;
-            color: var(--gray);
-            margin: 8px 0;
-            line-height: 1.4;
-        }
-
-        .partner-contact {
-            margin-top: 12px;
-        }
-
-        .partner-contact a {
-            color: var(--blue);
-            text-decoration: none;
-            font-size: 0.75rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-right: 12px;
-        }
-
-        .partner-contact a:hover {
-            color: var(--gold);
-        }
-
-        .verify-badge {
-            display: inline-block;
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--green);
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        .continent {
-            margin: 40px 0;
-        }
-
-        .continent-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+        .region-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gold);
             display: inline-block;
             color: var(--gold);
         }
 
-        .jobs-grid {
+        .countries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
-            margin: 28px 0;
+            margin: 25px 0;
         }
 
-        .job-card {
+        .country-card {
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(13, 13, 13, 0.9));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 20px;
-            padding: 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 22px;
+            transition: all 0.4s ease;
         }
 
-        .job-card:hover {
+        .country-card:hover {
             border-color: var(--gold);
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
         }
 
-        .job-title {
+        .country-flag {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .country-name {
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--white);
-        }
-
-        .job-company {
             color: var(--gold);
-            font-weight: 600;
             margin-bottom: 8px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
         }
 
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 600;
-        }
-
-        .company-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 6px 0 10px;
-        }
-
-        .company-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--blue);
-            padding: 3px 10px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .company-link:hover {
-            background: rgba(59, 130, 246, 0.3);
-        }
-
-        .company-link.map-link {
-            background: rgba(234, 67, 53, 0.15);
-            color: #ea4335;
-        }
-
-        .company-link.map-link:hover {
-            background: rgba(234, 67, 53, 0.3);
-        }
-
-        .job-meta {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-            color: var(--gray);
-            margin: 10px 0;
-        }
-
-        .job-description {
+        .country-details {
             font-size: 0.85rem;
             color: var(--gray);
-            margin: 8px 0;
-            line-height: 1.4;
+            margin: 12px 0;
+            line-height: 1.5;
         }
 
-        .button-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .apply-wa {
+        .official-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #25D366;
-            color: white;
-            padding: 8px 18px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            padding: 8px 16px;
             border-radius: 40px;
             text-decoration: none;
-            font-weight: 600;
+            color: var(--black);
             font-size: 0.8rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            font-weight: bold;
+            transition: all 0.2s;
+            margin-top: 12px;
+            width: 100%;
+            justify-content: center;
         }
 
-        .apply-wa:hover {
-            background: #128C7E;
+        .official-link:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
         }
 
-        .visa-help-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .visa-badge {
+            display: inline-block;
             background: rgba(212, 175, 55, 0.15);
             color: var(--gold);
-            padding: 6px 14px;
-            border-radius: 40px;
-            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 0.7rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+            margin-top: 12px;
         }
 
-        .visa-help-btn:hover {
-            background: rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
+        .footer-note {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(212, 175, 55, 0.05));
+            border-radius: 16px;
+            padding: 24px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        .warning-box {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid var(--red);
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin: 20px 0;
-            font-size: 0.8rem;
+        .footer-note h4 {
+            color: var(--gold);
+            margin-bottom: 15px;
         }
 
-        .warning-box strong {
-            color: var(--red);
+        .footer-note ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-note li {
+            margin: 10px 0;
+            font-size: 0.85rem;
+            color: var(--gray);
         }
 
         .modern-footer {
@@ -619,50 +446,13 @@
         }
 
         .social-icon svg {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             fill: var(--white);
         }
 
         .social-icon:hover svg {
             fill: var(--black);
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .newsletter-input {
-            padding: 10px 14px;
-            background: var(--black);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            color: var(--white);
-            font-size: 0.85rem;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .newsletter-btn {
-            background: var(--gold);
-            color: var(--black);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .newsletter-btn:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
         }
 
         .footer-bottom {
@@ -719,11 +509,6 @@
             transform: translateY(-2px);
         }
 
-        .footer-bottom-right {
-            display: flex;
-            align-items: center;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0 18px;
@@ -731,13 +516,10 @@
             h1 {
                 font-size: 1.8rem;
             }
-            h2 {
-                font-size: 1.6rem;
-            }
-            .continent-title {
+            .region-title {
                 font-size: 1.4rem;
             }
-            .jobs-grid {
+            .countries-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
@@ -772,20 +554,6 @@
             }
             .social-links {
                 justify-content: center;
-            }
-            .newsletter-form {
-                max-width: 260px;
-                margin: 0 auto;
-            }
-            .stats-bar {
-                gap: 20px;
-                padding: 12px;
-            }
-            .stat-number {
-                font-size: 1.1rem;
-            }
-            .partners-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -836,273 +604,106 @@
 
     <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="mobile-main-link">🏠 Home</a>
-        <a href="programs.html" class="mobile-main-link">📘 Programs</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
         
-        <div class="mobile-main-link" style="cursor:default;">💼 Work</div>
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
         <div class="mobile-dropdown-group">
-            <a href="jobs.html">📌 Jobs</a>
-            <a href="routes.html">🌍 Immigration</a>
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
         </div>
         
-        <div class="mobile-main-link" style="cursor:default;">⚙️ Services</div>
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
         <div class="mobile-dropdown-group">
-            <a href="apply.html">📝 Apply</a>
+            <a href="apply.html"> Apply</a>
         </div>
         
-        <div class="mobile-main-link" style="cursor:default;">📚 Resources</div>
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
         <div class="mobile-dropdown-group">
-            <a href="stories.html">⭐ Success</a>
+            <a href="stories.html"> Success</a>
         </div>
         
-        <a href="advisory.html" class="mobile-main-link">🎓 Advisory</a>
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
         
-        <div class="mobile-main-link" style="cursor:default;">📞 Contact</div>
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
         <div class="mobile-dropdown-group">
-            <a href="about.html">ℹ️ About</a>
+            <a href="about.html"> About</a>
         </div>
     </div>
 
     <div class="container">
-        <h1>Jobs <span style="color:var(--gold);">Direct to Employers</span></h1>
-        <p class="subtitle">Click "Apply" to connect directly with the hiring company. Need visa help? Use the immigration partners below.</p>
+        <h1>Global Immigration Resources</h1>
+        <p class="subtitle">Official government portals and verified immigration information for African applicants</p>
 
-        <div class="trust-message">
-            <p>⭐ <strong>See where you'll be working</strong> - Each job includes links to the company's website and Google Maps location so you can explore your future workplace before applying. Transparency builds trust.</p>
+        <div class="warning-header">
+            <strong> CRITICAL WARNING:</strong> Always use official government websites for visa applications. Legitimate immigration processes never require payment for job offers or guaranteed visas. NEVER pay for a job offer.
         </div>
 
-        <!-- ========== IMMIGRATION PARTNERS SECTION ========== -->
-        <div class="immigration-partners">
-            <h3 class="partners-title">🇿🇦 Trusted Immigration Partners for African Applicants</h3>
-            <div class="partners-grid">
-                
-                <!-- Canada Abroad - RCIC in South Africa -->
-                <div class="partner-card">
-                    <div class="partner-name">🇨🇦 Canada Abroad</div>
-                    <div class="partner-details">Regulated Canadian Immigration Consultant (RCIC) - Deanne Acres. Former Canada Border Services Officer. One of only two active ICCRC members physically located in South Africa.</div>
-                    <div class="partner-contact">
-                        <a href="https://www.canadaabroad.com" target="_blank">🌐 canadaabroad.com</a>
-                        <a href="mailto:deanne@canadaabroad.com">✉️ deanne@canadaabroad.com</a>
-                    </div>
-                    <div class="verify-badge">✅ ICCRC Registered | Verify at iccrc-crcic.ca</div>
-                </div>
-
-                <!-- Network Migration Services - Australia/NZ -->
-                <div class="partner-card">
-                    <div class="partner-name">🇦🇺🇳🇿 Network Migration Services</div>
-                    <div class="partner-details">Owned by Andrew Kerr - IAA licensed & MARA registered migration agent. 10,000+ families assisted since 1994. Offices in Johannesburg, Durban, Zimbabwe, and New Zealand.</div>
-                    <div class="partner-contact">
-                        <a href="#" onclick="alert('Johannesburg Office: Mulberry Hill Office Park, Unit 16, 1st Floor, Broadacres Drive'); return false;">📍 Johannesburg Office</a>
-                    </div>
-                    <div class="verify-badge">✅ MARA Registered | IAA Licensed | Verify at mara.gov.au</div>
-                </div>
-
-                <!-- Budget Migration Services -->
-                <div class="partner-card">
-                    <div class="partner-name">🇦🇺 Budget Migration Services</div>
-                    <div class="partner-details">Registered and accredited by OMARA (Office of the Migration Agents Registration Authority). Specializes in Australian and New Zealand visas for South African applicants.</div>
-                    <div class="partner-contact">
-                        <a href="#" onclick="alert('MARA Registration No: 2217828 | IAA No: 2022 00 373'); return false;">📋 MARA: 2217828</a>
-                    </div>
-                    <div class="verify-badge">✅ MARA Registered | IAA Accredited</div>
-                </div>
-
-                <!-- Move Up - UK Immigration -->
-                <div class="partner-card">
-                    <div class="partner-name">🇬🇧 Move Up - Relocation Solutions</div>
-                    <div class="partner-details">South African-governed UK immigration specialists. Backed by litigation attorney Gwen Vermeulen. Local accountability with British immigration expertise.</div>
-                    <div class="partner-contact">
-                        <a href="https://moveup.co.za" target="_blank">🌐 moveup.co.za</a>
-                    </div>
-                    <div class="verify-badge">✅ South African Legal Oversight | UK Immigration Expertise</div>
-                </div>
-
-                <!-- Aloys & Associates - Tanzania -->
-                <div class="partner-card">
-                    <div class="partner-name">🇹🇿 Aloys & Associates (Tanzania)</div>
-                    <div class="partner-details">Immigration, Permits & Compliance specialists. Legal services including work permits, residency applications, and compliance matters for East Africa.</div>
-                    <div class="partner-contact">
-                        <a href="https://aloysassociates.co.tz/contact/" target="_blank">🌐 aloysassociates.co.tz</a>
-                    </div>
-                    <div class="verify-badge">✅ Tanzanian Legal Practice | Immigration Experts</div>
-                </div>
-
-                <!-- Akram & Company - South Africa -->
-                <div class="partner-card">
-                    <div class="partner-name">🇿🇦 Akram & Company Inc.</div>
-                    <div class="partner-details">15+ years experience. Specialized in Immigration Law and Family Law. Offices in Durban, Johannesburg, and Cape Town. Level 1 B-BBEE contributor.</div>
-                    <div class="partner-contact">
-                        <a href="#" onclick="alert('Lambert Road, Morningside, Durban | LPC Firm Number: 70191'); return false;">📍 Durban / JHB / Cape Town</a>
-                    </div>
-                    <div class="verify-badge">✅ LPC Registered | Level 1 B-BBEE</div>
-                </div>
-
-            </div>
-
-            <!-- How to Verify Immigration Consultants -->
-            <div class="warning-box" style="margin-top: 20px; background: rgba(34, 197, 94, 0.05); border-left-color: var(--green);">
-                <strong>🔍 How to Verify an Immigration Consultant:</strong><br>
-                • <strong>Canada:</strong> Search the ICCRC register at <strong>iccrc-crcic.ca</strong> - must show "Active" status<br>
-                • <strong>Australia:</strong> Search MARA register at <strong>mara.gov.au</strong> - look for valid MARN number<br>
-                • <strong>UK:</strong> Search IAA (formerly OISC) register at <strong>gov.uk/find-an-immigration-adviser</strong><br>
-                • <strong>USA:</strong> Check DOJ Recognition at <strong>justice.gov/eoir</strong><br>
-                • <strong>⚠️ NEVER pay for an LMIA job in Canada - it's illegal!</strong>
+        <!-- Europe Section -->
+        <div class="region-section">
+            <h2 class="region-title">🇪🇺 Europe</h2>
+            <div class="countries-grid">
+                <div class="country-card"><div class="country-flag">🇫🇷</div><div class="country-name">France</div><div class="country-details">Official French government portal for work visas and residency. OFII manages immigration procedures. Talent Passport for skilled workers.</div><a href="https://www.ofii.fr" target="_blank" class="official-link">🔗 OFII Official Portal</a><div class="visa-badge">🎫 Talent Passport Visa</div></div>
+                <div class="country-card"><div class="country-flag">🇧🇪</div><div class="country-name">Belgium</div><div class="country-details">Belgian Immigration Office (OE/IVA). Single Permit for work and residence. EU Blue Card available for highly skilled professionals.</div><a href="https://dofi.ibz.be" target="_blank" class="official-link">🔗 Belgian Immigration Office</a><div class="visa-badge">🎫 EU Blue Card | Single Permit</div></div>
+                <div class="country-card"><div class="country-flag">🇩🇪</div><div class="country-name">Germany</div><div class="country-details">Make it in Germany - official government portal. EU Blue Card, skilled worker visa, job seeker visa available.</div><a href="https://www.make-it-in-germany.com" target="_blank" class="official-link">🔗 Make it in Germany</a><div class="visa-badge">🎫 EU Blue Card | Job Seeker Visa</div></div>
+                <div class="country-card"><div class="country-flag">🇬🇧</div><div class="country-name">United Kingdom</div><div class="country-details">UK Government visa portal. Skilled Worker Visa, Health and Care Worker Visa, Global Talent Visa.</div><a href="https://www.gov.uk/browse/visas-immigration" target="_blank" class="official-link">🔗 UK Government Visas</a><div class="visa-badge">🎫 Skilled Worker | Health & Care</div></div>
+                <div class="country-card"><div class="country-flag">🇳🇱</div><div class="country-name">Netherlands</div><div class="country-details">IND Netherlands official portal. Highly Skilled Migrant Visa, orientation year for graduates, EU Blue Card.</div><a href="https://ind.nl" target="_blank" class="official-link">🔗 IND Netherlands</a><div class="visa-badge">🎫 Highly Skilled Migrant</div></div>
+                <div class="country-card"><div class="country-flag">🇮🇹</div><div class="country-name">Italy</div><div class="country-details">Italian Ministry of Interior portal. Decreto Flussi seasonal work quotas, EU Blue Card, self-employment visa.</div><a href="https://www.interno.gov.it" target="_blank" class="official-link">🔗 Italian Immigration Portal</a><div class="visa-badge">🎫 Decreto Flussi | EU Blue Card</div></div>
+                <div class="country-card"><div class="country-flag">🇪🇸</div><div class="country-name">Spain</div><div class="country-details">Spanish Immigration portal. Work visas, entrepreneurial visa, non-lucrative residence, student visa.</div><a href="https://www.inclusion.gob.es" target="_blank" class="official-link">🔗 Spanish Immigration</a><div class="visa-badge">🎫 Work Visa | Entrepreneur Visa</div></div>
+                <div class="country-card"><div class="country-flag">🇮🇪</div><div class="country-name">Ireland</div><div class="country-details">Irish Department of Enterprise. General Employment Permit, Critical Skills Employment Permit, Dependant/Partner/Spouse Employment Permit.</div><a href="https://enterprise.gov.ie" target="_blank" class="official-link">🔗 Irish Employment Permits</a><div class="visa-badge">🎫 Critical Skills | General Permit</div></div>
+                <div class="country-card"><div class="country-flag">🇲🇹</div><div class="country-name">Malta</div><div class="country-details">Identity Malta Agency. Single Permit for work and residence, EU Blue Card, Nomad Residence Permit.</div><a href="https://identitymalta.com" target="_blank" class="official-link">🔗 Identity Malta</a><div class="visa-badge">🎫 Single Permit | EU Blue Card</div></div>
+                <div class="country-card"><div class="country-flag">🇦🇹</div><div class="country-name">Austria</div><div class="country-details">Austrian Migration Office. Red-White-Red Card for skilled workers, EU Blue Card, job seeker visa.</div><a href="https://www.migration.gv.at" target="_blank" class="official-link">🔗 Austrian Migration Office</a><div class="visa-badge">🎫 Red-White-Red Card</div></div>
+                <div class="country-card"><div class="country-flag">🇨🇭</div><div class="country-name">Switzerland</div><div class="country-details">Swiss State Secretariat for Migration. Work permits for non-EU nationals, EU/EFTA agreements.</div><a href="https://www.sem.admin.ch" target="_blank" class="official-link">🔗 Swiss SEM Portal</a><div class="visa-badge">🎫 Work Permit (Non-EU)</div></div>
             </div>
         </div>
 
-        <div class="stats-bar">
-            <div class="stat"><div class="stat-number">100+</div><div class="stat-label">Active Employers</div></div>
-            <div class="stat"><div class="stat-number">4</div><div class="stat-label">Continents</div></div>
-            <div class="stat"><div class="stat-number">24hr</div><div class="stat-label">Response Time</div></div>
-            <div class="stat"><div class="stat-number">Verified</div><div class="stat-label">Companies</div></div>
-        </div>
-
-        <!-- ========== NORTH AMERICA ========== -->
-        <div class="continent">
-            <h3 class="continent-title">North America 🇨🇦🇺🇸</h3>
-            <div class="jobs-grid">
-                <div class="job-card">
-                    <div class="job-title">Caregiver (New 2026 Pilot)</div>
-                    <div class="job-company">🇨🇦 Canada Caregiver Pilot <span class="verified-badge">✓ Immediate PR</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Canada" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.canada.ca" target="_blank" class="company-link">🏢 IRCC Official</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> $19-24 CAD/hr</span></div>
-                    <div class="job-description"><strong>🆕 2026 CAREGIVER PILOT PROGRAM:</strong> Live-in Caregiver Program is CLOSED. NEW pilot offers <strong>immediate permanent residence upon arrival</strong>! Only 6 months caregiving experience needed. African applicants welcome.</div>
-                    <div class="button-group">
-                        <a href="https://www.canada.ca" target="_blank" class="apply-wa">🇨🇦 Apply via IRCC</a>
-                        <a href="https://www.canadaabroad.com" target="_blank" class="visa-help-btn">🛂 Need visa help? Contact Canada Abroad (RCIC)</a>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-title">LMIA Sponsored Jobs</div>
-                    <div class="job-company">🇨🇦 Job Bank Canada <span class="verified-badge">✓ LMIA</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Canada" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.jobbank.gc.ca" target="_blank" class="company-link">🏢 Job Bank</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> Varies by role</span></div>
-                    <div class="job-description"><strong>🇨🇦 GOVERNMENT LMIA JOB PORTAL:</strong> 4,000+ jobs including farm workers, truck drivers, construction, cooks, and caregivers. <strong>FREE to use - NEVER pay for an LMIA job!</strong></div>
-                    <div class="button-group">
-                        <a href="https://www.jobbank.gc.ca/temporary-foreign-workers" target="_blank" class="apply-wa">🇨🇦 Search LMIA Jobs</a>
-                        <a href="https://www.canadaabroad.com" target="_blank" class="visa-help-btn">🛂 Visa help: Canada Abroad (RCIC)</a>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-title">Non-Agricultural Worker</div>
-                    <div class="job-company">🇺🇸 H-2B Visa Program <span class="verified-badge">✓ H-2B</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=USA" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.uscis.gov/h-2b" target="_blank" class="company-link">🏢 USCIS Info</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> $15-25 USD/hr</span></div>
-                    <div class="job-description"><strong>🇺🇸 H-2B VISA - NOW OPEN TO AFRICANS:</strong> Removed nationality restrictions in 2025. Construction, hospitality, landscaping, seafood processing. 65,000 visas annually.</div>
-                    <div class="button-group">
-                        <a href="https://www.uscis.gov/h-2b" target="_blank" class="apply-wa">🇺🇸 USCIS H-2B Info</a>
-                        <a href="#" class="visa-help-btn" onclick="alert('US immigration assistance: The Nigerian Center (DOJ-recognized) - Washington DC | US Embassy Pretoria: +27 (12) 431-4000'); return false;">🛂 US Visa Help</a>
-                    </div>
-                </div>
+        <!-- North America Section -->
+        <div class="region-section">
+            <h2 class="region-title"> North America</h2>
+            <div class="countries-grid">
+                <div class="country-card"><div class="country-flag">🇺🇸</div><div class="country-name">United States</div><div class="country-details">USCIS official portal. H-1B specialty occupations, H-2B non-agricultural workers, L-1 intracompany transfers, O-1 extraordinary ability.</div><a href="https://www.uscis.gov" target="_blank" class="official-link">🔗 USCIS Official</a><div class="visa-badge">🎫 H-1B | H-2B | L-1 | O-1</div></div>
+                <div class="country-card"><div class="country-flag">🇨🇦</div><div class="country-name">Canada</div><div class="country-details">IRCC official portal. Express Entry, Provincial Nominee Program (PNP), Temporary Foreign Worker Program, Caregiver Pilots.</div><a href="https://www.canada.ca" target="_blank" class="official-link">🔗 IRCC Canada</a><div class="visa-badge">🎫 Express Entry | PNP | TFWP</div></div>
+                <div class="country-card"><div class="country-flag">🇲🇽</div><div class="country-name">Mexico</div><div class="country-details">Mexican Immigration Institute (INM). Temporary Resident Visa, Permanent Resident Visa, work permits.</div><a href="https://www.gob.mx/inm" target="_blank" class="official-link">🔗 INM Mexico</a><div class="visa-badge">🎫 Temporary | Permanent Resident</div></div>
+                <div class="country-card"><div class="country-flag">🇬🇹</div><div class="country-name">Guatemala</div><div class="country-details">Guatemalan Immigration Institute. Work permits, temporary residency, permanent residency options.</div><a href="https://igm.gob.gt" target="_blank" class="official-link">🔗 IGM Guatemala</a><div class="visa-badge">🎫 Work Permit | Residency</div></div>
+                <div class="country-card"><div class="country-flag">🇭🇳</div><div class="country-name">Honduras</div><div class="country-details">Honduran National Institute of Migration. Temporary residency, work visas, permanent residency.</div><a href="https://inm.gob.hn" target="_blank" class="official-link">🔗 INM Honduras</a><div class="visa-badge">🎫 Work Visa | Residency</div></div>
+                <div class="country-card"><div class="country-flag">🇸🇻</div><div class="country-name">El Salvador</div><div class="country-details">El Salvador Migration Authority. Work permits, temporary residence, special categories for professionals.</div><a href="https://www.migracion.gob.sv" target="_blank" class="official-link">🔗 Migration El Salvador</a><div class="visa-badge">🎫 Work Permit | Residence</div></div>
             </div>
         </div>
 
-        <!-- ========== EUROPE ========== -->
-        <div class="continent">
-            <h3 class="continent-title">Europe 🇪🇺</h3>
-            <div class="jobs-grid">
-                <div class="job-card">
-                    <div class="job-title">Seasonal Farm Worker</div>
-                    <div class="job-company">🇮🇹 Italian Agriculture <span class="verified-badge">✓ Seasonal Work Visa</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Italy" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.interno.gov.it" target="_blank" class="company-link">🏢 Italy Portal</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Various regions</span><span> €10-20/hr</span></div>
-                    <div class="job-description"><strong>🍋 Government-Backed Program:</strong> Italy allocated 24,288 work visas for agriculture jobs in 2026. Open to ALL nationalities including Nigeria, Ghana, Morocco, Tunisia, Senegal. Apply directly - NO AGENTS NEEDED.</div>
-                    <div class="button-group">
-                        <a href="https://www.interno.gov.it" target="_blank" class="apply-wa">🇮🇹 Apply via Italy Portal</a>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-title">Home Carer / Care Worker</div>
-                    <div class="job-company">🇮🇪 Irish Home Care <span class="verified-badge">✓ General Employment Permit</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Ireland" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://enterprise.gov.ie" target="_blank" class="company-link">🏢 Official Info</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> €30,000-34,000/yr</span></div>
-                    <div class="job-description"><strong>🏠 Government Quota Program:</strong> Ireland has 1,000 General Employment Permits for home carers (2025). PR pathway available.</div>
-                    <div class="button-group">
-                        <a href="https://www.gov.ie/en/employment-permits" target="_blank" class="apply-wa">🇮🇪 Apply via Ireland Portal</a>
-                        <a href="https://moveup.co.za" target="_blank" class="visa-help-btn">🛂 Visa help: Move Up (UK/Ireland)</a>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-title">Healthcare Professional</div>
-                    <div class="job-company">🇩🇪 German Hospitals <span class="verified-badge">✓ EU Blue Card</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Germany" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.make-it-in-germany.com" target="_blank" class="company-link">🏢 Make it in Germany</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> €45,934-50,700+/yr</span></div>
-                    <div class="job-description"><strong>🩺 Germany's Official Program:</strong> Healthcare professionals qualify for lower EU Blue Card salary threshold (€45,934). PR possible in 21-27 months.</div>
-                    <div class="button-group">
-                        <a href="https://www.make-it-in-germany.com" target="_blank" class="apply-wa">🇩🇪 Official Portal</a>
-                    </div>
-                </div>
+        <!-- South America & Caribbean Section -->
+        <div class="region-section">
+            <h2 class="region-title"> South America & Caribbean</h2>
+            <div class="countries-grid">
+                <div class="country-card"><div class="country-flag">🇧🇷</div><div class="country-name">Brazil</div><div class="country-details">Brazilian Ministry of Justice. Work visas, residency permits, Mercosur agreement benefits for South Americans.</div><a href="https://www.gov.br/mj" target="_blank" class="official-link">🔗 Brazilian Immigration</a><div class="visa-badge">🎫 Work Visa | Residency</div></div>
+                <div class="country-card"><div class="country-flag">🇺🇾</div><div class="country-name">Uruguay</div><div class="country-details">Uruguayan Immigration Directorate. Mercosur visa, work permits, temporary and permanent residency.</div><a href="https://www.minterior.gub.uy" target="_blank" class="official-link">🔗 Uruguay Immigration</a><div class="visa-badge">🎫 Mercosur | Work Permit</div></div>
+                <div class="country-card"><div class="country-flag">🇵🇾</div><div class="country-name">Paraguay</div><div class="country-details">Paraguayan Migration Department. Work visas, residency permits, investment visas.</div><a href="https://www.migraciones.gov.py" target="_blank" class="official-link">🔗 Paraguay Migration</a><div class="visa-badge">🎫 Work | Residency | Investment</div></div>
+                <div class="country-card"><div class="country-flag">🇧🇧</div><div class="country-name">Barbados</div><div class="country-details">Barbados Immigration Department. Work permits, Welcome Stamp (remote work visa), permanent residency.</div><a href="https://www.immigration.gov.bb" target="_blank" class="official-link">🔗 Barbados Immigration</a><div class="visa-badge">🎫 Welcome Stamp | Work Permit</div></div>
             </div>
         </div>
 
-        <!-- ========== ASIA PACIFIC ========== -->
-        <div class="continent">
-            <h3 class="continent-title">Asia Pacific 🇦🇺🇳🇿</h3>
-            <div class="jobs-grid">
-                <div class="job-card">
-                    <div class="job-title">Farm Worker</div>
-                    <div class="job-company">🇦🇺 Australian Agriculture <span class="verified-badge">✓ 482 Visa / DAMA</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Victoria+Queensland+Australia" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://www.costagroup.com.au" target="_blank" class="company-link">🏢 Costa Group</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Victoria / QLD</span><span> $25-30 AUD/hr</span></div>
-                    <div class="job-description">Citrus, berry, avocado picking. Farm accommodation available. African applicants welcome via 482 sponsorship or DAMA programs.</div>
-                    <div class="button-group">
-                        <a href="https://482jobs.com/job-category/farming-animals-conservation/" target="_blank" class="apply-wa">🔍 Find Jobs</a>
-                        <a href="#" class="visa-help-btn" onclick="alert('Australian visa assistance in Africa:\n• Network Migration Services (SA) - MARA registered\n• Budget Migration Services (SA) - MARA #2217828\nVerify at mara.gov.au'); return false;">🛂 MARA Registered Agents</a>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-title">Aged Care / Personal Care</div>
-                    <div class="job-company">🇦🇺 Aged Care ILA <span class="verified-badge">✓ 482 ILA</span></div>
-                    <div class="company-links">
-                        <a href="https://maps.google.com/?q=Sydney+NSW" target="_blank" class="company-link map-link">📍 Map</a>
-                        <a href="https://immi.homeaffairs.gov.au" target="_blank" class="company-link">🏢 Home Affairs</a>
-                    </div>
-                    <div class="job-meta"><span>📍 Nationwide</span><span> $51k-73k AUD/yr</span></div>
-                    <div class="job-description">Aged care with full 482 sponsorship via Industry Labour Agreement. Reduced salary threshold ($51,222) and relaxed English (IELTS 4.5-5.0). PR pathway.</div>
-                    <div class="button-group">
-                        <a href="https://immi.homeaffairs.gov.au" target="_blank" class="apply-wa">📖 Visa Info</a>
-                        <a href="#" class="visa-help-btn" onclick="alert('Australian visa assistance:\n• Network Migration Services (SA)\n• Budget Migration Services (SA)\n• Verify MARA registration at mara.gov.au'); return false;">🛂 MARA Agents</a>
-                    </div>
-                </div>
+        <!-- Asia & Oceania Section -->
+        <div class="region-section">
+            <h2 class="region-title"> Asia & Oceania</h2>
+            <div class="countries-grid">
+                <div class="country-card"><div class="country-flag">🇯🇵</div><div class="country-name">Japan</div><div class="country-details">Japan Immigration Services Agency. Work visas (Engineer, Specialist in Humanities, Skilled Labor), Highly Skilled Professional visa.</div><a href="https://www.moj.go.jp/isa" target="_blank" class="official-link">🔗 Japan ISA</a><div class="visa-badge">🎫 Work Visa | Highly Skilled</div></div>
+                <div class="country-card"><div class="country-flag">🇰🇷</div><div class="country-name">South Korea</div><div class="country-details">Korean Immigration Service. E-series work visas (E-7 for skilled workers, E-9 for non-professional), F-2 residency visa.</div><a href="https://www.immigration.go.kr" target="_blank" class="official-link">🔗 Korea Immigration</a><div class="visa-badge">🎫 E-7 | E-9 | F-2</div></div>
+                <div class="country-card"><div class="country-flag">🇦🇺</div><div class="country-name">Australia</div><div class="country-details">Australian Department of Home Affairs. Skilled migration visas (Subclass 189, 190, 491), employer-sponsored (482, 494), Working Holiday.</div><a href="https://immi.homeaffairs.gov.au" target="_blank" class="official-link">🔗 Australian Home Affairs</a><div class="visa-badge">🎫 Skilled | Employer Sponsored</div></div>
+                <div class="country-card"><div class="country-flag">🇬🇪</div><div class="country-name">Georgia</div><div class="country-details">Georgia Public Service Hall. E-visa for remote workers, residence permits for property owners, work permits.</div><a href="https://www.sda.gov.ge" target="_blank" class="official-link">🔗 Georgia Immigration</a><div class="visa-badge">🎫 Remote Work | Residence</div></div>
             </div>
         </div>
 
-        <!-- ========== VERIFICATION WARNING ========== -->
-        <div class="warning-box">
-            <strong>⚠️ CRITICAL: How to Avoid Immigration Scams</strong><br><br>
-            • <strong>NEVER pay for a job offer</strong> - Legitimate employers never charge fees <br>
-            • <strong>Verify ALL immigration consultants</strong> on official government registers before paying <br>
-            • <strong>Canada:</strong> CICC register at <strong>iccrc-crcic.ca</strong> - must show "Active" status <br>
-            • <strong>Australia:</strong> MARA register at <strong>mara.gov.au</strong> - valid MARN required <br>
-            • <strong>UK:</strong> IAA register at <strong>gov.uk/find-an-immigration-adviser</strong> <br>
-            • <strong>USA:</strong> DOJ Recognition at <strong>justice.gov/eoir</strong> <br>
-            • <strong>If someone says "the website is not updated" - that's a lie.</strong> Walk away 
+        <!-- Verification Guide -->
+        <div class="footer-note">
+            <h4>🔍 How to Verify Official Immigration Portals</h4>
+            <ul>
+                <li><strong>Always use .gov domains</strong> for official government immigration websites</li>
+                <li><strong>Canada:</strong> CICC register at <strong>iccrc-crcic.ca</strong> for consultant verification</li>
+                <li><strong>Australia:</strong> MARA register at <strong>mara.gov.au</strong> - valid 7-digit MARN required</li>
+                <li><strong>UK:</strong> IAA register at <strong>gov.uk/find-an-immigration-adviser</strong></li>
+                <li><strong>USA:</strong> DOJ Recognition at <strong>justice.gov/eoir</strong> for recognized organizations</li>
+                <li><strong>⚠️ NEVER pay for a job offer - legitimate employers and government portals never charge for job placement</strong></li>
+                <li><strong>⚠️ If someone says "the website is not updated" - that is a lie. Walk away immediately.</strong></li>
+            </ul>
         </div>
     </div>
 
@@ -1163,20 +764,6 @@
             });
         }
 
-        const newsletterForm = document.getElementById('newsletterForm');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value.trim();
-                if (email && email.includes('@')) {
-                    alert(`Thank you for subscribing! We'll send updates to ${email}`);
-                    this.reset();
-                } else {
-                    alert('Please enter a valid email address.');
-                }
-            });
-        }
-        
         document.addEventListener('DOMContentLoaded', function() {
             const workParent = document.querySelector('.nav-item a[href="#"]');
             if (workParent && workParent.innerText === 'Work') {
