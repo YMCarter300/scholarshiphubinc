@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | How to Secure a Scholarship in 2026</title>
+    <title>LinkAfric | How to Secure a Scholarship in 2026</title>
     <style>
         * {
             margin: 0;
@@ -27,13 +27,16 @@
             --white: #ffffff;
         }
 
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -42,48 +45,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-item > a:hover {
             color: var(--gold);
         }
 
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
+        }
+
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -92,32 +167,58 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
+        }
+
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -143,7 +244,10 @@
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 1rem;
-            color: var(--white);
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .blog-meta {
@@ -202,7 +306,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .blog-content .highlight-box {
+        .highlight-box {
             background: rgba(212, 175, 55, 0.1);
             border-left: 4px solid var(--gold);
             padding: 1.2rem;
@@ -210,7 +314,7 @@
             margin: 1.5rem 0;
         }
 
-        .blog-content .tip-box {
+        .tip-box {
             background: rgba(212, 175, 55, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 1rem;
@@ -218,7 +322,7 @@
             margin: 1rem 0;
         }
 
-        .blog-content .tip-box strong {
+        .tip-box strong {
             color: var(--gold);
         }
 
@@ -258,17 +362,6 @@
         .btn:hover {
             background-color: var(--gold-dark);
             transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-outline:hover {
-            background: var(--gold);
-            color: var(--black);
         }
 
         .author-section {
@@ -342,29 +435,10 @@
             font-size: 0.85rem;
         }
 
-        .newsletter {
-            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            margin: 2rem 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .newsletter input {
-            padding: 0.8rem 1rem;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 0.5rem;
-            color: white;
-            width: 250px;
-            margin-right: 0.5rem;
-            margin-top: 1rem;
-        }
-
         .footer {
-            background: var(--black);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
             padding: 2rem 1.5rem 1rem;
             margin-top: 3rem;
         }
@@ -419,7 +493,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -439,64 +513,83 @@
             .blog-content h2 {
                 font-size: 1.4rem;
             }
-            .newsletter input {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
         }
-
-        .nav-links a.active {
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 4px;
-}
-
-.mobile-nav a.active {
-    background: var(--gold);
-    color: var(--black);
-}
-
-/* Add this to your existing .nav-links a styles for smooth transition */
-.nav-links a {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-    padding-bottom: 4px;
-}
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html" class="active">Resources</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="#" class="active">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html"> Home</a>
-        <a href="programs.html"> Programs</a>
-        <a href="services.html"> Services</a>
-        <a href="apply.html"> Apply</a>
-        <a href="stories.html"> Success Stories</a>
-        <a href="about.html"> About</a>
-        <a href="blog.html"> Resources</a>
-        <a href="contact.html"> Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
         <div class="blog-header">
             <div class="blog-category"> Scholarship Guide</div>
@@ -504,7 +597,7 @@
             <div class="blog-meta">
                 <span> March 15, 2026</span>
                 <span> 8 min read</span>
-                <span> By Scholarship Hub Team</span>
+                <span> By LinkAfric Team</span>
                 <span> #ScholarshipTips #StudyAbroad</span>
             </div>
         </div>
@@ -512,7 +605,7 @@
         <img class="featured-image" src="https://images.pexels.com/photos/5904933/pexels-photo-5904933.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Student celebrating scholarship acceptance" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200'">
 
         <div class="blog-content">
-            <p>Securing a scholarship can be life-changing, it opens doors to world-class education, global networks, and career opportunities that might otherwise remain out of reach. But with thousands of applicants competing for the same awards, how do you stand out? In this comprehensive guide, we'll walk you through a proven step-by-step strategy to win scholarships in 2026, from identifying opportunities to submitting a winning application.</p>
+            <p>Securing a scholarship can be life-changing; it opens doors to world-class education, global networks, and career opportunities that might otherwise remain out of reach. But with thousands of applicants competing for the same awards, how do you stand out? In this comprehensive guide, we'll walk you through a proven step-by-step strategy to win scholarships in 2026, from identifying opportunities to submitting a winning application.</p>
 
             <div class="highlight-box">
                 <strong> Quick Insight:</strong> According to the International Scholarship Bureau, over 78% of scholarship applications are rejected due to avoidable mistakes. With the right preparation, you can position yourself in the top 22% of applicants.
@@ -545,7 +638,7 @@
             <p>Strong recommendation letters can make or break your application. Here's how to ensure you get stellar references:</p>
             <ul>
                 <li><strong>Choose the right people:</strong> Select recommenders who know you well, professors who taught you in multiple classes, research supervisors, or employers who witnessed your work ethic.</li>
-                <li><strong>Ask early:</strong> Give your recommenders at least 3-4 weeks notice. A rushed letter is rarely a great letter.</li>
+                <li><strong>Ask early:</strong> Give your recommenders at least 3-4 weeks' notice. A rushed letter is rarely a great letter.</li>
                 <li><strong>Provide context:</strong> Share your resume, personal statement draft, and details about the scholarship so they can tailor their recommendation.</li>
                 <li><strong>Follow up politely:</strong> Send a gentle reminder a week before the deadline, and always send a thank-you note afterward.</li>
             </ul>
@@ -598,13 +691,13 @@
 
             <h2>Final Thoughts: Your Scholarship Journey Starts Today</h2>
             <p>The scholarship process can feel overwhelming, but remember: every successful scholar started exactly where you are now. The key is to start early, stay organized, and never stop believing in your potential. Your unique story, your determination, and your vision for the future are what will set you apart.</p>
-            <p>Ready to take the next step? Explore our curated list of active scholarships and start your application today. Our team at Scholarship Hub Inc. is here to support you every step of the way.</p>
+            <p>Ready to take the next step? Explore our curated list of active scholarships and start your application today. Our team at LinkAfric is here to support you every step of the way.</p>
         </div>
 
         <div class="author-section">
-            <div class="author-avatar">SH</div>
+            <div class="author-avatar">LA</div>
             <div class="author-info">
-                <h4>Scholarship Hub Team</h4>
+                <h4>LinkAfric Team</h4>
                 <p>Dedicated to helping students from Africa access international education opportunities. Our team has helped over 200 students secure scholarships worth $1.3M+ since 2023.</p>
                 <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Contact our team →</a>
             </div>
@@ -621,7 +714,7 @@
                 <div class="related-card">
                     <h4>How to Write a Winning Motivation Letter</h4>
                     <p>Template and examples that impress scholarship committees.</p>
-                    <a href="blog3.html">Read more →</a>
+                    <a href="blog4.html">Read more →</a>
                 </div>
                 <div class="related-card">
                     <h4>Study in Germany: €0 Tuition Guide</h4>
@@ -632,34 +725,34 @@
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="apply.html" class="btn" style="background: var(--gold); color: black;"> Start Your Scholarship Application</a>
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black;">🚀 Start Your Scholarship Application</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Scholarship Hub Inc.</h4>
+                <h4>LinkAfric</h4>
                 <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="programs.html"> Programs</a></li>
-                    <li><a href="services.html"> Services</a></li>
-                    <li><a href="apply.html"> Apply Now</a></li>
-                    <li><a href="blog.html"> Blog</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="blog.html">Resources</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p> scholarshiphub231@gmail.com</p>
-                <p> +231 76 076 6122</p>
+                <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p>info@linkafric.com</p>
+                <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future starts today.</p>
+            <p>&copy; 2023 LinkAfric. All rights reserved. | Your future starts today.</p>
         </div>
     </footer>
 
@@ -687,63 +780,22 @@
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
 
-        // Newsletter form handler
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterSuccess = document.getElementById('newsletter-success');
-
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input').value;
-                if (email) {
-                    newsletterSuccess.style.display = 'block';
-                    newsletterForm.reset();
-                    setTimeout(() => {
-                        newsletterSuccess.style.display = 'none';
-                    }, 5000);
-                }
-            });
-        }
-
-        // Active page navigation highlighting
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the current page filename (e.g., "programs.html" or "index.html")
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Select all navigation links in both desktop and mobile menus
-    const desktopLinks = document.querySelectorAll('.nav-links a');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    
-    // Function to highlight active link
-    function setActiveLink(links) {
-        links.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            // Remove any existing active class
-            link.classList.remove('active');
-            
-            // Check if this link matches the current page
-            if (linkHref === currentPage) {
-                link.classList.add('active');
-            }
-            
-            // Special case for index.html when URL is just the domain or folder
-            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                link.classList.add('active');
+        // Active page highlighting for Resources parent
+        document.addEventListener('DOMContentLoaded', function() {
+            const resourcesParent = document.querySelector('.nav-item a[href="#"]');
+            if (resourcesParent && resourcesParent.innerText === 'Resources') {
+                resourcesParent.classList.add('active');
             }
         });
-    }
-    
-    // Apply highlighting to both navigation menus
-    setActiveLink(desktopLinks);
-    setActiveLink(mobileLinks);
-});
     </script>
 </body>
 </html>
