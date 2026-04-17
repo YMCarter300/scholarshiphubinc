@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Passage | Jobs - Direct to Employers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --black-light: #1a1a1a;
+            --black-medium: #0d0d0d;
+            --white: #ffffff;
+            --gold: #d4af37;
+            --gold-dark: #b8960c;
+            --gold-light: #f4e4bc;
+            --gray: #888888;
+            --border: #333333;
+            --blue: #3b82f6;
+            --red: #ef4444;
+            --green: #22c55e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== DROPDOWN NAVIGATION ========== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--gold), var(--white), var(--gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--white));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
+            padding: 10px 14px;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background-color: var(--gold);
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+
+        .dropdown-menu {
+            display: none;
+            flex-direction: column;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(12px);
+            width: 100%;
+            padding: 20px 20px 24px;
+            border-radius: 0 0 24px 24px;
+            border-bottom: 1px solid var(--border);
+            gap: 18px;
+            position: absolute;
+            top: 78px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            background: linear-gradient(90deg, rgba(212,175,55,0.1), transparent);
+        }
+
+        .dropdown-menu.show {
+            display: flex;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 32px 0 16px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 span {
+            color: var(--gold);
+            background: none;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+
+        .trust-message {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--gold);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin: 20px 0 35px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trust-message p {
+            color: var(--gold-light);
+            font-size: 0.9rem;
+        }
+
+        /* Immigration Partners Section */
+        .immigration-partners {
+            margin: 40px 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(212, 175, 55, 0.05));
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .partners-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--gold);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .partner-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .partner-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .partner-details {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .partner-contact {
+            margin-top: 12px;
+        }
+
+        .partner-contact a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 12px;
+        }
+
+        .partner-contact a:hover {
+            color: var(--gold);
+        }
+
+        .verify-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--green);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .continent {
+            margin: 40px 0;
+        }
+
+        .continent-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin: 28px 0;
+        }
+
+        .job-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(13, 13, 13, 0.9));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .job-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+
+        .job-company {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .company-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 6px 0 10px;
+        }
+
+        .company-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--blue);
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .company-link:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .company-link.map-link {
+            background: rgba(234, 67, 53, 0.15);
+            color: var(--red);
+        }
+
+        .company-link.map-link:hover {
+            background: rgba(234, 67, 53, 0.3);
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin: 10px 0;
+        }
+
+        .job-description {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .apply-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .apply-wa:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .visa-help-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .visa-help-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+            padding: 16px;
+            background: rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 60px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 0.8rem;
+        }
+
+        .warning-box strong {
+            color: var(--red);
+        }
+
+        .modern-footer {
+            background: linear-gradient(135deg, var(--black-medium), #0a0a0a);
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            padding: 48px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 36px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--gold);
+        }
+
+        .social-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--white);
+        }
+
+        .social-icon:hover svg {
+            fill: var(--black);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            padding: 10px 14px;
+            background: var(--black);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            color: var(--white);
+            font-size: 0.85rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .newsletter-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-bottom-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--gold);
+        }
+
+        .scholarship-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            padding: 7px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--gold);
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+        }
+
+        .scholarship-button:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 18px;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+                margin-top: 24px;
+            }
+            
+            .subtitle {
+                font-size: 0.85rem;
+            }
+            
+            .trust-message {
+                padding: 12px 16px;
+                margin: 15px 0 25px;
+            }
+            
+            .trust-message p {
+                font-size: 0.8rem;
+            }
+            
+            .continent-title {
+                font-size: 1.4rem;
+            }
+            
+            .jobs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .job-card {
+                padding: 18px;
+            }
+            
+            .job-title {
+                font-size: 1.1rem;
+            }
+            
+            .job-meta {
+                font-size: 0.75rem;
+                gap: 10px;
+            }
+            
+            .stats-bar {
+                gap: 20px;
+                padding: 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .navbar {
+                padding: 14px 0;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .footer-bottom-right {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .scholarship-button {
+                white-space: normal;
+                text-align: center;
+                padding: 7px 16px;
+                font-size: 0.75rem;
+            }
+            
+            .footer-content {
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                max-width: 260px;
+                margin: 0 auto;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .continent-title {
+                font-size: 1.2rem;
+            }
+            
+            .job-card {
+                padding: 15px;
+            }
+            
+            .dropdown-menu a {
+                font-size: 1rem;
+                padding: 8px 0;
+            }
+            
+            .dropdown-menu {
+                top: 72px;
+                padding: 16px;
+            }
+            
+            .apply-wa {
+                padding: 7px 14px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo"><a href="index.html">PASSAGE SHI.</a></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="visa.html">Visa Guide</a>
+                <a href="routes.html">Immigration</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="visa.html">Visa Guide</a>
+            <a href="routes.html">Immigration</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <h2>Jobs <span>Direct to Employers</span></h2>
+        <p class="subtitle">Click "Apply" to connect directly with the hiring company. Need visa help? Use the immigration partners below.</p>
+
+        <div class="trust-message">
+            <p>⭐ <strong>See where you'll be working</strong> - Each job includes links to the company's website and Google Maps location so you can explore your future workplace before applying. Transparency builds trust.</p>
+        </div>
+
+        <!-- ========== IMMIGRATION PARTNERS SECTION ========== -->
+        <div class="immigration-partners">
+            <h3 class="partners-title">🇿🇦 Trusted Immigration Partners for African Applicants</h3>
+            <div class="partners-grid">
+                
+                <!-- Canada Abroad - RCIC in South Africa -->
+                <div class="partner-card">
+                    <div class="partner-name">🇨🇦 Canada Abroad</div>
+                    <div class="partner-details">Regulated Canadian Immigration Consultant (RCIC) - Deanne Acres. Former Canada Border Services Officer. One of only two active ICCRC members physically located in South Africa [citation:4].</div>
+                    <div class="partner-contact">
+                        <a href="https://www.canadaabroad.com" target="_blank">🌐 canadaabroad.com</a>
+                        <a href="mailto:deanne@canadaabroad.com">✉️ deanne@canadaabroad.com</a>
+                    </div>
+                    <div class="verify-badge">✅ ICCRC Registered | Verify at iccrc-crcic.ca</div>
+                </div>
+
+                <!-- Network Migration Services - Australia/NZ -->
+                <div class="partner-card">
+                    <div class="partner-name">🇦🇺🇳🇿 Network Migration Services</div>
+                    <div class="partner-details">Owned by Andrew Kerr - IAA licensed & MARA registered migration agent. 10,000+ families assisted since 1994. Offices in Johannesburg, Durban, Zimbabwe, and New Zealand [citation:2].</div>
+                    <div class="partner-contact">
+                        <a href="#" onclick="alert('Johannesburg Office: Mulberry Hill Office Park, Unit 16, 1st Floor, Broadacres Drive'); return false;">📍 Johannesburg Office</a>
+                    </div>
+                    <div class="verify-badge">✅ MARA Registered # IAA Licensed | Verify at mara.gov.au</div>
+                </div>
+
+                <!-- Budget Migration Services -->
+                <div class="partner-card">
+                    <div class="partner-name">🇦🇺 Budget Migration Services</div>
+                    <div class="partner-details">Registered and accredited by OMARA (Office of the Migration Agents Registration Authority). Specializes in Australian and New Zealand visas for South African applicants [citation:7].</div>
+                    <div class="partner-contact">
+                        <a href="#" onclick="alert('MARA Registration No: 2217828 | IAA No: 2022 00 373'); return false;">📋 MARA: 2217828</a>
+                    </div>
+                    <div class="verify-badge">✅ MARA Registered | IAA Accredited</div>
+                </div>
+
+                <!-- Move Up - UK Immigration -->
+                <div class="partner-card">
+                    <div class="partner-name">🇬🇧 Move Up - Relocation Solutions</div>
+                    <div class="partner-details">South African-governed UK immigration specialists. Backed by litigation attorney Gwen Vermeulen. Local accountability with British immigration expertise [citation:3].</div>
+                    <div class="partner-contact">
+                        <a href="https://moveup.co.za" target="_blank">🌐 moveup.co.za</a>
+                    </div>
+                    <div class="verify-badge">✅ South African Legal Oversight | UK Immigration Expertise</div>
+                </div>
+
+                <!-- Aloys & Associates - Tanzania -->
+                <div class="partner-card">
+                    <div class="partner-name">🇹🇿 Aloys & Associates (Tanzania)</div>
+                    <div class="partner-details">Immigration, Permits & Compliance specialists. Legal services including work permits, residency applications, and compliance matters for East Africa [citation:1].</div>
+                    <div class="partner-contact">
+                        <a href="https://aloysassociates.co.tz/contact/" target="_blank">🌐 aloysassociates.co.tz</a>
+                    </div>
+                    <div class="verify-badge">✅ Tanzanian Legal Practice | Immigration Experts</div>
+                </div>
+
+                <!-- Akram & Company - South Africa -->
+                <div class="partner-card">
+                    <div class="partner-name">🇿🇦 Akram & Company Inc.</div>
+                    <div class="partner-details">15+ years experience. Specialized in Immigration Law and Family Law. Offices in Durban, Johannesburg, and Cape Town. Level 1 B-BBEE contributor [citation:10].</div>
+                    <div class="partner-contact">
+                        <a href="#" onclick="alert('Lambert Road, Morningside, Durban | LPC Firm Number: 70191'); return false;">📍 Durban / JHB / Cape Town</a>
+                    </div>
+                    <div class="verify-badge">✅ LPC Registered | Level 1 B-BBEE</div>
+                </div>
+
+            </div>
+
+            <!-- How to Verify Immigration Consultants -->
+            <div class="warning-box" style="margin-top: 20px; background: rgba(34, 197, 94, 0.05); border-left-color: var(--green);">
+                <strong>🔍 How to Verify an Immigration Consultant:</strong><br>
+                • <strong>Canada:</strong> Search the ICCRC register at <strong>iccrc-crcic.ca</strong> - must show "Active" status [citation:4][citation:9]<br>
+                • <strong>Australia:</strong> Search MARA register at <strong>mara.gov.au</strong> - look for valid MARN number [citation:2][citation:7]<br>
+                • <strong>UK:</strong> Search IAA (formerly OISC) register at <strong>gov.uk/find-an-immigration-adviser</strong> [citation:3][citation:8]<br>
+                • <strong>USA:</strong> Check DOJ Recognition at <strong>justice.gov/eoir</strong> [citation:5]<br>
+                • <strong>⚠️ NEVER pay for an LMIA job in Canada - it's illegal!</strong> [citation:8]
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat"><div class="stat-number">100+</div><div class="stat-label">Active Employers</div></div>
+            <div class="stat"><div class="stat-number">4</div><div class="stat-label">Continents</div></div>
+            <div class="stat"><div class="stat-number">24hr</div><div class="stat-label">Response Time</div></div>
+            <div class="stat"><div class="stat-number">Verified</div><div class="stat-label">Companies</div></div>
+        </div>
+
+        <!-- ========== NORTH AMERICA ========== -->
+        <div class="continent">
+            <h3 class="continent-title">North America 🇨🇦🇺🇸</h3>
+            <div class="jobs-grid">
+
+                <div class="job-card">
+                    <div class="job-title">Caregiver (New 2026 Pilot)</div>
+                    <div class="job-company">🇨🇦 Canada Caregiver Pilot <span class="verified-badge">✓ Immediate PR</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Canada" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.canada.ca" target="_blank" class="company-link">🏢 IRCC Official</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> $19-24 CAD/hr</span></div>
+                    <div class="job-description"><strong>🆕 2026 CAREGIVER PILOT PROGRAM:</strong> Live-in Caregiver Program is CLOSED. NEW pilot offers <strong>immediate permanent residence upon arrival</strong>! Only 6 months caregiving experience needed. African applicants welcome.</div>
+                    <div class="button-group">
+                        <a href="https://www.canada.ca" target="_blank" class="apply-wa">🇨🇦 Apply via IRCC</a>
+                        <a href="https://www.canadaabroad.com" target="_blank" class="visa-help-btn">🛂 Need visa help? Contact Canada Abroad (RCIC)</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">LMIA Sponsored Jobs</div>
+                    <div class="job-company">🇨🇦 Job Bank Canada <span class="verified-badge">✓ LMIA</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Canada" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.jobbank.gc.ca" target="_blank" class="company-link">🏢 Job Bank</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> Varies by role</span></div>
+                    <div class="job-description"><strong>🇨🇦 GOVERNMENT LMIA JOB PORTAL:</strong> 4,000+ jobs including farm workers, truck drivers, construction, cooks, and caregivers. <strong>FREE to use - NEVER pay for an LMIA job!</strong></div>
+                    <div class="button-group">
+                        <a href="https://www.jobbank.gc.ca/temporary-foreign-workers" target="_blank" class="apply-wa">🇨🇦 Search LMIA Jobs</a>
+                        <a href="https://www.canadaabroad.com" target="_blank" class="visa-help-btn">🛂 Visa help: Canada Abroad (RCIC)</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Non-Agricultural Worker</div>
+                    <div class="job-company">🇺🇸 H-2B Visa Program <span class="verified-badge">✓ H-2B</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=USA" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.uscis.gov/h-2b" target="_blank" class="company-link">🏢 USCIS Info</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> $15-25 USD/hr</span></div>
+                    <div class="job-description"><strong>🇺🇸 H-2B VISA - NOW OPEN TO AFRICANS:</strong> Removed nationality restrictions in 2025. Construction, hospitality, landscaping, seafood processing. 65,000 visas annually.</div>
+                    <div class="button-group">
+                        <a href="https://www.uscis.gov/h-2b" target="_blank" class="apply-wa">🇺🇸 USCIS H-2B Info</a>
+                        <a href="#" class="visa-help-btn" onclick="alert('US immigration assistance: The Nigerian Center (DOJ-recognized) - Washington DC | US Embassy Pretoria: +27 (12) 431-4000'); return false;">🛂 US Visa Help</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Skilled Professional</div>
+                    <div class="job-company">🇺🇸 H-1B Visa <span class="verified-badge">✓ H-1B</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=USA" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.uscis.gov/h-1b" target="_blank" class="company-link">🏢 USCIS Info</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> $60k-120k+ USD</span></div>
+                    <div class="job-description"><strong>💼 H-1B SPECIALTY OCCUPATIONS:</strong> Bachelor's degree required. 65,000 regular cap + 20,000 master's cap. New wage-based lottery for 2026. IT, engineering, healthcare, finance.</div>
+                    <div class="button-group">
+                        <a href="https://www.uscis.gov/h-1b" target="_blank" class="apply-wa">🇺🇸 H-1B Information</a>
+                        <a href="#" class="visa-help-btn" onclick="alert('The Nigerian Center (DOJ-recognized) provides free-to-low-cost US immigration legal services. Recognized by US Department of Justice Executive Office for Immigration Review.'); return false;">🛂 DOJ-Recognized Legal Aid</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========== EUROPE ========== -->
+        <div class="continent">
+            <h3 class="continent-title">Europe 🇪🇺</h3>
+            <div class="jobs-grid">
+
+                <div class="job-card">
+                    <div class="job-title">Seasonal Farm Worker</div>
+                    <div class="job-company">🇮🇹 Italian Agriculture <span class="verified-badge">✓ Seasonal Work Visa</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Italy" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.interno.gov.it" target="_blank" class="company-link">🏢 Italy Portal</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Various regions</span><span> €10-20/hr</span></div>
+                    <div class="job-description"><strong>🍋 Government-Backed Program:</strong> Italy allocated 24,288 work visas for agriculture jobs in 2026. Open to ALL nationalities including Nigeria, Ghana, Morocco, Tunisia, Senegal. Apply directly - NO AGENTS NEEDED.</div>
+                    <div class="button-group">
+                        <a href="https://www.interno.gov.it" target="_blank" class="apply-wa">🇮🇹 Apply via Italy Portal</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Home Carer / Care Worker</div>
+                    <div class="job-company">🇮🇪 Irish Home Care <span class="verified-badge">✓ General Employment Permit</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Ireland" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://enterprise.gov.ie" target="_blank" class="company-link">🏢 Official Info</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> €30,000-34,000/yr</span></div>
+                    <div class="job-description"><strong>🏠 Government Quota Program:</strong> Ireland has 1,000 General Employment Permits for home carers (2025). PR pathway available.</div>
+                    <div class="button-group">
+                        <a href="https://www.gov.ie/en/employment-permits" target="_blank" class="apply-wa">🇮🇪 Apply via Ireland Portal</a>
+                        <a href="https://moveup.co.za" target="_blank" class="visa-help-btn">🛂 Visa help: Move Up (UK/Ireland)</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Healthcare Professional</div>
+                    <div class="job-company">🇩🇪 German Hospitals <span class="verified-badge">✓ EU Blue Card</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Germany" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.make-it-in-germany.com" target="_blank" class="company-link">🏢 Make it in Germany</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> €45,934-50,700+/yr</span></div>
+                    <div class="job-description"><strong>🩺 Germany's Official Program:</strong> Healthcare professionals qualify for lower EU Blue Card salary threshold (€45,934). PR possible in 21-27 months.</div>
+                    <div class="button-group">
+                        <a href="https://www.make-it-in-germany.com" target="_blank" class="apply-wa">🇩🇪 Official Portal</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">IT Professional</div>
+                    <div class="job-company">🇩🇪 German Tech <span class="verified-badge">✓ EU Blue Card</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Berlin+Germany" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.bluecard-eu.de" target="_blank" class="company-link">🏢 EU Blue Card Info</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Berlin / Munich / Frankfurt</span><span> €50,700+/yr</span></div>
+                    <div class="job-description"><strong>💻 IT Specialists Welcome:</strong> EU Blue Card available even without degree if you have 3+ years experience. African tech workers actively recruited.</div>
+                    <div class="button-group">
+                        <a href="https://www.make-it-in-germany.com" target="_blank" class="apply-wa">🇩🇪 IT Jobs Portal</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Multiple Sectors</div>
+                    <div class="job-company">🇱🇺 Luxembourg <span class="verified-badge">✓ Work Visa</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Luxembourg" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://guichet.public.lu" target="_blank" class="company-link">🏢 Official Portal</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> Varies by sector</span></div>
+                    <div class="job-description"><strong>🇱🇺 Luxembourg Welcomes African Workers:</strong> Hospitality, construction, logistics, caregiving. Ethiopian citizens specifically mentioned as eligible. Type D long-term visa available.</div>
+                    <div class="button-group">
+                        <a href="https://guichet.public.lu" target="_blank" class="apply-wa">🇱🇺 Luxembourg Portal</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========== ASIA PACIFIC ========== -->
+        <div class="continent">
+            <h3 class="continent-title">Asia Pacific 🇦🇺🇳🇿</h3>
+            <div class="jobs-grid">
+        
+                <div class="job-card">
+                    <div class="job-title">Farm Worker</div>
+                    <div class="job-company">🇦🇺 Australian Agriculture <span class="verified-badge">✓ 482 Visa / DAMA</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Victoria+Queensland+Australia" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.costagroup.com.au" target="_blank" class="company-link">🏢 Costa Group</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Victoria / QLD</span><span> $25-30 AUD/hr</span></div>
+                    <div class="job-description">Citrus, berry, avocado picking. Farm accommodation available. African applicants welcome via 482 sponsorship or DAMA programs.</div>
+                    <div class="button-group">
+                        <a href="https://482jobs.com/job-category/farming-animals-conservation/" target="_blank" class="apply-wa">🔍 Find Jobs</a>
+                        <a href="#" class="visa-help-btn" onclick="alert('Australian visa assistance in Africa:\n• Network Migration Services (SA) - MARA registered\n• Budget Migration Services (SA) - MARA #2217828\nVerify at mara.gov.au'); return false;">🛂 MARA Registered Agents</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Aged Care / Personal Care</div>
+                    <div class="job-company">🇦🇺 Aged Care ILA <span class="verified-badge">✓ 482 ILA</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Sydney+NSW" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://immi.homeaffairs.gov.au" target="_blank" class="company-link">🏢 Home Affairs</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Nationwide</span><span> $51k-73k AUD/yr</span></div>
+                    <div class="job-description">Aged care with full 482 sponsorship via Industry Labour Agreement. Reduced salary threshold ($51,222) and relaxed English (IELTS 4.5-5.0). PR pathway.</div>
+                    <div class="button-group">
+                        <a href="https://immi.homeaffairs.gov.au" target="_blank" class="apply-wa">📖 Visa Info</a>
+                        <a href="#" class="visa-help-btn" onclick="alert('Australian visa assistance:\n• Network Migration Services (SA)\n• Budget Migration Services (SA)\n• Verify MARA registration at mara.gov.au'); return false;">🛂 MARA Agents</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Construction / Trades</div>
+                    <div class="job-company">🇦🇺 Regional Employers <span class="verified-badge">✓ 494 / DAMA</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Regional+Australia" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="#" class="company-link" onclick="alert('Skilled Employer Sponsored Regional Visa - Subclass 494'); return false;">📋 Info</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Regional Australia</span><span> $70k-90k AUD/yr</span></div>
+                    <div class="job-description">General construction, carpentry, plumbing, welding. Regional sponsorship visas (494) available. African trade qualifications accepted with skills assessment.</div>
+                    <div class="button-group">
+                        <a href="https://www.agrilabour.com.au" target="_blank" class="apply-wa">🔍 Agri Labour</a>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-title">Afrikaner Skills Visa</div>
+                    <div class="job-company">🇦🇺 Global Talent Pathway <span class="verified-badge">✓ Designated Visa</span></div>
+                    <div class="company-links">
+                        <a href="https://maps.google.com/?q=Regional+Australia" target="_blank" class="company-link map-link">📍 Map</a>
+                        <a href="https://www.globaltalentpathway.co.za" target="_blank" class="company-link">🏢 Program Site</a>
+                    </div>
+                    <div class="job-meta"><span>📍 Regional Australia</span><span> Market Rate</span></div>
+                    <div class="job-description">Specialized program for Afrikaner workers: farming, truck driving, construction, aged care, hospitality. No skills assessment. IELTS 4.5 only. Direct PR possible.</div>
+                    <div class="button-group">
+                        <a href="https://www.globaltalentpathway.co.za/info/how-the-visa-works" target="_blank" class="apply-wa">🇿🇦 Apply</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========== VERIFICATION WARNING ========== -->
+        <div class="warning-box">
+            <strong> CRITICAL: How to Avoid Immigration Scams</strong><br><br>
+            • <strong>NEVER pay for a job offer</strong> - Legitimate employers never charge fees <br>
+            • <strong>Verify ALL immigration consultants</strong> on official government registers before paying <br>
+            • <strong>Canada:</strong> CICC register at <strong>iccrc-crcic.ca</strong> - must show "Active" status <br>
+            • <strong>Australia:</strong> MARA register at <strong>mara.gov.au</strong> - valid MARN required <br>
+            • <strong>UK:</strong> IAA register at <strong>gov.uk/find-an-immigration-adviser</strong> <br>
+            • <strong>USA:</strong> DOJ Recognition at <strong>justice.gov/eoir</strong> <br>
+            • <strong>If someone says "the website is not updated" - that's a lie.</strong> Walk away 
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Passage</h4>
+                    <p>Your trusted passage to working abroad. We connect job seekers directly with verified employers worldwide. No middlemen, no hidden fees.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="jobs.html">Browse Jobs</a></li><li><a href="visa.html">Visa Guide</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+                <div class="footer-section"><h4>Popular Destinations</h4><ul><li><a href="#">Canada Jobs</a></li><li><a href="#">Germany Jobs</a></li><li><a href="#">Australia Jobs</a></li><li><a href="#">UK Jobs</a></li></ul></div>
+                <div class="footer-section"><h4>Newsletter</h4><form class="newsletter-form" id="newsletterForm"><input type="email" class="newsletter-input" placeholder="Your email address" required><button type="submit" class="newsletter-btn">Subscribe →</button></form></div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-links"><a href="Privacy_Policy.html">Privacy Policy</a><a href="Terms_of_Service.html">Terms of Service</a><a href="Cookie_Policy.html">Cookie Policy</a><a href="Accessibility.html">Accessibility</a></div>
+                <div class="footer-bottom-right"><a href="https://scholarshiphubinc.netlify.app/" target="_blank" class="scholarship-button" rel="noopener noreferrer"><span>🏆</span><span>Scholarship Hub Inc.</span><span>→</span></a></div>
+            </div>
+            <div style="text-align: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);"><p>© 2025 Passage - Direct to Employers. Work Abroad.</p><p style="margin-top: 6px; font-size: 0.7rem;">WhatsApp: <a href="https://wa.me/231760766221" style="color: var(--gold);">+231 76 076 6221</a> | Email: scholarshiphub231@gmail.com</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile dropdown menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        
+        if (menuToggle && dropdownMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true' ? false : true;
+                dropdownMenu.classList.toggle('show');
+                menuToggle.setAttribute('aria-expanded', expanded);
+                
+                const spans = menuToggle.querySelectorAll('span');
+                if (dropdownMenu.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target) && dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            const dropdownLinks = dropdownMenu.querySelectorAll('a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    dropdownMenu.classList.remove('show');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+
+        // Newsletter subscription
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value.trim();
+                if (email && email.includes('@')) {
+                    alert(`Thank you for subscribing! We'll send updates to ${email}`);
+                    this.reset();
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
