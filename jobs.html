@@ -841,29 +841,78 @@
 <body>
     <div class="container">
         <!-- Navigation -->
-        <nav class="navbar">
-            <div class="logo"><a href="index.html">PASSAGE SHI.</a></div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="jobs.html">Jobs</a>
-                <a href="visa.html">Visa Guide</a>
-                <a href="routes.html">Immigration</a>
+       
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
+    <div class="navbar">
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" class="active">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="services.html">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="blog.html">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
                 <a href="contact.html">Contact</a>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-main-link active-mobile"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
         
-        <div class="dropdown-menu" id="dropdownMenu">
-            <a href="index.html">Home</a>
-            <a href="jobs.html">Jobs</a>
-            <a href="visa.html">Visa Guide</a>
-            <a href="routes.html">Immigration</a>
-            <a href="contact.html">Contact</a>
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
         </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
+    </div>
 
         <h2>Jobs <span>Direct to Employers</span></h2>
         <p class="subtitle">Click "Apply" to connect directly with the hiring company. Need visa help? Use the immigration partners below.</p>
