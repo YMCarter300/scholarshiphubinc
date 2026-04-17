@@ -628,41 +628,38 @@
         }
     })();
 
-    // MOBILE MENU TOGGLE - COMPLETELY SIMPLIFIED AND FIXED
-    (function() {
+      // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
-        
+
         if (menuToggle && mobileNav) {
-            // Remove any existing listeners by cloning and replacing (clean slate)
-            const newToggle = menuToggle.cloneNode(true);
-            menuToggle.parentNode.replaceChild(newToggle, menuToggle);
-            const finalToggle = document.getElementById('menuToggle');
-            
-            // Add click event to toggle menu
-            finalToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
+                const spans = menuToggle.querySelectorAll('span');
                 if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    if (spans.length === 3) {
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (spans.length) {
                         spans[0].style.transform = 'none';
                         spans[1].style.opacity = '1';
                         spans[2].style.transform = 'none';
                     }
-                } else {
-                    mobileNav.classList.add('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    if (spans.length === 3) {
-                        spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                        spans[1].style.opacity = '0';
-                        spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-                    }
-                }
-                return false;
+                });
             });
+        }
+
             
             // Close menu when clicking on any link inside mobile nav
             const allMobileLinks = mobileNav.querySelectorAll('a');
