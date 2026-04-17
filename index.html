@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | Home</title>
+    <title>LinkAfric | Home – Global Opportunities for Liberians</title>
     <style>
         * {
             margin: 0;
@@ -27,13 +27,16 @@
             --white: #ffffff;
         }
 
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -42,48 +45,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover {
+        .nav-item > a:hover {
             color: var(--gold);
         }
 
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
+        }
+
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -92,38 +167,63 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        /* Hero Section with Background Image */
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
+        }
+
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Hero Section */
         .hero {
             text-align: center;
             padding: 4rem 2rem;
             position: relative;
-            background-image: url('background.jpg');
+            background-image: url('https://images.pexels.com/photos/3278908/pexels-photo-3278908.jpeg?auto=compress&cs=tinysrgb&w=1600');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -132,7 +232,6 @@
             overflow: hidden;
         }
 
-        /* Dark Overlay for Better Text Readability */
         .hero::before {
             content: '';
             position: absolute;
@@ -311,8 +410,9 @@
         }
 
         .footer {
-            background: var(--black);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
             padding: 2rem 1.5rem 1rem;
             margin-top: 3rem;
         }
@@ -414,7 +514,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -472,63 +572,83 @@
                 flex: 1 1 calc(50% - 1rem);
             }
         }
-
-        .nav-links a.active {
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 4px;
-}
-
-.mobile-nav a.active {
-    background: var(--gold);
-    color: var(--black);
-}
-
-/* Add this to your existing .nav-links a styles for smooth transition */
-.nav-links a {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-    padding-bottom: 4px;
-}
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Resources</a>
-            <a href="advisory.html">Advisory</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html" class="active">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="services.html">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="blog.html">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html"> Home</a>
-        <a href="programs.html"> Programs</a>
-        <a href="services.html"> Services</a>
-        <a href="apply.html"> Apply</a>
-        <a href="stories.html"> Success Stories</a>
-        <a href="about.html"> About</a>
-        <a href="blog.html"> Resources</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="contact.html"> Contact</a>
+        <a href="index.html" class="mobile-main-link active-mobile"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
-        <!-- Hero Section with Background Image -->
         <div class="hero">
             <div class="location-badge">📍 Headquartered in Monrovia, Liberia - Serving Africa & Beyond</div>
             <h1>Study Abroad. <br>Change Your Life.<span style="color:var(--gold);"> From Liberia.</span></h1>
@@ -548,7 +668,7 @@
 
         <div>
             <h2>Your Gateway to Global Opportunities</h2>
-            <p>Scholarship Hub Inc. is more than a platform; we are your strategic partner in accessing international education and work opportunities. Based in Monrovia, Liberia, we understand the unique challenges and aspirations of African students and professionals. We simplify the process, eliminate guesswork, and position you for success on the world stage.</p>
+            <p>LinkAfric is more than a platform; we are your strategic partner in accessing international education and work opportunities. Based in Monrovia, Liberia, we understand the unique challenges and aspirations of African students and professionals. We simplify the process, eliminate guesswork, and position you for success on the world stage.</p>
         </div>
 
         <div class="grid-3">
@@ -578,51 +698,59 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section"><h4>Scholarship Hub Inc.</h4><p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p><div class="social-links"><a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg></a><a href="https://youtube.com/@scholarshiphub" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
-                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a></div></div>
-            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html"> Programs</a></li><li><a href="services.html"> Services</a></li><li><a href="apply.html"> Apply Now</a></li><li><a href="stories.html"> Success Stories</a></li></ul></div>
-            <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog.html"> Blog & Tips</a></li><li><a href="about.html"> About Us</a></li><li><a href="contact.html"> Contact</a></li></ul></div>
-            <div class="footer-section"><h4>Contact Info</h4><p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p> scholarshiphub231@gmail.com</p><p> +231 76 076 6122</p></div>
+            <div class="footer-section">
+                <h4>LinkAfric</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="https://www.tiktok.com/@linkafric" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html">Programs</a></li><li><a href="services.html">Services</a></li><li><a href="apply.html">Apply Now</a></li><li><a href="stories.html">Success Stories</a></li></ul></div>
+            <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog.html">Blog & Tips</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-section"><h4>Contact Info</h4><p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p>linkafric@gmail.com</p><p><strong>+231 76 076 6122</strong></p></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future is not local. Take the first step today.</p></div>
+        <div class="footer-bottom"><p>&copy; 2023 LinkAfric. All rights reserved. | Your future is not local. Take the first step today.</p></div>
     </footer>
 
     <script>
-        const WHATSAPP_PHONE = "231771234567";
+        const WHATSAPP_PHONE = "231760766122";
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
 
-        menuToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('show');
-            const spans = menuToggle.querySelectorAll('span');
-            if (mobileNav.classList.contains('show')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('show');
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('show');
                 const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+                if (mobileNav.classList.contains('show')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
             });
-        });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('show');
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            });
+        }
 
         function sendToWhatsApp(formData, formType) {
-            let message = `🏆 *Scholarship Hub Inc. - New ${formType}* 🏆\n\n📅 Date: ${new Date().toLocaleString()}\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            let message = `🏆 *LinkAfric - New ${formType}* 🏆\n\n📅 Date: ${new Date().toLocaleString()}\n━━━━━━━━━━━━━━━━━━━━━\n\n`;
             for (const [key, value] of Object.entries(formData)) if (value && value.trim() !== "") message += `📌 *${key}*: ${value}\n`;
-            message += `\n━━━━━━━━━━━━━━━━━━━━━\n📍 Scholarship Hub Inc. - Liberia HQ\n🔗 Follow up required.`;
+            message += `\n━━━━━━━━━━━━━━━━━━━━━\n📍 LinkAfric - Liberia HQ\n🔗 Follow up required.`;
             window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
@@ -638,39 +766,6 @@
             setTimeout(() => document.getElementById('success-message').classList.remove('show'), 5000);
             this.reset();
         });
-
-        // Active page navigation highlighting
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the current page filename (e.g., "programs.html" or "index.html")
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Select all navigation links in both desktop and mobile menus
-    const desktopLinks = document.querySelectorAll('.nav-links a');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    
-    // Function to highlight active link
-    function setActiveLink(links) {
-        links.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            // Remove any existing active class
-            link.classList.remove('active');
-            
-            // Check if this link matches the current page
-            if (linkHref === currentPage) {
-                link.classList.add('active');
-            }
-            
-            // Special case for index.html when URL is just the domain or folder
-            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    // Apply highlighting to both navigation menus
-    setActiveLink(desktopLinks);
-    setActiveLink(mobileLinks);
-});
     </script>
 </body>
 </html>
