@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | Work Abroad: Top Industries Hiring Now</title>
+    <title>LinkAfric | Work Abroad: Top Industries Hiring Now</title>
     <style>
         * {
             margin: 0;
@@ -29,13 +29,16 @@
             --blue-accent: #3b82f6;
         }
 
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -44,48 +47,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-item > a:hover {
             color: var(--gold);
         }
 
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
+        }
+
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -94,32 +169,58 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
+        }
+
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -145,7 +246,10 @@
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 1rem;
-            color: var(--white);
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .blog-meta {
@@ -280,39 +384,6 @@
             font-size: 0.8rem;
         }
 
-        .blog-content h2 {
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin: 1.8rem 0 1rem;
-            border-left: 4px solid var(--gold);
-            padding-left: 1rem;
-        }
-
-        .blog-content h3 {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin: 1.2rem 0 0.8rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--black);
-            font-weight: 700;
-            padding: 0.75rem 1.8rem;
-            border-radius: 999px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:hover {
-            background-color: var(--gold-dark);
-            transform: translateY(-2px);
-        }
-
         .comparison-table {
             background: var(--gray-mid);
             border-radius: 1rem;
@@ -335,6 +406,33 @@
             color: var(--gold);
             font-weight: 600;
             background: rgba(212, 175, 55, 0.05);
+        }
+
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.75rem 1.8rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-2px);
         }
 
         .author-section {
@@ -408,29 +506,10 @@
             font-size: 0.85rem;
         }
 
-        .newsletter {
-            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            margin: 2rem 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .newsletter input {
-            padding: 0.8rem 1rem;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 0.5rem;
-            color: white;
-            width: 280px;
-            margin-right: 0.5rem;
-            margin-top: 1rem;
-        }
-
         .footer {
-            background: var(--black);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
             padding: 2rem 1.5rem 1rem;
             margin-top: 3rem;
         }
@@ -485,7 +564,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -505,64 +584,83 @@
             .industry-title h2 {
                 font-size: 1.3rem;
             }
-            .newsletter input {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
         }
-
-        .nav-links a.active {
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 4px;
-}
-
-.mobile-nav a.active {
-    background: var(--gold);
-    color: var(--black);
-}
-
-/* Add this to your existing .nav-links a styles for smooth transition */
-.nav-links a {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-    padding-bottom: 4px;
-}
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html" class="active">Resources</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#" class="active">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="#">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html"> Home</a>
-        <a href="programs.html"> Programs</a>
-        <a href="services.html"> Services</a>
-        <a href="apply.html"> Apply</a>
-        <a href="stories.html"> Success Stories</a>
-        <a href="about.html"> About</a>
-        <a href="blog.html"> Resources</a>
-        <a href="contact.html"> Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
         <div class="blog-header">
             <div class="blog-category"> Career Guide</div>
@@ -570,7 +668,7 @@
             <div class="blog-meta">
                 <span> March 27, 2026</span>
                 <span> 10 min read</span>
-                <span> By Career Team</span>
+                <span> By LinkAfric Career Team</span>
                 <span> #WorkAbroad #GlobalCareers #JobSearch</span>
             </div>
         </div>
@@ -579,7 +677,7 @@
 
         <div class="intro-text">
             <p><strong> The global job market is booming for international talent.</strong> From tech hubs in Berlin to healthcare shortages in Canada and engineering opportunities in Australia, countries around the world are actively recruiting skilled professionals from abroad. The demand for international workers has never been higher.</p>
-            <p style="margin-top: 0.8rem;">In this guide, we'll explore the top industries hiring international talent right now, the most in-demand roles, salary expectations, visa pathways, and actionable steps to land your dream job abroad. Whether you're a recent graduate or an experienced professional, there's never been a better time to take your career global.</p>
+            <p style="margin-top: 0.8rem;">In this guide, we'll explore the top industries hiring international talent right now, the most in-demand roles, salary expectations, visa pathways, and actionable steps to land your dream job abroad.</p>
         </div>
 
         <div class="industry-grid">
@@ -593,8 +691,7 @@
                     </div>
                 </div>
                 <div class="industry-content">
-                    <p>The tech industry is facing a global talent shortage. Companies in Europe, North America, Asia, and Australia are struggling to find qualified software developers, data scientists, and cybersecurity experts. Many countries have created special visa pathways specifically for tech talent.</p>
-                    
+                    <p>The tech industry is facing a global talent shortage. Companies in Europe, North America, Asia, and Australia are struggling to find qualified developers, data scientists, and cybersecurity experts.</p>
                     <h3> Most In-Demand Roles</h3>
                     <div class="role-list">
                         <span class="role-tag">Software Engineer</span>
@@ -603,27 +700,16 @@
                         <span class="role-tag">AI/ML Engineer</span>
                         <span class="role-tag">Cybersecurity Specialist</span>
                         <span class="role-tag">Cloud Architect</span>
-                        <span class="role-tag">DevOps Engineer</span>
-                        <span class="role-tag">Product Manager</span>
                     </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $60,000 - $150,000 USD/year (depending on country and experience)
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> Germany (Blue Card), Canada (Global Talent Stream), UK (Skilled Worker Visa), Netherlands (Highly Skilled Migrant), Australia (Temporary Skill Shortage)
-                    </div>
-                    
+                    <div class="salary-range"> <strong>Average Salary:</strong> $60,000 - $150,000 USD/year</div>
+                    <div class="visa-pathway"> <strong>Visa Pathways:</strong> Germany (Blue Card), Canada (Global Talent Stream), UK (Skilled Worker Visa)</div>
                     <h3>📍 Top Hiring Countries</h3>
                     <div class="country-grid">
-                        <span class="country-tag"> Germany</span>
-                        <span class="country-tag"> Canada</span>
-                        <span class="country-tag"> United Kingdom</span>
-                        <span class="country-tag"> Netherlands</span>
-                        <span class="country-tag"> Australia</span>
-                        <span class="country-tag"> Singapore</span>
-                        <span class="country-tag"> UAE (Dubai)</span>
+                        <span class="country-tag">🇩🇪 Germany</span>
+                        <span class="country-tag">🇨🇦 Canada</span>
+                        <span class="country-tag">🇬🇧 United Kingdom</span>
+                        <span class="country-tag">🇳🇱 Netherlands</span>
+                        <span class="country-tag">🇦🇺 Australia</span>
                     </div>
                 </div>
             </div>
@@ -638,8 +724,7 @@
                     </div>
                 </div>
                 <div class="industry-content">
-                    <p>The global healthcare workforce shortage has reached crisis levels. Countries are actively recruiting nurses, doctors, and allied health professionals from abroad, often with expedited visa processing and relocation packages.</p>
-                    
+                    <p>The global healthcare workforce shortage has reached crisis levels. Countries are actively recruiting nurses, doctors, and allied health professionals with expedited visa processing.</p>
                     <h3> Most In-Demand Roles</h3>
                     <div class="role-list">
                         <span class="role-tag">Registered Nurse</span>
@@ -647,32 +732,21 @@
                         <span class="role-tag">Medical Specialist</span>
                         <span class="role-tag">Aged Care Worker</span>
                         <span class="role-tag">Pharmacist</span>
-                        <span class="role-tag">Radiologist</span>
-                        <span class="role-tag">Physiotherapist</span>
-                        <span class="role-tag">Mental Health Counselor</span>
                     </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $50,000 - $120,000 USD/year (varies by role and country)
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> UK (Health and Care Worker Visa), Canada (Express Entry - Healthcare), Australia (Health Workforce Visa), Ireland (Critical Skills Employment Permit)
-                    </div>
-                    
+                    <div class="salary-range"> <strong>Average Salary:</strong> $50,000 - $120,000 USD/year</div>
+                    <div class="visa-pathway"> <strong>Visa Pathways:</strong> UK (Health & Care Worker Visa), Canada (Express Entry), Australia (Health Visa)</div>
                     <h3>📍 Top Hiring Countries</h3>
                     <div class="country-grid">
-                        <span class="country-tag"> United Kingdom</span>
-                        <span class="country-tag"> Canada</span>
-                        <span class="country-tag"> Australia</span>
-                        <span class="country-tag"> New Zealand</span>
-                        <span class="country-tag"> USA</span>
-                        <span class="country-tag"> Ireland</span>
+                        <span class="country-tag">🇬🇧 United Kingdom</span>
+                        <span class="country-tag">🇨🇦 Canada</span>
+                        <span class="country-tag">🇦🇺 Australia</span>
+                        <span class="country-tag">🇳🇿 New Zealand</span>
+                        <span class="country-tag">🇮🇪 Ireland</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Engineering & Construction -->
+            <!-- Engineering -->
             <div class="industry-card">
                 <div class="industry-header">
                     <div class="industry-icon"></div>
@@ -682,40 +756,29 @@
                     </div>
                 </div>
                 <div class="industry-content">
-                    <p>Massive infrastructure projects and renewable energy initiatives are driving demand for engineers worldwide. Civil, mechanical, electrical, and renewable energy engineers are particularly sought after.</p>
-                    
+                    <p>Massive infrastructure projects and renewable energy initiatives are driving demand for engineers worldwide.</p>
                     <h3> Most In-Demand Roles</h3>
                     <div class="role-list">
                         <span class="role-tag">Civil Engineer</span>
                         <span class="role-tag">Mechanical Engineer</span>
                         <span class="role-tag">Electrical Engineer</span>
                         <span class="role-tag">Renewable Energy Engineer</span>
-                        <span class="role-tag">Structural Engineer</span>
                         <span class="role-tag">Project Manager</span>
-                        <span class="role-tag">Quantity Surveyor</span>
                     </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $55,000 - $110,000 USD/year
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> Australia (Skilled Occupation List), Canada (Provincial Nominee Programs), Germany (Blue Card), UK (Skilled Worker Visa)
-                    </div>
-                    
+                    <div class="salary-range"> <strong>Average Salary:</strong> $55,000 - $110,000 USD/year</div>
+                    <div class="visa-pathway"> <strong>Visa Pathways:</strong> Australia (Skilled Occupation List), Canada (PNP), Germany (Blue Card)</div>
                     <h3>📍 Top Hiring Countries</h3>
                     <div class="country-grid">
                         <span class="country-tag">🇦🇺 Australia</span>
                         <span class="country-tag">🇨🇦 Canada</span>
                         <span class="country-tag">🇩🇪 Germany</span>
                         <span class="country-tag">🇦🇪 UAE</span>
-                        <span class="country-tag">🇸🇦 Saudi Arabia</span>
                         <span class="country-tag">🇳🇿 New Zealand</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Finance & Business -->
+            <!-- Finance -->
             <div class="industry-card">
                 <div class="industry-header">
                     <div class="industry-icon"></div>
@@ -725,167 +788,50 @@
                     </div>
                 </div>
                 <div class="industry-content">
-                    <p>Financial hubs like London, Singapore, Dubai, and New York are constantly seeking international talent. Specialized roles in fintech, data analytics, and compliance are particularly in high demand.</p>
-                    
+                    <p>Financial hubs like London, Singapore, and Dubai are constantly seeking international talent in fintech, data analytics, and compliance.</p>
                     <h3> Most In-Demand Roles</h3>
                     <div class="role-list">
                         <span class="role-tag">Financial Analyst</span>
                         <span class="role-tag">Data Analyst</span>
                         <span class="role-tag">Accountant</span>
-                        <span class="role-tag">Investment Banker</span>
                         <span class="role-tag">Risk Manager</span>
                         <span class="role-tag">Compliance Officer</span>
-                        <span class="role-tag">Management Consultant</span>
                     </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $55,000 - $130,000 USD/year
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> UK (Skilled Worker Visa), Singapore (Employment Pass), UAE (Employment Visa), Hong Kong (Quality Migrant Admission)
-                    </div>
-                    
-                    <h3>📍 Top Hiring Countries</h3>
+                    <div class="salary-range"> <strong>Average Salary:</strong> $55,000 - $130,000 USD/year</div>
+                    <div class="visa-pathway"> <strong>Visa Pathways:</strong> UK (Skilled Worker), Singapore (Employment Pass), UAE (Employment Visa)</div>
+                    <h3> Top Hiring Countries</h3>
                     <div class="country-grid">
-                        <span class="country-tag"> United Kingdom</span>
-                        <span class="country-tag"> Singapore</span>
-                        <span class="country-tag"> UAE (Dubai)</span>
-                        <span class="country-tag"> Hong Kong</span>
-                        <span class="country-tag"> Switzerland</span>
-                        <span class="country-tag"> Ireland</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Education & Teaching -->
-            <div class="industry-card">
-                <div class="industry-header">
-                    <div class="industry-icon"></div>
-                    <div class="industry-title">
-                        <h2>Education & Teaching</h2>
-                        <span class="demand-badge"> International Schools Boom</span>
-                    </div>
-                </div>
-                <div class="industry-content">
-                    <p>The global international school market is expanding rapidly, creating thousands of opportunities for qualified teachers. English teachers are also in high demand across Asia, the Middle East, and Latin America.</p>
-                    
-                    <h3> Most In-Demand Roles</h3>
-                    <div class="role-list">
-                        <span class="role-tag">ESL/English Teacher</span>
-                        <span class="role-tag">International School Teacher</span>
-                        <span class="role-tag">STEM Teacher</span>
-                        <span class="role-tag">University Lecturer</span>
-                        <span class="role-tag">Educational Consultant</span>
-                    </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $25,000 - $60,000 USD/year (plus housing benefits in many countries)
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> South Korea (E-2 Visa), China (Z Visa), UAE (Employment Visa), Japan (Instructor Visa), Vietnam (Work Permit)
-                    </div>
-                    
-                    <h3>📍 Top Hiring Countries</h3>
-                    <div class="country-grid">
-                        <span class="country-tag"> China</span>
-                        <span class="country-tag"> South Korea</span>
-                        <span class="country-tag"> Japan</span>
-                        <span class="country-tag"> UAE</span>
-                        <span class="country-tag"> Qatar</span>
-                        <span class="country-tag"> Vietnam</span>
-                        <span class="country-tag"> Thailand</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hospitality & Tourism -->
-            <div class="industry-card">
-                <div class="industry-header">
-                    <div class="industry-icon"></div>
-                    <div class="industry-title">
-                        <h2>Hospitality & Tourism</h2>
-                        <span class="demand-badge"> Post-Pandemic Recovery</span>
-                    </div>
-                </div>
-                <div class="industry-content">
-                    <p>The global tourism industry is rebounding strongly, creating demand for hospitality professionals in popular destinations. Luxury hotels, cruise lines, and resorts are actively recruiting international staff.</p>
-                    
-                    <h3> Most In-Demand Roles</h3>
-                    <div class="role-list">
-                        <span class="role-tag">Hotel Manager</span>
-                        <span class="role-tag">Chef/Culinary Professional</span>
-                        <span class="role-tag">Cruise Ship Staff</span>
-                        <span class="role-tag">Event Coordinator</span>
-                        <span class="role-tag">Front Office Manager</span>
-                        <span class="role-tag">Tourism Guide</span>
-                    </div>
-                    
-                    <div class="salary-range">
-                         <strong>Average Salary Range:</strong> $25,000 - $60,000 USD/year (plus accommodation and tips)
-                    </div>
-                    
-                    <div class="visa-pathway">
-                         <strong>Visa Pathways:</strong> UAE (Employment Visa), Qatar (Work Visa), Saudi Arabia (Work Visa), Malta (Single Permit), Cruise lines (Shipboard Employment)
-                    </div>
-                    
-                    <h3>📍 Top Hiring Countries</h3>
-                    <div class="country-grid">
-                        <span class="country-tag"> UAE (Dubai)</span>
-                        <span class="country-tag"> Qatar</span>
-                        <span class="country-tag"> Saudi Arabia</span>
-                        <span class="country-tag"> Malta</span>
-                        <span class="country-tag"> Maldives</span>
-                        <span class="country-tag"> Switzerland</span>
+                        <span class="country-tag">🇬🇧 United Kingdom</span>
+                        <span class="country-tag">🇸🇬 Singapore</span>
+                        <span class="country-tag">🇦🇪 UAE (Dubai)</span>
+                        <span class="country-tag">🇨🇭 Switzerland</span>
+                        <span class="country-tag">🇮🇪 Ireland</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Quick Comparison Table -->
-        <h2 style="color: var(--gold); margin: 2rem 0 1rem;"> Quick Comparison: Top Industries & Destinations</h2>
         <div class="comparison-table">
             <table>
-                <thead>
-                    <tr>
-                        <th>Industry</th>
-                        <th>Top Roles</th>
-                        <th>Best Countries</th>
-                        <th>Avg. Salary (USD)</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Industry</th><th>Top Roles</th><th>Best Countries</th><th>Avg. Salary (USD)</th></tr></thead>
                 <tbody>
-                    <tr><td> Technology</td><td>Software Engineer, Data Scientist, DevOps</td><td>Germany, Canada, UK, Netherlands</td><td>$70,000-150,000</td></tr>
-                    <tr><td> Healthcare</td><td>Nurse, Doctor, Pharmacist</td><td>UK, Canada, Australia, Ireland</td><td>$55,000-120,000</td></tr>
-                    <tr><td> Engineering</td><td>Civil, Mechanical, Renewable Energy</td><td>Australia, Canada, Germany, UAE</td><td>$60,000-110,000</td></tr>
-                    <tr><td> Finance</td><td>Analyst, Accountant, Consultant</td><td>UK, Singapore, UAE, Hong Kong</td><td>$55,000-130,000</td></tr>
-                    <tr><td> Education</td><td>ESL Teacher, International School Teacher</td><td>China, South Korea, UAE, Japan</td><td>$25,000-60,000</td></tr>
-                    <tr><td> Hospitality</td><td>Hotel Manager, Chef, Cruise Staff</td><td>UAE, Qatar, Malta, Maldives</td><td>$25,000-60,000</td></tr>
+                    <tr><td>Technology</td><td>Software Engineer, Data Scientist</td><td>Germany, Canada, UK</td><td>$70,000-150,000</td></tr>
+                    <tr><td>Healthcare</td><td>Nurse, Doctor, Pharmacist</td><td>UK, Canada, Australia</td><td>$55,000-120,000</td></tr>
+                    <tr><td>Engineering</td><td>Civil, Mechanical, Renewable Energy</td><td>Australia, Canada, Germany</td><td>$60,000-110,000</td></tr>
+                    <tr><td>Finance</td><td>Analyst, Accountant, Consultant</td><td>UK, Singapore, UAE</td><td>$55,000-130,000</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="blog-content">
-            <h2> How to Prepare for Your International Career</h2>
-            <ul>
-                <li><strong>Get certified:</strong> Many industries require professional certifications (e.g., PMP for project managers, TOEFL/IELTS for teachers, NCLEX for nurses).</li>
-                <li><strong>Build a global network:</strong> Join LinkedIn groups, attend virtual industry conferences, and connect with professionals already working abroad.</li>
-                <li><strong>Tailor your CV:</strong> Research CV formats for your target country (e.g., Germany prefers a photo and detailed CV, while the US/UK do not).</li>
-                <li><strong>Learn the language:</strong> While many jobs are English-based, knowing the local language significantly increases your chances.</li>
-                <li><strong>Research visa pathways:</strong> Each country has different work visa requirements. Some have specific shortage occupation lists that expedite processing.</li>
-            </ul>
-
-            <div class="highlight-box" style="background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--gold); padding: 1.2rem; margin: 1.5rem 0;">
-                <strong> Pro Tip:</strong> Many countries offer "job seeker visas" that allow you to enter the country and search for work. Germany, Austria, and the UAE have popular job seeker visa programs. This can be an excellent way to start your international career journey.
-            </div>
+        <div class="highlight-box">
+            <strong> Pro Tip:</strong> Many countries offer "job seeker visas" that allow you to enter the country and search for work. Germany, Austria, and the UAE have popular job seeker visa programs.
         </div>
 
         <div class="author-section">
-            <div class="author-avatar">CW</div>
+            <div class="author-avatar">LA</div>
             <div class="author-info">
-                <h4>Scholarship Hub Career Team</h4>
-                <p>Our career advisors have helped over 500 professionals secure international job offers in tech, healthcare, engineering, and education. We offer personalized career coaching and job placement assistance.</p>
+                <h4>LinkAfric Career Team</h4>
+                <p>Our career advisors have helped over 500 professionals secure international job offers in tech, healthcare, engineering, and education.</p>
                 <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Book a career consultation →</a>
             </div>
         </div>
@@ -893,60 +839,29 @@
         <div class="related-posts">
             <h3 style="color: var(--gold); margin-bottom: 1rem;"> You Might Also Like</h3>
             <div class="related-grid">
-                <div class="related-card">
-                    <h4>Common Visa Mistakes to Avoid</h4>
-                    <p>Top reasons for rejections and how to prepare.</p>
-                    <a href="blog3.html">Read more →</a>
-                </div>
-                <div class="related-card">
-                    <h4>How to Write a Winning Personal Statement</h4>
-                    <p>The formula that scholarship committees love.</p>
-                    <a href="blog4.html">Read more →</a>
-                </div>
-                <div class="related-card">
-                    <h4>Top Countries for African Students</h4>
-                    <p>Affordable tuition and work opportunities.</p>
-                    <a href="blog2.html">Read more →</a>
-                </div>
+                <div class="related-card"><h4>Common Visa Mistakes to Avoid</h4><p>Top reasons for rejections and how to prepare.</p><a href="blog3.html">Read more →</a></div>
+                <div class="related-card"><h4>Top Countries for African Students</h4><p>Affordable tuition and work opportunities.</p><a href="blog2.html">Read more →</a></div>
+                <div class="related-card"><h4>Canada Study Permit: Complete Guide</h4><p>Everything you need to know.</p><a href="blog10.html">Read more →</a></div>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;"> Start Your Global Career Journey</a>
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;">🚀 Start Your Global Career Journey</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Scholarship Hub Inc.</h4>
-                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="programs.html"> Programs</a></li>
-                    <li><a href="services.html"> Services</a></li>
-                    <li><a href="apply.html"> Apply Now</a></li>
-                    <li><a href="blog.html"> Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p> scholarshiphub@gmail.com</p>
-                <p> +231 76 076 6122</p>
-            </div>
+            <div class="footer-section"><h4>LinkAfric</h4><p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p></div>
+            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html">Programs</a></li><li><a href="services.html">Services</a></li><li><a href="apply.html">Apply Now</a></li><li><a href="blog.html">Resources</a></li></ul></div>
+            <div class="footer-section"><h4>Contact</h4><p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p>linkafric@gmail.com</p><p><strong>+231 76 076 6122</strong></p></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Scholarship Hub Inc. All rights reserved. | Your global career starts here.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 LinkAfric. All rights reserved. | Your global career starts here.</p></div>
     </footer>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
-
         if (menuToggle && mobileNav) {
             menuToggle.addEventListener('click', () => {
                 mobileNav.classList.toggle('show');
@@ -961,64 +876,24 @@
                     spans[2].style.transform = 'none';
                 }
             });
-
             mobileNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
-
-        const newsletterForm = document.getElementById('newsletter-form');
-        const successDiv = document.getElementById('newsletter-success');
-
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                successDiv.style.display = 'block';
-                newsletterForm.reset();
-                setTimeout(() => {
-                    successDiv.style.display = 'none';
-                }, 5000);
-            });
-        }
-
-        // Active page navigation highlighting
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the current page filename (e.g., "programs.html" or "index.html")
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Select all navigation links in both desktop and mobile menus
-    const desktopLinks = document.querySelectorAll('.nav-links a');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    
-    // Function to highlight active link
-    function setActiveLink(links) {
-        links.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            // Remove any existing active class
-            link.classList.remove('active');
-            
-            // Check if this link matches the current page
-            if (linkHref === currentPage) {
-                link.classList.add('active');
-            }
-            
-            // Special case for index.html when URL is just the domain or folder
-            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                link.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const workParent = document.querySelector('.nav-item a[href="#"]');
+            if (workParent && workParent.innerText === 'Work') {
+                workParent.classList.add('active');
             }
         });
-    }
-    
-    // Apply highlighting to both navigation menus
-    setActiveLink(desktopLinks);
-    setActiveLink(mobileLinks);
-});
     </script>
 </body>
 </html>
