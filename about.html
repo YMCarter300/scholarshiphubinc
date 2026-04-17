@@ -407,11 +407,8 @@
 <div class="navbar">
     <div class="logo">Link<span>Afric</span></div>
     <ul class="nav-links">
-        <!-- Home -->
         <li class="nav-item"><a href="index.html">Home</a></li>
-        <!-- Programs -->
         <li class="nav-item"><a href="programs.html">Programs</a></li>
-        <!-- Work (dropdown: Jobs, Immigration) -->
         <li class="nav-item">
             <a href="#">Work</a>
             <div class="dropdown-content">
@@ -419,23 +416,19 @@
                 <a href="routes.html">Immigration</a>
             </div>
         </li>
-        <!-- Services (dropdown: Apply) -->
         <li class="nav-item">
             <a href="services.html">Services</a>
             <div class="dropdown-content">
                 <a href="apply.html">Apply</a>
             </div>
         </li>
-        <!-- Resources (dropdown: Success) -->
         <li class="nav-item">
             <a href="blog.html">Resources</a>
             <div class="dropdown-content">
                 <a href="stories.html">Success</a>
             </div>
         </li>
-        <!-- Advisory -->
         <li class="nav-item"><a href="advisory.html">Advisory</a></li>
-        <!-- Contact (dropdown: About) -->
         <li class="nav-item">
             <a href="contact.html">Contact</a>
             <div class="dropdown-content">
@@ -448,32 +441,31 @@
     </button>
 </div>
 
-<!-- Mobile Navigation (fully replicates dropdown structure) -->
 <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-main-link"> Home</a>
-    <a href="programs.html" class="mobile-main-link"> Programs</a>
+    <a href="index.html" class="mobile-main-link">🏠 Home</a>
+    <a href="programs.html" class="mobile-main-link">📘 Programs</a>
     
-    <div class="mobile-main-link" style="cursor:default;"> Work</div>
+    <div class="mobile-main-link" style="cursor:default;">💼 Work</div>
     <div class="mobile-dropdown-group">
-        <a href="jobs.html"> Jobs</a>
-        <a href="routes.html"> Immigration</a>
+        <a href="jobs.html">📌 Jobs</a>
+        <a href="routes.html">🌍 Immigration</a>
     </div>
     
-    <div class="mobile-main-link" style="cursor:default;"> Services</div>
+    <div class="mobile-main-link" style="cursor:default;">⚙️ Services</div>
     <div class="mobile-dropdown-group">
-        <a href="apply.html"> Apply</a>
+        <a href="apply.html">📝 Apply</a>
     </div>
     
-    <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+    <div class="mobile-main-link" style="cursor:default;">📚 Resources</div>
     <div class="mobile-dropdown-group">
-        <a href="stories.html"> Success</a>
+        <a href="stories.html">⭐ Success</a>
     </div>
     
-    <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+    <a href="advisory.html" class="mobile-main-link">🎓 Advisory</a>
     
-    <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+    <div class="mobile-main-link" style="cursor:default;">📞 Contact</div>
     <div class="mobile-dropdown-group">
-        <a href="about.html"> About</a>
+        <a href="about.html">ℹ️ About</a>
     </div>
 </div>
 
@@ -501,10 +493,10 @@
 
     <h2>Our Values</h2>
     <p>
-         Integrity – We work only with verified programs and legitimate opportunities.<br>
-         Excellence – World-class guidance tailored to your unique profile.<br>
-         Access – Every talented individual deserves a chance to succeed globally.<br>
-         Community – Proudly based in Liberia, committed to African talent.
+        ✨ Integrity – We work only with verified programs and legitimate opportunities.<br>
+        🚀 Excellence – World-class guidance tailored to your unique profile.<br>
+        🌍 Access – Every talented individual deserves a chance to succeed globally.<br>
+        🤝 Community – Proudly based in Liberia, committed to African talent.
     </p>
 
     <div class="location">
@@ -563,16 +555,14 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2023 LinkAfric All rights reserved. | Your future starts here.</p>
+        <p>&copy; 2025 LinkAfric All rights reserved. | Your future starts here.</p>
     </div>
 </footer>
 
 <script>
     (function() {
-        // Active link highlighting for top-level pages only (Home, Programs, Advisory) and also detect if any dropdown page is active?
         const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
         
-        // Helper: highlight nav-item if its direct href matches, or if dropdown links match we don't highlight parent (clean)
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
             const directLink = item.querySelector('> a');
@@ -581,7 +571,6 @@
             if(href && (href === currentLocation || (currentLocation === 'index.html' && href === 'index.html'))) {
                 directLink.classList.add('active');
             } else {
-                // also check for dropdown active child? optional: keep parent not active but fine.
                 const dropdownLinks = item.querySelectorAll('.dropdown-content a');
                 let anyMatch = false;
                 dropdownLinks.forEach(link => {
@@ -592,7 +581,6 @@
             }
         });
         
-        // mobile nav active indication
         const mobileLinks = document.querySelectorAll('#mobileNav a');
         mobileLinks.forEach(link => {
             const href = link.getAttribute('href');
@@ -601,7 +589,6 @@
             }
         });
         
-        // special for about page inside contact dropdown: we also show active for "Contact" parent? extra flair but fine.
         if(currentLocation === 'about.html') {
             const contactParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
                 const parentLink = item.querySelector('> a');
@@ -642,13 +629,16 @@
         }
     })();
 
+    // Mobile menu toggle - FIXED (using getElementById correctly)
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
-    if(menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', () => {
+    
+    if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             mobileNav.classList.toggle('show');
             const spans = menuToggle.querySelectorAll('span');
-            if(mobileNav.classList.contains('show')) {
+            if (mobileNav.classList.contains('show')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
                 spans[1].style.opacity = '0';
                 spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
@@ -658,23 +648,40 @@
                 spans[2].style.transform = 'none';
             }
         });
+        
+        // Close mobile nav when clicking on a link
         mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 mobileNav.classList.remove('show');
                 const spans = menuToggle.querySelectorAll('span');
-                if(spans.length) {
+                if (spans.length) {
                     spans[0].style.transform = 'none';
                     spans[1].style.opacity = '1';
                     spans[2].style.transform = 'none';
                 }
             });
         });
+        
+        // Close mobile nav when clicking outside (optional)
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !mobileNav.contains(event.target) && mobileNav.classList.contains('show')) {
+                mobileNav.classList.remove('show');
+                const spans = menuToggle.querySelectorAll('span');
+                if (spans.length) {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            }
+        });
     }
-    window.addEventListener('resize', () => {
-        if(window.innerWidth > 768 && mobileNav.classList.contains('show')) {
+    
+    // Close mobile nav on window resize if open
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('show')) {
             mobileNav.classList.remove('show');
-            const spans = menuToggle.querySelectorAll('span');
-            if(spans.length) {
+            const spans = menuToggle?.querySelectorAll('span');
+            if (spans && spans.length) {
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
