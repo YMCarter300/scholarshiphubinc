@@ -3,113 +3,573 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | Resources</title>
+    <title>LinkAfric | Resources – Insights, Tips & Opportunities</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, sans-serif; background-color: #000000; color: #e5e5e5; line-height: 1.5; }
-        :root { --black: #000000; --gold: #D4AF37; --gray-mid: #1c1c1c; }
-        .navbar { background: var(--black); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
-        .logo span { color: white; }
-        .nav-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
-        .nav-links a { color: #ddd; text-decoration: none; font-weight: 500; transition: color 0.2s; padding-bottom: 4px; }
-        .nav-links a:hover { color: var(--gold); }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
-        .menu-toggle span { display: block; width: 25px; height: 2px; background-color: var(--gold); margin: 5px 0; transition: 0.3s; }
-        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--black); border-bottom: 1px solid var(--gold); padding: 1rem; z-index: 999; flex-direction: column; gap: 1rem; }
-        .mobile-nav.show { display: flex; }
-        .mobile-nav a { color: #ddd; text-decoration: none; padding: 0.8rem 1rem; border-radius: 0.5rem; transition: all 0.2s; font-weight: 500; }
-        .mobile-nav a:hover { background: var(--gold); color: var(--black); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--white); text-align: center; }
-        .subtitle { text-align: center; color: #aaa; margin-bottom: 2rem; font-size: 1.1rem; }
-        .blog-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-        .blog-card { background: var(--gray-mid); border-radius: 1rem; padding: 1.5rem; flex: 1 1 300px; border-top: 3px solid var(--gold); transition: transform 0.2s, box-shadow 0.2s; }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15); }
-        .blog-card h3 { color: var(--gold); margin-bottom: 0.8rem; font-size: 1.3rem; }
-        .blog-card p { color: #ccc; margin-bottom: 1rem; line-height: 1.5; }
-        .blog-meta-card { font-size: 0.7rem; color: #888; margin-bottom: 0.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-        .read-more { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
-        .read-more:hover { gap: 0.5rem; text-decoration: none; }
-        .category-badge { display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin-bottom: 0.8rem; }
-        .footer { background: var(--black); border-top: 1px solid rgba(212, 175, 55, 0.3); padding: 2rem 1.5rem 1rem; margin-top: 3rem; }
-        .footer-content { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
-        .footer-section { flex: 1; min-width: 200px; }
-        .footer-section h4 { color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem; position: relative; display: inline-block; }
-        .footer-section h4::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 40px; height: 2px; background: var(--gold); }
-        .footer-section p { color: #aaa; line-height: 1.6; font-size: 0.85rem; }
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 0.6rem; }
-        .footer-section ul li a { color: #aaa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; display: inline-block; }
-        .footer-section ul li a:hover { color: var(--gold); transform: translateX(3px); }
-        .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--gray-mid); border-radius: 50%; transition: all 0.3s ease; }
-        .social-links a:hover { background: var(--gold); transform: translateY(-3px); }
-        .social-links a:hover svg { stroke: var(--black); }
-        .footer-bottom { text-align: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.75rem; color: #666; }
-        @media (max-width: 768px) {
-            .navbar { padding: 0.8rem 1.2rem; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .container { padding: 1rem; }
-            h1 { font-size: 1.8rem; }
-            .blog-card { flex: 1 1 100%; }
-            .footer { padding: 1.5rem 1rem 1rem; }
-            .footer-content { flex-direction: column; gap: 1.5rem; }
-            .footer-section { text-align: center; min-width: auto; }
-            .footer-section h4::after { left: 50%; transform: translateX(-50%); width: 50px; }
-            .social-links { justify-content: center; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .footer-content { flex-wrap: wrap; }
-            .footer-section { flex: 1 1 calc(50% - 1rem); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .nav-links a.active {
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #e5e5e5;
+            line-height: 1.5;
+        }
+
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --gold-dark: #B8860B;
+            --gray-mid: #1c1c1c;
+            --white: #ffffff;
+        }
+
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
+        .navbar {
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Desktop Navigation with Dropdowns */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-item > a:hover {
+            color: var(--gold);
+        }
+
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
-            padding-bottom: 4px;
+            padding-bottom: 0.3rem;
         }
 
-        .mobile-nav a.active {
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
+            cursor: pointer;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--gold);
+            padding: 1.2rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.show {
+            display: flex;
+        }
+
+        .mobile-main-link {
+            color: #eee;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
+        }
+
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
+        }
+
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .blog-card {
+            background: var(--gray-mid);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            flex: 1 1 300px;
+            border-top: 3px solid var(--gold);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .blog-card h3 {
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-card p {
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .blog-meta-card {
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 0.8rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .read-more {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.2s;
+        }
+
+        .read-more:hover {
+            gap: 0.5rem;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Featured Section */
+        .featured-tips {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .featured-tips h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .tips-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tip-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .tip-item strong {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 2rem 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
             background: var(--gold);
-            color: var(--black);
+        }
+
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.85rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray-mid);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .social-links a:hover svg {
+            stroke: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.7rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .blog-card {
+                flex: 1 1 100%;
+            }
+            .footer {
+                padding: 1.5rem 1rem 1rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                text-align: center;
+                min-width: auto;
+            }
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            .footer-section {
+                flex: 1 1 calc(50% - 1rem);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html" class="active">Resources</a>
-            <a href="advisory.html">Advisory</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="services.html">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="blog.html" class="active">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="services.html">Services</a>
-        <a href="apply.html">Apply</a>
-        <a href="stories.html">Success Stories</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Resources</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
+
+    <!-- MAIN CONTENT -->
     <div class="container">
         <h1>Insights, Tips, and Opportunities</h1>
         <p class="subtitle">Your comprehensive resource for scholarship success, study abroad guides, and career development</p>
+        
         <div class="blog-grid">
-            
-            <!-- Blog 1: How to Secure a Scholarship in 2026 -->
+            <!-- Blog 1 -->
             <div class="blog-card">
                 <span class="category-badge">📝 Scholarship Guide</span>
                 <h3>How to Secure a Scholarship in 2026</h3>
@@ -118,7 +578,7 @@
                 <a href="blog1.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 2: Top 10 Scholarships for African Students -->
+            <!-- Blog 2 -->
             <div class="blog-card">
                 <span class="category-badge">🌍 Scholarships</span>
                 <h3>Top 10 Scholarships for African Students</h3>
@@ -127,7 +587,7 @@
                 <a href="blog2.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 3: Common Visa Mistakes to Avoid -->
+            <!-- Blog 3 -->
             <div class="blog-card">
                 <span class="category-badge">🛂 Visa Guide</span>
                 <h3>Common Visa Mistakes to Avoid</h3>
@@ -136,7 +596,7 @@
                 <a href="blog3.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 4: How to Write a Winning Personal Statement -->
+            <!-- Blog 4 -->
             <div class="blog-card">
                 <span class="category-badge">✍️ Writing Tips</span>
                 <h3>How to Write a Winning Personal Statement</h3>
@@ -145,7 +605,7 @@
                 <a href="blog4.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 5: Work Abroad: Top Industries Hiring Now -->
+            <!-- Blog 5 -->
             <div class="blog-card">
                 <span class="category-badge">💼 Career Guide</span>
                 <h3>Work Abroad: Top Industries Hiring Now</h3>
@@ -154,7 +614,7 @@
                 <a href="blog5.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 6: Fully Funded Scholarships for Liberians -->
+            <!-- Blog 6 -->
             <div class="blog-card">
                 <span class="category-badge">🇱🇷 Liberia Focus</span>
                 <h3>Fully Funded Scholarships for Liberians</h3>
@@ -163,7 +623,7 @@
                 <a href="blog6.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 7: Study in Germany: €0 Tuition Guide -->
+            <!-- Blog 7 -->
             <div class="blog-card">
                 <span class="category-badge">🇩🇪 Country Guide</span>
                 <h3>Study in Germany: €0 Tuition Guide</h3>
@@ -172,7 +632,7 @@
                 <a href="blog7.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 8: Student Visa Guide: Europe vs Asia -->
+            <!-- Blog 8 -->
             <div class="blog-card">
                 <span class="category-badge">🛂 Visa Guide</span>
                 <h3>Student Visa Guide: Europe vs Asia</h3>
@@ -181,7 +641,7 @@
                 <a href="blog8.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 9: Cost of Living: 10 Most Affordable Cities -->
+            <!-- Blog 9 -->
             <div class="blog-card">
                 <span class="category-badge">💰 Budget Guide</span>
                 <h3>Cost of Living: 10 Most Affordable Cities</h3>
@@ -190,7 +650,7 @@
                 <a href="blog9.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 10: Canada Study Permit: Complete Guide -->
+            <!-- Blog 10 -->
             <div class="blog-card">
                 <span class="category-badge">🍁 Country Guide</span>
                 <h3>Canada Study Permit: Complete Guide</h3>
@@ -199,7 +659,7 @@
                 <a href="blog10.html" class="read-more">Read more →</a>
             </div>
             
-            <!-- Blog 11: Returning to Liberia: Building the Nation -->
+            <!-- Blog 11 -->
             <div class="blog-card">
                 <span class="category-badge">🇱🇷 Nation Building</span>
                 <h3>From Global to Local: Returning to Liberia</h3>
@@ -207,37 +667,79 @@
                 <p>How Liberian students can study abroad and return to contribute to national development. Success stories, challenges, and practical advice.</p>
                 <a href="blog11.html" class="read-more">Read more →</a>
             </div>
-            
         </div>
         
         <!-- Featured Section: Quick Tips -->
-        <div style="margin-top: 3rem; background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%); border-radius: 1rem; padding: 1.5rem; border-left: 4px solid var(--gold);">
-            <h3 style="color: var(--gold); margin-bottom: 1rem;"> Quick Tips for Success</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div style="flex: 1; min-width: 200px;"><strong> Start Early</strong><br>Begin your scholarship search 6-12 months before deadlines</div>
-                <div style="flex: 1; min-width: 200px;"><strong> Tailor Each Application</strong><br>Customize your essays for each scholarship</div>
-                <div style="flex: 1; min-width: 200px;"><strong> Network Actively</strong><br>Connect with alumni and current scholars</div>
-                <div style="flex: 1; min-width: 200px;"><strong> Proofread Everything</strong><br>One typo can cost you the opportunity</div>
+        <div class="featured-tips">
+            <h3> Quick Tips for Success</h3>
+            <div class="tips-grid">
+                <div class="tip-item"><strong> Start Early</strong><br>Begin your scholarship search 6-12 months before deadlines</div>
+                <div class="tip-item"><strong> Tailor Each Application</strong><br>Customize your essays for each scholarship</div>
+                <div class="tip-item"><strong> Network Actively</strong><br>Connect with alumni and current scholars</div>
+                <div class="tip-item"><strong> Proofread Everything</strong><br>One typo can cost you the opportunity</div>
             </div>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section"><h4>Scholarship Hub Inc.</h4><p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p><div class="social-links"><a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg></a><a href="https://youtube.com/@scholarshiphub" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a></div></div>
-            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html"> Programs</a></li><li><a href="services.html"> Services</a></li><li><a href="apply.html"> Apply Now</a></li><li><a href="stories.html"> Success Stories</a></li></ul></div>
-            <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog.html"> Blog & Tips</a></li><li><a href="about.html"> About Us</a></li><li><a href="contact.html"> Contact</a></li></ul></div>
-            <div class="footer-section"><h4>Contact Info</h4><p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p> scholarshiphub231@gmail.com</p><p> +231 76 076 6122</p></div>
+            <div class="footer-section">
+                <h4>LinkAfric</h4>
+                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@linkafric" target="_blank" aria-label="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8">
+                            <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="stories.html">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="blog.html">Blog & Tips</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p>linkafric@gmail.com</p>
+                <p><strong>+231 76 076 6122</strong></p>
+            </div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future is not local. Take the first step today.</p></div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LinkAfric. All rights reserved. | Your future is not local. Take the first step today.</p>
+        </div>
     </footer>
+
     <script>
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
-        
+
         if (menuToggle && mobileNav) {
             menuToggle.addEventListener('click', () => {
                 mobileNav.classList.toggle('show');
@@ -257,34 +759,26 @@
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
 
-        // Active page navigation highlighting
+        // Active page highlighting
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const desktopLinks = document.querySelectorAll('.nav-links a');
-            const mobileLinks = document.querySelectorAll('.mobile-nav a');
-            
-            function setActiveLink(links) {
-                links.forEach(link => {
-                    const linkHref = link.getAttribute('href');
-                    link.classList.remove('active');
-                    if (linkHref === currentPage) {
-                        link.classList.add('active');
-                    }
-                    if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                        link.classList.add('active');
-                    }
-                });
+            // Highlight Resources parent in desktop nav
+            const resourcesParent = document.querySelector('.nav-item a[href="#"]');
+            if (resourcesParent && resourcesParent.innerText === 'Resources') {
+                resourcesParent.classList.add('active');
             }
             
-            setActiveLink(desktopLinks);
-            setActiveLink(mobileLinks);
+            // For mobile active class on Resources
+            const mobileResources = document.querySelector('.mobile-nav .mobile-main-link');
+            // Just keep the visual active state for the page
         });
     </script>
 </body>
