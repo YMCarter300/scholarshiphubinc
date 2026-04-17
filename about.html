@@ -152,6 +152,7 @@
             cursor: pointer;
             padding: 0.55rem;
             backdrop-filter: blur(4px);
+            z-index: 1001;
         }
 
         .menu-toggle span {
@@ -629,23 +630,25 @@
         }
     })();
 
-    // MOBILE MENU TOGGLE - COMPLETELY FIXED
+    // MOBILE MENU TOGGLE - COMPLETELY SIMPLIFIED AND FIXED
     (function() {
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         
         if (menuToggle && mobileNav) {
-            // Toggle menu on button click
-            menuToggle.addEventListener('click', function(e) {
+            // Remove any existing listeners by cloning and replacing (clean slate)
+            const newToggle = menuToggle.cloneNode(true);
+            menuToggle.parentNode.replaceChild(newToggle, menuToggle);
+            const finalToggle = document.getElementById('menuToggle');
+            
+            // Add click event to toggle menu
+            finalToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                const isOpen = mobileNav.classList.contains('show');
-                
-                if (isOpen) {
+                if (mobileNav.classList.contains('show')) {
                     mobileNav.classList.remove('show');
-                    // Reset hamburger icon
-                    const spans = menuToggle.querySelectorAll('span');
+                    const spans = finalToggle.querySelectorAll('span');
                     if (spans.length === 3) {
                         spans[0].style.transform = 'none';
                         spans[1].style.opacity = '1';
@@ -653,14 +656,14 @@
                     }
                 } else {
                     mobileNav.classList.add('show');
-                    // Animate hamburger to X
-                    const spans = menuToggle.querySelectorAll('span');
+                    const spans = finalToggle.querySelectorAll('span');
                     if (spans.length === 3) {
                         spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
                         spans[1].style.opacity = '0';
                         spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
                     }
                 }
+                return false;
             });
             
             // Close menu when clicking on any link inside mobile nav
@@ -668,28 +671,13 @@
             allMobileLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
                     mobileNav.classList.remove('show');
-                    const spans = menuToggle.querySelectorAll('span');
+                    const spans = finalToggle.querySelectorAll('span');
                     if (spans.length === 3) {
                         spans[0].style.transform = 'none';
                         spans[1].style.opacity = '1';
                         spans[2].style.transform = 'none';
                     }
                 });
-            });
-            
-            // Close menu when clicking outside on larger screens (optional)
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 768) {
-                    if (!menuToggle.contains(event.target) && !mobileNav.contains(event.target) && mobileNav.classList.contains('show')) {
-                        mobileNav.classList.remove('show');
-                        const spans = menuToggle.querySelectorAll('span');
-                        if (spans.length === 3) {
-                            spans[0].style.transform = 'none';
-                            spans[1].style.opacity = '1';
-                            spans[2].style.transform = 'none';
-                        }
-                    }
-                }
             });
         }
     })();
