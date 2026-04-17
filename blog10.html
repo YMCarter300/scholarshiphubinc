@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | Canada Study Permit: Complete Guide for International Students</title>
+    <title>LinkAfric | Canada Study Permit: Complete Guide for International Students</title>
     <style>
         * {
             margin: 0;
@@ -27,13 +27,16 @@
             --white: #ffffff;
         }
 
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -42,50 +45,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
-            padding-bottom: 4px;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-item > a:hover {
+            color: var(--gold);
+        }
+
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
         }
 
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -94,37 +167,58 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .mobile-nav a.active {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
         }
 
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -150,7 +244,10 @@
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 1rem;
-            color: var(--white);
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .blog-meta {
@@ -209,7 +306,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .blog-content .highlight-box {
+        .highlight-box {
             background: rgba(212, 175, 55, 0.1);
             border-left: 4px solid var(--gold);
             padding: 1.2rem;
@@ -217,7 +314,7 @@
             margin: 1.5rem 0;
         }
 
-        .blog-content .tip-box {
+        .tip-box {
             background: rgba(212, 175, 55, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 1rem;
@@ -225,7 +322,7 @@
             margin: 1rem 0;
         }
 
-        .blog-content .tip-box strong {
+        .tip-box strong {
             color: var(--gold);
         }
 
@@ -360,8 +457,9 @@
         }
 
         .footer {
-            background: var(--black);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
             padding: 2rem 1.5rem 1rem;
             margin-top: 3rem;
         }
@@ -416,7 +514,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -444,45 +542,88 @@
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html" class="active">Resources</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="#" class="active">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="#">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="services.html">Services</a>
-        <a href="apply.html">Apply</a>
-        <a href="stories.html">Success Stories</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Resources</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
         <div class="blog-header">
-            <div class="blog-category">Visa Guide | Canada</div>
+            <div class="blog-category"> Visa Guide | Canada</div>
             <h1>Canada Study Permit: Complete Guide for International Students</h1>
             <div class="blog-meta">
-                <span>📅 April 1, 2026</span>
-                <span>⏱️ 14 min read</span>
-                <span> By Scholarship Hub Team</span>
-                <span>#Canada #StudyPermit #StudentVisa</span>
+                <span> April 1, 2026</span>
+                <span> 14 min read</span>
+                <span> By LinkAfric Team</span>
+                <span> #Canada #StudyPermit #StudentVisa</span>
             </div>
         </div>
 
@@ -492,14 +633,14 @@
             <p>Canada has become one of the most sought-after study destinations in the world, attracting over 800,000 international students annually. With its world-class education system, welcoming immigration policies, and clear pathways to permanent residency, it's no wonder students from across the globe dream of studying in the Great White North. In this comprehensive guide, we'll walk you through everything you need to know about obtaining a Canadian Study Permit, from eligibility requirements to post-graduation opportunities.</p>
 
             <div class="highlight-box">
-                <strong>🍁 Key Fact:</strong> Canada aims to welcome over 900,000 international students by 2027. The country offers the most straightforward pathway to permanent residency of any major study destination, with over 60% of international students transitioning to permanent residents within 5 years of graduation.
+                <strong> Key Fact:</strong> Canada aims to welcome over 900,000 international students by 2027. The country offers the most straightforward pathway to permanent residency of any major study destination, with over 60% of international students transitioning to permanent residents within 5 years of graduation.
             </div>
 
             <h2>What is a Canadian Study Permit?</h2>
             <p>A Canadian Study Permit is not a visa; it's a document issued by Immigration, Refugees and Citizenship Canada (IRCC) that allows foreign nationals to study at designated learning institutions (DLIs) in Canada. Most students also need a visitor visa or Electronic Travel Authorization (eTA) to enter Canada, which is issued alongside the study permit approval.</p>
 
             <div class="tip-box">
-                <strong>📌 Important Distinction:</strong> The study permit is your authorization to study in Canada. It permits you to stay in the country for the duration of your program plus an additional 90 days to prepare to leave or apply for a work permit.
+                <strong> Important Distinction:</strong> The study permit is your authorization to study in Canada. It permits you to stay in the country for the duration of your program plus an additional 90 days to prepare to leave or apply for a work permit.
             </div>
 
             <h2>Eligibility Requirements</h2>
@@ -526,47 +667,6 @@
                 <div class="checklist-item"><span class="check">✓</span> <span>Police clearance certificate (if required)</span></div>
                 <div class="checklist-item"><span class="check">✓</span> <span>Biometrics fee and appointment confirmation</span></div>
             </div>
-
-            <h2>Financial Requirements for 2026</h2>
-            <p>As of 2026, the financial requirements for a Canadian Study Permit have been updated. You must show proof of funds to cover:</p>
-            <ul>
-                <li><strong>Tuition Fees:</strong> Varies by program and institution ($15,000-35,000 CAD/year for undergraduate)</li>
-                <li><strong>Living Expenses:</strong> $20,635 CAD per year (excluding Quebec)</li>
-                <li><strong>Quebec Students:</strong> $15,078 CAD per year for living expenses (plus $1,194 for a spouse)</li>
-                <li><strong>Transportation:</strong> $1,000-2,000 CAD for return travel</li>
-                <li><strong>GIC Requirement:</strong> $20,635 CAD in a Guaranteed Investment Certificate (recommended)</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong> Financial Proof Options:</strong> You can show funds through bank statements, a Guaranteed Investment Certificate (GIC), scholarship letters, proof of a student/education loan, or a combination of these. The Student Direct Stream (SDS) requires a GIC of $20,635 CAD.
-            </div>
-
-            <h2>Application Process: Step-by-Step</h2>
-
-            <h3>Step 1: Choose Your Program and Institution</h3>
-            <p>Ensure your chosen school is a Designated Learning Institution (DLI). Only DLIs can host international students. Find your program and apply directly to the university or college.</p>
-
-            <h3>Step 2: Receive Your Letter of Acceptance</h3>
-            <p>Once accepted, you'll receive a Letter of Acceptance (LOA). This is required for your study permit application.</p>
-
-            <div class="tip-box">
-                <strong>⏰ Timing Tip:</strong> Apply to universities 6-12 months before your intended start date. Canadian universities have strict deadlines, and study permit processing takes additional time.
-            </div>
-
-            <h3>Step 3: Gather Required Documents</h3>
-            <p>Collect all necessary documents, including financial proof, academic records, and language test scores.</p>
-
-            <h3>Step 4: Apply Online or by Paper</h3>
-            <p>Most applicants apply online through the IRCC portal. Create an account, upload documents, pay fees ($150 CAD for study permit), and submit your application.</p>
-
-            <h3>Step 5: Submit Biometrics</h3>
-            <p>Most applicants need to provide biometrics (fingerprints and a photo). You'll receive a Biometric Instruction Letter with instructions on where to go.</p>
-
-            <h3>Step 6: Attend Interview (if required)</h3>
-            <p>Some applicants may be called for an interview with a visa officer.</p>
-
-            <h3>Step 7: Receive Decision</h3>
-            <p>Processing times vary by country (typically 8-20 weeks). If approved, you'll receive your Port of Entry (POE) Letter of Introduction.</p>
 
             <div class="timeline">
                 <h3 style="color: var(--gold); margin-bottom: 1rem;"> Recommended Application Timeline</h3>
@@ -596,16 +696,6 @@
                 </div>
             </div>
 
-            <h2>Student Direct Stream (SDS)</h2>
-            <p>The Student Direct Stream offers faster processing (usually 20 calendar days) for students from certain countries, including:</p>
-            <ul>
-                <li>Antigua and Barbuda, Brazil, China, Colombia, Costa Rica, India, Morocco, Pakistan, Peru, Philippines, Senegal, Saint Vincent and the Grenadines, Trinidad and Tobago, Vietnam</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong> SDS Requirements:</strong> If you're applying through SDS, you must provide a Guaranteed Investment Certificate (GIC) of $20,635 CAD, pay first year's tuition upfront, and meet language requirements (IELTS 6.0 overall, no band below 6.0).
-            </div>
-
             <h2>Working While Studying</h2>
             <p>As a study permit holder, you have significant work rights:</p>
             <ul>
@@ -615,102 +705,19 @@
                 <li><strong>Post-Graduation Work Permit (PGWP):</strong> After graduation, you can work in Canada for up to 3 years depending on program length</li>
             </ul>
 
-            <div class="tip-box">
-                <strong> Strategic Insight:</strong> Many international students use their part-time work rights to gain Canadian work experience while studying. This experience significantly improves your profile for permanent residency applications after graduation.
-            </div>
-
-            <h2>Post-Graduation Work Permit (PGWP)</h2>
-            <p>The Post-Graduation Work Permit is one of Canada's biggest advantages. Here's what you need to know:</p>
-            <ul>
-                <li><strong>Eligibility:</strong> Graduated from a DLI program of at least 8 months</li>
-                <li><strong>Duration:</strong> Up to 3 years (equal to program length; 8-month program = 8-month PGWP, 2-year+ program = 3-year PGWP)</li>
-                <li><strong>Application Window:</strong> Apply within 180 days of receiving final grades and confirmation of graduation</li>
-                <li><strong>Work Rights:</strong> Can work full-time, anywhere, for any employer</li>
-                <li><strong>Pathway to PR:</strong> PGWP work experience makes you eligible for Canadian Experience Class (CEC) and other permanent residency programs</li>
-            </ul>
-
             <div class="highlight-box">
-                <strong> PGWP Success Story:</strong> "I came to Canada for a 2-year Master's program at the University of Toronto. After graduation, I got a 3-year PGWP, worked as a data analyst for 1 year, and then applied for permanent residency through Express Entry. Within 3 years of arriving, I became a Canadian permanent resident." - <em>Kofi A., PR since 2024</em>
+                <strong>🍁 PGWP Success Story:</strong> "I came to Canada for a 2-year Master's program at the University of Toronto. After graduation, I got a 3-year PGWP, worked as a data analyst for 1 year, and then applied for permanent residency through Express Entry. Within 3 years of arriving, I became a Canadian permanent resident." - <em>Kofi A., PR since 2024</em>
             </div>
 
-            <h2>Cost of Living in Major Canadian Cities</h2>
-            <p>Here's what you can expect to pay monthly in different Canadian cities (in CAD):</p>
-            <ul>
-                <li><strong>Toronto:</strong> Rent $1,200-2,200, Food $400-600, Transport $156, Total $2,000-3,200</li>
-                <li><strong>Vancouver:</strong> Rent $1,200-2,200, Food $400-600, Transport $150, Total $2,000-3,200</li>
-                <li><strong>Montreal:</strong> Rent $700-1,200, Food $350-500, Transport $90, Total $1,300-2,000</li>
-                <li><strong>Calgary:</strong> Rent $800-1,400, Food $350-500, Transport $112, Total $1,400-2,100</li>
-                <li><strong>Ottawa:</strong> Rent $800-1,400, Food $350-500, Transport $122, Total $1,400-2,100</li>
-                <li><strong>Halifax:</strong> Rent $700-1,200, Food $350-500, Transport $90, Total $1,300-1,900</li>
-            </ul>
-
-            <div class="tip-box">
-                <strong> Housing Tip:</strong> Apply for on-campus housing as early as possible. Many universities have waiting lists. Off-campus housing in cities like Toronto and Vancouver can be expensive; consider sharing an apartment with roommates to save $400-800/month.
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="apply.html" class="btn" style="background: var(--gold); color: black;">🍁 Start Your Canadian Application</a>
             </div>
-
-            <h2>Common Reasons for Study Permit Refusals</h2>
-            <p>Understanding why applications are refused can help you avoid common pitfalls:</p>
-            <ul>
-                <li><strong>Insufficient Financial Proof:</strong> Not demonstrating enough funds or unclear source of funds</li>
-                <li><strong>Weak Statement of Purpose:</strong> Failing to explain why Canada, why this program, and how it fits your career goals</li>
-                <li><strong>Immigration Intent:</strong> Officer not convinced you'll leave Canada after studies (though dual intent is now explicitly allowed)</li>
-                <li><strong>Incomplete Application:</strong> Missing documents or inconsistent information</li>
-                <li><strong>Academic Gap:</strong> Unexplained gaps in education history</li>
-                <li><strong>Poor Academic Record:</strong> Low grades suggesting inability to succeed in chosen program</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong> Statement of Purpose Tips:</strong> Your SOP is crucial. Explain why you chose Canada specifically, connect your program to your career goals, mention specific professors or courses, and be honest about your background. A well-written SOP can overcome other weaknesses.
-            </div>
-
-            <h2>Top Canadian Universities for International Students</h2>
-            <ul>
-                <li><strong>University of Toronto:</strong> Canada's top-ranked university, excellent for medicine, engineering, business</li>
-                <li><strong>University of British Columbia:</strong> Strong in environmental sciences, business, and research</li>
-                <li><strong>McGill University:</strong> Montreal-based, affordable living, strong in medicine and law</li>
-                <li><strong>University of Alberta:</strong> Excellent engineering programs, lower cost of living</li>
-                <li><strong>University of Waterloo:</strong> World-renowned for co-op programs and computer science</li>
-                <li><strong>University of Calgary:</strong> Strong in engineering, energy, and business</li>
-                <li><strong>Dalhousie University:</strong> Halifax-based, affordable tuition, excellent law and medicine</li>
-                <li><strong>Simon Fraser University:</strong> Vancouver area, strong in business and communication</li>
-                <li><strong>University of Ottawa:</strong> Bilingual institution, strong in law and political science</li>
-                <li><strong>York University:</strong> Toronto-based, excellent business and law programs</li>
-            </ul>
-
-            <div class="tip-box">
-                <strong> Scholarship Opportunity:</strong> Many Canadian universities offer entrance scholarships for international students. The University of British Columbia's International Scholars Program and University of Toronto's Lester B. Pearson Scholarship are fully funded opportunities.
-            </div>
-
-            <h2>Pathways to Canadian Permanent Residency</h2>
-            <p>Canada offers multiple pathways for international students to become permanent residents:</p>
-            <ul>
-                <li><strong>Canadian Experience Class (CEC):</strong> For those with at least 1 year of skilled work experience in Canada</li>
-                <li><strong>Provincial Nominee Program (PNP):</strong> Each province has streams for international graduates</li>
-                <li><strong>Express Entry:</strong> Points-based system that favors Canadian education and work experience</li>
-                <li><strong>Quebec Experience Program (PEQ):</strong> For graduates of Quebec institutions with French proficiency</li>
-                <li><strong>Atlantic Immigration Program (AIP):</strong> For graduates in Atlantic Canada</li>
-                <li><strong>Rural and Northern Immigration Pilot (RNIP):</strong> For students in participating communities</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong> Key Advantage:</strong> Canadian education and work experience significantly boost your Express Entry CRS score. A Canadian degree alone adds 30 points, and Canadian work experience adds additional points. Most international students become eligible for permanent residency within 2-3 years of arriving.
-            </div>
-
-            <h2>Final Thoughts: Is Canada Right for You?</h2>
-            <p>Canada offers an unparalleled combination of quality education, work opportunities, and clear immigration pathways. However, it's important to consider:</p>
-            <ul>
-                <li><strong>Weather:</strong> Canadian winters can be harsh, especially in prairie provinces</li>
-                <li><strong>Cost of Living:</strong> Toronto and Vancouver are among North America's most expensive cities</li>
-                <li><strong>Tuition Costs:</strong> Higher than many European countries (though lower than the US)</li>
-                <li><strong>Competition:</strong> Popular programs are highly competitive</li>
-            </ul>
-            <p>If you're willing to embrace cold winters and plan your finances carefully, Canada could be the perfect destination to build your future. With clear pathways to permanent residency and a welcoming multicultural society, it's no wonder Canada continues to be a top choice for international students worldwide.</p>
         </div>
 
         <div class="author-section">
-            <div class="author-avatar">SH</div>
+            <div class="author-avatar">LA</div>
             <div class="author-info">
-                <h4>Scholarship Hub Team</h4>
+                <h4>LinkAfric Team</h4>
                 <p>Canadian study permit specialists. Our team has successfully guided over 60+ students through the Canadian study permit process, with a 90% approval rate. We stay current with IRCC policy updates to provide accurate, timely advice.</p>
                 <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Need help with your Canadian study permit? Contact us →</a>
             </div>
@@ -741,16 +748,12 @@
                 </div>
             </div>
         </div>
-
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="apply.html" class="btn" style="background: var(--gold); color: black;">🍁 Start Your Canadian Application</a>
-        </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Scholarship Hub Inc.</h4>
+                <h4>LinkAfric</h4>
                 <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
             </div>
             <div class="footer-section">
@@ -759,18 +762,18 @@
                     <li><a href="programs.html">Programs</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="apply.html">Apply Now</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="blog.html">Resources</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p>scholarshiphub231@gmail.com</p>
-                <p> +231 76 076 6122</p>
+                <p>linkafric@gmail.com</p>
+                <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your future starts today.</p>
+            <p>&copy; 2023 LinkAfric. All rights reserved. | Your future starts today.</p>
         </div>
     </footer>
 
@@ -798,34 +801,21 @@
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
 
-        // Active page navigation highlighting
+        // Active page highlighting for Resources parent
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const desktopLinks = document.querySelectorAll('.nav-links a');
-            const mobileLinks = document.querySelectorAll('.mobile-nav a');
-            
-            function setActiveLink(links) {
-                links.forEach(link => {
-                    const linkHref = link.getAttribute('href');
-                    link.classList.remove('active');
-                    if (linkHref === currentPage) {
-                        link.classList.add('active');
-                    }
-                    if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                        link.classList.add('active');
-                    }
-                });
+            const resourcesParent = document.querySelector('.nav-item a[href="#"]');
+            if (resourcesParent && resourcesParent.innerText === 'Resources') {
+                resourcesParent.classList.add('active');
             }
-            
-            setActiveLink(desktopLinks);
-            setActiveLink(mobileLinks);
         });
     </script>
 </body>
