@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Scholarship Hub Inc. | How to Write a Winning Personal Statement</title>
+    <title>LinkAfric | How to Write a Winning Personal Statement</title>
     <style>
         * {
             margin: 0;
@@ -28,13 +28,16 @@
             --blue-accent: #3b82f6;
         }
 
+        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
         .navbar {
-            background: var(--black);
-            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -43,48 +46,120 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
         .logo span {
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
+        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links a {
-            color: #ddd;
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: color 0.25s ease;
+            white-space: nowrap;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-item > a:hover {
             color: var(--gold);
         }
 
+        /* Dropdown Menu - Glossy */
+        .dropdown-content {
+            position: absolute;
+            top: 2.6rem;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            min-width: 190px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+            padding: 0.6rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.65rem 1.3rem;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border-left-color: var(--gold);
+            padding-left: 1.6rem;
+        }
+
+        /* Active page indicator */
+        .nav-item > a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.3rem;
+        }
+
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
+            padding: 0.55rem;
+            backdrop-filter: blur(4px);
         }
 
         .menu-toggle span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 2px;
             background-color: var(--gold);
             margin: 5px 0;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .mobile-nav {
@@ -93,32 +168,58 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--black);
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--gold);
-            padding: 1rem;
+            padding: 1.2rem;
             z-index: 999;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .mobile-nav.show {
             display: flex;
         }
 
-        .mobile-nav a {
-            color: #ddd;
+        .mobile-main-link {
+            color: #eee;
             text-decoration: none;
             padding: 0.8rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-            font-weight: 500;
+            border-radius: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            margin-top: 0.2rem;
         }
 
-        .mobile-nav a:hover {
-            background: var(--gold);
-            color: var(--black);
+        .mobile-dropdown-group {
+            margin-left: 1rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
+        .mobile-dropdown-group a {
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border-radius: 0.6rem;
+        }
+
+        .mobile-dropdown-group a:hover,
+        .mobile-nav .mobile-main-link.active-mobile {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Main Content */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -144,7 +245,10 @@
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 1rem;
-            color: var(--white);
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .blog-meta {
@@ -278,6 +382,14 @@
             font-size: 1.2rem;
         }
 
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
         .btn {
             display: inline-block;
             background-color: var(--gold);
@@ -368,29 +480,10 @@
             font-size: 0.85rem;
         }
 
-        .newsletter {
-            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            margin: 2rem 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .newsletter input {
-            padding: 0.8rem 1rem;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 0.5rem;
-            color: white;
-            width: 280px;
-            margin-right: 0.5rem;
-            margin-top: 1rem;
-        }
-
         .footer {
-            background: var(--black);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
             padding: 2rem 1.5rem 1rem;
             margin-top: 3rem;
         }
@@ -445,7 +538,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 0.8rem 1.2rem;
+                padding: 0.7rem 1.2rem;
             }
             .nav-links {
                 display: none;
@@ -465,64 +558,83 @@
             .blog-content h2 {
                 font-size: 1.4rem;
             }
-            .newsletter input {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
         }
-
-        .nav-links a.active {
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 4px;
-}
-
-.mobile-nav a.active {
-    background: var(--gold);
-    color: var(--black);
-}
-
-/* Add this to your existing .nav-links a styles for smooth transition */
-.nav-links a {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-    padding-bottom: 4px;
-}
     </style>
 </head>
 <body>
+    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
     <div class="navbar">
-        <div class="logo">Scholarship<span>Hub</span> <span style="color:#D4AF37;">Inc.</span></div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="services.html">Services</a>
-            <a href="apply.html">Apply</a>
-            <a href="stories.html">Success</a>
-            <a href="about.html">About</a>
-            <a href="blog.html" class="active">Resources</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <div class="logo">Link<span>Afric</span></div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="programs.html">Programs</a></li>
+            <!-- Work (dropdown: Jobs, Immigration) -->
+            <li class="nav-item">
+                <a href="#">Work</a>
+                <div class="dropdown-content">
+                    <a href="jobs.html">Jobs</a>
+                    <a href="routes.html">Immigration</a>
+                </div>
+            </li>
+            <!-- Services (dropdown: Apply) -->
+            <li class="nav-item">
+                <a href="services.html">Services</a>
+                <div class="dropdown-content">
+                    <a href="apply.html">Apply</a>
+                </div>
+            </li>
+            <!-- Resources (dropdown: Success) -->
+            <li class="nav-item">
+                <a href="blog.html" class="active">Resources</a>
+                <div class="dropdown-content">
+                    <a href="stories.html">Success</a>
+                </div>
+            </li>
+            <!-- Advisory -->
+            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+            <!-- Contact (dropdown: About) -->
+            <li class="nav-item">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                </div>
+            </li>
+        </ul>
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </div>
 
+    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="index.html"> Home</a>
-        <a href="programs.html"> Programs</a>
-        <a href="services.html"> Services</a>
-        <a href="apply.html"> Apply</a>
-        <a href="stories.html"> Success Stories</a>
-        <a href="about.html"> About</a>
-        <a href="blog.html"> Resources</a>
-        <a href="contact.html"> Contact</a>
+        <a href="index.html" class="mobile-main-link"> Home</a>
+        <a href="programs.html" class="mobile-main-link"> Programs</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Work</div>
+        <div class="mobile-dropdown-group">
+            <a href="jobs.html"> Jobs</a>
+            <a href="routes.html"> Immigration</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Services</div>
+        <div class="mobile-dropdown-group">
+            <a href="apply.html"> Apply</a>
+        </div>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
+        <div class="mobile-dropdown-group">
+            <a href="stories.html"> Success</a>
+        </div>
+        
+        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
+        
+        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
+        <div class="mobile-dropdown-group">
+            <a href="about.html"> About</a>
+        </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
         <div class="blog-header">
             <div class="blog-category"> Writing Guide</div>
@@ -530,7 +642,7 @@
             <div class="blog-meta">
                 <span> March 27, 2026</span>
                 <span> 12 min read</span>
-                <span> By Scholarship Hub Team</span>
+                <span> By LinkAfric Team</span>
                 <span> #PersonalStatement #EssayTips #ScholarshipSuccess</span>
             </div>
         </div>
@@ -550,116 +662,25 @@
                 <li>What drives them? What are they passionate about?</li>
                 <li>Will they represent our organization well and make an impact?</li>
             </ul>
-            <p>A powerful personal statement can bridge gaps in your application, explain challenges you've overcome, and demonstrate the unique perspective you'll bring to the program.</p>
 
             <h2> The Winning Formula: H.O.O.K + S.T.A.R</h2>
             <div class="formula-box">
                 <h3 style="color: var(--gold); margin-top: 0;">The 4-Part Structure That Works</h3>
-                
-                <div class="formula-step">
-                    <div class="step-number">1</div>
-                    <div><strong>H - Hook:</strong> Start with a compelling opening that grabs attention immediately.</div>
-                </div>
-                <div class="formula-step">
-                    <div class="step-number">2</div>
-                    <div><strong>O - Origin Story:</strong> Share your background and what shaped your aspirations.</div>
-                </div>
-                <div class="formula-step">
-                    <div class="step-number">3</div>
-                    <div><strong>O - Obstacles & Growth:</strong> Show resilience and how challenges made you stronger.</div>
-                </div>
-                <div class="formula-step">
-                    <div class="step-number">4</div>
-                    <div><strong>K - Knowledge & Vision:</strong> Connect your goals to the scholarship and your future impact.</div>
-                </div>
+                <div class="formula-step"><div class="step-number">1</div><div><strong>H - Hook:</strong> Start with a compelling opening that grabs attention immediately.</div></div>
+                <div class="formula-step"><div class="step-number">2</div><div><strong>O - Origin Story:</strong> Share your background and what shaped your aspirations.</div></div>
+                <div class="formula-step"><div class="step-number">3</div><div><strong>O - Obstacles & Growth:</strong> Show resilience and how challenges made you stronger.</div></div>
+                <div class="formula-step"><div class="step-number">4</div><div><strong>K - Knowledge & Vision:</strong> Connect your goals to the scholarship and your future impact.</div></div>
             </div>
 
-            <h2> The S.T.A.R Method for Telling Your Story</h2>
-            <p>When describing your experiences, use the S.T.A.R framework to make your stories impactful and memorable:</p>
-            <ul>
-                <li><strong>S - Situation:</strong> Set the scene. What was happening?</li>
-                <li><strong>T - Task:</strong> What was your responsibility or goal?</li>
-                <li><strong>A - Action:</strong> What specific actions did you take?</li>
-                <li><strong>R - Result:</strong> What was the outcome? What did you learn?</li>
-            </ul>
-            
             <div class="example-box">
-                <strong>📌 Example (Weak):</strong> "I volunteered at a local school and helped students."<br><br>
-                <strong>✨ Example (Strong using S.T.A.R):</strong> "When I noticed that students in my community were falling behind in math (Situation), I organized a free after-school tutoring program for 30 students (Task). I developed lesson plans, recruited volunteers, and held sessions three times a week (Action). Within six months, 85% of participants improved their grades by at least one letter, and three students qualified for the national math competition, a first for our community (Result)."
+                <strong> Example Hook:</strong> "The day my mother was diagnosed with malaria, our local clinic had no diagnostic equipment. I watched her suffer for hours while doctors guessed at her condition. That afternoon, I decided to become the biomedical engineer who would ensure no family in my community experiences that helplessness again."
             </div>
 
-            <h2> Step-by-Step Guide to Writing</h2>
-            
-            <h3>Step 1: Brainstorm Your Unique Story</h3>
-            <p>Before writing, spend time reflecting on these questions:</p>
-            <ul>
-                <li>What moment or experience sparked your interest in your field?</li>
-                <li>What challenges have you overcome that shaped who you are?</li>
-                <li>What accomplishments are you most proud of?</li>
-                <li>What unique perspective do you bring?</li>
-                <li>How will your education help you make an impact?</li>
-            </ul>
-            <p>Write down everything, don't edit yet. You'll refine later.</p>
-
-            <h3>Step 2: Craft Your Opening Hook</h3>
-            <p>The first paragraph is the most important. Avoid clichés like "I've always wanted to help people" or "Since I was a child." Instead, open with:</p>
-            <ul>
-                <li>A specific moment that changed your perspective</li>
-                <li>A compelling question you're driven to answer</li>
-                <li>A vivid scene that illustrates your passion</li>
-                <li>A surprising fact or insight that connects to your story</li>
-            </ul>
-            <div class="example-box">
-                <strong>📌 Example Hook:</strong> "The day my mother was diagnosed with malaria, our local clinic had no diagnostic equipment. I watched her suffer for hours while doctors guessed at her condition. That afternoon, I decided to become the biomedical engineer who would ensure no family in my community experiences that helplessness again."
-            </div>
-
-            <h3>Step 3: Show, Don't Tell</h3>
-            <p>This is the golden rule of personal statements. Instead of stating traits, demonstrate them through stories.</p>
-            <div class="example-box">
-                <strong>❌ Telling:</strong> "I am a determined and resilient person."<br><br>
-                <strong>✅ Showing:</strong> "After my scholarship application was rejected twice, I sought feedback from five mentors, rewrote my essays from scratch, and applied to 12 more programs. On my third attempt, I was accepted with full funding."
-            </div>
-
-            <h3>Step 4: Connect Your Past to Your Future</h3>
-            <p>Explain how your experiences have prepared you for this program and how the scholarship will help you achieve your goals. Be specific about the program and scholarship; this shows you've done your research.</p>
-            
             <div class="do-box">
-                <strong>✅ DO:</strong> Mention specific courses, professors, or resources at the institution that excite you. Connect them to your career aspirations.
+                <strong> DO:</strong> Be authentic, show vulnerability, proofread multiple times, use specific examples, and tailor each application.
             </div>
             <div class="dont-box">
-                <strong>❌ DON'T:</strong> Use a generic essay that could apply to any scholarship. Tailor each application.
-            </div>
-
-            <h3>Step 5: End with Impact</h3>
-            <p>Your conclusion should leave a lasting impression. Tie back to your opening, reiterate your purpose, and look forward to the impact you'll make.</p>
-            <div class="example-box">
-                <strong>📌 Example Conclusion:</strong> "With a degree from your program, I will return to my community not just with knowledge, but with the tools to build the diagnostic equipment that could have saved my mother. The scholarship isn't just an investment in my education, it's an investment in the 5,000 families in my district who deserve access to quality healthcare."
-            </div>
-
-            <h2> Do's and Don'ts of Personal Statements</h2>
-            
-            <div class="do-box">
-                <strong> DO:</strong>
-                <ul style="margin-top: 0.5rem;">
-                    <li>Be authentic and honest, your voice matters</li>
-                    <li>Show vulnerability; share real challenges and growth</li>
-                    <li>Proofread multiple times and have others review it</li>
-                    <li>Stay within the word/character limit</li>
-                    <li>Address any gaps or weaknesses in your application honestly</li>
-                    <li>Use specific examples and details that only you could write</li>
-                </ul>
-            </div>
-            
-            <div class="dont-box">
-                <strong> DON'T:</strong>
-                <ul style="margin-top: 0.5rem;">
-                    <li>Use clichés or overused quotes</li>
-                    <li>Simply restate your resume or transcript</li>
-                    <li>Exaggerate or fabricate experiences</li>
-                    <li>Complain about obstacles without showing growth</li>
-                    <li>Write a sob story without demonstrating resilience</li>
-                    <li>Submit without proofreading for typos and grammar errors</li>
-                </ul>
+                <strong> DON'T:</strong> Use clichés, simply restate your resume, exaggerate experiences, or submit without proofreading.
             </div>
 
             <h2> Personal Statement Checklist</h2>
@@ -677,42 +698,15 @@
                 <div class="checklist-item"><span class="check">✓</span> <span>Is authentic and sounds like you</span></div>
             </div>
 
-            <h2> Sample Personal Statement Outline</h2>
-            <div class="example-box">
-                <strong>📌 Opening Hook (1 paragraph):</strong> A vivid scene that sparked your passion.<br><br>
-                <strong>📌 Background & Journey (2-3 paragraphs):</strong> Your experiences, challenges, and how they shaped you. Use S.T.A.R for key stories.<br><br>
-                <strong>📌 Academic & Professional Development (1-2 paragraphs):</strong> Relevant achievements, skills gained, and why you're ready for this next step.<br><br>
-                <strong>📌 Why This Program & Scholarship (1 paragraph):</strong> Specific reasons you chose this institution/program. How does it align with your goals?<br><br>
-                <strong>📌 Future Impact & Conclusion (1 paragraph):</strong> What you'll do with this education and how you'll give back.
-            </div>
-
-            <div class="highlight-box" style="background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--gold); padding: 1.2rem; margin: 1.5rem 0;">
+            <div class="highlight-box">
                 <strong> Pro Tip from Scholarship Committee Members:</strong> "We can tell within the first paragraph if an essay is going to be memorable. The strongest personal statements don't just tell us what the applicant has done; they make us feel invested in their journey. We want to root for you. Give us a reason to."
             </div>
-
-            <h2> Common Mistakes That Ruin Personal Statements</h2>
-            <ul>
-                <li><strong>Being too generic:</strong> "I want to study because I'm passionate." Show it, don't say it.</li>
-                <li><strong>Using big words you wouldn't normally use:</strong> Authenticity beats pretentious vocabulary.</li>
-                <li><strong>Focusing on childhood stories without connecting to now:</strong> Childhood experiences matter, but show how they led to your current path.</li>
-                <li><strong>Ignoring the prompt:</strong> Answer the specific questions asked. Don't recycle essays without adapting.</li>
-                <li><strong>Forgetting to mention the scholarship/program:</strong> Show you've done research and genuinely want this opportunity.</li>
-            </ul>
-
-            <h2> Final Tips Before You Submit</h2>
-            <ol>
-                <li><strong>Read it aloud:</strong> This helps catch awkward phrasing and ensures it sounds natural.</li>
-                <li><strong>Get feedback from diverse readers:</strong> Ask a professor, a peer, and someone outside your field.</li>
-                <li><strong>Let it sit for 24 hours:</strong> Fresh eyes catch mistakes you've missed.</li>
-                <li><strong>Check formatting:</strong> Ensure it's properly formatted, font is readable, and there are no typos.</li>
-                <li><strong>Submit early:</strong> Never wait until the last minute. Technology fails, and last-minute stress leads to mistakes.</li>
-            </ol>
         </div>
 
         <div class="author-section">
-            <div class="author-avatar">SH</div>
+            <div class="author-avatar">LA</div>
             <div class="author-info">
-                <h4>Scholarship Hub Writing Team</h4>
+                <h4>LinkAfric Writing Team</h4>
                 <p>Our team has reviewed over 2,000 personal statements and helped students win scholarships to Harvard, Oxford, MIT, and more. We offer personalized essay review services to help you craft a winning application.</p>
                 <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Get your personal statement reviewed →</a>
             </div>
@@ -740,38 +734,39 @@
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;"> Need Help? Get Expert Essay Review</a>
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black; font-size: 1rem;">🚀 Need Help? Get Expert Essay Review</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Scholarship Hub Inc.</h4>
+                <h4>LinkAfric</h4>
                 <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="programs.html"> Programs</a></li>
-                    <li><a href="services.html"> Services</a></li>
-                    <li><a href="apply.html"> Apply Now</a></li>
-                    <li><a href="blog.html"> Blog</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="blog.html">Resources</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p> Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p> scholarshiphub@gmail.com</p>
-                <p> +231 76 076 6122</p>
+                <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+                <p>linkafric@gmail.com</p>
+                <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Scholarship Hub Inc. All rights reserved. | Your story matters. Tell it well.</p>
+            <p>&copy; 2025 LinkAfric. All rights reserved. | Your story matters. Tell it well.</p>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
 
@@ -794,59 +789,22 @@
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('show');
                     const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    if (spans.length) {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
                 });
             });
         }
 
-        const newsletterForm = document.getElementById('newsletter-form');
-        const successDiv = document.getElementById('newsletter-success');
-
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                successDiv.style.display = 'block';
-                newsletterForm.reset();
-                setTimeout(() => {
-                    successDiv.style.display = 'none';
-                }, 5000);
-            });
-        }
-
-        // Active page navigation highlighting
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the current page filename (e.g., "programs.html" or "index.html")
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Select all navigation links in both desktop and mobile menus
-    const desktopLinks = document.querySelectorAll('.nav-links a');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    
-    // Function to highlight active link
-    function setActiveLink(links) {
-        links.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            // Remove any existing active class
-            link.classList.remove('active');
-            
-            // Check if this link matches the current page
-            if (linkHref === currentPage) {
-                link.classList.add('active');
-            }
-            
-            // Special case for index.html when URL is just the domain or folder
-            if ((currentPage === 'index.html' || currentPage === '') && linkHref === 'index.html') {
-                link.classList.add('active');
+        // Active page highlighting for Resources parent
+        document.addEventListener('DOMContentLoaded', function() {
+            const resourcesParent = document.querySelector('.nav-item a[href="#"]');
+            if (resourcesParent && resourcesParent.innerText === 'Resources') {
+                resourcesParent.classList.add('active');
             }
         });
-    }
-    
-    // Apply highlighting to both navigation menus
-    setActiveLink(desktopLinks);
-    setActiveLink(mobileLinks);
-});
     </script>
 </body>
 </html>
