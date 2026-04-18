@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric | About - Global Gateway</title>
+    <title>LinkAfric Inc. | About – Global Gateway</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +28,7 @@
             --glass-border: rgba(212, 175, 55, 0.3);
         }
 
-        /* ===== GLOSSY / GLASS MODERN NAVBAR ===== */
+        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
         .navbar {
             background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(18px);
@@ -46,7 +46,25 @@
             gap: 1rem;
         }
 
-        .logo {
+        /* Logo image + fallback */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .logo-fallback {
             font-size: 1.6rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
@@ -54,14 +72,10 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
-            text-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
+            display: none;
         }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .logo-img.error + .logo-fallback {
+            display: inline-block;
         }
 
         /* DESKTOP MENU WITH DROPDOWNS */
@@ -273,7 +287,7 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        /* footer glossy */
+        /* footer glossy with centered logo */
         .footer {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
@@ -363,10 +377,31 @@
             stroke: #000;
         }
 
+        .footer-logo-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0 1.2rem 0;
+        }
+        .footer-logo-link {
+            display: inline-flex;
+            transition: transform 0.2s ease;
+        }
+        .footer-logo-link:hover {
+            transform: scale(1.02);
+        }
+        .footer-logo-img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.75rem;
             color: #777;
@@ -400,13 +435,19 @@
             .social-links {
                 justify-content: center;
             }
+            .footer-logo-img {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="logo">Link<span>Afric</span> Inc.</div>
+    <a href="index.html" class="logo-link" id="headerLogoLink">
+        <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
+        <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
+    </a>
     <ul class="nav-links">
         <li class="nav-item"><a href="index.html">Home</a></li>
         <li class="nav-item"><a href="programs.html">Programs</a></li>
@@ -471,8 +512,8 @@
 </div>
 
 <div class="container">
-    <h1>About LinkAfric</h1>
-    <p>LinkAfric was founded with a clear mission: to bridge the gap between ambition and opportunity. Headquartered in Monrovia, Liberia, we understand the dreams and challenges of African students and professionals.</p>
+    <h1>About LinkAfric Inc.</h1>
+    <p>LinkAfric was founded with a clear mission: to bridge the gap between ambition and opportunity. Headquartered in Monrovia, Liberia, we understand the dreams and challenges of African students and professionals. <strong>Founded in 2023, we are proud to be a Liberian-rooted organization serving talent across the continent.</strong></p>
 
     <h2>Our Mission</h2>
     <p>We believe talent is everywhere, but access is not. Our goal is to connect driven individuals with global opportunities that transform lives, starting right here in Liberia and across the continent.</p>
@@ -509,8 +550,8 @@
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-section">
-            <h4>LinkAfric</h4>
-            <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+            <h4>LinkAfric Inc.</h4>
+            <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
             <div class="social-links">
                 <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
@@ -555,17 +596,23 @@
             <p>+231 76 076 6122</p>
         </div>
     </div>
+
+    <!-- CENTERED LOGO WITH HOME LINK -->
+    <div class="footer-logo-center">
+        <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
+            <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
+        </a>
+    </div>
+
     <div class="footer-bottom">
-        <p>&copy; 2023 LinkAfric All rights reserved. | Your future starts here.</p>
+        <p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future starts here.</p>
     </div>
 </footer>
 
 <script>
-    // Wait for DOM to be fully loaded
     document.addEventListener('DOMContentLoaded', function() {
-        
         // === ACTIVE PAGE HIGHLIGHTING ===
-        const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
+        const currentLocation = window.location.pathname.split('/').pop() || 'about.html';
         
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
@@ -585,14 +632,7 @@
             }
         });
         
-        const mobileLinks = document.querySelectorAll('#mobileNav a');
-        mobileLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if(href && (href === currentLocation || (currentLocation === 'index.html' && href === 'index.html'))) {
-                link.classList.add('active-mobile');
-            }
-        });
-        
+        // Special case: about page under Contact dropdown
         if(currentLocation === 'about.html') {
             const contactParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
                 const parentLink = item.querySelector('> a');
@@ -603,65 +643,36 @@
                 if(contactA) contactA.classList.add('active');
             }
         }
-        if(currentLocation === 'jobs.html') {
-            const workParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
-                const link = item.querySelector('> a');
-                return link && link.innerText.trim() === 'Work';
-            });
-            if(workParent) workParent.querySelector('> a')?.classList.add('active');
-        }
-        if(currentLocation === 'routes.html') {
-            const workParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
-                const link = item.querySelector('> a');
-                return link && link.innerText.trim() === 'Work';
-            });
-            if(workParent) workParent.querySelector('> a')?.classList.add('active');
-        }
-        if(currentLocation === 'apply.html') {
-            const serviceParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
-                const link = item.querySelector('> a');
-                return link && link.innerText.trim() === 'Services';
-            });
-            if(serviceParent) serviceParent.querySelector('> a')?.classList.add('active');
-        }
-        if(currentLocation === 'stories.html') {
-            const resParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
-                const link = item.querySelector('> a');
-                return link && link.innerText.trim() === 'Resources';
-            });
-            if(resParent) resParent.querySelector('> a')?.classList.add('active');
-        }
-
-        // === MOBILE MENU TOGGLE - FIXED ===
+        
+        // Mobile active class
+        const mobileLinks = document.querySelectorAll('#mobileNav a');
+        mobileLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if(href && (href === currentLocation || (currentLocation === 'index.html' && href === 'index.html'))) {
+                link.classList.add('active-mobile');
+            }
+        });
+        
+        // === MOBILE MENU TOGGLE ===
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         
         if (menuToggle && mobileNav) {
-            // Remove any existing event listeners by cloning
             const newToggle = menuToggle.cloneNode(true);
             menuToggle.parentNode.replaceChild(newToggle, menuToggle);
-            
-            // Get fresh reference after replacement
             const finalToggle = document.getElementById('menuToggle');
             
-            // Add click event listener
             finalToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
-                console.log('Menu toggle clicked'); // Debug log
-                
-                // Toggle mobile nav visibility
                 if (mobileNav.classList.contains('show')) {
                     mobileNav.classList.remove('show');
-                    // Reset hamburger icon
                     const spans = finalToggle.querySelectorAll('span');
                     spans[0].style.transform = 'none';
                     spans[1].style.opacity = '1';
                     spans[2].style.transform = 'none';
                 } else {
                     mobileNav.classList.add('show');
-                    // Animate hamburger to X
                     const spans = finalToggle.querySelectorAll('span');
                     spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
                     spans[1].style.opacity = '0';
@@ -669,7 +680,6 @@
                 }
             });
             
-            // Close menu when any link in mobile nav is clicked
             const mobileNavLinks = mobileNav.querySelectorAll('a');
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -681,11 +691,9 @@
                 });
             });
             
-            // Close menu when clicking outside
             document.addEventListener('click', function(event) {
                 const isClickInsideNav = mobileNav.contains(event.target);
                 const isClickOnToggle = finalToggle.contains(event.target);
-                
                 if (!isClickInsideNav && !isClickOnToggle && mobileNav.classList.contains('show')) {
                     mobileNav.classList.remove('show');
                     const spans = finalToggle.querySelectorAll('span');
@@ -696,7 +704,6 @@
             });
         }
         
-        // Close mobile nav on window resize if open
         window.addEventListener('resize', function() {
             const mobileNav = document.getElementById('mobileNav');
             const menuToggle = document.getElementById('menuToggle');
@@ -710,6 +717,21 @@
                 }
             }
         });
+        
+        // Logo fallback handling
+        const headerImg = document.getElementById('headerLogoImg');
+        if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
+            headerImg.classList.add('error');
+            if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
+        }
+        const footerImg = document.getElementById('footerLogoImg');
+        if (footerImg) {
+            footerImg.addEventListener('error', function() {
+                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
+                this.style.height = '50px';
+                this.style.width = 'auto';
+            });
+        }
     });
 </script>
 </body>
