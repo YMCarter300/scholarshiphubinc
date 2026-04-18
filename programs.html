@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric | Programs - Global Study Opportunities</title>
+    <title>LinkAfric Inc. | Programs – Global Study Opportunities</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@
             --white: #ffffff;
         }
 
-        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
+        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
         .navbar {
             background: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(16px);
@@ -44,7 +44,25 @@
             gap: 1rem;
         }
 
-        .logo {
+        /* Logo image + fallback */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .logo-fallback {
             font-size: 1.6rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
@@ -52,13 +70,10 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
+            display: none;
         }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .logo-img.error + .logo-fallback {
+            display: inline-block;
         }
 
         /* Desktop Navigation with Dropdowns */
@@ -390,6 +405,7 @@
             box-shadow: 0 4px 12px rgba(212,175,55,0.4);
         }
 
+        /* Footer with centered clickable logo */
         .footer {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
@@ -484,6 +500,27 @@
             stroke: var(--black);
         }
 
+        .footer-logo-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0 1.2rem 0;
+        }
+        .footer-logo-link {
+            display: inline-flex;
+            transition: transform 0.2s ease;
+        }
+        .footer-logo-link:hover {
+            transform: scale(1.02);
+        }
+        .footer-logo-img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
@@ -521,6 +558,7 @@
             .footer-content {
                 flex-direction: column;
                 gap: 1.5rem;
+                text-align: center;
             }
             .footer-section {
                 text-align: center;
@@ -538,6 +576,9 @@
                 width: 100%;
                 text-align: center;
             }
+            .footer-logo-img {
+                height: 60px;
+            }
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
@@ -554,9 +595,12 @@
     </style>
 </head>
 <body>
-    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
+    <!-- DESKTOP NAVBAR WITH IMAGE LOGO LINKING TO HOME -->
     <div class="navbar">
-        <div class="logo">Link<span>Afric</span> Inc.</div>
+        <a href="index.html" class="logo-link" id="headerLogoLink">
+            <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
+        </a>
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="programs.html" class="active">Programs</a></li>
@@ -586,7 +630,7 @@
             <li class="nav-item"><a href="advisory.html">Advisory</a></li>
             <!-- Contact (dropdown: About) -->
             <li class="nav-item">
-                <a href="contact">Contact</a>
+                <a href="contact.html">Contact</a>
                 <div class="dropdown-content">
                     <a href="about.html">About</a>
                 </div>
@@ -628,27 +672,27 @@
 
     <div class="container">
         <h1>Explore Opportunities That Match Your Ambition</h1>
-        <p style="margin-bottom: 2rem;">Discover affordable universities across Europe, Asia, Africa, the Caribbean, the Americas, and Oceania with tuition from €0 – €8,000/year. Click the button on any program card to visit the official university website and start your application.</p>
+        <p style="margin-bottom: 2rem;">Discover affordable universities across Europe, Asia, Africa, the Caribbean, the Americas, and Oceania with tuition from €0 – €8,000/year. Click the button on any program card to visit the official university website and start your application. <strong>LinkAfric Inc. — founded 2023, bridging African talent to global opportunities.</strong></p>
         
-        <h2> Africa — Affordable Universities (€0 – $5,000/year)</h2>
+        <h2>  Africa — Affordable Universities (€0 – $5,000/year)</h2>
         <div class="program-grid" id="africa-grid"></div>
 
-        <h2> Caribbean — Low-Cost Universities (€0 – €5,000/year)</h2>
+        <h2>  Caribbean — Low-Cost Universities (€0 – €5,000/year)</h2>
         <div class="program-grid" id="caribbean-grid"></div>
 
-        <h2> Americas — Affordable Universities (€0 – €5,000/year)</h2>
+        <h2>  Americas — Affordable Universities (€0 – €5,000/year)</h2>
         <div class="program-grid" id="americas-grid"></div>
 
-        <h2> Europe — Low-Cost Universities (€0 – €2,500/year)</h2>
+        <h2>  Europe — Low-Cost Universities (€0 – €2,500/year)</h2>
         <div class="program-grid" id="europe-grid"></div>
 
-        <h2> Oceania — Affordable Universities ($1,500 – $8,000/year)</h2>
+        <h2>  Oceania — Affordable Universities ($1,500 – $8,000/year)</h2>
         <div class="program-grid" id="oceania-grid"></div>
 
-        <h2> Asia — Affordable Universities (€250 – €1,000/year)</h2>
+        <h2>  Asia — Affordable Universities (€250 – €1,000/year)</h2>
         <div class="program-grid" id="asia-grid"></div>
 
-        <h2> Language & Cultural Immersion Programs</h2>
+        <h2>  Language & Cultural Immersion Programs</h2>
         <div class="program-grid" id="language-grid"></div>
 
         <div style="background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%); border-radius: 1rem; padding: 1.5rem; margin-top: 2rem; border-left: 4px solid var(--gold);">
@@ -662,297 +706,187 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section"><h4>LinkAfric</h4><p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p><div class="social-links"><a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/></svg></a></div></div>
+            <div class="footer-section"><h4>LinkAfric Inc.</h4><p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p><div class="social-links"><a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/></svg></a></div></div>
             <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="programs.html">Programs</a></li><li><a href="services.html">Services</a></li><li><a href="apply.html">Apply Now</a></li><li><a href="stories.html">Success Stories</a></li></ul></div>
             <div class="footer-section"><h4>Resources</h4><ul><li><a href="blog.html">Blog & Tips</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
             <div class="footer-section"><h4>Contact Info</h4><p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p><p>linkafric@gmail.com</p><p><strong>+231 76 076 6122</strong></p></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2023 LinkAfric. All rights reserved. | Your future is not local. Take the first step today.</p></div>
+
+        <!-- CENTERED LOGO WITH HOME LINK -->
+        <div class="footer-logo-center">
+            <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
+                <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
+            </a>
+        </div>
+
+        <div class="footer-bottom"><p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.</p></div>
     </footer>
 
     <script>
-        // African Universities Data (with official website links)
+        // Complete datasets (abbreviated for brevity, but all original data preserved)
+          // African Universities Data (with official website links)
    const africanUniversities = [
     { name: "University of Cape Town", country: "South Africa", flag: "https://flagcdn.com/w320/za.png", tuition: "$3,000 – $5,000/year", programs: "Medicine, Engineering, Business, Law", intakes: "February", deadlines: "July–September", notes: "Ranked #1 in Africa with global recognition", city: "Cape Town", website: "https://www.uct.ac.za/" },
-
     { name: "Stellenbosch University", country: "South Africa", flag: "https://flagcdn.com/w320/za.png", tuition: "$2,000 – $5,000/year", programs: "Engineering, Business, Sciences", intakes: "February", deadlines: "June–August", notes: "Strong research and innovation focus", city: "Stellenbosch", website: "https://www.sun.ac.za/" },
-
     { name: "University of Johannesburg", country: "South Africa", flag: "https://flagcdn.com/w320/za.png", tuition: "$2,000 – $4,500/year", programs: "Engineering, IT, Business", intakes: "February", deadlines: "June–October", notes: "Industry aligned programs", city: "Johannesburg", website: "https://www.uj.ac.za/" },
-
     { name: "University of Pretoria", country: "South Africa", flag: "https://flagcdn.com/w320/za.png", tuition: "$2,000 – $5,000/year", programs: "Law, Engineering, Agriculture", intakes: "February", deadlines: "June–August", notes: "Strong governance and policy programs", city: "Pretoria", website: "https://www.up.ac.za/" },
-
     { name: "University of KwaZulu-Natal", country: "South Africa", flag: "https://flagcdn.com/w320/za.png", tuition: "$2,000 – $4,500/year", programs: "Health Sciences, Engineering, Humanities", intakes: "February", deadlines: "June–September", notes: "High research output", city: "Durban", website: "https://www.ukzn.ac.za/" },
-
     { name: "University of Ghana", country: "Ghana", flag: "https://flagcdn.com/w320/gh.png", tuition: "$1,000 – $3,000/year", programs: "Business, Social Sciences, Law", intakes: "September", deadlines: "April–June", notes: "Top West African university", city: "Accra", website: "https://www.ug.edu.gh/" },
-
     { name: "University of Cape Coast", country: "Ghana", flag: "https://flagcdn.com/w320/gh.png", tuition: "$1,000 – $2,500/year", programs: "Education, Business, Sciences", intakes: "September", deadlines: "April–June", notes: "Strong education faculty", city: "Cape Coast", website: "https://www.ucc.edu.gh/" },
-
     { name: "University of Ibadan", country: "Nigeria", flag: "https://flagcdn.com/w320/ng.png", tuition: "$300 – $800/year", programs: "Medicine, Arts, Sciences", intakes: "September", deadlines: "June–August", notes: "One of the most affordable top universities", city: "Ibadan", website: "https://www.ui.edu.ng/" },
-
     { name: "University of Lagos", country: "Nigeria", flag: "https://flagcdn.com/w320/ng.png", tuition: "$300 – $1,000/year", programs: "Business, Engineering, Law", intakes: "September", deadlines: "June–August", notes: "Highly competitive with strong alumni network", city: "Lagos", website: "https://unilag.edu.ng/" },
-
     { name: "Makerere University", country: "Uganda", flag: "https://flagcdn.com/w320/ug.png", tuition: "$1,000 – $2,500/year", programs: "Medicine, Engineering, Business", intakes: "August", deadlines: "May–June", notes: "One of Africa oldest universities", city: "Kampala", website: "https://www.mak.ac.ug/" },
-
     { name: "University of Nairobi", country: "Kenya", flag: "https://flagcdn.com/w320/ke.png", tuition: "$1,000 – $3,000/year", programs: "Engineering, Medicine, Business", intakes: "September", deadlines: "April–June", notes: "Top East African university", city: "Nairobi", website: "https://www.uonbi.ac.ke/" },
-
     { name: "Cairo University", country: "Egypt", flag: "https://flagcdn.com/w320/eg.png", tuition: "$1,000 – $3,000/year", programs: "Engineering, Medicine, Sciences", intakes: "October", deadlines: "June–August", notes: "One of the largest universities in Africa", city: "Cairo", website: "https://cu.edu.eg/" },
-
     { name: "Alexandria University", country: "Egypt", flag: "https://flagcdn.com/w320/eg.png", tuition: "$1,000 – $3,000/year", programs: "Medicine, Engineering, Business", intakes: "October", deadlines: "June–August", notes: "Strong academic tradition", city: "Alexandria", website: "https://www.alexu.edu.eg/" },
-
     { name: "Addis Ababa University", country: "Ethiopia", flag: "https://flagcdn.com/w320/et.png", tuition: "$500 – $1,500/year", programs: "Engineering, Social Sciences, Medicine", intakes: "September", deadlines: "May–June", notes: "Leading university in East Africa", city: "Addis Ababa", website: "https://www.aau.edu.et/" },
-
     { name: "University of Rwanda", country: "Rwanda", flag: "https://flagcdn.com/w320/rw.png", tuition: "$800 – $2,000/year", programs: "IT, Business, Health Sciences", intakes: "September", deadlines: "May–July", notes: "Rapidly growing system with government backing", city: "Kigali", website: "https://ur.ac.rw/" }
 ];
 
     // Caribbean Universities Data (with official website links)
 const caribbeanUniversities = [
     { name: "University of the Commonwealth Caribbean", country: "Jamaica", flag: "https://flagcdn.com/w320/jm.png", tuition: "€900 – €2,300/year", programs: "Business, IT, Management", intakes: "January, May, September", deadlines: "Rolling", notes: "One of the most affordable Caribbean private universities", city: "Kingston", website: "https://ucc.edu.jm/" },
-
     { name: "University of Guyana", country: "Guyana", flag: "https://flagcdn.com/w320/gy.png", tuition: "€1,000 – €3,000/year", programs: "Engineering, Business, Agriculture", intakes: "September, January", deadlines: "May–July", notes: "Low cost English speaking option", city: "Georgetown", website: "https://www.uog.edu.gy/" },
-
     { name: "Anton de Kom University", country: "Suriname", flag: "https://flagcdn.com/w320/sr.png", tuition: "€500 – €2,000/year", programs: "Natural Sciences, Social Sciences", intakes: "October", deadlines: "June–August", notes: "Very low cost Dutch influenced system", city: "Paramaribo", website: "https://www.uvs.edu/" },
-
     { name: "University of the West Indies Cave Hill", country: "Barbados", flag: "https://flagcdn.com/w320/bb.png", tuition: "€2,500 – €5,000/year", programs: "Law, Business, Social Sciences", intakes: "September", deadlines: "January–March", notes: "Top Caribbean regional university", city: "Bridgetown", website: "https://www.uwi.edu/" },
-
     { name: "University of the West Indies Mona", country: "Jamaica", flag: "https://flagcdn.com/w320/jm.png", tuition: "€2,500 – €5,000/year", programs: "Medicine, Engineering, Humanities", intakes: "September", deadlines: "January–March", notes: "Strong academic reputation in the Caribbean", city: "Kingston", website: "https://www.uwi.edu/" },
-
     { name: "University of the West Indies St Augustine", country: "Trinidad and Tobago", flag: "https://flagcdn.com/w320/tt.png", tuition: "€2,500 – €5,000/year", programs: "Engineering, Business, Agriculture", intakes: "September", deadlines: "January–March", notes: "Best for engineering and energy sector", city: "Port of Spain", website: "https://www.uwi.edu/" },
-
     { name: "University of Technology Jamaica", country: "Jamaica", flag: "https://flagcdn.com/w320/jm.png", tuition: "€1,500 – €3,500/year", programs: "Engineering, Computing, Business", intakes: "September", deadlines: "March–June", notes: "Industry focused programs", city: "Kingston", website: "https://www.utech.edu.jm/" },
-
     { name: "Northern Caribbean University", country: "Jamaica", flag: "https://flagcdn.com/w320/jm.png", tuition: "€1,500 – €3,500/year", programs: "Business, Education, IT", intakes: "January, August", deadlines: "Rolling", notes: "Affordable private university", city: "Mandeville", website: "https://www.ncu.edu.jm/" },
-
     { name: "University of Trinidad and Tobago", country: "Trinidad and Tobago", flag: "https://flagcdn.com/w320/tt.png", tuition: "€1,500 – €4,000/year", programs: "Engineering, Maritime, Business", intakes: "September", deadlines: "May–July", notes: "Technical and vocational strength", city: "San Fernando", website: "https://utt.edu.tt/" },
-
     { name: "University of Belize", country: "Belize", flag: "https://flagcdn.com/w320/bz.png", tuition: "€1,000 – €2,500/year", programs: "Tourism, Business, Environmental Science", intakes: "January, August", deadlines: "Rolling", notes: "English speaking and very affordable", city: "Belmopan", website: "https://www.ub.edu.bz/" },
-
     { name: "State University of Haiti", country: "Haiti", flag: "https://flagcdn.com/w320/ht.png", tuition: "€200 – €800/year", programs: "Medicine, Law, Social Sciences", intakes: "October", deadlines: "Varies", notes: "Extremely low cost but limited infrastructure", city: "Port-au-Prince", website: "http://www.ueh.edu.ht/" },
-
     { name: "Universidad de Puerto Rico", country: "Puerto Rico", flag: "https://flagcdn.com/w320/pr.png", tuition: "€1,500 – €4,500/year", programs: "Engineering, Sciences, Business", intakes: "August, January", deadlines: "March–May", notes: "US system with lower tuition", city: "San Juan", website: "https://www.upr.edu/" },
-
     { name: "Caribbean University", country: "Puerto Rico", flag: "https://flagcdn.com/w320/pr.png", tuition: "€4,500 – €6,800/year", programs: "Business, Health Sciences, Technology", intakes: "Multiple", deadlines: "Rolling", notes: "Affordable compared to US universities", city: "Bayamon", website: "https://www.caribbean.edu/" },
-
     { name: "University of Curaçao", country: "Curaçao", flag: "https://flagcdn.com/w320/cw.png", tuition: "€2,000 – €4,000/year", programs: "Law, Engineering, Social Sciences", intakes: "September", deadlines: "May–July", notes: "Dutch Caribbean system", city: "Willemstad", website: "https://www.uoc.cw/" },
-
     { name: "University of Aruba", country: "Aruba", flag: "https://flagcdn.com/w320/aw.png", tuition: "€2,000 – €4,500/year", programs: "Law, Hospitality, Business", intakes: "September", deadlines: "May–June", notes: "Tourism and business focused programs", city: "Oranjestad", website: "https://www.ua.aw/" }
 ];
 
         // Europe Universities Data (with official website links)
         const europeUniversities = [
     { name: "University of Vienna", country: "Austria", flag: "https://flagcdn.com/w320/at.png", tuition: "€726 – €1,500/year", programs: "Arts, Business, Political Science", intakes: "Winter (October), Summer (March)", deadlines: "Winter: June–July | Summer: January–February", notes: "One of the most reliable low cost Western Europe options", city: "Vienna", website: "https://www.univie.ac.at/en/" },
-
     { name: "Ludwig Maximilian University Munich", country: "Germany", flag: "https://flagcdn.com/w320/de.png", tuition: "€0 (€150–€350 semester fee)", programs: "Humanities, Law, Medicine, Sciences, Business", intakes: "Winter (October), Summer (April)", deadlines: "Winter: July 15 | Summer: January 15", notes: "Germany top ranked with zero tuition", city: "Munich", website: "https://www.lmu.de/en/" },
-
     { name: "Technical University of Munich", country: "Germany", flag: "https://flagcdn.com/w320/de.png", tuition: "€0 (small admin fees)", programs: "Engineering, Computer Science, AI, Robotics", intakes: "Winter, Summer limited", deadlines: "Winter: May–July | Summer: November–January", notes: "Elite technical school with global ranking", city: "Munich", website: "https://www.tum.de/en/" },
-
     { name: "Humboldt University of Berlin", country: "Germany", flag: "https://flagcdn.com/w320/de.png", tuition: "€0 (€300 semester)", programs: "Social Sciences, Economics, Philosophy", intakes: "Winter", deadlines: "July 15", notes: "Strong for political and IR pathways", city: "Berlin", website: "https://www.hu-berlin.de/en" },
-
     { name: "University of Pisa", country: "Italy", flag: "https://flagcdn.com/w320/it.png", tuition: "€500 – €1,000/year", programs: "Engineering, Computer Science, Physics", intakes: "Fall", deadlines: "June–August", notes: "Low tuition with regional scholarships", city: "Pisa", website: "https://www.unipi.it/index.php/english" },
-
     { name: "Sapienza University of Rome", country: "Italy", flag: "https://flagcdn.com/w320/it.png", tuition: "€500 – €1,200/year", programs: "Engineering, Medicine, Humanities", intakes: "Fall", deadlines: "May–July", notes: "Largest university in Europe", city: "Rome", website: "https://www.uniroma1.it/en" },
-
     { name: "University of Bologna", country: "Italy", flag: "https://flagcdn.com/w320/it.png", tuition: "€800 – €1,500/year", programs: "Business, Economics, Political Science", intakes: "September", deadlines: "March–June", notes: "Oldest university in the world", city: "Bologna", website: "https://www.unibo.it/en" },
-
     { name: "University of Porto", country: "Portugal", flag: "https://flagcdn.com/w320/pt.png", tuition: "~€1,000/year", programs: "Tech, Business, Architecture", intakes: "September", deadlines: "March–May", notes: "Good English programs at low cost", city: "Porto", website: "https://www.up.pt/portal/en/" },
-
     { name: "University of Lisbon", country: "Portugal", flag: "https://flagcdn.com/w320/pt.png", tuition: "€1,000 – €1,500/year", programs: "Engineering, IT, Business", intakes: "September", deadlines: "April–June", notes: "Capital city advantage", city: "Lisbon", website: "https://www.ulisboa.pt/en" },
-
     { name: "University of Warsaw", country: "Poland", flag: "https://flagcdn.com/w320/pl.png", tuition: "€700 – €1,000/year", programs: "Economics, IT, Political Science", intakes: "October", deadlines: "July–August", notes: "One of the cheapest EU systems", city: "Warsaw", website: "https://en.uw.edu.pl/" },
-
     { name: "Jagiellonian University", country: "Poland", flag: "https://flagcdn.com/w320/pl.png", tuition: "€800 – €1,200/year", programs: "Medicine, Law, Humanities", intakes: "October", deadlines: "June–July", notes: "Historic and respected university", city: "Krakow", website: "https://en.uj.edu.pl/en_GB/" },
-
     { name: "Charles University", country: "Czech Republic", flag: "https://flagcdn.com/w320/cz.png", tuition: "€0 Czech | €1,000 – €3,000 English", programs: "Medicine, Humanities, Sciences", intakes: "October", deadlines: "March–June", notes: "Top Eastern Europe institution", city: "Prague", website: "https://cuni.cz/UKEN-1.html" },
-
     { name: "Czech Technical University", country: "Czech Republic", flag: "https://flagcdn.com/w320/cz.png", tuition: "€0 Czech | ~€1,500 English", programs: "Engineering, IT", intakes: "September", deadlines: "March–April", notes: "Strong engineering reputation", city: "Prague", website: "https://www.cvut.cz/en" },
-
     { name: "University of Debrecen", country: "Hungary", flag: "https://flagcdn.com/w320/hu.png", tuition: "€1,000 – €2,000/year", programs: "Medicine, Engineering, Agriculture", intakes: "September, February", deadlines: "June | November", notes: "Popular among international students", city: "Debrecen", website: "https://www.unideb.hu/en" },
-
     { name: "Eotvos Lorand University", country: "Hungary", flag: "https://flagcdn.com/w320/hu.png", tuition: "€1,000 – €2,000/year", programs: "Law, Humanities, Sciences", intakes: "September", deadlines: "June", notes: "Top ranked in Hungary", city: "Budapest", website: "https://www.elte.hu/en/" },
-
     { name: "University of Belgrade", country: "Serbia", flag: "https://flagcdn.com/w320/rs.png", tuition: "€1,000/year", programs: "Engineering, Medicine, Social Sciences", intakes: "October", deadlines: "June–July", notes: "Low cost with solid education", city: "Belgrade", website: "https://www.bg.ac.rs/en/" },
-
     { name: "University of Zagreb", country: "Croatia", flag: "https://flagcdn.com/w320/hr.png", tuition: "€800 – €1,500/year", programs: "Engineering, Business, Arts", intakes: "October", deadlines: "May–July", notes: "EU degree at low cost", city: "Zagreb", website: "https://www.unizg.hr/homepage/" },
-
     { name: "University of Ljubljana", country: "Slovenia", flag: "https://flagcdn.com/w320/si.png", tuition: "€1,000 – €2,500/year", programs: "Engineering, Economics", intakes: "October", deadlines: "May–June", notes: "Small but high quality system", city: "Ljubljana", website: "https://www.uni-lj.si/eng/" },
-
     { name: "University of Latvia", country: "Latvia", flag: "https://flagcdn.com/w320/lv.png", tuition: "€1,000 – €2,000/year", programs: "IT, Business, Health Sciences", intakes: "September", deadlines: "June–July", notes: "Affordable Baltic option", city: "Riga", website: "https://www.lu.lv/en/" },
-
     { name: "Vilnius University", country: "Lithuania", flag: "https://flagcdn.com/w320/lt.png", tuition: "€1,000 – €2,000/year", programs: "Business, IT, Medicine", intakes: "September", deadlines: "June", notes: "Strong international focus", city: "Vilnius", website: "https://www.vu.lt/en/" }
 ];
 
         // Americas Universities Data (with official website links)
 const americasUniversities = [
     { name: "University of São Paulo", country: "Brazil", flag: "https://flagcdn.com/w320/br.png", tuition: "€0 (public university)", programs: "Engineering, Medicine, Business", intakes: "February", deadlines: "October–December", notes: "Top ranked in Latin America with zero tuition", city: "São Paulo", website: "https://www5.usp.br/" },
-
     { name: "University of Campinas", country: "Brazil", flag: "https://flagcdn.com/w320/br.png", tuition: "€0 (public university)", programs: "Engineering, Sciences, Technology", intakes: "February", deadlines: "October–December", notes: "Elite research institution", city: "Campinas", website: "https://www.unicamp.br/unicamp/en" },
-
     { name: "Federal University of Rio de Janeiro", country: "Brazil", flag: "https://flagcdn.com/w320/br.png", tuition: "€0 (public university)", programs: "Engineering, Arts, Sciences", intakes: "March", deadlines: "October–December", notes: "Strong academic reputation", city: "Rio de Janeiro", website: "https://ufrj.br/en/" },
-
     { name: "National Autonomous University of Mexico", country: "Mexico", flag: "https://flagcdn.com/w320/mx.png", tuition: "€0 – €500/year", programs: "Law, Engineering, Humanities", intakes: "August", deadlines: "April–June", notes: "Largest university in Latin America", city: "Mexico City", website: "https://www.unam.mx/" },
-
     { name: "Tecnológico de Monterrey", country: "Mexico", flag: "https://flagcdn.com/w320/mx.png", tuition: "€3,000 – €5,000/year", programs: "Business, Engineering, IT", intakes: "August, January", deadlines: "Rolling", notes: "Top private university in Latin America", city: "Monterrey", website: "https://tec.mx/en" },
-
     { name: "University of Guadalajara", country: "Mexico", flag: "https://flagcdn.com/w320/mx.png", tuition: "€500 – €1,000/year", programs: "Business, Medicine, Arts", intakes: "August", deadlines: "March–May", notes: "Affordable and widely recognized", city: "Guadalajara", website: "https://www.udg.mx/en/" },
-
     { name: "University of Chile", country: "Chile", flag: "https://flagcdn.com/w320/cl.png", tuition: "€1,000 – €3,000/year", programs: "Engineering, Law, Sciences", intakes: "March", deadlines: "October–December", notes: "Top university in Chile", city: "Santiago", website: "https://www.uchile.cl/" },
-
     { name: "Pontifical Catholic University of Chile", country: "Chile", flag: "https://flagcdn.com/w320/cl.png", tuition: "€2,000 – €5,000/year", programs: "Engineering, Business, Arts", intakes: "March", deadlines: "October–December", notes: "Highly prestigious in Latin America", city: "Santiago", website: "https://www.uc.cl/en" },
-
     { name: "National University of Colombia", country: "Colombia", flag: "https://flagcdn.com/w320/co.png", tuition: "€500 – €1,500/year", programs: "Engineering, Sciences, Social Sciences", intakes: "January, August", deadlines: "Varies", notes: "Top public university in Colombia", city: "Bogotá", website: "https://unal.edu.co/en/" },
-
     { name: "University of the Andes", country: "Colombia", flag: "https://flagcdn.com/w320/co.png", tuition: "€3,000 – €5,000/year", programs: "Business, Engineering, Economics", intakes: "January, August", deadlines: "Rolling", notes: "Elite private university", city: "Bogotá", website: "https://uniandes.edu.co/en" },
-
     { name: "University of Costa Rica", country: "Costa Rica", flag: "https://flagcdn.com/w320/cr.png", tuition: "€500 – €1,500/year", programs: "Engineering, Health Sciences, Business", intakes: "March", deadlines: "October–November", notes: "Top Central American university", city: "San José", website: "https://www.ucr.ac.cr/" },
-
     { name: "National University of Costa Rica", country: "Costa Rica", flag: "https://flagcdn.com/w320/cr.png", tuition: "€500 – €1,200/year", programs: "Education, Sciences, Arts", intakes: "March", deadlines: "October–November", notes: "Affordable public system", city: "Heredia", website: "https://www.una.ac.cr/" },
-
     { name: "University of Panama", country: "Panama", flag: "https://flagcdn.com/w320/pa.png", tuition: "€300 – €1,000/year", programs: "Business, Law, Sciences", intakes: "March", deadlines: "November–January", notes: "Low cost national university", city: "Panama City", website: "https://www.up.ac.pa/" },
-
     { name: "Technological University of Panama", country: "Panama", flag: "https://flagcdn.com/w320/pa.png", tuition: "€500 – €1,200/year", programs: "Engineering, IT", intakes: "March", deadlines: "November–January", notes: "Best for technical fields", city: "Panama City", website: "https://utp.ac.pa/" },
-
     { name: "University of Havana", country: "Cuba", flag: "https://flagcdn.com/w320/cu.png", tuition: "€1,000 – €3,000/year", programs: "Medicine, Sciences, Humanities", intakes: "September", deadlines: "May–July", notes: "Historic institution with strong academics", city: "Havana", website: "https://www.uh.cu/" },
-
     { name: "Pontifical Catholic University of Peru", country: "Peru", flag: "https://flagcdn.com/w320/pe.png", tuition: "€2,000 – €4,500/year", programs: "Engineering, Business, Social Sciences", intakes: "March", deadlines: "November–January", notes: "Top ranked in Peru", city: "Lima", website: "https://www.pucp.edu.pe/" },
-
     { name: "National University of San Marcos", country: "Peru", flag: "https://flagcdn.com/w320/pe.png", tuition: "€500 – €1,500/year", programs: "Medicine, Law, Sciences", intakes: "March", deadlines: "September–November", notes: "Oldest university in the Americas", city: "Lima", website: "https://www.unmsm.edu.pe/" },
-
     { name: "University of the Republic", country: "Uruguay", flag: "https://flagcdn.com/w320/uy.png", tuition: "€0 – €1,000/year", programs: "Engineering, Medicine, Law", intakes: "March", deadlines: "December–February", notes: "Public university with low tuition", city: "Montevideo", website: "https://udelar.edu.uy/" },
-
     { name: "Autonomous University of Santo Domingo", country: "Dominican Republic", flag: "https://flagcdn.com/w320/do.png", tuition: "€500 – €1,200/year", programs: "Business, Law, Engineering", intakes: "August", deadlines: "April–June", notes: "Oldest university in the Caribbean region", city: "Santo Domingo", website: "https://uasd.edu.do/" },
-
     { name: "University of the West Indies Open Campus", country: "Caribbean", flag: "https://flagcdn.com/w320/tt.png", tuition: "€1,000 – €3,000/year", programs: "Business, Education, Social Sciences", intakes: "January, September", deadlines: "Rolling", notes: "Flexible regional study option", city: "Multiple locations", website: "https://www.open.uwi.edu/" }
 ];
 
         // Asia Universities Data (with official website links)
        const asiaUniversities = [
     { name: "University of Malaya", country: "Malaysia", flag: "https://flagcdn.com/w320/my.png", tuition: "€500 – €1,000/year", programs: "Engineering, Business, Social Sciences", intakes: "February, September", deadlines: "Feb: Nov–Dec | Sept: May–July", notes: "Top ranked in Malaysia with strong global reputation", city: "Kuala Lumpur", website: "https://www.um.edu.my/" },
-
     { name: "National Taiwan University", country: "Taiwan", flag: "https://flagcdn.com/w320/tw.png", tuition: "€800 – €1,500/year", programs: "Engineering, Business, Sciences", intakes: "September, February", deadlines: "Fall: Dec–Mar | Spring: Sept–Oct", notes: "Elite Asian institution with strong research output", city: "Taipei", website: "https://www.ntu.edu.tw/english/" },
-
     { name: "University of the Philippines", country: "Philippines", flag: "https://flagcdn.com/w320/ph.png", tuition: "€250 – €800/year", programs: "Business, Law, Engineering", intakes: "August", deadlines: "March–April", notes: "Highly competitive with very low tuition", city: "Manila", website: "https://www.up.edu.ph/" },
-
     { name: "Universitas Indonesia", country: "Indonesia", flag: "https://flagcdn.com/w320/id.png", tuition: "€300 – €900/year", programs: "Engineering, Medicine, Social Sciences", intakes: "August", deadlines: "May–June", notes: "Leading Indonesian university with international programs", city: "Jakarta", website: "https://www.ui.ac.id/en/" },
-
     { name: "Wuxi University", country: "China", flag: "https://flagcdn.com/w320/cn.png", tuition: "$580 – $1,160/year (≈€530 – €1,060)", programs: "Computer Science, International Economics and Trade", intakes: "September", deadlines: "June 10", notes: "Affordable Chinese option with growing global exposure", city: "Wuxi", website: "http://wxu.edu.cn/" },
-
     { name: "Bangkok University", country: "Thailand", flag: "https://flagcdn.com/w320/th.png", tuition: "€800 – €1,200/year", programs: "Business, Media, Communication", intakes: "January, August", deadlines: "Jan: Oct–Nov | Aug: May–June", notes: "Strong for creative and business fields", city: "Bangkok", website: "https://www.bu.ac.th/en" },
-
     { name: "Chulalongkorn University", country: "Thailand", flag: "https://flagcdn.com/w320/th.png", tuition: "€1,000 – €2,000/year", programs: "Engineering, Economics, Political Science", intakes: "August", deadlines: "March–May", notes: "Thailand top ranked university", city: "Bangkok", website: "https://www.chula.ac.th/en/" },
-
     { name: "Mahidol University", country: "Thailand", flag: "https://flagcdn.com/w320/th.png", tuition: "€900 – €1,500/year", programs: "Medicine, Sciences, Public Health", intakes: "August", deadlines: "March–June", notes: "Strong in health sciences", city: "Bangkok", website: "https://www.mahidol.ac.th/en/" },
-
     { name: "Universiti Putra Malaysia", country: "Malaysia", flag: "https://flagcdn.com/w320/my.png", tuition: "€700 – €1,200/year", programs: "Agriculture, Business, Engineering", intakes: "February, September", deadlines: "Varies", notes: "Affordable with wide program options", city: "Serdang", website: "https://www.upm.edu.my/" },
-
     { name: "Universiti Kebangsaan Malaysia", country: "Malaysia", flag: "https://flagcdn.com/w320/my.png", tuition: "€700 – €1,200/year", programs: "Law, Education, Sciences", intakes: "September", deadlines: "April–July", notes: "Strong national university", city: "Bangi", website: "https://www.ukm.my/portalukm/" },
-
     { name: "Shanghai University", country: "China", flag: "https://flagcdn.com/w320/cn.png", tuition: "€1,000 – €2,000/year", programs: "Engineering, Business, Arts", intakes: "September", deadlines: "April–June", notes: "Located in economic hub Shanghai", city: "Shanghai", website: "https://www.shu.edu.cn/en/" },
-
     { name: "Zhejiang University of Technology", country: "China", flag: "https://flagcdn.com/w320/cn.png", tuition: "€900 – €1,500/year", programs: "Engineering, IT, Business", intakes: "September", deadlines: "May–June", notes: "Good balance of cost and quality", city: "Hangzhou", website: "https://www.zjut.edu.cn/english/" },
-
     { name: "Nanjing University of Information Science and Technology", country: "China", flag: "https://flagcdn.com/w320/cn.png", tuition: "€800 – €1,200/year", programs: "IT, Environmental Science, Engineering", intakes: "September", deadlines: "May–June", notes: "Strong tech programs", city: "Nanjing", website: "https://www.nuist.edu.cn/" },
-
     { name: "Korea University", country: "South Korea", flag: "https://flagcdn.com/w320/kr.png", tuition: "€1,500 – €3,000/year", programs: "Business, Engineering, International Studies", intakes: "March, September", deadlines: "Oct–Nov | April–May", notes: "Top private university with strong global links", city: "Seoul", website: "https://www.korea.edu/" },
-
     { name: "Hankuk University of Foreign Studies", country: "South Korea", flag: "https://flagcdn.com/w320/kr.png", tuition: "€1,000 – €2,500/year", programs: "Languages, International Relations, Business", intakes: "March, September", deadlines: "Varies", notes: "Best for diplomacy and language careers", city: "Seoul", website: "https://www.hufs.ac.kr/" },
-
     { name: "University of Colombo", country: "Sri Lanka", flag: "https://flagcdn.com/w320/lk.png", tuition: "€500 – €1,000/year", programs: "Business, Science, Medicine", intakes: "Varies", deadlines: "Varies", notes: "Very low cost education system", city: "Colombo", website: "https://cmb.ac.lk/" },
-
     { name: "University of Dhaka", country: "Bangladesh", flag: "https://flagcdn.com/w320/bd.png", tuition: "€300 – €800/year", programs: "Arts, Sciences, Business", intakes: "Varies", deadlines: "Varies", notes: "Extremely affordable option", city: "Dhaka", website: "https://www.du.ac.bd/" },
-
     { name: "Asian Institute of Technology", country: "Thailand", flag: "https://flagcdn.com/w320/th.png", tuition: "€1,000 – €2,000/year", programs: "Engineering, Environment, Business", intakes: "January, August", deadlines: "Varies", notes: "International focused institute", city: "Bangkok", website: "https://www.ait.ac.th/" },
-
     { name: "International Islamic University Malaysia", country: "Malaysia", flag: "https://flagcdn.com/w320/my.png", tuition: "€800 – €1,200/year", programs: "Law, Business, Humanities", intakes: "February, September", deadlines: "Varies", notes: "Popular among African students", city: "Gombak", website: "https://www.iium.edu.my/" },
-
     { name: "University of Tehran", country: "Iran", flag: "https://flagcdn.com/w320/ir.png", tuition: "€500 – €1,500/year", programs: "Engineering, Sciences, Humanities", intakes: "September", deadlines: "May–June", notes: "One of the oldest universities in the region", city: "Tehran", website: "https://ut.ac.ir/en" }
 ];
 
 const oceanianUniversities = [
     // AUSTRALIA - Public universities with reasonable international fees
     { name: "University of Southern Queensland", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$12,000 – $18,000/year", programs: "Engineering, Business, IT, Education", intakes: "February, July, November", deadlines: "Rolling (apply 3-6 months prior)", notes: "One of Australia's most affordable universities with strong online options", city: "Toowoomba", website: "https://www.unisq.edu.au/" },
-
     { name: "Federation University Australia", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$10,000 – $15,000/year", programs: "Engineering, Nursing, Business, IT", intakes: "February, July", deadlines: "November–December | May–June", notes: "Regional campus advantage with lower living costs", city: "Ballarat", website: "https://federation.edu.au/" },
-
     { name: "Charles Darwin University", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$11,000 – $16,000/year", programs: "Environmental Science, Nursing, Business, IT", intakes: "February, July", deadlines: "Rolling admissions", notes: "Located in tropical Darwin with scholarship opportunities", city: "Darwin", website: "https://www.cdu.edu.au/" },
-
     { name: "Central Queensland University", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$12,000 – $17,000/year", programs: "Engineering, Business, IT, Health", intakes: "March, July, November", deadlines: "Rolling", notes: "Multiple campuses with flexible study options", city: "Rockhampton", website: "https://www.cqu.edu.au/" },
-
     { name: "University of Tasmania", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$13,000 – $19,000/year", programs: "Marine Science, Medicine, Engineering, Business", intakes: "February, July", deadlines: "December–January | May–June", notes: "Regional location with scholarship programs", city: "Hobart", website: "https://www.utas.edu.au/" },
-
     { name: "Western Sydney University", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$14,000 – $20,000/year", programs: "Medicine, Business, Engineering, Nursing", intakes: "March, July", deadlines: "November–January | April–June", notes: "Diverse student body with scholarship pathways", city: "Sydney", website: "https://www.westernsydney.edu.au/" },
-
     { name: "University of Newcastle", country: "Australia", flag: "https://flagcdn.com/w320/au.png", tuition: "$15,000 – $22,000/year", programs: "Engineering, Medicine, Business, IT", intakes: "February, July", deadlines: "October–December | April–May", notes: "Strong industry connections and research focus", city: "Newcastle", website: "https://www.newcastle.edu.au/" },
 
     // NEW ZEALAND - More affordable than Australia with post-study work rights
     { name: "University of Waikato", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$10,000 – $16,000/year", programs: "Business, Engineering, Computer Science, Law", intakes: "February, July", deadlines: "November–December | May–June", notes: "Strong Māori cultural integration and scholarship programs", city: "Hamilton", website: "https://www.waikato.ac.nz/" },
-
     { name: "Auckland University of Technology", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$11,000 – $17,000/year", programs: "Business, IT, Health Sciences, Engineering", intakes: "February, July", deadlines: "December | May", notes: "Modern facilities with strong industry partnerships", city: "Auckland", website: "https://www.aut.ac.nz/" },
-
     { name: "Victoria University of Wellington", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$12,000 – $18,000/year", programs: "Law, Business, Design, Humanities", intakes: "February, July", deadlines: "December | May", notes: "Located in capital city with government internship opportunities", city: "Wellington", website: "https://www.wgtn.ac.nz/" },
-
     { name: "University of Canterbury", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$12,000 – $19,000/year", programs: "Engineering, Science, Business, Law", intakes: "February, July", deadlines: "December | May", notes: "Strong engineering and natural sciences programs", city: "Christchurch", website: "https://www.canterbury.ac.nz/" },
-
     { name: "Massey University", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$11,000 – $17,000/year", programs: "Agriculture, Veterinary Science, Business, Aviation", intakes: "February, July", deadlines: "December | May", notes: "Multiple campuses with distance learning options", city: "Palmerston North", website: "https://www.massey.ac.nz/" },
-
     { name: "Lincoln University", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$10,000 – $15,000/year", programs: "Agriculture, Environmental Science, Tourism, Business", intakes: "February, July", deadlines: "December | May", notes: "Specialized in land-based industries with affordable tuition", city: "Lincoln", website: "https://www.lincoln.ac.nz/" },
-
     { name: "Otago Polytechnic", country: "New Zealand", flag: "https://flagcdn.com/w320/nz.png", tuition: "$8,000 – $14,000/year", programs: "Nursing, IT, Design, Engineering Technology", intakes: "February, July", deadlines: "Rolling", notes: "Practical focus with strong employment outcomes", city: "Dunedin", website: "https://www.op.ac.nz/" },
 
     // PACIFIC ISLANDS - Most affordable options in Oceania
     { name: "University of the South Pacific", country: "Fiji", flag: "https://flagcdn.com/w320/fj.png", tuition: "$3,000 – $8,000/year", programs: "Marine Science, Business, Law, Engineering", intakes: "January, July", deadlines: "October–November | April–May", notes: "Regional university serving 12 Pacific nations with affordable fees", city: "Suva", website: "https://www.usp.ac.fj/" },
-
     { name: "Fiji National University", country: "Fiji", flag: "https://flagcdn.com/w320/fj.png", tuition: "$2,500 – $6,000/year", programs: "Medicine, Nursing, Agriculture, Business", intakes: "February, July", deadlines: "December–January | May–June", notes: "Practical programs with strong regional recognition", city: "Suva", website: "https://www.fnu.ac.fj/" },
-
     { name: "Papua New Guinea University of Technology", country: "Papua New Guinea", flag: "https://flagcdn.com/w320/pg.png", tuition: "$1,500 – $4,000/year", programs: "Engineering, IT, Business, Architecture", intakes: "February", deadlines: "September–November", notes: "Technical focus with very affordable fees", city: "Lae", website: "https://www.unitech.ac.pg/" },
-
     { name: "University of Papua New Guinea", country: "Papua New Guinea", flag: "https://flagcdn.com/w320/pg.png", tuition: "$1,200 – $3,500/year", programs: "Medicine, Law, Business, Social Sciences", intakes: "February", deadlines: "September–December", notes: "Leading university in PNG with extremely low tuition", city: "Port Moresby", website: "https://www.upng.ac.pg/" },
-
     { name: "University of the South Pacific - Samoa Campus", country: "Samoa", flag: "https://flagcdn.com/w320/ws.png", tuition: "$3,000 – $7,000/year", programs: "Education, Business, Marine Science", intakes: "January, July", deadlines: "October–November | April–May", notes: "Smaller campus with lower living costs", city: "Apia", website: "https://www.usp.ac.fj/" },
-
     { name: "University of the South Pacific - Vanuatu Campus", country: "Vanuatu", flag: "https://flagcdn.com/w320/vu.png", tuition: "$3,000 – $7,000/year", programs: "Law, Education, Business", intakes: "January, July", deadlines: "October–November | April–May", notes: "French and English bilingual environment", city: "Port Vila", website: "https://www.usp.ac.fj/" },
-
     { name: "Solomon Islands National University", country: "Solomon Islands", flag: "https://flagcdn.com/w320/sb.png", tuition: "$1,000 – $3,000/year", programs: "Education, Nursing, Agriculture, Business", intakes: "February, August", deadlines: "November–December | May–June", notes: "Most affordable Pacific option with government support", city: "Honiara", website: "https://www.sinu.edu.sb/" },
-
     { name: "University of Guam", country: "Guam", flag: "https://flagcdn.com/w320/gu.png", tuition: "$5,000 – $8,000/year", programs: "Marine Biology, Business, Education", intakes: "January, August", deadlines: "June | November", notes: "US system with lower Pacific rates", city: "Mangilao", website: "https://www.uog.edu/" },
-
     { name: "College of Micronesia", country: "Micronesia", flag: "https://flagcdn.com/w320/fm.png", tuition: "$1,500 – $3,000/year", programs: "Nursing, Education, Business, Marine Science", intakes: "January, August", deadlines: "Rolling", notes: "Extremely affordable US-affiliated institution", city: "Palikir", website: "https://www.comfsm.fm/" },
-
     { name: "University of French Polynesia", country: "French Polynesia", flag: "https://flagcdn.com/w320/pf.png", tuition: "$500 – $1,500/year", programs: "Law, Economics, Languages, Marine Science", intakes: "September", deadlines: "May–July", notes: "French system with extremely low tuition", city: "Punaauia", website: "https://www.upf.pf/" }
 ];
 
         // Language Programs Data (with official website links)
         const languagePrograms = [
     { name: "French Language and Culture", country: "France", flag: "https://flagcdn.com/w320/fr.png", duration: "3 to 12 months", description: "Immersive French learning with cultural integration in major cities", city: "Paris", language: "French", website: "https://www.campusfrance.org/en" },
-
     { name: "German Language Program", country: "Germany", flag: "https://flagcdn.com/w320/de.png", duration: "3 to 12 months", description: "Structured German courses with cultural exposure and certification", city: "Berlin", language: "German", website: "https://www.goethe.de/en/index.html" },
-
     { name: "Spanish Language Immersion", country: "Spain", flag: "https://flagcdn.com/w320/es.png", duration: "3 to 9 months", description: "Learn Spanish with native immersion in top student cities", city: "Madrid", language: "Spanish", website: "https://www.studyinspain.info/en/" },
-
     { name: "Italian Language and Culture", country: "Italy", flag: "https://flagcdn.com/w320/it.png", duration: "3 to 9 months", description: "Language training combined with cultural and historical exposure", city: "Rome", language: "Italian", website: "https://www.studyinitaly.it/en/" },
-
     { name: "Portuguese Language Program", country: "Portugal", flag: "https://flagcdn.com/w320/pt.png", duration: "3 to 9 months", description: "European Portuguese with cultural immersion opportunities", city: "Lisbon", language: "Portuguese", website: "https://studyinportugal.edu.pt/en/" },
-
     { name: "Japanese Language and Culture", country: "Japan", flag: "https://flagcdn.com/w320/jp.png", duration: "6 to 12 months", description: "Intensive Japanese with cultural activities and university pathways", city: "Tokyo", language: "Japanese", website: "https://www.japanesestudy.com/" },
-
     { name: "Korean Language Program", country: "South Korea", flag: "https://flagcdn.com/w320/kr.png", duration: "3 to 12 months", description: "University based Korean language programs with visa support", city: "Seoul", language: "Korean", website: "https://www.studyinkorea.go.kr/en/main.do" },
-
     { name: "Chinese Language Program", country: "China", flag: "https://flagcdn.com/w320/cn.png", duration: "3 to 12 months", description: "Mandarin language training with scholarship opportunities", city: "Beijing", language: "Chinese", website: "https://www.chinesestudy.com/" },
-
     { name: "Arabic Language Program", country: "Egypt", flag: "https://flagcdn.com/w320/eg.png", duration: "3 to 12 months", description: "Modern Standard Arabic with cultural immersion in Cairo", city: "Cairo", language: "Arabic", website: "https://www.study-in-egypt.gov.eg/" },
-
     { name: "Turkish Language Program", country: "Turkey", flag: "https://flagcdn.com/w320/tr.png", duration: "3 to 12 months", description: "Turkish language training with scholarship pathways", city: "Istanbul", language: "Turkish", website: "https://www.turkiyeburslari.gov.tr/" },
-
     { name: "Russian Language Program", country: "Russia", flag: "https://flagcdn.com/w320/ru.png", duration: "3 to 12 months", description: "Russian language and cultural immersion programs", city: "Moscow", language: "Russian", website: "https://studyinrussia.ru/en/" },
-
     { name: "Dutch Language Program", country: "Netherlands", flag: "https://flagcdn.com/w320/nl.png", duration: "3 to 6 months", description: "Dutch language training for integration and study preparation", city: "Amsterdam", language: "Dutch", website: "https://www.studyinnl.org/" },
-
     { name: "Swedish Language Program", country: "Sweden", flag: "https://flagcdn.com/w320/se.png", duration: "3 to 9 months", description: "Swedish for academic and professional integration", city: "Stockholm", language: "Swedish", website: "https://studyinsweden.se/" },
-
     { name: "Norwegian Language Program", country: "Norway", flag: "https://flagcdn.com/w320/no.png", duration: "3 to 9 months", description: "Norwegian language for study and work integration", city: "Oslo", language: "Norwegian", website: "https://www.studyinnorway.no/" },
-
     { name: "Intensive English Program", country: "United Kingdom", flag: "https://flagcdn.com/w320/gb.png", duration: "4 to 24 weeks", description: "Academic and professional English training in global centers", city: "London", language: "English", website: "https://www.britishcouncil.org/" }
 ];
 
-        function renderPrograms(containerId, programs, type) {
+
+        function renderPrograms(containerId, programs) {
             const container = document.getElementById(containerId);
             if (!container) return;
             container.innerHTML = programs.map(program => `
@@ -963,15 +897,15 @@ const oceanianUniversities = [
                     </div>
                     <div class="uni-name">${program.name}</div>
                     <div class="program-details">
-                        ${program.tuition ? `<p><span class="detail-label">💰 Tuition:</span> <span class="tuition">${program.tuition}</span></p>` : ''}
-                        ${program.duration ? `<p><span class="detail-label">⏱️ Duration:</span> ${program.duration}</p>` : ''}
-                        ${program.programs ? `<p><span class="detail-label">📚 Programs:</span> ${program.programs}</p>` : ''}
-                        ${program.description ? `<p><span class="detail-label">📖 Description:</span> ${program.description.substring(0, 100)}${program.description.length > 100 ? '...' : ''}</p>` : ''}
-                        ${program.intakes ? `<p><span class="detail-label">📅 Intakes:</span> ${program.intakes}</p>` : ''}
-                        ${program.deadlines ? `<p><span class="detail-label">⏰ Deadlines:</span> ${program.deadlines}</p>` : ''}
-                        ${program.notes ? `<p><span class="detail-label">💡 Note:</span> ${program.notes.substring(0, 100)}${program.notes.length > 100 ? '...' : ''}</p>` : ''}
+                        ${program.tuition ? `<p><span class="detail-label"> Tuition:</span> <span class="tuition">${program.tuition}</span></p>` : ''}
+                        ${program.duration ? `<p><span class="detail-label"> Duration:</span> ${program.duration}</p>` : ''}
+                        ${program.programs ? `<p><span class="detail-label"> Programs:</span> ${program.programs}</p>` : ''}
+                        ${program.description ? `<p><span class="detail-label"> Description:</span> ${program.description.substring(0, 100)}${program.description.length > 100 ? '...' : ''}</p>` : ''}
+                        ${program.intakes ? `<p><span class="detail-label"> Intakes:</span> ${program.intakes}</p>` : ''}
+                        ${program.deadlines ? `<p><span class="detail-label"> Deadlines:</span> ${program.deadlines}</p>` : ''}
+                        ${program.notes ? `<p><span class="detail-label"> Note:</span> ${program.notes.substring(0, 100)}${program.notes.length > 100 ? '...' : ''}</p>` : ''}
                     </div>
-                    <div class="badge">${type === 'language' ? '🗣️ Language Program' : '🎓 University Program'}</div>
+                    <div class="badge">${program.duration ? '🗣️ Language Program' : '🎓 University Program'}</div>
                     <div class="card-buttons">
                         <a href="${program.website}" target="_blank" rel="noopener noreferrer" class="official-link">
                             🎓 Apply Now → Official Website
@@ -981,14 +915,15 @@ const oceanianUniversities = [
             `).join('');
         }
 
-        renderPrograms('africa-grid', africanUniversities, 'university');
-        renderPrograms('caribbean-grid', caribbeanUniversities, 'university');
-        renderPrograms('americas-grid', americasUniversities, 'university');
-        renderPrograms('europe-grid', europeUniversities, 'university');
-        renderPrograms('oceania-grid', oceanianUniversities, 'university');
-        renderPrograms('asia-grid', asiaUniversities, 'university');
-        renderPrograms('language-grid', languagePrograms, 'language');
+        renderPrograms('africa-grid', africanUniversities);
+        renderPrograms('caribbean-grid', caribbeanUniversities);
+        renderPrograms('americas-grid', americasUniversities);
+        renderPrograms('europe-grid', europeUniversities);
+        renderPrograms('oceania-grid', oceanianUniversities);
+        renderPrograms('asia-grid', asiaUniversities);
+        renderPrograms('language-grid', languagePrograms);
 
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         if (menuToggle && mobileNav) {
@@ -1017,6 +952,23 @@ const oceanianUniversities = [
                 });
             });
         }
+
+        // Logo fallback handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerImg = document.getElementById('headerLogoImg');
+            if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
+                headerImg.classList.add('error');
+                if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                footerImg.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
+                    this.style.height = '50px';
+                    this.style.width = 'auto';
+                });
+            }
+        });
     </script>
 </body>
 </html>
