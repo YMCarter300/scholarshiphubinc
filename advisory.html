@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric | Advisory: A Letter to Our Liberian Students Abroad</title>
+    <title>LinkAfric Inc. | Advisory: A Letter to Our Liberian Students Abroad</title>
     <style>
         * {
             margin: 0;
@@ -30,7 +30,7 @@
             --liberia-white: #FFFFFF;
         }
 
-        /* ===== NAVBAR WITH DROPDOWNS (GLOSSY MODERN) ===== */
+        /* ===== NAVBAR WITH IMAGE LOGO ===== */
         .navbar {
             background: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(16px);
@@ -47,7 +47,25 @@
             gap: 1rem;
         }
 
-        .logo {
+        /* Logo image + fallback */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .logo-fallback {
             font-size: 1.6rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
@@ -55,13 +73,10 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
+            display: none;
         }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .logo-img.error + .logo-fallback {
+            display: inline-block;
         }
 
         /* Desktop Navigation with Dropdowns */
@@ -387,6 +402,7 @@
             color: var(--black);
         }
 
+        /* Footer with centered clickable logo */
         .footer {
             background: var(--black);
             border-top: 1px solid rgba(212, 175, 55, 0.3);
@@ -412,6 +428,24 @@
             color: var(--gold);
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.85rem;
         }
 
         .footer-section ul {
@@ -427,16 +461,66 @@
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.85rem;
+            display: inline-block;
         }
 
         .footer-section ul li a:hover {
             color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray-mid);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .social-links a:hover svg {
+            stroke: var(--black);
+        }
+
+        .footer-logo-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0 1.2rem 0;
+        }
+        .footer-logo-link {
+            display: inline-flex;
+            transition: transform 0.2s ease;
+        }
+        .footer-logo-link:hover {
+            transform: scale(1.02);
+        }
+        .footer-logo-img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.75rem;
             color: #666;
@@ -464,13 +548,35 @@
             .beauty-grid {
                 grid-template-columns: 1fr;
             }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .footer-logo-img {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
+    <!-- DESKTOP NAVBAR WITH IMAGE LOGO LINKING TO HOME -->
     <div class="navbar">
-        <div class="logo">Link<span>Afric</span> Inc.</div>
+        <a href="index.html" class="logo-link" id="headerLogoLink">
+            <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
+        </a>
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="programs.html">Programs</a></li>
@@ -554,11 +660,11 @@
 
         <div class="heart-section">
             <h2>🇱🇷 Before You Go, Remember This 🇱🇷</h2>
-            <p style="font-size: 1.1rem;">You are not just a student. You are an ambassador. You carry the hopes of your family, your community, and a nation that believes in you. Liberia, the land of the free, the first republic in Africa, the country founded by freed slaves who dreamed of a homeland, is counting on you.</p>
+            <p style="font-size: 1.1rem;">You are not just a student. You are an ambassador. You carry the hopes of your family, your community, and a nation that believes in you. Liberia, the land of the free, the first republic in Africa, the country founded by freed slaves who dreamed of a homeland, is counting on you. <strong>LinkAfric Inc. (founded 2023, Monrovia)</strong> stands with you every step of the way.</p>
             <p style="margin-top: 1rem;">Wherever you go, you are Liberian. That is your strength, your identity, and your legacy.</p>
         </div>
 
-        <h2 style="color: var(--gold); margin-top: 2rem;">The Liberia We Carry With Us</h2>
+        <h2 style="color: var(--gold); margin-top: 2rem;">🇱🇷 The Liberia We Carry With Us</h2>
         <p>Before we talk about challenges abroad, let us remember what makes our homeland so special. Let us never forget the beauty that shaped us.</p>
 
         <div class="beauty-grid">
@@ -570,7 +676,7 @@
             <div class="beauty-card"><div class="beauty-icon">💪</div><h3>Our Resilience</h3><p>We survived civil war, Ebola, and every challenge. That strength runs in your blood.</p></div>
         </div>
 
-        <h2 style="color: var(--gold); margin-top: 2rem;">What Awaits You Abroad</h2>
+        <h2 style="color: var(--gold); margin-top: 2rem;">⚠️ What Awaits You Abroad</h2>
         <p>Studying abroad is an incredible opportunity, but it comes with challenges. Being honest about them prepares you to face them with strength and grace.</p>
 
         <div class="racism-section">
@@ -580,17 +686,17 @@
             <p style="margin-top: 1rem; font-weight: bold;">Remember: You carry the strength of ancestors who survived the Middle Passage and built the first Black republic.</p>
         </div>
 
-        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Homesickness & Loneliness</h3><p>There will be nights you miss Liberian food and your mother's voice. Stay connected with family and find African communities abroad.</p></div>
-        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Financial Pressure</h3><p>Create a budget. Find legal part-time work. Remember that investing in your education is investing in your family's future.</p></div>
-        <div class="challenge-card"><h3 style="color: var(--liberia-red);"> Academic & Cultural Adjustment</h3><p>Use university resources: tutoring centers, writing labs, and academic advisors. You are adapting, not falling behind.</p></div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);">🏠 Homesickness & Loneliness</h3><p>There will be nights you miss Liberian food and your mother's voice. Stay connected with family and find African communities abroad.</p></div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);">💰 Financial Pressure</h3><p>Create a budget. Find legal part-time work. Remember that investing in your education is investing in your family's future.</p></div>
+        <div class="challenge-card"><h3 style="color: var(--liberia-red);">📚 Academic & Cultural Adjustment</h3><p>Use university resources: tutoring centers, writing labs, and academic advisors. You are adapting, not falling behind.</p></div>
 
-        <h2 style="color: var(--gold); margin-top: 2rem;">We Must Look Out For Each Other</h2>
+        <h2 style="color: var(--gold); margin-top: 2rem;">🤝 We Must Look Out For Each Other</h2>
         <div class="solidarity-quote">"No Liberian should feel alone in a foreign land. What unites us is stronger than any ocean."</div>
         
         <ul class="tips-list">
             <li><strong>Connect before you go.</strong> Join Liberian student associations at your university.</li>
             <li><strong>Be the welcoming face.</strong> When new Liberian students arrive, reach out.</li>
-            <li><strong>Share resources.</strong> Good landlords, job openings, supportive professors — share the information.</li>
+            <li><strong>Share resources.</strong> Good landlords, job openings, supportive professors, share the information.</li>
             <li><strong>Check on each other.</strong> A simple text: "How are you really doing?" can save a life.</li>
             <li><strong>Celebrate together.</strong> Independence Day, Liberian Thanksgiving. Cook Liberian food. Play Liberian music.</li>
             <li><strong>Stand up for each other.</strong> If you see a fellow Liberian struggling, don't look away.</li>
@@ -601,10 +707,10 @@
             <p>If you experience racism or hardship, find your people. Connect with other African students. Build a circle of support. Document and report incidents when safe. Protect your peace. You are Liberian — from the land of the free. No comment can diminish that legacy.</p>
         </div>
 
-        <h2 style="color: var(--gold); margin-top: 2rem;">Coming Home to Mama Liberia</h2>
+        <h2 style="color: var(--gold); margin-top: 2rem;">🏡 Coming Home to Mama Liberia</h2>
         <div class="heart-section">
-            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">"Whatever you gain abroad, bring it back to Liberia."</p>
-            <p>Bring your knowledge, skills, connections, and passion. Liberia needs you. Not someday — now.</p>
+            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem;">" Whatever you gain abroad, bring it back to Liberia."</p>
+            <p>Bring your knowledge, skills, connections, and passion. Liberia needs you. Not someday, now.</p>
             <p style="margin-top: 1rem;">You are not leaving Liberia behind. You are going to fetch water for the tree. Come back and water the roots.</p>
         </div>
 
@@ -612,20 +718,25 @@
             <p style="font-size: 1.3rem; margin-bottom: 1rem;">To every Liberian student preparing to go abroad:</p>
             <p>You are enough. You are capable. You are worthy of every opportunity you pursue.</p>
             <p style="margin-top: 1rem;">Go. Learn. Grow. Make us proud. And when you are ready, come home. Mama Liberia is waiting.</p>
-            <p style="margin-top: 1.5rem; font-weight: bold; color: var(--gold);">- LinkAfric, Monrovia, Liberia</p>
+            <p style="margin-top: 1.5rem; font-weight: bold; color: var(--gold);">- LinkAfric Inc., Monrovia, Liberia (Founded 2023)</p>
         </div>
 
         <div style="text-align: center; margin: 2rem 0;">
             <a href="contact.html" class="btn" style="background: var(--gold); color: black;">📞 Need Support? Contact Us</a>
-            <a href="blog.html" class="btn btn-outline" style="margin-left: 1rem;"> Read More Resources</a>
+            <a href="blog.html" class="btn btn-outline" style="margin-left: 1rem;">📚 Read More Resources</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>LinkAfric</h4>
-                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <h4>LinkAfric Inc.</h4>
+                <p>Founded in 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/></svg></a>
+                </div>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -643,8 +754,16 @@
                 <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
+
+        <!-- CENTERED LOGO WITH HOME LINK -->
+        <div class="footer-logo-center">
+            <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
+                <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
+            </a>
+        </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2023 LinkAfric. All rights reserved. | Your future is not local. Take the first step today.</p>
+            <p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.</p>
         </div>
     </footer>
 
@@ -681,17 +800,28 @@
             });
         }
 
-        // Active page highlighting for desktop dropdown parents (optional)
+        // Active page highlighting and logo fallback
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'advisory.html';
-            
-            // Highlight Advisory in desktop nav
             const advisoryLink = document.querySelector('.nav-item a[href="advisory.html"]');
             if (advisoryLink) advisoryLink.classList.add('active');
             
-            // For mobile
             const mobileAdvisory = document.querySelector('.mobile-nav a[href="advisory.html"]');
             if (mobileAdvisory) mobileAdvisory.classList.add('active-mobile');
+            
+            // Logo fallback handling
+            const headerImg = document.getElementById('headerLogoImg');
+            if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
+                headerImg.classList.add('error');
+                if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                footerImg.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
+                    this.style.height = '50px';
+                    this.style.width = 'auto';
+                });
+            }
         });
     </script>
 </body>
