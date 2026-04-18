@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric | From Global to Local: How Liberian Students Can Transform Their Homeland</title>
+    <title>LinkAfric Inc. | From Global to Local: How Liberian Students Can Transform Their Homeland</title>
     <style>
         * {
             margin: 0;
@@ -29,7 +29,7 @@
             --liberia-blue: #002868;
         }
 
-        /* ===== GLOSSY NAVBAR WITH DROPDOWNS ===== */
+        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
         .navbar {
             background: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(16px);
@@ -46,7 +46,25 @@
             gap: 1rem;
         }
 
-        .logo {
+        /* Logo image + fallback */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .logo-fallback {
             font-size: 1.6rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
@@ -54,13 +72,10 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
+            display: none;
         }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--gold) 20%, #FFE4A0 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .logo-img.error + .logo-fallback {
+            display: inline-block;
         }
 
         /* Desktop Navigation with Dropdowns */
@@ -481,6 +496,7 @@
             font-size: 0.85rem;
         }
 
+        /* Footer with centered clickable logo */
         .footer {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
@@ -507,6 +523,24 @@
             color: var(--gold);
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.85rem;
         }
 
         .footer-section ul {
@@ -522,16 +556,66 @@
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.85rem;
+            display: inline-block;
         }
 
         .footer-section ul li a:hover {
             color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray-mid);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .social-links a:hover svg {
+            stroke: var(--black);
+        }
+
+        .footer-logo-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0 1.2rem 0;
+        }
+        .footer-logo-link {
+            display: inline-flex;
+            transition: transform 0.2s ease;
+        }
+        .footer-logo-link:hover {
+            transform: scale(1.02);
+        }
+        .footer-logo-img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.75rem;
             color: #666;
@@ -562,13 +646,35 @@
             .stat-number {
                 font-size: 1.5rem;
             }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .footer-logo-img {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- DESKTOP NAVBAR WITH EXACT DROPDOWN STRUCTURE -->
+    <!-- DESKTOP NAVBAR WITH IMAGE LOGO LINKING TO HOME -->
     <div class="navbar">
-        <div class="logo">Link<span>Afric</span> Inc.</div>
+        <a href="index.html" class="logo-link" id="headerLogoLink">
+            <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
+        </a>
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="programs.html">Programs</a></li>
@@ -644,10 +750,10 @@
             <div class="blog-category">🇱🇷 Liberia | Nation Building</div>
             <h1>From Global to Local: How Liberian Students Can Transform Their Homeland</h1>
             <div class="blog-meta">
-                <span> April 3, 2026</span>
-                <span> 12 min read</span>
-                <span> By LinkAfric Team</span>
-                <span> #Liberia #StudyAbroad #NationalDevelopment</span>
+                <span>📅 April 3, 2026</span>
+                <span>⏱️ 12 min read</span>
+                <span>✍️ By LinkAfric Team</span>
+                <span>🏷️ #Liberia #StudyAbroad #NationalDevelopment</span>
             </div>
         </div>
 
@@ -656,17 +762,17 @@
         <div class="blog-content">
             <p>Every year, hundreds of young Liberians leave their homeland in search of quality education abroad. They travel to universities in the United States, Canada, Germany, China, Malaysia, and beyond. Some return immediately after graduation. Others stay abroad for years, building careers and gaining experience. But one question remains at the heart of every Liberian student's journey: <strong>How can I use what I've learned abroad to help rebuild and develop my beloved Liberia?</strong></p>
 
-            <p>This isn't just a question, it's a calling. Liberia, a nation with immense potential and a resilient spirit, stands at a crossroads. With a young population, abundant natural resources, and a growing diaspora eager to contribute, the time for transformation is now. In this article, we explore the profound benefits of studying abroad and, more importantly, how returning Liberian scholars can become the architects of their nation's renaissance.</p>
+            <p>This isn't just a question, it's a calling. Liberia, a nation with immense potential and a resilient spirit, stands at a crossroads. With a young population, abundant natural resources, and a growing diaspora eager to contribute, the time for transformation is now. In this article, we explore the profound benefits of studying abroad and, more importantly, how returning Liberian scholars can become the architects of their nation's renaissance. <strong>LinkAfric Inc. (founded 2023, Monrovia)</strong> is committed to supporting this mission.</p>
 
             <div class="highlight-box">
                 <strong>🇱🇷 The Diaspora Dividend:</strong> Liberians abroad send over $500 million annually in remittances to Liberia. But the true value of the diaspora isn't just financial; it's the knowledge, networks, and expertise that returning scholars bring home.
             </div>
 
-            <h2>Why Study Abroad? The Liberian Perspective</h2>
+            <h2>🇱🇷 Why Study Abroad? The Liberian Perspective</h2>
             <p>For Liberian students, studying abroad offers opportunities that are often limited at home. Decades of civil conflict and underinvestment have strained Liberia's educational infrastructure. While progress is being made, the gap between Liberia's aspirations and its current educational capacity remains significant.</p>
 
             <div class="liberia-stats">
-                <h3 style="color: var(--gold); margin-bottom: 1rem;"> Liberia's Educational Landscape</h3>
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">📊 Liberia's Educational Landscape</h3>
                 <div class="stat-grid">
                     <div class="stat-card">
                         <div class="stat-number">57%</div>
@@ -699,11 +805,11 @@
             </div>
 
             <div class="highlight-box">
-                <strong> A Call to Action:</strong> To every Liberian student reading this: Your country needs you. Not just your remittances, but your ideas, your skills, your passion, and your commitment. Study abroad, learn everything you can, build your network, and then come home. Liberia is waiting for you. Together, we can build the Liberia we all dream of.
+                <strong>🌟 A Call to Action:</strong> To every Liberian student reading this: Your country needs you. Not just your remittances, but your ideas, your skills, your passion, and your commitment. Study abroad, learn everything you can, build your network, and then come home. Liberia is waiting for you. Together, we can build the Liberia we all dream of.
             </div>
 
             <div class="checklist">
-                <h3 style="color: var(--gold); margin-bottom: 1rem;"> Return Checklist for Liberian Scholars</h3>
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">📋 Return Checklist for Liberian Scholars</h3>
                 <div class="checklist-item"><span class="check">✓</span> <span>Complete all degree requirements and obtain official transcripts</span></div>
                 <div class="checklist-item"><span class="check">✓</span> <span>Secure professional certifications or licensing if required</span></div>
                 <div class="checklist-item"><span class="check">✓</span> <span>Build a portfolio of your work, projects, and research</span></div>
@@ -720,14 +826,14 @@
         <div class="author-section">
             <div class="author-avatar">LA</div>
             <div class="author-info">
-                <h4>LinkAfric Team</h4>
-                <p>Based in Monrovia, Liberia, LinkAfric is committed to helping Liberian students access international education and supporting their successful return to contribute to national development. We believe in the power of education to transform lives and nations.</p>
-                <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">Ready to start your journey? Contact us →</a>
+                <h4>LinkAfric Inc. Team</h4>
+                <p>Founded 2023 in Monrovia, Liberia. LinkAfric is committed to helping Liberian students access international education and supporting their successful return to contribute to national development. We believe in the power of education to transform lives and nations.</p>
+                <a href="contact.html" style="color: var(--gold); font-size: 0.85rem;">🚀 Ready to start your journey? Contact us →</a>
             </div>
         </div>
 
         <div class="related-posts">
-            <h3 style="color: var(--gold); margin-bottom: 1rem;"> You Might Also Like</h3>
+            <h3 style="color: var(--gold); margin-bottom: 1rem;">📚 You Might Also Like</h3>
             <div class="related-grid">
                 <div class="related-card">
                     <h4>Canada Study Permit: Complete Guide</h4>
@@ -753,15 +859,20 @@
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="apply.html" class="btn" style="background: var(--gold); color: black;"> Start Your Journey to Study Abroad</a>
+            <a href="apply.html" class="btn" style="background: var(--gold); color: black;">🇱🇷 Start Your Journey to Study Abroad</a>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>LinkAfric</h4>
-                <p>Bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <h4>LinkAfric Inc.</h4>
+                <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/></svg></a>
+                </div>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -775,12 +886,20 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p>info@linkafric.com</p>
+                <p>linkafric@gmail.com</p>
                 <p><strong>+231 76 076 6122</strong></p>
             </div>
         </div>
+
+        <!-- CENTERED LOGO WITH HOME LINK -->
+        <div class="footer-logo-center">
+            <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
+                <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
+            </a>
+        </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2025 LinkAfric. All rights reserved. | Your future starts today.</p>
+            <p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future starts today.</p>
         </div>
     </footer>
 
@@ -819,9 +938,23 @@
 
         // Active page highlighting for Resources parent
         document.addEventListener('DOMContentLoaded', function() {
-            const resourcesParent = document.querySelector('.nav-item a[href="#"]');
+            const resourcesParent = document.querySelector('.nav-item a[href="blog.html"]');
             if (resourcesParent && resourcesParent.innerText === 'Resources') {
                 resourcesParent.classList.add('active');
+            }
+            // Logo fallback handling
+            const headerImg = document.getElementById('headerLogoImg');
+            if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
+                headerImg.classList.add('error');
+                if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
+            }
+            const footerImg = document.getElementById('footerLogoImg');
+            if (footerImg) {
+                footerImg.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
+                    this.style.height = '50px';
+                    this.style.width = 'auto';
+                });
             }
         });
     </script>
