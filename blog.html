@@ -1,849 +1,866 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric Inc. | Resources - Insights, Tips & Opportunities</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Insights, tips and opportunities for African students and professionals — LinkAfric Inc.">
+  <title>Resources | LinkAfric Inc.</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background-color: #000000;
-            color: #e5e5e5;
-            line-height: 1.5;
-        }
+    :root {
+      /* ===== SPACE GRAY ===== */
+      --space-950: #0D0F12;
+      --space-900: #15181C;
+      --space-850: #1B1F24;
+      --space-800: #23272D;
+      --space-700: #31363D;
+      --space-600: #454B53;
+      --space-500: #5E656E;
+      --space-400: #838A93;
+      --space-300: #AEB4BC;
+      --space-200: #D3D8DE;
+      --space-150: #E2E6EA;
+      --space-100: #EEF0F3;
+      --space-50:  #F6F7F9;
 
-        :root {
-            --black: #000000;
-            --gold: #D4AF37;
-            --gold-dark: #B8860B;
-            --gray-mid: #1c1c1c;
-            --white: #ffffff;
-        }
+      /* ===== BLUE ===== */
+      --blue-800: #103A63;
+      --blue-700: #15538F;
+      --blue-600: #1E6BB8;
+      --blue-500: #3E8FD6;
+      --blue-100: #D5E6F6;
+      --blue-50:  #EEF5FC;
 
-        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
-        .navbar {
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 0.8rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
+      /* ===== GOLD ===== */
+      --gold:       #D4AF37;
+      --gold-dark:  #A88420;
+      --gold-light: #F3E7B3;
 
-        /* Logo image + fallback */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-        .logo-link:hover {
-            opacity: 0.9;
-        }
-        .logo-img {
-            height: 48px;
-            width: auto;
-            max-width: 180px;
-            object-fit: contain;
-            display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .logo-fallback {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-            display: none;
-        }
-        .logo-img.error + .logo-fallback {
-            display: inline-block;
-        }
+      /* ===== STATUS ===== */
+      --red: #DC2626;
+      --green: #16A34A;
 
-        /* Desktop Navigation with Dropdowns */
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-            align-items: center;
-            list-style: none;
-        }
+      /* ===== GENERAL ===== */
+      --white: #FFFFFF;
+      --text: var(--space-100);
+      --muted: var(--space-400);
+      --border: var(--space-700);
 
-        .nav-item {
-            position: relative;
-        }
+      /* ===== SHADOWS ===== */
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 25px 50px -20px rgba(0, 0, 0, 0.8);
+    }
 
-        .nav-item > a {
-            color: #f0f0f0;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.2px;
-            padding: 0.5rem 0;
-            display: inline-block;
-            transition: color 0.25s ease;
-            white-space: nowrap;
-        }
+    html { scroll-behavior: smooth; }
 
-        .nav-item > a:hover {
-            color: var(--gold);
-        }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--space-950);
+      color: var(--space-100);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Dropdown Menu - Glossy */
-        .dropdown-content {
-            position: absolute;
-            top: 2.6rem;
-            left: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            min-width: 190px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.25s ease;
-            z-index: 1001;
-            padding: 0.6rem 0;
-        }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-        .nav-item:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        .dropdown-content a {
-            display: block;
-            padding: 0.65rem 1.3rem;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
-        }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(21, 24, 28, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--space-700);
+    }
 
-        .dropdown-content a:hover {
-            background: rgba(212, 175, 55, 0.12);
-            color: var(--gold);
-            border-left-color: var(--gold);
-            padding-left: 1.6rem;
-        }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.9rem 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-        /* Active page indicator */
-        .nav-item > a.active {
-            color: var(--gold);
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.3rem;
-        }
+    .brand { display: flex; align-items: center; }
+    .brand img { height: 70px; width: 160px; object-fit: contain; }
 
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 12px;
-            cursor: pointer;
-            padding: 0.55rem;
-            backdrop-filter: blur(4px);
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      list-style: none;
+    }
 
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
+    .nav-item { position: relative; }
 
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--gold);
-            padding: 1.2rem;
-            z-index: 999;
-            flex-direction: column;
-            gap: 0.5rem;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
+    .nav-item > a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--space-100);
+      padding: 0.5rem 0;
+      display: inline-block;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
 
-        .mobile-nav.show {
-            display: flex;
-        }
+    .nav-item > a:hover { color: var(--gold); }
 
-        .mobile-main-link {
-            color: #eee;
-            text-decoration: none;
-            padding: 0.8rem 1rem;
-            border-radius: 1rem;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            margin-top: 0.2rem;
-        }
+    .nav-item > a.active {
+      color: var(--gold);
+      box-shadow: inset 0 -2px 0 var(--gold);
+    }
 
-        .mobile-dropdown-group {
-            margin-left: 1rem;
-            padding-left: 0.8rem;
-            border-left: 2px solid rgba(212, 175, 55, 0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
+    .nav-item > a.brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      background: rgba(212, 175, 55, 0.08);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
 
-        .mobile-dropdown-group a {
-            color: #ccc;
-            text-decoration: none;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            border-radius: 0.6rem;
-        }
+    .nav-item > a.brand-link:hover {
+      background: var(--gold);
+      color: var(--space-900);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
 
-        .mobile-dropdown-group a:hover,
-        .mobile-nav .mobile-main-link.active-mobile {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-        }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      min-width: 190px;
+      background: var(--space-800);
+      border: 1px solid var(--space-700);
+      border-radius: 0.9rem;
+      box-shadow: var(--shadow-md);
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: all 0.2s ease;
+      z-index: 1001;
+    }
 
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-align: center;
-        }
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--space-100);
+      transition: all 0.15s;
+      text-decoration: none;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #aaa;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
+    .dropdown-content a:hover {
+      background: var(--space-700);
+      color: var(--gold);
+    }
 
-        .blog-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
+    .dropdown-content a.active {
+      color: var(--gold);
+      background: var(--space-700);
+      font-weight: 600;
+    }
 
-        .blog-card {
-            background: var(--gray-mid);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            flex: 1 1 300px;
-            border-top: 3px solid var(--gold);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+    .menu-btn {
+      display: none;
+      background: var(--space-800);
+      border: 1px solid var(--space-700);
+      border-radius: 10px;
+      padding: 0.45rem 0.75rem;
+      font-size: 1.15rem;
+      color: var(--space-100);
+      cursor: pointer;
+      line-height: 1;
+    }
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
-        }
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--space-900) 0%, var(--space-950) 100%);
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--space-700);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .blog-card h3 {
-            color: var(--gold);
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+      pointer-events: none;
+    }
 
-        .blog-card p {
-            color: #ccc;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
+    .hero-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 
-        .blog-meta-card {
-            font-size: 0.7rem;
-            color: #888;
-            margin-bottom: 0.8rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--space-200);
+      background: var(--space-800);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--space-700);
+      margin-bottom: 1rem;
+    }
 
-        .read-more {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            transition: gap 0.2s;
-        }
+    .page-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--space-100);
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
 
-        .read-more:hover {
-            gap: 0.5rem;
-        }
+    .page-hero h1 .gold { color: var(--gold); }
 
-        .category-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            margin-bottom: 0.8rem;
-        }
+    .page-hero p {
+      color: var(--space-300);
+      font-size: 1.02rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
 
-        /* Featured Section */
-        .featured-tips {
-            margin-top: 3rem;
-            background: linear-gradient(135deg, var(--gray-mid) 0%, var(--black) 100%);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border-left: 4px solid var(--gold);
-        }
+    /* ===== BLOG GRID ===== */
+    .section { padding: 3.5rem 0 4rem; }
 
-        .featured-tips h3 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .tips-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    .blog-card {
+      background: var(--space-800);
+      border: 1px solid var(--space-700);
+      border-top: 3px solid var(--gold);
+      border-radius: 1rem;
+      padding: 1.6rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
 
-        .tip-item {
-            flex: 1;
-            min-width: 200px;
-        }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
+      border-top-color: var(--gold);
+    }
 
-        .tip-item strong {
-            color: var(--gold);
-        }
+    .category-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--space-700);
+      color: var(--space-200);
+      border: 1px solid var(--space-600);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.9rem;
+    }
 
-        /* Footer with centered clickable logo */
-        .footer {
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(212, 175, 55, 0.35);
-            padding: 2rem 1.5rem 1rem;
-            margin-top: 3rem;
-        }
+    .blog-card h3 {
+      color: var(--space-100);
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.01em;
+    }
 
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
+    .blog-meta-card {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.74rem;
+      color: var(--space-400);
+      margin-bottom: 0.9rem;
+    }
 
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
+    .blog-card p {
+      color: var(--space-300);
+      font-size: 0.94rem;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
 
-        .footer-section h4 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            position: relative;
-            display: inline-block;
-        }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gold);
+      align-self: flex-start;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
 
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--gold);
-        }
+    .read-more:hover {
+      gap: 0.55rem;
+      color: var(--gold-light);
+    }
 
-        .footer-section p {
-            color: #aaa;
-            line-height: 1.6;
-            font-size: 0.85rem;
-        }
+    /* ===== FEATURED TIPS ===== */
+    .featured-tips {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, var(--space-800), var(--space-950));
+      color: var(--space-200);
+      border-radius: 1.2rem;
+      padding: 2rem 2.2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--space-700);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .footer-section ul {
-            list-style: none;
-        }
+    .featured-tips::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+      pointer-events: none;
+    }
 
-        .footer-section ul li {
-            margin-bottom: 0.6rem;
-        }
+    .featured-tips h3 {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 1.3rem;
+      letter-spacing: 0.01em;
+      position: relative;
+      z-index: 1;
+    }
 
-        .footer-section ul li a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.85rem;
-            display: inline-block;
-        }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
 
-        .footer-section ul li a:hover {
-            color: var(--gold);
-            transform: translateX(3px);
-        }
+    .tip-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--space-700);
+      border-radius: 0.9rem;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--space-300);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
+    .tip-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
 
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--gray-mid);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+    .tip-item strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
 
-        .social-links a:hover {
-            background: var(--gold);
-            transform: translateY(-3px);
-        }
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--space-900);
+      color: var(--space-300);
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 4rem;
+    }
 
-        .social-links a:hover svg {
-            stroke: var(--black);
-        }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
 
-        .footer-logo-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1.5rem 0 1.2rem 0;
-        }
-        .footer-logo-link {
-            display: inline-flex;
-            transition: transform 0.2s ease;
-        }
-        .footer-logo-link:hover {
-            transform: scale(1.02);
-        }
-        .footer-logo-img {
-            height: 70px;
-            width: auto;
-            max-width: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
-        }
+    .footer h4 {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            margin-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.75rem;
-            color: #666;
-        }
+    .footer p, .footer li a {
+      font-size: 0.88rem;
+      color: var(--space-300);
+      line-height: 1.7;
+    }
 
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.7rem 1.2rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .container {
-                padding: 1rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            .blog-card {
-                flex: 1 1 100%;
-            }
-            .footer {
-                padding: 1.5rem 1rem 1rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            .footer-section {
-                text-align: center;
-                min-width: auto;
-            }
-            .footer-section h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-                width: 50px;
-            }
-            .social-links {
-                justify-content: center;
-            }
-            .footer-logo-img {
-                height: 60px;
-            }
-        }
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 0.4rem; }
+    .footer a { text-decoration: none; color: var(--space-300); }
+    .footer a:hover { color: var(--gold); }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .footer-content {
-                flex-wrap: wrap;
-            }
-            .footer-section {
-                flex: 1 1 calc(50% - 1rem);
-            }
-        }
-    </style>
+    .social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+    .social-links a:hover svg { stroke: var(--space-900); }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem 0 1rem;
+    }
+    .footer-logo img {
+      height: 100px;
+      width: 180px;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+      color: var(--space-400);
+    }
+
+    .footer-bottom .contact-line {
+      margin-top: 0.5rem;
+    }
+
+    .footer-bottom .contact-line a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-bottom .brand-line {
+      margin-top: 0.5rem;
+      color: var(--space-300);
+    }
+
+    .footer-bottom .brand-line a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-bottom .brand-line a:hover { color: var(--white); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--space-900);
+        border-bottom: 1px solid var(--space-700);
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        box-shadow: var(--shadow-md);
+      }
+      .nav-links.open {
+        max-height: 780px;
+        padding: 0.5rem 1.5rem 1.5rem;
+      }
+      .nav-item { width: 100%; }
+      .nav-item > a {
+        display: block;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--space-700);
+        font-size: 0.98rem;
+      }
+      .nav-item > a.brand-link {
+        display: inline-block;
+        padding: 0.55rem 1rem;
+        margin: 0.6rem 0 0.2rem;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+      }
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-left: 3px solid var(--gold);
+        margin: 0.4rem 0 0.6rem 0.5rem;
+        padding: 0.2rem 0;
+        background: transparent;
+        border-radius: 0;
+      }
+      .dropdown-content a { padding: 0.5rem 0.9rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .brand img { height: 60px; width: 140px; }
+    }
+
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .social-links { justify-content: center; }
+      .page-hero { padding: 3rem 0 2.2rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .featured-tips { padding: 1.5rem 1.3rem; border-radius: 1.1rem; }
+      .footer-logo img { height: 80px; width: 150px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- DESKTOP NAVBAR WITH IMAGE LOGO LINKING TO HOME -->
-    <div class="navbar">
-        <a href="index.html" class="logo-link" id="headerLogoLink">
-            <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
-            <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
-        </a>
-        <ul class="nav-links">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="programs.html">Programs</a></li>
-            <!-- Work (dropdown: Jobs, Immigration) -->
-            <li class="nav-item">
-                <a href="#">Work</a>
-                <div class="dropdown-content">
-                    <a href="jobs.html">Jobs</a>
-                    <a href="routes.html">Immigration</a>
-                </div>
-            </li>
-            <!-- Services (dropdown: Apply) -->
-            <li class="nav-item">
-                <a href="services.html">Services</a>
-                <div class="dropdown-content">
-                    <a href="apply.html">Apply</a>
-                </div>
-            </li>
-            <!-- Resources (dropdown: Success) -->
-            <li class="nav-item">
-                <a href="blog.html" class="active">Resources</a>
-                <div class="dropdown-content">
-                    <a href="stories.html">Success</a>
-                </div>
-            </li>
-            <!-- Advisory -->
-            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
-            <!-- Contact (dropdown: About) -->
-            <li class="nav-item">
-                <a href="contact.html">Contact</a>
-                <div class="dropdown-content">
-                    <a href="about.html">About</a>
-                </div>
-            </li>
-        </ul>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
 
-    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
-   <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-main-link"> Home</a>
-    <a href="programs.html" class="mobile-main-link"> Programs</a>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Work</div>
-    <div class="mobile-dropdown-group">
-        <a href="jobs.html"> Jobs</a>
-        <a href="routes.html"> Immigration</a>
-    </div>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Services</div>
-    <div class="mobile-dropdown-group">
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="LinkAfric Inc."></a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="programs.html">Programs</a></li>
+      <li class="nav-item">
+        <a href="#">Work</a>
+        <div class="dropdown-content">
+          <a href="jobs.html">Jobs</a>
+          <a href="routes.html">Immigration</a>
+        </div>
+      </li>
+      <li class="nav-item">
         <a href="services.html">Services</a>
-        <a href="apply.html"> Apply</a>
-    </div>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Resources</div>
-    <div class="mobile-dropdown-group">
-         <a href="blog.html">Resources</a>
-        <a href="stories.html"> Success</a>
-    </div>
-    
-    <a href="advisory.html" class="mobile-main-link"> Advisory</a>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Contact</div>
-    <div class="mobile-dropdown-group">
+        <div class="dropdown-content">
+          <a href="apply.html">Apply</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html" class="active">Resources</a>
+        <div class="dropdown-content">
+          <a href="stories.html">Success</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+      <li class="nav-item">
         <a href="contact.html">Contact</a>
-        <a href="about.html"> About</a>
-    </div>
-</div>
+        <div class="dropdown-content">
+          <a href="about.html">About</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="https://linkafric.fyi" target="_blank" rel="noopener" class="brand-link">
+          LinkAfric.fyi ↗
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
 
-    <!-- MAIN CONTENT -->
+<main>
+  <section class="page-hero">
+    <div class="container hero-inner reveal">
+      <div class="eyebrow">Resources</div>
+      <h1>Insights, tips, and <span class="gold">opportunities.</span></h1>
+      <p>Your comprehensive resource for scholarship success, study abroad guides, and career development — from LinkAfric Inc. (founded 2023, Monrovia, Liberia).</p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
-        <h1>Insights, Tips, and Opportunities</h1>
-        <p class="subtitle">Your comprehensive resource for scholarship success, study abroad guides, and career development — from LinkAfric Inc. (founded 2023, Monrovia, Liberia)</p>
-        
-        <div class="blog-grid">
-            <!-- Blog 1 -->
-            <div class="blog-card">
-                <span class="category-badge">📝 Scholarship Guide</span>
-                <h3>How to Secure a Scholarship in 2026</h3>
-                <div class="blog-meta-card">📅 March 15, 2026 | ⏱️ 8 min read</div>
-                <p>Step-by-step guide to stand out, craft winning essays, meet deadlines, and avoid common pitfalls. Includes personal statement tips and interview strategies.</p>
-                <a href="blog1.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 2 -->
-            <div class="blog-card">
-                <span class="category-badge">🌍 Scholarships</span>
-                <h3>Top 10 Scholarships for African Students</h3>
-                <div class="blog-meta-card">📅 March 18, 2026 | ⏱️ 10 min read</div>
-                <p>Fully funded opportunities, including Mastercard Foundation, DAAD, Chevening, and more. Deadlines, eligibility, and application links included.</p>
-                <a href="blog2.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 3 -->
-            <div class="blog-card">
-                <span class="category-badge">🛂 Visa Guide</span>
-                <h3>Common Visa Mistakes to Avoid</h3>
-                <div class="blog-meta-card">📅 March 20, 2026 | ⏱️ 7 min read</div>
-                <p>Learn the top reasons for visa rejections and how to prepare a flawless application. Includes country-specific tips and documentation checklist.</p>
-                <a href="blog3.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 4 -->
-            <div class="blog-card">
-                <span class="category-badge">✍️ Writing Tips</span>
-                <h3>How to Write a Winning Personal Statement</h3>
-                <div class="blog-meta-card">📅 March 22, 2026 | ⏱️ 6 min read</div>
-                <p>Your personal statement can make or break your application. Discover the formula that scholarship committees love with examples and templates.</p>
-                <a href="blog4.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 5 -->
-            <div class="blog-card">
-                <span class="category-badge">💼 Career Guide</span>
-                <h3>Work Abroad: Top Industries Hiring Now</h3>
-                <div class="blog-meta-card">📅 March 25, 2026 | ⏱️ 9 min read</div>
-                <p>Tech, healthcare, engineering, and more, find out which sectors are actively recruiting international talent and how to position yourself.</p>
-                <a href="blog5.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 6 -->
-            <div class="blog-card">
-                <span class="category-badge">🇱🇷 Liberia Focus</span>
-                <h3>Fully Funded Scholarships for Liberians</h3>
-                <div class="blog-meta-card">📅 March 28, 2026 | ⏱️ 8 min read</div>
-                <p>Exclusive list of scholarships that accept Liberian applicants, with deadlines, application links, and success stories from Liberian scholars.</p>
-                <a href="blog6.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 7 -->
-            <div class="blog-card">
-                <span class="category-badge">🇩🇪 Country Guide</span>
-                <h3>Study in Germany: €0 Tuition Guide</h3>
-                <div class="blog-meta-card">📅 March 20, 2026 | ⏱️ 12 min read</div>
-                <p>Everything you need to know about applying to German universities, from admission requirements to blocked accounts and student visas.</p>
-                <a href="blog7.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 8 -->
-            <div class="blog-card">
-                <span class="category-badge">🛂 Visa Guide</span>
-                <h3>Student Visa Guide: Europe vs Asia</h3>
-                <div class="blog-meta-card">📅 March 25, 2026 | ⏱️ 10 min read</div>
-                <p>Compare requirements, costs, and processing times for student visas across Europe and Asia. Detailed country breakdowns included.</p>
-                <a href="blog8.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 9 -->
-            <div class="blog-card">
-                <span class="category-badge">💰 Budget Guide</span>
-                <h3>Cost of Living: 10 Most Affordable Cities</h3>
-                <div class="blog-meta-card">📅 March 28, 2026 | ⏱️ 11 min read</div>
-                <p>Where your money goes further as an international student. Detailed breakdown of rent, food, transport, and utilities in each city.</p>
-                <a href="blog9.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 10 -->
-            <div class="blog-card">
-                <span class="category-badge">🍁 Country Guide</span>
-                <h3>Canada Study Permit: Complete Guide</h3>
-                <div class="blog-meta-card">📅 April 1, 2026 | ⏱️ 14 min read</div>
-                <p>Everything you need to know for a successful Canadian study permit application, including SDS requirements and post-graduation pathways.</p>
-                <a href="blog10.html" class="read-more">Read more →</a>
-            </div>
-            
-            <!-- Blog 11 -->
-            <div class="blog-card">
-                <span class="category-badge">🇱🇷 Nation Building</span>
-                <h3>From Global to Local: Returning to Liberia</h3>
-                <div class="blog-meta-card">📅 April 3, 2026 | ⏱️ 12 min read</div>
-                <p>How Liberian students can study abroad and return to contribute to national development. Success stories, challenges, and practical advice.</p>
-                <a href="blog11.html" class="read-more">Read more →</a>
-            </div>
+
+      <div class="blog-grid">
+        <!-- Blog 1 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">📝 Scholarship Guide</span>
+          <h3>How to Secure a Scholarship in 2026</h3>
+          <div class="blog-meta-card"><span>📅 March 15, 2026</span><span>⏱️ 8 min read</span></div>
+          <p>Step-by-step guide to stand out, craft winning essays, meet deadlines, and avoid common pitfalls. Includes personal statement tips and interview strategies.</p>
+          <a href="blog1.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 2 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🌍 Scholarships</span>
+          <h3>Top 10 Scholarships for African Students</h3>
+          <div class="blog-meta-card"><span>📅 March 18, 2026</span><span>⏱️ 10 min read</span></div>
+          <p>Fully funded opportunities, including Mastercard Foundation, DAAD, Chevening, and more. Deadlines, eligibility, and application links included.</p>
+          <a href="blog2.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 3 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🛂 Visa Guide</span>
+          <h3>Common Visa Mistakes to Avoid</h3>
+          <div class="blog-meta-card"><span>📅 March 20, 2026</span><span>⏱️ 7 min read</span></div>
+          <p>Learn the top reasons for visa rejections and how to prepare a flawless application. Includes country-specific tips and documentation checklist.</p>
+          <a href="blog3.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 4 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">✍️ Writing Tips</span>
+          <h3>How to Write a Winning Personal Statement</h3>
+          <div class="blog-meta-card"><span>📅 March 22, 2026</span><span>⏱️ 6 min read</span></div>
+          <p>Your personal statement can make or break your application. Discover the formula that scholarship committees love with examples and templates.</p>
+          <a href="blog4.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 5 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">💼 Career Guide</span>
+          <h3>Work Abroad: Top Industries Hiring Now</h3>
+          <div class="blog-meta-card"><span>📅 March 25, 2026</span><span>⏱️ 9 min read</span></div>
+          <p>Tech, healthcare, engineering, and more — find out which sectors are actively recruiting international talent and how to position yourself.</p>
+          <a href="blog5.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 6 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🇱🇷 Liberia Focus</span>
+          <h3>Fully Funded Scholarships for Liberians</h3>
+          <div class="blog-meta-card"><span>📅 March 28, 2026</span><span>⏱️ 8 min read</span></div>
+          <p>Exclusive list of scholarships that accept Liberian applicants, with deadlines, application links, and success stories from Liberian scholars.</p>
+          <a href="blog6.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 7 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🇩🇪 Country Guide</span>
+          <h3>Study in Germany: €0 Tuition Guide</h3>
+          <div class="blog-meta-card"><span>📅 March 20, 2026</span><span>⏱️ 12 min read</span></div>
+          <p>Everything you need to know about applying to German universities, from admission requirements to blocked accounts and student visas.</p>
+          <a href="blog7.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 8 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🛂 Visa Guide</span>
+          <h3>Student Visa Guide: Europe vs Asia</h3>
+          <div class="blog-meta-card"><span>📅 March 25, 2026</span><span>⏱️ 10 min read</span></div>
+          <p>Compare requirements, costs, and processing times for student visas across Europe and Asia. Detailed country breakdowns included.</p>
+          <a href="blog8.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 9 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">💰 Budget Guide</span>
+          <h3>Cost of Living: 10 Most Affordable Cities</h3>
+          <div class="blog-meta-card"><span>📅 March 28, 2026</span><span>⏱️ 11 min read</span></div>
+          <p>Where your money goes further as an international student. Detailed breakdown of rent, food, transport, and utilities in each city.</p>
+          <a href="blog9.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 10 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🍁 Country Guide</span>
+          <h3>Canada Study Permit: Complete Guide</h3>
+          <div class="blog-meta-card"><span>📅 April 1, 2026</span><span>⏱️ 14 min read</span></div>
+          <p>Everything you need to know for a successful Canadian study permit application, including SDS requirements and post-graduation pathways.</p>
+          <a href="blog10.html" class="read-more">Read more →</a>
+        </article>
+
+        <!-- Blog 11 -->
+        <article class="blog-card reveal">
+          <span class="category-badge">🇱🇷 Nation Building</span>
+          <h3>From Global to Local: Returning to Liberia</h3>
+          <div class="blog-meta-card"><span>📅 April 3, 2026</span><span>⏱️ 12 min read</span></div>
+          <p>How Liberian students can study abroad and return to contribute to national development. Success stories, challenges, and practical advice.</p>
+          <a href="blog11.html" class="read-more">Read more →</a>
+        </article>
+      </div>
+
+      <div class="featured-tips reveal">
+        <h3>💡 Quick Tips for Success</h3>
+        <div class="tips-grid">
+          <div class="tip-item"><strong>⏰ Start Early</strong>Begin your scholarship search 6–12 months before deadlines.</div>
+          <div class="tip-item"><strong>🎯 Tailor Each Application</strong>Customize your essays for each scholarship.</div>
+          <div class="tip-item"><strong>🤝 Network Actively</strong>Connect with alumni and current scholars.</div>
+          <div class="tip-item"><strong>🔍 Proofread Everything</strong>One typo can cost you the opportunity.</div>
         </div>
-        
-        <!-- Featured Section: Quick Tips -->
-        <div class="featured-tips">
-            <h3>💡 Quick Tips for Success</h3>
-            <div class="tips-grid">
-                <div class="tip-item"><strong>⏰ Start Early</strong><br>Begin your scholarship search 6-12 months before deadlines</div>
-                <div class="tip-item"><strong>🎯 Tailor Each Application</strong><br>Customize your essays for each scholarship</div>
-                <div class="tip-item"><strong>🤝 Network Actively</strong><br>Connect with alumni and current scholars</div>
-                <div class="tip-item"><strong>🔍 Proofread Everything</strong><br>One typo can cost you the opportunity</div>
-            </div>
-        </div>
+      </div>
+
     </div>
+  </section>
+</main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>LinkAfric Inc.</h4>
-                <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank" aria-label="TikTok">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8">
-                            <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="programs.html">Programs</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="apply.html">Apply Now</a></li>
-                    <li><a href="stories.html">Success Stories</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="blog.html">Blog & Tips</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                <p>linkafric@gmail.com</p>
-                <p><strong>+231 76 076 6122</strong></p>
-            </div>
-        </div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>LinkAfric Inc.</h4>
+      <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="apply.html">Apply Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html">Blog &amp; Tips</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="stories.html">Success Stories</a></li>
+        <li><a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric.fyi ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+      <p>linkafric@gmail.com</p>
+      <p>+231 76 076 6122</p>
+    </div>
+  </div>
 
-        <!-- CENTERED LOGO WITH HOME LINK -->
-        <div class="footer-logo-center">
-            <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
-                <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
-            </a>
-        </div>
+  <div class="footer-logo">
+    <a href="index.html" aria-label="Go to homepage">
+      <img src="logo.png" alt="LinkAfric Inc.">
+    </a>
+  </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.</p>
-        </div>
-    </footer>
+  <div class="footer-bottom">
+    &copy; <span id="year">2023</span> LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.
+    <div class="contact-line">
+      WhatsApp: <a href="https://wa.me/231760766122" target="_blank" rel="noopener">+231 76 076 6122</a> &nbsp;|&nbsp; Email: linkafric@gmail.com
+    </div>
+    <div class="brand-line">
+      Part of the <a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric</a> network ↗
+    </div>
+  </div>
+</footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileNav = document.getElementById('mobileNav');
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks?.classList.remove('open'));
+  });
 
-        if (menuToggle && mobileNav) {
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.toggle('show');
-                const spans = menuToggle.querySelectorAll('span');
-                if (mobileNav.classList.contains('show')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                } else {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
+  // Reveal-on-scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('show');
-                    const spans = menuToggle.querySelectorAll('span');
-                    if (spans.length) {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
-        }
+  // Footer year
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
-        // Active page highlighting for Resources parent
-        document.addEventListener('DOMContentLoaded', function() {
-            const resourcesParent = document.querySelector('.nav-item a[href="blog.html"]');
-            if (resourcesParent && resourcesParent.innerText === 'Resources') {
-                resourcesParent.classList.add('active');
-            }
-            
-            // Logo fallback handling
-            const headerImg = document.getElementById('headerLogoImg');
-            if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
-                headerImg.classList.add('error');
-                if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
-            }
-            const footerImg = document.getElementById('footerLogoImg');
-            if (footerImg) {
-                footerImg.addEventListener('error', function() {
-                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
-                    this.style.height = '50px';
-                    this.style.width = 'auto';
-                });
-            }
-        });
-    </script>
+  // Active page highlight (Resources lives in the Resources dropdown)
+  const current = (location.pathname.split('/').pop() || 'blog.html').toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const direct = item.querySelector(':scope > a');
+    if (!direct) return;
+    const href = (direct.getAttribute('href') || '').toLowerCase();
+    if (href === current) {
+      direct.classList.add('active');
+      return;
+    }
+    const match = item.querySelector('.dropdown-content a[href="' + current + '"]');
+    if (match) {
+      match.classList.add('active');
+      direct.classList.add('active');
+    }
+  });
+});
+</script>
+
 </body>
 </html>

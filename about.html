@@ -1,741 +1,754 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinkAfric Inc. | About - Global Gateway</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About LinkAfric Inc. — bridging African talent to global opportunities.">
+  <title>About | LinkAfric Inc.</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background-color: #000000;
-            color: #e5e5e5;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+    :root {
+      /* ===== SPACE GRAY ===== */
+      --space-950: #0D0F12;
+      --space-900: #15181C;
+      --space-850: #1B1F24;
+      --space-800: #23272D;
+      --space-700: #31363D;
+      --space-600: #454B53;
+      --space-500: #5E656E;
+      --space-400: #838A93;
+      --space-300: #AEB4BC;
+      --space-200: #D3D8DE;
+      --space-150: #E2E6EA;
+      --space-100: #EEF0F3;
+      --space-50:  #F6F7F9;
 
-        :root {
-            --black: #000000;
-            --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --gray-mid: #1c1c1c;
-            --glass-bg: rgba(10, 10, 10, 0.85);
-            --glass-border: rgba(212, 175, 55, 0.3);
-        }
+      /* ===== BLUE ===== */
+      --blue-800: #103A63;
+      --blue-700: #15538F;
+      --blue-600: #1E6BB8;
+      --blue-500: #3E8FD6;
+      --blue-100: #D5E6F6;
+      --blue-50:  #EEF5FC;
 
-        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
-        .navbar {
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            padding: 0.7rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
+      /* ===== GOLD ===== */
+      --gold:       #D4AF37;
+      --gold-dark:  #A88420;
+      --gold-light: #F3E7B3;
 
-        /* Logo image + fallback */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-        .logo-link:hover {
-            opacity: 0.9;
-        }
-        .logo-img {
-            height: 48px;
-            width: auto;
-            max-width: 180px;
-            object-fit: contain;
-            display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .logo-fallback {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-            display: none;
-        }
-        .logo-img.error + .logo-fallback {
-            display: inline-block;
-        }
+      /* ===== STATUS ===== */
+      --red: #DC2626;
+      --green: #16A34A;
 
-        /* DESKTOP MENU WITH DROPDOWNS */
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-            align-items: center;
-            list-style: none;
-        }
+      /* ===== GENERAL ===== */
+      --white: #FFFFFF;
+      --text: var(--space-100);
+      --muted: var(--space-400);
+      --border: var(--space-700);
 
-        .nav-item {
-            position: relative;
-        }
+      /* ===== SHADOWS ===== */
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 25px 50px -20px rgba(0, 0, 0, 0.8);
+    }
 
-        .nav-item > a {
-            color: #f0f0f0;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.2px;
-            padding: 0.5rem 0;
-            display: inline-block;
-            transition: color 0.25s ease;
-            white-space: nowrap;
-        }
+    html { scroll-behavior: smooth; }
 
-        .nav-item > a:hover {
-            color: var(--gold);
-        }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--space-950);
+      color: var(--space-100);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* dropdown content glossy */
-        .dropdown-content {
-            position: absolute;
-            top: 2.6rem;
-            left: 0;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(20px);
-            border-radius: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            min-width: 190px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.25s ease;
-            z-index: 1001;
-            padding: 0.6rem 0;
-        }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-        .nav-item:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        .dropdown-content a {
-            display: block;
-            padding: 0.65rem 1.3rem;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
-        }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(21, 24, 28, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--space-700);
+    }
 
-        .dropdown-content a:hover {
-            background: rgba(212, 175, 55, 0.12);
-            color: var(--gold);
-            border-left-color: var(--gold);
-            padding-left: 1.6rem;
-        }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.9rem 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-        /* active page indicator for main top-level items */
-        .nav-item > a.active {
-            color: var(--gold);
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.3rem;
-        }
+    .brand { display: flex; align-items: center; }
+    .brand img { height: 70px; width: 160px; object-fit: contain; }
 
-        /* mobile toggle & menu */
-        .menu-toggle {
-            display: none;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 12px;
-            cursor: pointer;
-            padding: 0.55rem;
-            backdrop-filter: blur(4px);
-            z-index: 1001;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      list-style: none;
+    }
 
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
+    .nav-item { position: relative; }
 
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--gold);
-            padding: 1.2rem;
-            z-index: 999;
-            flex-direction: column;
-            gap: 0.4rem;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
+    .nav-item > a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--space-100);
+      padding: 0.5rem 0;
+      display: inline-block;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
 
-        .mobile-nav.show {
-            display: flex;
-        }
+    .nav-item > a:hover { color: var(--gold); }
 
-        .mobile-nav .mobile-main-link {
-            color: #eee;
-            text-decoration: none;
-            padding: 0.8rem 1rem;
-            border-radius: 1rem;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            margin-top: 0.2rem;
-        }
+    .nav-item > a.active {
+      color: var(--gold);
+      box-shadow: inset 0 -2px 0 var(--gold);
+    }
 
-        .mobile-dropdown-group {
-            margin-left: 1rem;
-            padding-left: 0.8rem;
-            border-left: 2px solid rgba(212, 175, 55, 0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
+    .nav-item > a.brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      background: rgba(212, 175, 55, 0.08);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
 
-        .mobile-dropdown-group a {
-            color: #ccc;
-            text-decoration: none;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            border-radius: 0.6rem;
-        }
+    .nav-item > a.brand-link:hover {
+      background: var(--gold);
+      color: var(--space-900);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
 
-        .mobile-dropdown-group a:hover,
-        .mobile-nav .mobile-main-link.active-mobile {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-        }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      min-width: 190px;
+      background: var(--space-800);
+      border: 1px solid var(--space-700);
+      border-radius: 0.9rem;
+      box-shadow: var(--shadow-md);
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: all 0.2s ease;
+      z-index: 1001;
+    }
 
-        /* main container glossy */
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: rgba(12, 12, 12, 0.6);
-            backdrop-filter: blur(2px);
-            border-radius: 2rem;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 20px 35px -12px black;
-        }
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.2rem;
-        }
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--space-100);
+      transition: all 0.15s;
+      text-decoration: none;
+    }
 
-        h2 {
-            color: var(--gold);
-            margin: 2rem 0 1rem;
-            font-size: 1.7rem;
-            border-left: 4px solid var(--gold);
-            padding-left: 1rem;
-        }
+    .dropdown-content a:hover {
+      background: var(--space-700);
+      color: var(--gold);
+    }
 
-        .highlight {
-            border-left: 4px solid var(--gold);
-            padding-left: 1.8rem;
-            margin: 2rem 0;
-            font-size: 1.15rem;
-            font-style: italic;
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), transparent);
-            border-radius: 0 20px 20px 0;
-            padding: 1.2rem 1.8rem;
-        }
+    .dropdown-content a.active {
+      color: var(--gold);
+      background: var(--space-700);
+      font-weight: 600;
+    }
 
-        .location {
-            background: rgba(28, 28, 28, 0.8);
-            backdrop-filter: blur(8px);
-            padding: 1.5rem;
-            border-radius: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
+    .menu-btn {
+      display: none;
+      background: var(--space-800);
+      border: 1px solid var(--space-700);
+      border-radius: 10px;
+      padding: 0.45rem 0.75rem;
+      font-size: 1.15rem;
+      color: var(--space-100);
+      cursor: pointer;
+      line-height: 1;
+    }
 
-        /* footer glossy with centered logo */
-        .footer {
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(212, 175, 55, 0.35);
-            padding: 2.5rem 1.5rem 1.5rem;
-            margin-top: 3rem;
-        }
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--space-900) 0%, var(--space-950) 100%);
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--space-700);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+      pointer-events: none;
+    }
 
-        .footer-section {
-            flex: 1;
-            min-width: 180px;
-        }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--space-200);
+      background: var(--space-800);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--space-700);
+      margin-bottom: 1rem;
+    }
 
-        .footer-section h4 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            position: relative;
-            display: inline-block;
-        }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--space-100);
+      line-height: 1.15;
+      position: relative;
+      z-index: 1;
+    }
 
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--gold);
-        }
+    .page-hero h1 .gold { color: var(--gold); }
 
-        .footer-section p, .footer-section ul li a {
-            color: #bbb;
-            font-size: 0.85rem;
-        }
+    .page-hero p {
+      color: var(--space-300);
+      margin-top: 1rem;
+      max-width: 640px;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
 
-        .footer-section ul {
-            list-style: none;
-        }
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 4rem 0;
+    }
 
-        .footer-section ul li {
-            margin-bottom: 0.6rem;
-        }
+    .section.alt {
+      background: var(--space-900);
+    }
 
-        .footer-section ul li a {
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+    /* ===== ABOUT CONTENT ===== */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .footer-section ul li a:hover {
-            color: var(--gold);
-        }
+    .about-content h2 {
+      font-size: 1.5rem;
+      color: var(--space-100);
+      margin: 2.5rem 0 1rem;
+      padding-left: 1rem;
+      border-left: 4px solid var(--gold);
+      letter-spacing: -0.01em;
+    }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .about-content h2:first-of-type {
+      margin-top: 1.5rem;
+    }
 
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 12px;
-            transition: all 0.2s;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-        }
+    .about-content p {
+      color: var(--space-300);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
 
-        .social-links a:hover {
-            background: var(--gold);
-            transform: translateY(-3px);
-        }
+    .about-content p strong {
+      color: var(--space-100);
+      font-weight: 700;
+    }
 
-        .social-links a:hover svg {
-            stroke: #000;
-        }
+    .highlight {
+      background: linear-gradient(135deg, var(--space-800), var(--space-950));
+      border-left: 4px solid var(--gold);
+      border-radius: 0 1.2rem 1.2rem 0;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--space-200);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .footer-logo-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1.5rem 0 1.2rem 0;
-        }
-        .footer-logo-link {
-            display: inline-flex;
-            transition: transform 0.2s ease;
-        }
-        .footer-logo-link:hover {
-            transform: scale(1.02);
-        }
-        .footer-logo-img {
-            height: 70px;
-            width: auto;
-            max-width: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
-        }
+    .highlight::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.12), transparent 70%);
+      pointer-events: none;
+    }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            margin-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.75rem;
-            color: #777;
-        }
+    .highlight::after {
+      content: "❝";
+      position: absolute;
+      top: 0.6rem;
+      left: 1rem;
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+    }
 
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.7rem 1.2rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .container {
-                padding: 1.2rem;
-                margin: 1rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-section h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .social-links {
-                justify-content: center;
-            }
-            .footer-logo-img {
-                height: 60px;
-            }
-        }
-    </style>
+    .location {
+      background: linear-gradient(135deg, var(--space-800), var(--space-950));
+      color: var(--space-200);
+      padding: 1.8rem 2rem;
+      border-radius: 1.2rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--space-700);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .location strong {
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+
+    .location > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--space-900);
+      color: var(--space-300);
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer h4 {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer p, .footer li a {
+      font-size: 0.88rem;
+      color: var(--space-300);
+      line-height: 1.7;
+    }
+
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 0.4rem; }
+    .footer a { text-decoration: none; color: var(--space-300); }
+    .footer a:hover { color: var(--gold); }
+
+    .social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+    .social-links a:hover svg { stroke: var(--space-900); }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem 0 1rem;
+    }
+    .footer-logo img {
+      height: 100px;
+      width: 180px;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+      color: var(--space-400);
+    }
+
+    .footer-bottom .contact-line {
+      margin-top: 0.5rem;
+    }
+
+    .footer-bottom .contact-line a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-bottom .brand-line {
+      margin-top: 0.5rem;
+      color: var(--space-300);
+    }
+
+    .footer-bottom .brand-line a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .footer-bottom .brand-line a:hover { color: var(--white); }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--space-900);
+        border-bottom: 1px solid var(--space-700);
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        box-shadow: var(--shadow-md);
+      }
+      .nav-links.open {
+        max-height: 780px;
+        padding: 0.5rem 1.5rem 1.5rem;
+      }
+      .nav-item { width: 100%; }
+      .nav-item > a {
+        display: block;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--space-700);
+        font-size: 0.98rem;
+      }
+      .nav-item > a.brand-link {
+        display: inline-block;
+        padding: 0.55rem 1rem;
+        margin: 0.6rem 0 0.2rem;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+      }
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-left: 3px solid var(--gold);
+        margin: 0.4rem 0 0.6rem 0.5rem;
+        padding: 0.2rem 0;
+        background: transparent;
+        border-radius: 0;
+      }
+      .dropdown-content a { padding: 0.5rem 0.9rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .brand img { height: 60px; width: 140px; }
+    }
+
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .social-links { justify-content: center; }
+      .page-hero { padding: 3rem 0 2.4rem; }
+      .about-content h2 { font-size: 1.25rem; }
+      .highlight { padding: 1.2rem 1.3rem; font-size: 1rem; }
+      .location { padding: 1.4rem 1.3rem; border-radius: 1rem; }
+      .footer-logo img { height: 80px; width: 150px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="navbar">
-    <a href="index.html" class="logo-link" id="headerLogoLink">
-        <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
-        <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
-    </a>
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="LinkAfric Inc."></a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
     <ul class="nav-links">
-        <li class="nav-item"><a href="index.html">Home</a></li>
-        <li class="nav-item"><a href="programs.html">Programs</a></li>
-        <li class="nav-item">
-            <a href="#">Work</a>
-            <div class="dropdown-content">
-                <a href="jobs.html">Jobs</a>
-                <a href="routes.html">Immigration</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a href="services.html">Services</a>
-            <div class="dropdown-content">
-                <a href="apply.html">Apply</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a href="blog.html">Resources</a>
-            <div class="dropdown-content">
-                <a href="stories.html">Success</a>
-            </div>
-        </li>
-        <li class="nav-item"><a href="advisory.html">Advisory</a></li>
-        <li class="nav-item">
-            <a href="contact.html">Contact</a>
-            <div class="dropdown-content">
-                <a href="about.html">About</a>
-            </div>
-        </li>
-    </ul>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
-</div>
-
-<div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-main-link"> Home</a>
-    <a href="programs.html" class="mobile-main-link"> Programs</a>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Work</div>
-    <div class="mobile-dropdown-group">
-        <a href="jobs.html"> Jobs</a>
-        <a href="routes.html"> Immigration</a>
-    </div>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Services</div>
-    <div class="mobile-dropdown-group">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="programs.html">Programs</a></li>
+      <li class="nav-item">
+        <a href="#">Work</a>
+        <div class="dropdown-content">
+          <a href="jobs.html">Jobs</a>
+          <a href="routes.html">Immigration</a>
+        </div>
+      </li>
+      <li class="nav-item">
         <a href="services.html">Services</a>
-        <a href="apply.html"> Apply</a>
+        <div class="dropdown-content">
+          <a href="apply.html">Apply</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html">Resources</a>
+        <div class="dropdown-content">
+          <a href="stories.html">Success</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+      <li class="nav-item">
+        <a href="contact.html" class="active">Contact</a>
+        <div class="dropdown-content">
+          <a href="about.html" class="active">About</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="https://linkafric.fyi" target="_blank" rel="noopener" class="brand-link">
+          LinkAfric.fyi ↗
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="eyebrow">About us</div>
+      <h1>Bridging ambition <span class="gold">with opportunity.</span></h1>
+      <p>Founded 2023 — a Liberian-rooted organization connecting African talent to global pathways.</p>
     </div>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Resources</div>
-    <div class="mobile-dropdown-group">
-         <a href="blog.html">Resources</a>
-        <a href="stories.html"> Success</a>
+  </section>
+
+  <section class="section">
+    <div class="container about-content">
+      <p class="reveal">LinkAfric was founded with a clear mission: to bridge the gap between ambition and opportunity. Headquartered in Monrovia, Liberia, we understand the dreams and challenges of African students and professionals. <strong>Founded in 2023, we are proud to be a Liberian-rooted organization serving talent across the continent.</strong></p>
+
+      <h2 class="reveal">Our Mission</h2>
+      <p class="reveal">We believe talent is everywhere, but access is not. Our goal is to connect driven individuals with global opportunities that transform lives, starting right here in Liberia and across the continent.</p>
+
+      <h2 class="reveal">Why We Exist</h2>
+      <p class="reveal">Behind LinkAfric is not just a business, but a response to a problem too many people know too well.</p>
+      <p class="reveal">Every year, thousands of young Africans pursue opportunities abroad with hope, but without clear direction. In that uncertainty, many fall victim to false promises, fake agents, and costly mistakes. Money is lost. Time is wasted. Dreams are delayed, sometimes permanently.</p>
+      <p class="reveal">We have seen it happen. We have lived around it. And we chose to confront it.</p>
+      <p class="reveal">LinkAfric was built to bring order to that chaos, to become a trusted filter in a space filled with confusion. We exist to ensure that when someone takes a step toward their future, it is a step grounded in truth, not deception.</p>
+      <p class="reveal">This is more than guidance. It is protection. It is clarity. It is a system designed to replace confusion with direction.</p>
+      <p class="reveal">Opportunity should not belong only to the informed or the connected. It should belong to those bold enough to pursue it and wise enough to choose the right path.</p>
+
+      <h2 class="reveal">What We Do</h2>
+      <p class="reveal">Through strategic guidance, verified programs, and personalized support, we help you move from where you are to where you deserve to be. Our team combines local expertise with global connections to open doors that once seemed impossible.</p>
+
+      <div class="highlight reveal">
+        "Your success is our legacy. Every student placed, every career launched, every dream realized — that is what drives us."
+      </div>
+
+      <h2 class="reveal">Our Values</h2>
+      <p class="reveal">
+        <strong>Integrity</strong> — We work only with verified programs and legitimate opportunities.<br>
+        <strong>Excellence</strong> — World-class guidance tailored to your unique profile.<br>
+        <strong>Access</strong> — Every talented individual deserves a chance to succeed globally.<br>
+        <strong>Community</strong> — Proudly based in Liberia, committed to African talent.
+      </p>
+
+      <div class="location reveal">
+        <strong>Main Office</strong><br>
+        Tubman Boulevard, Sinkor, Monrovia, Liberia<br>
+        ✉️ linkafric@gmail.com &nbsp;|&nbsp; 📞 +231 76 076 6122
+      </div>
     </div>
-    
-    <a href="advisory.html" class="mobile-main-link"> Advisory</a>
-    
-    <div class="mobile-main-link" style="cursor:default;"> Contact</div>
-    <div class="mobile-dropdown-group">
-        <a href="contact.html">Contact</a>
-        <a href="about.html"> About</a>
-    </div>
-</div>
-
-<div class="container">
-    <h1>About LinkAfric Inc.</h1>
-    <p>LinkAfric was founded with a clear mission: to bridge the gap between ambition and opportunity. Headquartered in Monrovia, Liberia, we understand the dreams and challenges of African students and professionals. <strong>Founded in 2023, we are proud to be a Liberian-rooted organization serving talent across the continent.</strong></p>
-
-    <h2>Our Mission</h2>
-    <p>We believe talent is everywhere, but access is not. Our goal is to connect driven individuals with global opportunities that transform lives, starting right here in Liberia and across the continent.</p>
-
-    <h2>Why We Exist</h2>
-    <p>Behind LinkAfric is not just a business, but a response to a problem too many people know too well.</p>
-    <p>Every year, thousands of young Africans pursue opportunities abroad with hope, but without clear direction. In that uncertainty, many fall victim to false promises, fake agents, and costly mistakes. Money is lost. Time is wasted. Dreams are delayed, sometimes permanently.</p>
-    <p>We have seen it happen. We have lived around it. And we chose to confront it.</p>
-    <p>LinkAfric was built to bring order to that chaos, to become a trusted filter in a space filled with confusion. We exist to ensure that when someone takes a step toward their future, it is a step grounded in truth, not deception.</p>
-    <p>This is more than guidance. It is protection. It is clarity. It is a system designed to replace confusion with direction.</p>
-    <p>Opportunity should not belong only to the informed or the connected. It should belong to those bold enough to pursue it and wise enough to choose the right path.</p>
-
-    <h2>What We Do</h2>
-    <p>Through strategic guidance, verified programs, and personalized support, we help you move from where you are to where you deserve to be. Our team combines local expertise with global connections to open doors that once seemed impossible.</p>
-
-    <div class="highlight">
-        "Your success is our legacy. Every student placed, every career launched, every dream realized, that is what drives us."
-    </div>
-
-    <h2>Our Values</h2>
-    <p>
-        ✨ Integrity – We work only with verified programs and legitimate opportunities.<br>
-        🚀 Excellence – World-class guidance tailored to your unique profile.<br>
-        🌍 Access – Every talented individual deserves a chance to succeed globally.<br>
-        🤝 Community – Proudly based in Liberia, committed to African talent.
-    </p>
-
-    <div class="location">
-        📍 Main Office: Tubman Boulevard, Sinkor, Monrovia, Liberia<br>
-        ✉️ linkafric@gmail.com | 📞 +231 76 076 6122
-    </div>
-</div>
+  </section>
+</main>
 
 <footer class="footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>LinkAfric Inc.</h4>
-            <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" aria-label="Instagram">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                </a>
-                <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank" aria-label="TikTok">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8">
-                        <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="programs.html">Programs</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="routes.html">Immigration</a></li>
-                <li><a href="apply.html">Apply Now</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Resources</h4>
-            <ul>
-                <li><a href="stories.html">Success Stories</a></li>
-                <li><a href="advisory.html">Advisory</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Contact</h4>
-            <p>Tubman Blvd, Sinkor<br>Monrovia, Liberia</p>
-            <p>linkafric@gmail.com</p>
-            <p>+231 76 076 6122</p>
-        </div>
-    </div>
-
-    <!-- CENTERED LOGO WITH HOME LINK -->
-    <div class="footer-logo-center">
-        <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
-            <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
+  <div class="footer-inner">
+    <div>
+      <h4>LinkAfric Inc.</h4>
+      <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1BKQhuAawV/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
         </a>
+        <a href="https://www.instagram.com/scholarship_hub_inc/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
+          </svg>
+        </a>
+      </div>
     </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="apply.html">Apply Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html">Blog &amp; Tips</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="stories.html">Success Stories</a></li>
+        <li><a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric.fyi ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+      <p>linkafric@gmail.com</p>
+      <p>+231 76 076 6122</p>
+    </div>
+  </div>
 
-    <div class="footer-bottom">
-        <p>&copy; 2023 LinkAfric Inc. All rights reserved. | Your future starts here.</p>
+  <div class="footer-logo">
+    <a href="index.html" aria-label="Go to homepage">
+      <img src="logo.png" alt="LinkAfric Inc.">
+    </a>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; <span id="year">2023</span> LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.
+    <div class="contact-line">
+      WhatsApp: <a href="https://wa.me/231760766122" target="_blank" rel="noopener">+231 76 076 6122</a> &nbsp;|&nbsp; Email: linkafric@gmail.com
     </div>
+    <div class="brand-line">
+      Part of the <a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric</a> network ↗
+    </div>
+  </div>
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // === ACTIVE PAGE HIGHLIGHTING ===
-        const currentLocation = window.location.pathname.split('/').pop() || 'about.html';
-        
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            const directLink = item.querySelector('> a');
-            if(!directLink) return;
-            const href = directLink.getAttribute('href');
-            if(href && (href === currentLocation || (currentLocation === 'index.html' && href === 'index.html'))) {
-                directLink.classList.add('active');
-            } else {
-                const dropdownLinks = item.querySelectorAll('.dropdown-content a');
-                let anyMatch = false;
-                dropdownLinks.forEach(link => {
-                    const linkHref = link.getAttribute('href');
-                    if(linkHref === currentLocation) anyMatch = true;
-                });
-                if(anyMatch && directLink) directLink.classList.add('active');
-            }
-        });
-        
-        // Special case: about page under Contact dropdown
-        if(currentLocation === 'about.html') {
-            const contactParent = Array.from(document.querySelectorAll('.nav-item')).find(item => {
-                const parentLink = item.querySelector('> a');
-                return parentLink && parentLink.innerText.trim() === 'Contact';
-            });
-            if(contactParent) {
-                const contactA = contactParent.querySelector('> a');
-                if(contactA) contactA.classList.add('active');
-            }
-        }
-        
-        // Mobile active class
-        const mobileLinks = document.querySelectorAll('#mobileNav a');
-        mobileLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if(href && (href === currentLocation || (currentLocation === 'index.html' && href === 'index.html'))) {
-                link.classList.add('active-mobile');
-            }
-        });
-        
-        // === MOBILE MENU TOGGLE ===
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        if (menuToggle && mobileNav) {
-            const newToggle = menuToggle.cloneNode(true);
-            menuToggle.parentNode.replaceChild(newToggle, menuToggle);
-            const finalToggle = document.getElementById('menuToggle');
-            
-            finalToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                if (mobileNav.classList.contains('show')) {
-                    mobileNav.classList.remove('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                } else {
-                    mobileNav.classList.add('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-                }
-            });
-            
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.remove('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                });
-            });
-            
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = mobileNav.contains(event.target);
-                const isClickOnToggle = finalToggle.contains(event.target);
-                if (!isClickInsideNav && !isClickOnToggle && mobileNav.classList.contains('show')) {
-                    mobileNav.classList.remove('show');
-                    const spans = finalToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-        }
-        
-        window.addEventListener('resize', function() {
-            const mobileNav = document.getElementById('mobileNav');
-            const menuToggle = document.getElementById('menuToggle');
-            if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('show')) {
-                mobileNav.classList.remove('show');
-                if (menuToggle) {
-                    const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            }
-        });
-        
-        // Logo fallback handling
-        const headerImg = document.getElementById('headerLogoImg');
-        if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
-            headerImg.classList.add('error');
-            if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
-        }
-        const footerImg = document.getElementById('footerLogoImg');
-        if (footerImg) {
-            footerImg.addEventListener('error', function() {
-                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
-                this.style.height = '50px';
-                this.style.width = 'auto';
-            });
-        }
+document.addEventListener('DOMContentLoaded', function () {
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks?.classList.remove('open'));
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Footer year
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  // Active page highlight — Contact parent + About child are active
+  const current = (location.pathname.split('/').pop() || 'about.html').toLowerCase();
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const direct = item.querySelector(':scope > a');
+    if (!direct) return;
+    const href = (direct.getAttribute('href') || '').toLowerCase();
+    if (href === current) {
+      direct.classList.add('active');
+      return;
+    }
+    if (item.querySelector('.dropdown-content a[href="' + current + '"]')) {
+      direct.classList.add('active');
+    }
+  });
+});
 </script>
+
 </body>
 </html>

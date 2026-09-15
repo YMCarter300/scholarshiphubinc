@@ -5,131 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>LinkAfric Inc. | Immigration Partners - Verified Firms for Africans</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --black: #000000;
-            --black-light: #1a1a1a;
-            --black-medium: #0d0d0d;
-            --white: #ffffff;
-            --gold: #d4af37;
-            --gold-dark: #b8960c;
-            --gold-light: #f4e4bc;
-            --gray: #888888;
-            --border: #333333;
-            --blue: #3b82f6;
-            --red: #ef4444;
-            --green: #22c55e;
-            --gray-mid: #1c1c1c;
+            /* ===== SPACE GRAY (neutrals & dark surfaces) ===== */
+            --space-950: #0D0F12;
+            --space-900: #15181C;
+            --space-850: #1B1F24;
+            --space-800: #23272D;
+            --space-700: #31363D;
+            --space-600: #454B53;
+            --space-500: #5E656E;
+            --space-400: #838A93;
+            --space-300: #AEB4BC;
+            --space-200: #D3D8DE;
+            --space-150: #E2E6EA;
+            --space-100: #EEF0F3;
+            --space-50:  #F6F7F9;
+
+            /* ===== BLUE (primary actions) ===== */
+            --blue-800: #103A63;
+            --blue-700: #15538F;
+            --blue-600: #1E6BB8;
+            --blue-500: #3E8FD6;
+            --blue-100: #D5E6F6;
+            --blue-50:  #EEF5FC;
+
+            /* ===== GOLD (accent) ===== */
+            --gold:       #D4AF37;
+            --gold-dark:  #A88420;
+            --gold-light: #F3E7B3;
+
+            /* ===== STATUS ===== */
+            --red: #DC2626;
+            --green: #16A34A;
+
+            /* ===== GENERAL ===== */
+            --white: #FFFFFF;
+            --text: var(--space-100);
+            --muted: var(--space-400);
+            --border: var(--space-700);
+
+            /* ===== SHADOWS ===== */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 25px 50px -20px rgba(0, 0, 0, 0.8);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--black);
-            color: var(--white);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--space-950);
+            color: var(--space-100);
             line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* ===== GLOSSY NAVBAR WITH IMAGE LOGO ===== */
+        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 0.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+            background: rgba(21, 24, 28, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--space-700);
+        }
+
+        .nav-inner {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            padding: 0.9rem 1.5rem;
+            max-width: 1180px;
+            margin: 0 auto;
         }
 
-        /* Logo image + fallback */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-        .logo-link:hover {
-            opacity: 0.9;
-        }
-        .logo-img {
-            height: 48px;
-            width: auto;
-            max-width: 180px;
-            object-fit: contain;
-            display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .logo-fallback {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF 20%, var(--gold) 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-            display: none;
-        }
-        .logo-img.error + .logo-fallback {
-            display: inline-block;
-        }
+        .brand { display: flex; align-items: center; }
+        .brand img { height: 70px; width: 160px; object-fit: contain; }
 
-        /* Desktop Navigation with Dropdowns */
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
             align-items: center;
+            gap: 1.4rem;
             list-style: none;
         }
 
-        .nav-item {
-            position: relative;
-        }
+        .nav-item { position: relative; }
 
         .nav-item > a {
-            color: #f0f0f0;
-            text-decoration: none;
+            font-size: 0.92rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.2px;
+            color: var(--space-100);
             padding: 0.5rem 0;
             display: inline-block;
-            transition: color 0.25s ease;
+            transition: color 0.2s ease;
             white-space: nowrap;
+            text-decoration: none;
         }
 
-        .nav-item > a:hover {
+        .nav-item > a:hover { color: var(--gold); }
+
+        .nav-item > a.active {
             color: var(--gold);
+            box-shadow: inset 0 -2px 0 var(--gold);
         }
 
-        /* Dropdown Menu - Glossy */
+        .nav-item > a.brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: 600;
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            background: rgba(212, 175, 55, 0.08);
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item > a.brand-link:hover {
+            background: var(--gold);
+            color: var(--space-900);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+
         .dropdown-content {
             position: absolute;
-            top: 2.6rem;
+            top: 100%;
             left: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            box-shadow: 0 20px 35px -10px black, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            margin-top: 0.5rem;
             min-width: 190px;
+            background: var(--space-800);
+            border: 1px solid var(--space-700);
+            border-radius: 0.9rem;
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.25s ease;
+            transform: translateY(-6px);
+            transition: all 0.2s ease;
             z-index: 1001;
-            padding: 0.6rem 0;
         }
 
         .nav-item:hover .dropdown-content {
@@ -140,380 +157,314 @@
 
         .dropdown-content a {
             display: block;
-            padding: 0.65rem 1.3rem;
-            color: #e0e0e0;
-            text-decoration: none;
+            padding: 0.6rem 1.1rem;
             font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
+            color: var(--space-100);
+            transition: all 0.15s;
+            text-decoration: none;
         }
 
         .dropdown-content a:hover {
-            background: rgba(212, 175, 55, 0.12);
+            background: var(--space-700);
             color: var(--gold);
-            border-left-color: var(--gold);
-            padding-left: 1.6rem;
         }
 
-        /* Active page indicator */
-        .nav-item > a.active {
+        .dropdown-content a.active {
             color: var(--gold);
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.3rem;
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 12px;
-            cursor: pointer;
-            padding: 0.55rem;
-            backdrop-filter: blur(4px);
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--gold);
-            padding: 1.2rem;
-            z-index: 999;
-            flex-direction: column;
-            gap: 0.5rem;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .mobile-nav.show {
-            display: flex;
-        }
-
-        .mobile-main-link {
-            color: #eee;
-            text-decoration: none;
-            padding: 0.8rem 1rem;
-            border-radius: 1rem;
+            background: var(--space-700);
             font-weight: 600;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid transparent;
-            margin-top: 0.2rem;
         }
 
-        .mobile-dropdown-group {
-            margin-left: 1rem;
-            padding-left: 0.8rem;
-            border-left: 2px solid rgba(212, 175, 55, 0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
+        .menu-btn {
+            display: none;
+            background: var(--space-800);
+            border: 1px solid var(--space-700);
+            border-radius: 10px;
+            padding: 0.45rem 0.75rem;
+            font-size: 1.15rem;
+            color: var(--space-100);
+            cursor: pointer;
+            line-height: 1;
         }
 
-        .mobile-dropdown-group a {
-            color: #ccc;
-            text-decoration: none;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            border-radius: 0.6rem;
-        }
-
-        .mobile-dropdown-group a:hover,
-        .mobile-nav .mobile-main-link.active-mobile {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-        }
-
+        /* ===== MAIN ===== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: clamp(1.9rem, 4vw, 2.5rem);
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--space-100);
         }
 
+        h1 .gold { color: var(--gold); }
+
         .subtitle {
-            color: #aaa;
+            color: var(--space-300);
             margin-bottom: 2rem;
+            max-width: 900px;
         }
 
         .warning-header {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(220, 38, 38, 0.15);
             border-left: 4px solid var(--red);
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin: 20px 0 40px;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 1.5rem auto 3rem;
             text-align: center;
             max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #fca5a5;
+            font-size: 0.96rem;
+            line-height: 1.65;
         }
 
-        .warning-header strong {
-            color: var(--red);
-        }
+        .warning-header strong { color: #f87171; }
 
         .region-section {
-            margin: 50px 0;
+            margin: 3.5rem 0;
         }
 
         .region-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--gold);
-            display: inline-block;
-            color: var(--gold);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            margin-bottom: 1.5rem;
+            color: var(--space-100);
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
         }
 
         .firms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.3rem;
+            margin: 1.5rem 0;
         }
 
         .firm-card {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(13, 13, 13, 0.9));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 22px;
-            transition: all 0.4s ease;
+            background: var(--space-800);
+            border: 1px solid var(--space-700);
+            border-top: 3px solid var(--gold);
+            border-radius: 1.1rem;
+            padding: 1.5rem 1.4rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
         }
 
         .firm-card:hover {
-            border-color: var(--gold);
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+            border-top-color: var(--gold);
         }
 
         .country-flag {
             font-size: 1.4rem;
-            margin-bottom: 10px;
+            margin-bottom: 0.6rem;
+            line-height: 1;
         }
 
         .firm-name {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 8px;
+            color: var(--space-100);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
         }
 
         .firm-details {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin: 12px 0;
-            line-height: 1.5;
+            font-size: 0.88rem;
+            color: var(--space-300);
+            margin: 0.6rem 0 0.8rem;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
         .contact-info {
-            margin: 15px 0 10px;
+            margin: 0.6rem 0;
         }
 
         .contact-info a {
-            color: var(--blue);
+            color: var(--blue-500);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-right: 15px;
-            margin-bottom: 8px;
+            margin-right: 12px;
+            margin-bottom: 6px;
+            transition: color 0.2s;
         }
 
-        .contact-info a:hover {
-            color: var(--gold);
-        }
+        .contact-info a:hover { color: var(--gold); }
 
         .verification {
             display: inline-block;
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--green);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            background: rgba(22, 163, 74, 0.15);
+            color: #7FE68C;
+            border: 1px solid rgba(22, 163, 74, 0.35);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
             font-weight: 600;
-            margin-top: 12px;
+            margin-top: 0.7rem;
+            letter-spacing: 0.02em;
+            width: fit-content;
         }
 
         .verify-link {
             display: inline-block;
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--blue);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
+            background: rgba(30, 107, 184, 0.15);
+            color: var(--blue-500);
+            border: 1px solid rgba(30, 107, 184, 0.4);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 600;
             text-decoration: none;
-            margin-left: 8px;
+            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+            width: fit-content;
         }
 
         .verify-link:hover {
-            background: rgba(59, 130, 246, 0.3);
+            background: var(--blue-600);
+            color: var(--white);
+            border-color: var(--blue-600);
         }
 
         .government-badge {
             display: inline-block;
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.12);
             color: var(--gold);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
             font-weight: 600;
-            margin-top: 12px;
+            margin-top: 0.7rem;
+            letter-spacing: 0.02em;
+            width: fit-content;
         }
 
+        /* Verification Guide box */
         .footer-note {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(212, 175, 55, 0.05));
-            border-radius: 16px;
-            padding: 24px;
-            margin: 40px 0;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, var(--space-800), var(--space-950));
+            border-radius: 1.4rem;
+            padding: 2rem 2.2rem;
+            margin: 3.5rem 0 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: var(--shadow-md);
         }
 
         .footer-note h4 {
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .footer-note ul {
             list-style: none;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .footer-note li {
-            margin: 10px 0;
-            font-size: 0.85rem;
-            color: var(--gray);
+            position: relative;
+            padding-left: 1.7rem;
+            margin: 0.85rem 0;
+            font-size: 0.9rem;
+            color: var(--space-300);
+            line-height: 1.65;
         }
 
-        .modern-footer {
-            background: linear-gradient(135deg, var(--black-medium), #0a0a0a);
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
-            padding: 48px 0 30px;
+        .footer-note li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.95rem;
+            line-height: 1.65;
         }
 
-        .footer-content {
+        .footer-note li strong { color: var(--white); font-weight: 700; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--space-900);
+            color: var(--space-300);
+            padding: 3rem 1.5rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 36px;
-            margin-bottom: 40px;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 2rem;
         }
 
-        .footer-section h4 {
+        .footer h4 {
             color: var(--gold);
-            font-size: 1.1rem;
-            margin-bottom: 18px;
-        }
-
-        .footer-section p {
-            color: var(--gray);
-            line-height: 1.6;
             font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .footer p, .footer li a {
+            font-size: 0.88rem;
+            color: var(--space-300);
+            line-height: 1.7;
         }
 
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul li a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--gold);
-        }
+        .footer ul { list-style: none; }
+        .footer li { margin-bottom: 0.4rem; }
+        .footer a { text-decoration: none; color: var(--space-300); }
+        .footer a:hover { color: var(--gold); }
 
         .social-links {
             display: flex;
-            gap: 14px;
-            margin-top: 18px;
-            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
         }
 
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background: var(--gold);
-        }
-
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--white);
-        }
-
-        .social-icon:hover svg {
-            fill: var(--black);
-        }
-
-        /* Centered logo section in footer */
-        .footer-logo-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1.5rem 0 1.2rem 0;
-        }
-        .footer-logo-link {
+        .social-links a {
             display: inline-flex;
-            transition: transform 0.2s ease;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            transition: all 0.2s ease;
         }
-        .footer-logo-link:hover {
-            transform: scale(1.02);
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
         }
-        .footer-logo-img {
-            height: 70px;
-            width: auto;
-            max-width: 200px;
+        .social-links a:hover svg { stroke: var(--space-900); }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            margin: 2.5rem 0 1rem;
+        }
+        .footer-logo img {
+            height: 100px;
+            width: 180px;
             object-fit: contain;
-            filter: drop-shadow(0 0 6px rgba(212,175,55,0.3));
         }
 
         .footer-bottom {
@@ -521,449 +472,411 @@
             padding-top: 1.5rem;
             margin-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.75rem;
-            color: #666;
+            font-size: 0.78rem;
+            color: var(--space-400);
         }
 
-        .scholarship-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
-            padding: 7px 18px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.3px;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            transition: all 0.3s ease;
-            text-decoration: none;
+        .footer-bottom .contact-line {
+            margin-top: 0.5rem;
+        }
+
+        .footer-bottom .contact-line a {
             color: var(--gold);
-            backdrop-filter: blur(4px);
-            white-space: nowrap;
+            font-weight: 600;
+            text-decoration: none;
         }
 
-        .scholarship-button:hover {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--black);
-            border-color: var(--gold);
-            transform: translateY(-2px);
+        .footer-bottom .brand-line {
+            margin-top: 0.5rem;
+            color: var(--space-300);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 18px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            .region-title {
-                font-size: 1.4rem;
-            }
-            .firms-grid {
-                grid-template-columns: 1fr;
-            }
+        .footer-bottom .brand-line a {
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .footer-bottom .brand-line a:hover { color: var(--white); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .menu-btn { display: block; }
             .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: flex;
-            }
-            .navbar {
-                padding: 14px 20px;
-            }
-            .footer-content {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
                 flex-direction: column;
-                gap: 30px;
-                text-align: center;
+                align-items: stretch;
+                gap: 0;
+                background: var(--space-900);
+                border-bottom: 1px solid var(--space-700);
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease, padding 0.35s ease;
+                box-shadow: var(--shadow-md);
             }
-            .footer-section {
-                text-align: center;
+            .nav-links.open {
+                max-height: 780px;
+                padding: 0.5rem 1.5rem 1.5rem;
             }
-            .social-links {
-                justify-content: center;
+            .nav-item { width: 100%; }
+            .nav-item > a {
+                display: block;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid var(--space-700);
+                font-size: 0.98rem;
             }
-            .footer-logo-img {
-                height: 60px;
+            .nav-item > a.brand-link {
+                display: inline-block;
+                padding: 0.55rem 1rem;
+                margin: 0.6rem 0 0.2rem;
+                border: 1px solid rgba(212, 175, 55, 0.5);
+                border-bottom: 1px solid rgba(212, 175, 55, 0.5);
             }
-            .scholarship-button {
-                white-space: normal;
-                text-align: center;
-                padding: 7px 16px;
-                font-size: 0.75rem;
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-left: 3px solid var(--gold);
+                margin: 0.4rem 0 0.6rem 0.5rem;
+                padding: 0.2rem 0;
+                background: transparent;
+                border-radius: 0;
             }
+            .dropdown-content a { padding: 0.5rem 0.9rem; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            .brand img { height: 60px; width: 140px; }
         }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-            .region-title {
-                font-size: 1.2rem;
-            }
-            .firm-card {
-                padding: 16px;
-            }
+
+        @media (max-width: 560px) {
+            .footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .container { padding: 1.5rem 1rem; }
+            .firms-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .footer-logo img { height: 80px; width: 150px; }
+            .footer-note { padding: 1.5rem 1.3rem; border-radius: 1.1rem; }
+            .footer-note h4 { font-size: 1.05rem; }
         }
     </style>
 </head>
 <body>
-    <!-- DESKTOP NAVBAR WITH IMAGE LOGO LINKING TO HOME -->
-    <div class="navbar">
-        <a href="index.html" class="logo-link" id="headerLogoLink">
-            <img src="logo.jpg" alt="LinkAfric Inc. Logo" class="logo-img" id="headerLogoImg" onerror="this.classList.add('error'); this.nextElementSibling.style.display='inline-block';">
-            <span class="logo-fallback">Link<span>Afric</span> Inc.</span>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="LinkAfric Inc."></a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="index.html">Home</a></li>
+      <li class="nav-item"><a href="programs.html">Programs</a></li>
+      <li class="nav-item">
+        <a href="#" class="active">Work</a>
+        <div class="dropdown-content">
+          <a href="jobs.html">Jobs</a>
+          <a href="routes.html">Immigration</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="services.html">Services</a>
+        <div class="dropdown-content">
+          <a href="apply.html">Apply</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html">Resources</a>
+        <div class="dropdown-content">
+          <a href="stories.html">Success</a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="advisory.html">Advisory</a></li>
+      <li class="nav-item">
+        <a href="contact.html">Contact</a>
+        <div class="dropdown-content">
+          <a href="about.html">About</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="https://linkafric.fyi" target="_blank" rel="noopener" class="brand-link">
+          LinkAfric.fyi ↗
         </a>
-        <ul class="nav-links">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="programs.html">Programs</a></li>
-            <!-- Work (dropdown: Jobs, Immigration) -->
-            <li class="nav-item">
-                <a href="#" class="active">Work</a>
-                <div class="dropdown-content">
-                    <a href="jobs.html">Jobs</a>
-                    <a href="routes.html">Immigration</a>
-                </div>
-            </li>
-            <!-- Services (dropdown: Apply) -->
-            <li class="nav-item">
-                <a href="services.html">Services</a>
-                <div class="dropdown-content">
-                    <a href="apply.html">Apply</a>
-                </div>
-            </li>
-            <!-- Resources (dropdown: Success) -->
-            <li class="nav-item">
-                <a href="blog.html">Resources</a>
-                <div class="dropdown-content">
-                    <a href="stories.html">Success</a>
-                </div>
-            </li>
-            <!-- Advisory -->
-            <li class="nav-item"><a href="advisory.html">Advisory</a></li>
-            <!-- Contact (dropdown: About) -->
-            <li class="nav-item">
-                <a href="contact.html">Contact</a>
-                <div class="dropdown-content">
-                    <a href="about.html">About</a>
-                </div>
-            </li>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div class="container">
+    <h1>Immigration <span class="gold">Partners</span></h1>
+    <p class="subtitle">Verified immigration lawyers, consultants, and government portals for African applicants — founded 2023, trusted across Africa.</p>
+
+    <div class="warning-header">
+        <strong>⚠️ CRITICAL WARNING:</strong> Always verify any immigration consultant on official government registers BEFORE paying. Legitimate consultants never guarantee visas or ask for payment in cryptocurrency. NEVER pay for a job offer.
+    </div>
+
+    <!-- Africa Section -->
+    <div class="region-section">
+        <h2 class="region-title">🇿🇦 Africa — Local Immigration Firms</h2>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <div class="country-flag">🇿🇦</div>
+                <div class="firm-name">Akram &amp; Company Inc.</div>
+                <div class="firm-details">15+ years experience in Immigration Law. Offices in Durban, Johannesburg, and Cape Town. Level 1 B-BBEE contributor.</div>
+                <div class="verification">✓ LPC Registered | Level 1 B-BBEE</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇿🇦</div>
+                <div class="firm-name">Network Migration Services</div>
+                <div class="firm-details">Owned by Andrew Kerr — IAA licensed &amp; MARA registered. 10,000+ families assisted since 1994.</div>
+                <div class="verification">✓ MARA Registered | IAA Licensed</div>
+                <a href="https://www.mara.gov.au" target="_blank" rel="noopener" class="verify-link">🔍 Verify at mara.gov.au</a>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇹🇿</div>
+                <div class="firm-name">Aloys &amp; Associates</div>
+                <div class="firm-details">Immigration, Permits &amp; Compliance specialists for East Africa. Work permits and residency applications.</div>
+                <div class="verification">✓ Tanzanian Legal Practice</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- North America Section -->
+    <div class="region-section">
+        <h2 class="region-title">🇨🇦🇺🇸 North America</h2>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <div class="country-flag">🇨🇦</div>
+                <div class="firm-name">Canada Abroad</div>
+                <div class="firm-details">Regulated Canadian Immigration Consultant (RCIC) — Deanne Acres. Former Canada Border Services Officer.</div>
+                <div class="verification">✓ ICCRC Registered | RCIC #R708576</div>
+                <a href="https://iccrc-crcic.ca" target="_blank" rel="noopener" class="verify-link">🔍 Verify at iccrc-crcic.ca</a>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇺🇸</div>
+                <div class="firm-name">The Nigerian Center (USA)</div>
+                <div class="firm-details">DOJ-recognized organization providing free-to-low-cost US immigration legal services. Washington DC-based.</div>
+                <div class="verification">✓ DOJ Recognized | Free/Low-Cost</div>
+                <a href="https://www.justice.gov/eoir" target="_blank" rel="noopener" class="verify-link">🔍 Verify at justice.gov/eoir</a>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇺🇸</div>
+                <div class="firm-name">Fragomen Global</div>
+                <div class="firm-details">Largest global immigration practice. Handles all US visa types including H-1B, L-1, EB-1, EB-2.</div>
+                <div class="verification">✓ AILA Member | Global Network</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UK & Ireland Section -->
+    <div class="region-section">
+        <h2 class="region-title">🇬🇧🇮🇪 United Kingdom &amp; Ireland</h2>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <div class="country-flag">🇬🇧</div>
+                <div class="firm-name">Move Up — Relocation Solutions</div>
+                <div class="firm-details">South African-governed UK immigration specialists. Backed by litigation attorney Gwen Vermeulen.</div>
+                <div class="verification">✓ IAA Registered | OISC Level 3</div>
+                <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" rel="noopener" class="verify-link">🔍 Verify at gov.uk</a>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇬🇧</div>
+                <div class="firm-name">Sterling Law</div>
+                <div class="firm-details">IAA/OISC Level 3 (highest accreditation). Skilled Worker visas, Sponsor Licences, Global Talent, ILR.</div>
+                <div class="verification">✓ IAA Level 3 | OISC Accredited</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇮🇪</div>
+                <div class="firm-name">Irish Department of Enterprise</div>
+                <div class="firm-details">Official government portal for Employment Permits. Home carers quota of 1,000 permits (2025).</div>
+                <div class="government-badge">🏛️ Government Portal | Apply Direct</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Europe Section -->
+    <div class="region-section">
+        <h2 class="region-title">🇪🇺 Europe</h2>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <div class="country-flag">🇩🇪</div>
+                <div class="firm-name">Make it in Germany</div>
+                <div class="firm-details">Official German government portal for skilled workers. EU Blue Card information. FREE government service.</div>
+                <div class="government-badge">🏛️ German Government | Free Service</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇮🇹</div>
+                <div class="firm-name">Italian Immigration Portal</div>
+                <div class="firm-details">Official Italian government portal for seasonal work visas. 24,288 visas for agriculture in 2026.</div>
+                <div class="government-badge">🏛️ Italian Government | 24,288 Visas</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇳🇱</div>
+                <div class="firm-name">IND Netherlands</div>
+                <div class="firm-details">Official Immigration and Naturalisation Service. Single permit (work + residence) through employer sponsorship.</div>
+                <div class="government-badge">🏛️ Dutch Government | Single Permit</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇸🇪</div>
+                <div class="firm-name">Swedish Migration Agency</div>
+                <div class="firm-details">Official Swedish government portal for work permits. Fast processing for shortage occupations.</div>
+                <div class="government-badge">🏛️ Swedish Government | Online App</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇫🇷</div>
+                <div class="firm-name">French OFII</div>
+                <div class="firm-details">Official French government portal for work visas and residency. African applicants with job offers welcome.</div>
+                <div class="government-badge">🏛️ French Government | OFII</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇵🇱</div>
+                <div class="firm-name">Polish Immigration Forum</div>
+                <div class="firm-details">Legal information for foreign workers. Work permits, temporary residence, and EU long-term residence.</div>
+                <div class="verification">✓ EU Legal Framework</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Australia & NZ Section -->
+    <div class="region-section">
+        <h2 class="region-title">🇦🇺🇳🇿 Australia &amp; New Zealand</h2>
+        <div class="firms-grid">
+            <div class="firm-card">
+                <div class="country-flag">🇦🇺</div>
+                <div class="firm-name">Australian Department of Home Affairs</div>
+                <div class="firm-details">Official Australian government portal. 482 sponsorship, DAMA programs, skilled migration.</div>
+                <div class="government-badge">🏛️ Australian Government | Official</div>
+            </div>
+            <div class="firm-card">
+                <div class="country-flag">🇦🇺</div>
+                <div class="firm-name">Budget Migration Services</div>
+                <div class="firm-details">MARA registered migration agent. Specializes in Australian and New Zealand visas.</div>
+                <div class="verification">✓ MARA Registered | IAA Accredited</div>
+                <a href="https://www.mara.gov.au" target="_blank" rel="noopener" class="verify-link">🔍 Verify at mara.gov.au</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verification Guide -->
+    <div class="footer-note">
+        <h4>🛡️ How to Verify Any Immigration Consultant</h4>
+        <ul>
+            <li><strong>Canada:</strong> ICCRC register at <strong>iccrc-crcic.ca</strong> — must show "Active" status</li>
+            <li><strong>Australia:</strong> MARA register at <strong>mara.gov.au</strong> — valid 7-digit MARN required</li>
+            <li><strong>United Kingdom:</strong> IAA register at <strong>gov.uk/find-an-immigration-adviser</strong></li>
+            <li><strong>USA:</strong> DOJ Recognition at <strong>justice.gov/eoir</strong> — recognized organizations only</li>
+            <li><strong>⚠️ NEVER pay for a job offer</strong> — legitimate employers never charge for job placement</li>
+            <li><strong>⚠️ If someone says "the website is not updated" — that is a lie. Walk away immediately.</strong></li>
         </ul>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
     </div>
+</div>
 
-    <!-- MOBILE NAVIGATION (replicates dropdown structure) -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="mobile-main-link"> Home</a>
-        <a href="programs.html" class="mobile-main-link"> Programs</a>
-        
-        <div class="mobile-main-link" style="cursor:default;"> Work</div>
-        <div class="mobile-dropdown-group">
-            <a href="jobs.html"> Jobs</a>
-            <a href="routes.html"> Immigration</a>
-        </div>
-        
-        <div class="mobile-main-link" style="cursor:default;"> Services</div>
-        <div class="mobile-dropdown-group">
-            <a href="apply.html"> Apply</a>
-        </div>
-        
-        <div class="mobile-main-link" style="cursor:default;"> Resources</div>
-        <div class="mobile-dropdown-group">
-            <a href="stories.html"> Success</a>
-        </div>
-        
-        <a href="advisory.html" class="mobile-main-link"> Advisory</a>
-        
-        <div class="mobile-main-link" style="cursor:default;"> Contact</div>
-        <div class="mobile-dropdown-group">
-            <a href="about.html"> About</a>
-        </div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>LinkAfric Inc.</h4>
+      <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1GUTgEs8Fh/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/scholarship_hub_inc?igsh=MWlmajlhb3d3bzFpOQ==" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
+          </svg>
+        </a>
+      </div>
     </div>
-
-    <div class="container">
-        <h1>Immigration Partners</h1>
-        <p class="subtitle">Verified immigration lawyers, consultants, and government portals for African applicants — founded 2023, trusted across Africa.</p>
-
-        <div class="warning-header">
-            <strong> CRITICAL WARNING:</strong> Always verify any immigration consultant on official government registers BEFORE paying. Legitimate consultants never guarantee visas or ask for payment in cryptocurrency. NEVER pay for a job offer.
-        </div>
-
-        <!-- Africa Section -->
-        <div class="region-section">
-            <h2 class="region-title">🇿🇦 Africa - Local Immigration Firms</h2>
-            <div class="firms-grid">
-                <div class="firm-card">
-                    <div class="country-flag">🇿🇦</div>
-                    <div class="firm-name">Akram & Company Inc.</div>
-                    <div class="firm-details">15+ years experience in Immigration Law. Offices in Durban, Johannesburg, and Cape Town. Level 1 B-BBEE contributor.</div>
-                    <div class="verification"> LPC Registered | Level 1 B-BBEE</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇿🇦</div>
-                    <div class="firm-name">Network Migration Services</div>
-                    <div class="firm-details">Owned by Andrew Kerr - IAA licensed & MARA registered. 10,000+ families assisted since 1994.</div>
-                    <div class="verification"> MARA Registered | IAA Licensed</div>
-                    <a href="https://www.mara.gov.au" target="_blank" class="verify-link"> Verify at mara.gov.au</a>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇹🇿</div>
-                    <div class="firm-name">Aloys & Associates</div>
-                    <div class="firm-details">Immigration, Permits & Compliance specialists for East Africa. Work permits and residency applications.</div>
-                    <div class="verification"> Tanzanian Legal Practice</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- North America Section -->
-        <div class="region-section">
-            <h2 class="region-title">🇨🇦🇺🇸 North America</h2>
-            <div class="firms-grid">
-                <div class="firm-card">
-                    <div class="country-flag">🇨🇦</div>
-                    <div class="firm-name">Canada Abroad</div>
-                    <div class="firm-details">Regulated Canadian Immigration Consultant (RCIC) - Deanne Acres. Former Canada Border Services Officer.</div>
-                    <div class="verification"> ICCRC Registered | RCIC #R708576</div>
-                    <a href="https://iccrc-crcic.ca" target="_blank" class="verify-link">🔍 Verify at iccrc-crcic.ca</a>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇺🇸</div>
-                    <div class="firm-name">The Nigerian Center (USA)</div>
-                    <div class="firm-details">DOJ-recognized organization providing free-to-low-cost US immigration legal services. Washington DC-based.</div>
-                    <div class="verification"> DOJ Recognized | Free/Low-Cost</div>
-                    <a href="https://www.justice.gov/eoir" target="_blank" class="verify-link">🔍 Verify at justice.gov/eoir</a>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇺🇸</div>
-                    <div class="firm-name">Fragomen Global</div>
-                    <div class="firm-details">Largest global immigration practice. Handles all US visa types including H-1B, L-1, EB-1, EB-2.</div>
-                    <div class="verification"> AILA Member | Global Network</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- UK & Ireland Section -->
-        <div class="region-section">
-            <h2 class="region-title">🇬🇧🇮🇪 United Kingdom & Ireland</h2>
-            <div class="firms-grid">
-                <div class="firm-card">
-                    <div class="country-flag">🇬🇧</div>
-                    <div class="firm-name">Move Up - Relocation Solutions</div>
-                    <div class="firm-details">South African-governed UK immigration specialists. Backed by litigation attorney Gwen Vermeulen.</div>
-                    <div class="verification"> IAA Registered | OISC Level 3</div>
-                    <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" class="verify-link">🔍 Verify at gov.uk</a>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇬🇧</div>
-                    <div class="firm-name">Sterling Law</div>
-                    <div class="firm-details">IAA/OISC Level 3 (highest accreditation). Skilled Worker visas, Sponsor Licences, Global Talent, ILR.</div>
-                    <div class="verification"> IAA Level 3 | OISC Accredited</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇮🇪</div>
-                    <div class="firm-name">Irish Department of Enterprise</div>
-                    <div class="firm-details">Official government portal for Employment Permits. Home carers quota of 1,000 permits (2025).</div>
-                    <div class="government-badge"> Government Portal | Apply Direct</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Europe Section -->
-        <div class="region-section">
-            <h2 class="region-title">🇪🇺 Europe</h2>
-            <div class="firms-grid">
-                <div class="firm-card">
-                    <div class="country-flag">🇩🇪</div>
-                    <div class="firm-name">Make it in Germany</div>
-                    <div class="firm-details">Official German government portal for skilled workers. EU Blue Card information. FREE government service.</div>
-                    <div class="government-badge"> German Government | Free Service</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇮🇹</div>
-                    <div class="firm-name">Italian Immigration Portal</div>
-                    <div class="firm-details">Official Italian government portal for seasonal work visas. 24,288 visas for agriculture in 2026.</div>
-                    <div class="government-badge"> Italian Government | 24,288 Visas</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇳🇱</div>
-                    <div class="firm-name">IND Netherlands</div>
-                    <div class="firm-details">Official Immigration and Naturalisation Service. Single permit (work + residence) through employer sponsorship.</div>
-                    <div class="government-badge"> Dutch Government | Single Permit</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇸🇪</div>
-                    <div class="firm-name">Swedish Migration Agency</div>
-                    <div class="firm-details">Official Swedish government portal for work permits. Fast processing for shortage occupations.</div>
-                    <div class="government-badge"> Swedish Government | Online App</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇫🇷</div>
-                    <div class="firm-name">French OFII</div>
-                    <div class="firm-details">Official French government portal for work visas and residency. African applicants with job offers welcome.</div>
-                    <div class="government-badge"> French Government | OFII</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇵🇱</div>
-                    <div class="firm-name">Polish Immigration Forum</div>
-                    <div class="firm-details">Legal information for foreign workers. Work permits, temporary residence, and EU long-term residence.</div>
-                    <div class="verification"> EU Legal Framework</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Australia & NZ Section -->
-        <div class="region-section">
-            <h2 class="region-title">🇦🇺🇳🇿 Australia & New Zealand</h2>
-            <div class="firms-grid">
-                <div class="firm-card">
-                    <div class="country-flag">🇦🇺</div>
-                    <div class="firm-name">Australian Department of Home Affairs</div>
-                    <div class="firm-details">Official Australian government portal. 482 sponsorship, DAMA programs, skilled migration.</div>
-                    <div class="government-badge"> Australian Government | Official</div>
-                </div>
-                <div class="firm-card">
-                    <div class="country-flag">🇦🇺</div>
-                    <div class="firm-name">Budget Migration Services</div>
-                    <div class="firm-details">MARA registered migration agent. Specializes in Australian and New Zealand visas.</div>
-                    <div class="verification"> MARA Registered | IAA Accredited</div>
-                    <a href="https://www.mara.gov.au" target="_blank" class="verify-link">🔍 Verify at mara.gov.au</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Verification Guide -->
-        <div class="footer-note">
-            <h4>🔍 How to Verify Any Immigration Consultant</h4>
-            <ul>
-                <li><strong>Canada:</strong> ICCRC register at <strong>iccrc-crcic.ca</strong> - must show "Active" status</li>
-                <li><strong>Australia:</strong> MARA register at <strong>mara.gov.au</strong> - valid 7-digit MARN required</li>
-                <li><strong>United Kingdom:</strong> IAA register at <strong>gov.uk/find-an-immigration-adviser</strong></li>
-                <li><strong>USA:</strong> DOJ Recognition at <strong>justice.gov/eoir</strong> - recognized organizations only</li>
-                <li><strong> NEVER pay for a job offer - legitimate employers never charge for job placement</strong></li>
-                <li><strong> If someone says "the website is not updated" - that is a lie. Walk away immediately.</strong></li>
-            </ul>
-        </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="apply.html">Apply Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html">Blog &amp; Tips</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="stories.html">Success Stories</a></li>
+        <li><a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric.fyi ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
+      <p>linkafric@gmail.com</p>
+      <p>+231 76 076 6122</p>
+    </div>
+  </div>
 
-    <!-- FOOTER with centered clickable logo -->
-    <footer class="modern-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>LinkAfric Inc.</h4>
-                    <p>Founded 2023, bridging African talent to global opportunities. Headquartered in Monrovia, Liberia.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1GUTgEs8Fh/?mibextid=wwXIfr" class="social-icon" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/scholarship_hub_inc?igsh=MWlmajlhb3d3bzFpOQ==" class="social-icon" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.tiktok.com/@liberian_boi?_r=1&_t=ZS-95bes13cCQv" class="social-icon" aria-label="TikTok">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M19.59 6.69a4.96 4.96 0 0 1-3.14-1.08 4.93 4.93 0 0 1-1.77-2.6 5.03 5.03 0 0 1-.1-1.01h-3.4v12.86a2.94 2.94 0 0 1-2.28 2.87 2.9 2.9 0 0 1-3.2-1.43 2.94 2.94 0 0 1 1.68-4.16 2.9 2.9 0 0 1 1.05-.17V8.46a6.42 6.42 0 0 0-5.38 6.26 6.45 6.45 0 0 0 6.44 6.44 6.45 6.45 0 0 0 6.44-6.44v-3.52a8.9 8.9 0 0 0 4.78 1.47v-3.4a5.22 5.22 0 0 1-2.68-.82z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="apply.html">Apply Now</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="blog.html">Blog & Tips</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="stories.html">Success Stories</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>Tubman Boulevard, Sinkor<br>Monrovia, Liberia</p>
-                    <p>linkafric@gmail.com</p>
-                    <p><strong>+231 76 076 6122</strong></p>
-                </div>
-            </div>
+  <div class="footer-logo">
+    <a href="index.html" aria-label="Go to homepage">
+      <img src="logo.png" alt="LinkAfric Inc.">
+    </a>
+  </div>
 
-            <!-- CENTERED LOGO WITH HOME LINK -->
-            <div class="footer-logo-center">
-                <a href="index.html" class="footer-logo-link" aria-label="Go to homepage">
-                    <img src="logo.jpg" alt="LinkAfric Inc. Logo - Home" class="footer-logo-img" id="footerLogoImg" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20width%3D%22200%22%20height%3D%2260%22%20fill%3D%22%231c1c1c%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D4AF37%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%3ELinkAfric%20Inc.%3C%2Ftext%3E%3C%2Fsvg%3E'; this.style.height='50px';">
-                </a>
-            </div>
+  <div class="footer-bottom">
+    &copy; <span id="year">2023</span> LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.
+    <div class="contact-line">
+      WhatsApp: <a href="https://wa.me/231760766122" target="_blank" rel="noopener">+231 76 076 6122</a> &nbsp;|&nbsp; Email: linkafric@gmail.com
+    </div>
+    <div class="brand-line">
+      Part of the <a href="https://linkafric.fyi" target="_blank" rel="noopener">LinkAfric</a> network ↗
+    </div>
+  </div>
+</footer>
 
-            <div class="footer-bottom">
-                <p>© 2023 LinkAfric Inc. All rights reserved. | Your future is not local. Take the first step today.</p>
-                <p style="margin-top: 6px; font-size: 0.7rem;">WhatsApp: <a href="https://wa.me/231760766122" style="color: var(--gold);">+231 76 076 6122</a> | Email: linkafric@gmail.com</p>
-            </div>
-        </div>
-    </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks?.classList.remove('open'));
+    });
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        if (menuToggle && mobileNav) {
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.toggle('show');
-                const spans = menuToggle.querySelectorAll('span');
-                if (mobileNav.classList.contains('show')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                } else {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
+    // Footer year
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
 
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('show');
-                    const spans = menuToggle.querySelectorAll('span');
-                    if (spans.length) {
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
+    // Active page highlight — Work parent is active on this partners page
+    const current = (location.pathname.split('/').pop() || 'partners.html').toLowerCase();
+    const isWork = current === 'jobs.html' || current === 'routes.html' || current === 'partners.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const direct = item.querySelector(':scope > a');
+        if (!direct) return;
+        const href = (direct.getAttribute('href') || '').toLowerCase();
+        if (href === current) {
+            direct.classList.add('active');
+            return;
         }
-        
-        // Handle logo fallback and active nav state
-        document.addEventListener('DOMContentLoaded', function() {
-            const workParent = document.querySelector('.nav-item a[href="#"]');
-            if (workParent && workParent.innerText === 'Work') {
-                workParent.classList.add('active');
-            }
-            
-            const headerImg = document.getElementById('headerLogoImg');
-            if (headerImg && headerImg.complete && headerImg.naturalWidth === 0) {
-                headerImg.classList.add('error');
-                if (headerImg.nextElementSibling) headerImg.nextElementSibling.style.display = 'inline-block';
-            }
-            const footerImg = document.getElementById('footerLogoImg');
-            if (footerImg) {
-                footerImg.addEventListener('error', function() {
-                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%231c1c1c" /%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23D4AF37" font-size="16" font-weight="bold"%3ELinkAfric%3C/text%3E%3C/svg%3E';
-                    this.style.height = '50px';
-                    this.style.width = 'auto';
-                });
-            }
-        });
-    </script>
+        if (item.querySelector('.dropdown-content a[href="' + current + '"]')) {
+            direct.classList.add('active');
+            return;
+        }
+        if (isWork && href === '#') {
+            direct.classList.add('active');
+        }
+    });
+});
+</script>
+
 </body>
 </html>
